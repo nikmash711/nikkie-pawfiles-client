@@ -1,29 +1,34 @@
+a{
+  text-decoration: none;
+  color: black;
+}
+
 .blurb{
+  max-width:450px;
   display:inline-block;
   padding:20px;
   margin:25px;
   font-size:15px;
   color: black;
   flex:1;
-  max-width:500px;
   position: relative;
-  -webkit-box-shadow: 0 2px 12px rgba(0,0,0,.5);
-  -moz-box-shadow: 0 2px 12px rgba(0,0,0,.5);
+  -webkit-box-shadow: 10px 10px 20px rgba(0,0,0,.5);
+  -moz-box-shadow: 10px 10px 20px rgba(0,0,0,.5);
   box-shadow: 10px 10px 20px #000;
-  -webkit-transform: rotate(-1deg);
+  -webkit-transform: rotate(-2deg);
   -moz-transform: rotate(-1deg);
   -o-transform: rotate(-1deg);
   transition:.5s;
 }
 
 .blurb:hover, .blurb:focus{
-  -webkit-box-shadow: 0 2px 12px rgba(0,0,0,.5);
-  -moz-box-shadow: 0 2px 12px rgba(0,0,0,.5);
+  -webkit-box-shadow: 20px 20px 20px rgba(0,0,0,.5);
+  -moz-box-shadow: 20px 20px 20px rgba(0,0,0,.5);
   box-shadow: 20px 20px 20px #000;
 }
 
 .blurb:nth-child(even) {
-  -webkit-transform: rotate(1deg);
+  -webkit-transform: rotate(2deg);
   -moz-transform: rotate(1deg);
   -o-transform: rotate(1deg);
 }
@@ -65,10 +70,15 @@
 
 .blurb h2{
   margin: 10px auto;
-  font-size:50px;
+  font-size:60px;
   font-family:"Reenie Beanie",arial,sans-serif;
   color: #000;
   text-shadow: black 1px 1px 0px;
+  transition: .5s;
+}
+
+.blurb h2:hover, .blurb h2:focus, .option-icons i:hover, .option-icons i:focus{
+  text-shadow: white 2px 2px 2px;
 }
 
 .female{
@@ -101,13 +111,46 @@
   height:150px;
   border: 3px solid black;
   margin:auto;
+  margin-top:10px;
   border-radius: 100px;
   background-color: black;
 }
 
-@media (min-width: 950px){
+.prof-pic:hover, .prof-pic:focus{
+  border: 3px solid white;
+}
+
+.option-icons{
+  position: absolute;
+  top: 12px;
+  left: 65%;
+  width: 80px;
+}
+
+.option-icons i{
+  margin: 5px;
+}
+
+@media(min-width: 350px){
+  .option-icons{
+    left:75%;
+  }
+}
+
+@media(min-width: 500px){
+  .option-icons{
+    left:80%;
+  }
+}
+
+@media(min-width: 900px){
+  .blurb{
+    min-width:400px;
+  }
+}
+
+@media (min-width: 970px){
   .blurb{
     min-width:450px;
   }
 }
-

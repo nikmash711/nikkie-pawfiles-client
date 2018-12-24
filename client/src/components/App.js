@@ -11,7 +11,7 @@ export default class App extends React.Component {
     return (
       <Router>
         <Route exact path="/home" component={HomePage}></Route>
-        {/* <Route exact path="/pawfile/:pawfileId" component={Pawfile}></Route> */}
+        {/* <Route exact path="/:pawfileName/:pawfileId" component={Pawfile}></Route> */}
       </Router>
     );
   }
