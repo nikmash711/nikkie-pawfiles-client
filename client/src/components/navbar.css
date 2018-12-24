@@ -1,0 +1,69 @@
+nav{
+  background-color: rgb(62, 6, 6);
+  position: fixed;
+  width:100%;
+  z-index: 1000;
+}
+
+nav a{
+  padding:20px;
+  display: block;
+}
+
+.icon.right{
+  float:right;
+}
+
+.link, .logo{
+  color: white;
+  text-decoration: none;
+  padding: 20px;
+  text-align: center;
+  transition: .5s;
+  /* position:relative; */
+}
+
+.logo{
+  text-align:left;
+  display: inline-block;
+}
+
+.link:hover {
+  color: #333;
+  background-color: #fff;
+}
+
+.link{
+  display:none;
+}
+
+.paw-logo{
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 90px;
+  top: 17px;
+}
+
+.icon{
+  color:white;
+  display:inline;
+}
+
+@media (min-width: 900px){
+  nav a{
+    display: inline-block;
+  }
+
+  .link{
+    display: inline-block;
+  }
+
+  .right{
+    float:right;
+  }
+
+  .icon{
+    display:none;
+  }
+}

@@ -1,0 +1,67 @@
+article {
+  display:inline-block;
+  }
+
+
+.brief{
+  border-radius: 30px;
+  background-color:rgb(62, 6, 6);
+  padding:20px;
+  margin:20px;
+  font-size:15px;
+  color: black;
+  flex:1;
+  max-width:500px;
+}
+
+.female{
+  background-color: pink;
+}
+
+.male{
+  background-color: rgb(61, 120, 193);
+}
+
+.brief p{
+  text-align: left;
+}
+
+.view-pawfile{
+  padding:10px;
+  background-color:black;
+  color:white;
+  margin-top:15px;
+  border: 2px solid white;
+  transition: .5s;
+  font-size:20px;
+}
+
+.view-pawfile:hover, .view-pawfile:focus{
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+  cursor:pointer;
+}
+
+.prof-pic{
+  width: 100px;
+  height:100px;
+  border: 2px solid black;
+  margin:auto;
+  border-radius: 50px;
+}
+
+.brief h2{
+  margin: 10px auto;
+  font-size:30px;
+}
+
+.brief p{
+  font-size:20px;
+}
+
+@media (min-width: 900px){
+  .brief{
+    min-width:350px;
+  }
+}

@@ -1,0 +1,45 @@
+main{
+  background-color:black;
+  color: white;
+  text-align: center;
+  display:flex;
+  flex-flow: column wrap;
+  padding-top: 60px;
+}
+
+@media (min-width: 900px){
+  main{
+    height: 100vh;
+    flex-flow: row wrap;
+  }
+}
+
+.center-me{
+  margin:auto;
+}
+
+.center-me h1 {
+  margin:20px auto;
+}
+
+
+.add-new{
+  flex:1;
+}
+
+.add-new-button{
+  padding:10px;
+  background-color: rgb(62, 6, 6);
+  color:white;
+  margin-top:15px;
+  transition: .5s;
+  font-size:20px;
+  border: 2px solid white;
+}
+
+.add-new-button:hover, .add-new-button:focus{
+  background-color:white;
+  color:  rgb(62, 6, 6);
+  color:  rgb(62, 6, 6);
+  cursor: pointer;
+}
