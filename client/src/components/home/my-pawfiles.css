@@ -1,5 +1,6 @@
 main{
-  background-color:black;
+  background: url("https://www.middletonhallretirementvillage.co.uk/wp-content/uploads/2018/01/pinboard-background-compressed.jpg") no-repeat;
+  background-size: cover; 
   color: white;
   text-align: center;
   display:flex;

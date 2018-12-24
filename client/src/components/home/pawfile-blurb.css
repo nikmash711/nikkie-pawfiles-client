@@ -1,31 +1,84 @@
-article {
+.blurb{
   display:inline-block;
-  }
-
-
-.brief{
-  border-radius: 30px;
-  background-color:rgb(62, 6, 6);
   padding:20px;
-  margin:20px;
+  margin:25px;
   font-size:15px;
   color: black;
   flex:1;
   max-width:500px;
+  position: relative;
+  -webkit-box-shadow: 0 2px 12px rgba(0,0,0,.5);
+  -moz-box-shadow: 0 2px 12px rgba(0,0,0,.5);
+  box-shadow: 10px 10px 20px #000;
+  -webkit-transform: rotate(-1deg);
+  -moz-transform: rotate(-1deg);
+  -o-transform: rotate(-1deg);
+  transition:.5s;
+}
+
+.blurb:hover, .blurb:focus{
+  -webkit-box-shadow: 0 2px 12px rgba(0,0,0,.5);
+  -moz-box-shadow: 0 2px 12px rgba(0,0,0,.5);
+  box-shadow: 20px 20px 20px #000;
+}
+
+.blurb:nth-child(even) {
+  -webkit-transform: rotate(1deg);
+  -moz-transform: rotate(1deg);
+  -o-transform: rotate(1deg);
+}
+
+.blurb p {
+  font-family:"Reenie Beanie",arial,sans-serif;
+  color: #000;
+  text-shadow: black 1px 1px 0px;
+  text-align: left;
+  font-size:30px;
+}
+
+/* the tape */
+.blurb::before {
+  content: ' ';
+  display: block;
+  position: absolute;
+  /* left: 140px; */
+  left:40%;
+  top: -15px;
+  width: 75px;
+  height: 25px;
+  z-index: 2;
+  background-color: rgba(243,245,228,0.5);
+  border: 2px solid rgba(255,255,255,0.5);
+  -webkit-box-shadow: 0 0 5px #888;
+  -moz-box-shadow: 0 0 5px #888;
+  box-shadow: 2px 2px 2px #000;
+  -webkit-transform: rotate(-4deg);
+  -moz-transform: rotate(-4deg);
+  -o-transform: rotate(-4deg);
+}
+
+.blurb:nth-child(even)::before {
+  -webkit-transform: rotate(1deg);
+  -moz-transform: rotate(1deg);
+  -o-transform: rotate(1deg);
+}
+
+.blurb h2{
+  margin: 10px auto;
+  font-size:50px;
+  font-family:"Reenie Beanie",arial,sans-serif;
+  color: #000;
+  text-shadow: black 1px 1px 0px;
 }
 
 .female{
-  background-color: pink;
+  background-color: lightpink;
 }
 
 .male{
-  background-color: rgb(61, 120, 193);
+  background-color:lightblue;
 }
-
-.brief p{
-  text-align: left;
-}
-
+/* 
 .view-pawfile{
   padding:10px;
   background-color:black;
@@ -41,27 +94,20 @@ article {
   color: black;
   border: 2px solid black;
   cursor:pointer;
-}
+} */
 
 .prof-pic{
-  width: 100px;
-  height:100px;
-  border: 2px solid black;
+  width: 150px;
+  height:150px;
+  border: 3px solid black;
   margin:auto;
-  border-radius: 50px;
+  border-radius: 100px;
+  background-color: black;
 }
 
-.brief h2{
-  margin: 10px auto;
-  font-size:30px;
-}
-
-.brief p{
-  font-size:20px;
-}
-
-@media (min-width: 900px){
-  .brief{
-    min-width:350px;
+@media (min-width: 950px){
+  .blurb{
+    min-width:450px;
   }
 }
+

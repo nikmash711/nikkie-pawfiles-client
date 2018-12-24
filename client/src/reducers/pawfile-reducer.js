@@ -2,6 +2,7 @@ const initialState = {
   user: {firstName: 'Nikkie', lastName: "Mashian"},
   pawfiles: [
     {
+      id: 1,
       name: "Mushy",
       species: "Cat",
       gender: "Female",
@@ -11,6 +12,7 @@ const initialState = {
       img: "https://i.ibb.co/y8hFnkL/2.jpg",
     },
     {
+      id: 2,
       name: "Muffin",
       species: "Dog",
       gender: "Male",
