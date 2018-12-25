@@ -75,6 +75,7 @@ a{
   color: #000;
   text-shadow: black 1px 1px 0px;
   transition: .5s;
+  width: fit-content;
 }
 
 .blurb h2:hover, .blurb h2:focus, .option-icons i:hover, .option-icons i:focus{
@@ -88,23 +89,6 @@ a{
 .male{
   background-color:lightblue;
 }
-/* 
-.view-pawfile{
-  padding:10px;
-  background-color:black;
-  color:white;
-  margin-top:15px;
-  border: 2px solid white;
-  transition: .5s;
-  font-size:20px;
-}
-
-.view-pawfile:hover, .view-pawfile:focus{
-  background-color: white;
-  color: black;
-  border: 2px solid black;
-  cursor:pointer;
-} */
 
 .prof-pic{
   width: 150px;

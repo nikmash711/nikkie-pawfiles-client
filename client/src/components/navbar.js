@@ -9,7 +9,7 @@ export default function Navbar(){
       <Link className="logo" to="#">Pawfiles</Link>
       <Link className="icon right" to="#"><i className="fa fa-bars"></i></Link>
       <div className = "right">
-        <Link className="link" to ="#">Home</Link>
+        <Link className="link" to ="/home">Home</Link>
         <Link className="link" to ="#">Settings</Link>
         <Link className="link" to ="#">Logout</Link> 
       </div>

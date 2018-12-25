@@ -2,13 +2,14 @@ import React from 'react';
 import {connect} from 'react-redux';
 import PawfilesList from './pawfiles-list';
 import AddNewPawfileButton from './add-new-pawfile-button';
+import Header from './header';
 import './my-pawfiles.css'
 
-export function MyPawfiles(props){
+export default function MyPawfiles(){
   return(
     <main>
       <div className="center-me">
-        <header> <h1 className="section"> {props.user}'s Pawfiles</h1></header>
+        <Header/>
         <PawfilesList/>
         <AddNewPawfileButton/>
         {/* <AddNewPawfileForm/> */}
@@ -16,9 +17,3 @@ export function MyPawfiles(props){
     </main>
   );
 }
-
-const mapStateToProps = state => ({
-  user: state.pawfile.user.firstName,
-});
-
-export default connect(mapStateToProps)(MyPawfiles);
