@@ -26,7 +26,7 @@
 }
 
 .reminders{
-  background-color:lightgray;
+  background-color: #fffd9b;
 }
 
 .sidebar .prof-pic{
@@ -45,6 +45,7 @@
     position: fixed;
     width: 350px;
     height: 100vh;
+    overflow: scroll;
   }
 
   .sidebar .option-icons{

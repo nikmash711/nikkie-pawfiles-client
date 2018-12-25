@@ -2,12 +2,32 @@
   list-style: none;
   display: flex;
   justify-content: space-between;
+  padding: 10px 10px;
 }
 
-/* .reminder-note{
-  text-align: left;
+.reminder-note{
+  width: -webkit-fill-available; 
+  font-family:"Reenie Beanie",arial,sans-serif;
+  font-size:20px;
+  text-shadow: 1px 1px black;
 }
 
 .reminder-date{
-  text-align: right;
-} */
+  color: darkred;
+}
+
+.reminder:nth-child(even){
+  background-color: #fff348;
+}
+
+.delete-reminder{
+  margin-right: 10px;
+  padding: 2px;
+  background-color: black;
+  color: white;
+}
+
+.delete-reminder:hover, .delete-reminder:focus{
+  background-color: gray;
+  cursor: pointer;
+}

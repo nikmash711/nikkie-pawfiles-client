@@ -12,7 +12,7 @@
   -moz-transform: rotate(-1deg);
   -o-transform: rotate(-1deg); */
   transition:.5s;
-  background-color: yellow;
+  background-color: #fffd9b;
 }
 
 .sticky h1 {

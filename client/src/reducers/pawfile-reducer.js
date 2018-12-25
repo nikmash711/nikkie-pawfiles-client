@@ -18,6 +18,22 @@ const initialState = {
         {
           note: "Vet Appointment",
           date: "12/30/18",
+        },
+        {
+          note: "Trim Nails",
+          date: "12/24/18"
+        },
+        {
+          note: "Vet Appointment",
+          date: "12/30/18",
+        },
+        {
+          note: "Trim Nails",
+          date: "12/24/18"
+        },
+        {
+          note: "Vet Appointment",
+          date: "12/30/18",
         }
       ]
     },

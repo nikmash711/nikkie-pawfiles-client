@@ -13,11 +13,7 @@ export function ReminderBlurb(props){
   return(
     <article className="blurb reminders">
       <h2>Reminders</h2>
-      <div className="option-icons">
-        <i className="fas fa-edit"></i>
-        <i className="fas fa-trash-alt"></i>
-      </div>
-      <ul>
+      <ul className = "reminders-list">
         {reminders}
       </ul>
     </article>

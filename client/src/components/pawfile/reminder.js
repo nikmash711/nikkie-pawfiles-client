@@ -5,8 +5,9 @@ import './reminder.css'
 export function Reminder(props){
   return(
     <li className="reminder">
+      <button className="delete-reminder">X</button>
       <span className="reminder-note">
-        {props.note}
+        <strong>{props.note}</strong>
       </span>
       <span className="reminder-date">
         {props.date}
