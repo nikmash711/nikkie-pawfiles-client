@@ -35,6 +35,27 @@ const initialState = {
           note: "Vet Appointment",
           date: "12/30/18",
         }
+      ],
+      posts: [
+        {
+          id: 0,
+          type: 'memory',
+          title: 'Mushy learns how to open the door',
+          date: '12/10/18',
+          description: 'I walked into the living room and saw her opening it with her claws. How dare she!',
+          img: 'https://i.ibb.co/y8hFnkL/2.jpg'
+        },
+        {
+          id: 1,
+          type: 'medical',
+          title: 'Shes throwing up again:(',
+          date: '11/10/18',
+          symptoms: ['lethargic', 'no appetite'],
+          doctor: 'Dr. Moon',
+          office: '1234 Sesame St',
+          diagnosis: 'Gave her fluids for the day. Wont let her eat until tomorrow. Try laxatives.',
+          img: 'https://i.ibb.co/y8hFnkL/2.jpg'
+        }
       ]
     },
     {

@@ -1,0 +1,7 @@
+.medical{
+  border: 1px solid red;
+}
+
+.medical .post-title{
+  color: red;
+}
