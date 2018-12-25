@@ -1,0 +1,13 @@
+.reminder{
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* .reminder-note{
+  text-align: left;
+}
+
+.reminder-date{
+  text-align: right;
+} */

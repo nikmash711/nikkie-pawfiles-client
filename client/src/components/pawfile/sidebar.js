@@ -10,7 +10,7 @@ export function Sidebar(props){
   return(
       <aside className="sidebar left"> 
         <PawfileBlurb {...props.pawfile}/>
-        <ReminderBlurb {...props.pawfile.reminders} />
+        <ReminderBlurb {...props.pawfile} />
       </aside>      
     );
 }
