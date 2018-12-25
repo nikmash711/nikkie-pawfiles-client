@@ -11,19 +11,22 @@ export class PawfilePage extends React.Component{
   }
 
   render(){
+    console.log('in pawfile page props are', this.props);
     return(
       <div className="pawfile-page">
         <Navbar/>
         <Sidebar id={this.props.match.params.pawfileId}/>
-        <MainSection/>
+        <MainSection id={this.props.match.params.pawfileId}/>
         <Footer/>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  pawfiles: state.pawfile.pawfiles,
-});
+// const mapStateToProps = state => ({
+//   pawfiles: state.pawfile.pawfiles,
+// });
 
-export default connect(mapStateToProps)(PawfilePage);
+// export default connect(mapStateToProps)(PawfilePage);
+
+export default connect ()(PawfilePage);

@@ -1,4 +1,4 @@
-nav{
+.main-navbar{
   background-color: black;
   position: fixed;
   width:100%;
@@ -6,9 +6,8 @@ nav{
   border-bottom: 2px solid white;
 }
 
-nav a{
+.main-navbar a{
   padding:20px;
-  display: block;
 }
 
 .icon.right{
@@ -52,7 +51,7 @@ nav a{
 }
 
 @media (min-width: 900px){
-  nav a{
+  .main-navbar .link{
     display: inline-block;
   }
 

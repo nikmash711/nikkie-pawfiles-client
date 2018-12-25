@@ -2,12 +2,19 @@
   padding-top:60px;
   padding-bottom: 20px;
   background-color: black;
+  border-right: 1px solid white;
 }
 
 .sidebar .blurb{
   width:250px;
   display: block;
   margin: 25px auto;
+  -webkit-transform: none;
+  -moz-transform: none;
+  -o-transform: none;
+}
+
+.sidebar .blurb::before{
   -webkit-transform: none;
   -moz-transform: none;
   -o-transform: none;
@@ -53,7 +60,7 @@
     text-align: right;
   }
 
-  .blurb{
+  .sidebar .blurb{
     min-width: 300px;
   }
 }
