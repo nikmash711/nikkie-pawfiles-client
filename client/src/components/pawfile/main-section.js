@@ -6,13 +6,16 @@ import MedicalPost from './medical-post'
 import './main-section.css'
 
 export function MainSection(props){
-  const posts = props.pawfile.posts.map((post,index)=>(
+  let posts;
+  
+  if(props.pawfile.posts){
+     posts = props.pawfile.posts.map((post,index)=>(
       post.type==="memory" ?
         <MemoryPost key={index} {...post}/>
      :
       <MedicalPost key={index} {...post}/>
     ))
-
+  }
     return(
       <main>
 \        <nav className="options">
