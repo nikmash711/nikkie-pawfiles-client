@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import PawfilesList from './pawfiles-list';
+import AddNewPawfileButton from './add-new-pawfile-button';
 import './my-pawfiles.css'
 
 export function MyPawfiles(props){
@@ -9,8 +10,8 @@ export function MyPawfiles(props){
       <div className="center-me">
         <header> <h1 className="section"> {props.user}'s Pawfiles</h1></header>
         <PawfilesList/>
-        {/* <AddNewPawfileButton/>
-        <AddNewPawfileForm/> */}
+        <AddNewPawfileButton/>
+        {/* <AddNewPawfileForm/> */}
       </div>
     </main>
   );
