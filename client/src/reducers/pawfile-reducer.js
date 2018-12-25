@@ -2,7 +2,7 @@ const initialState = {
   user: {firstName: 'Nikkie', lastName: "Mashian"},
   pawfiles: [
     {
-      id: 1,
+      id: 0,
       name: "Mushy",
       species: "Cat",
       gender: "Female",
@@ -22,7 +22,7 @@ const initialState = {
       ]
     },
     {
-      id: 2,
+      id: 1,
       name: "Muffin",
       species: "Dog",
       gender: "Male",

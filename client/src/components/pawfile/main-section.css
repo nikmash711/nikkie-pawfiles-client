@@ -1,4 +1,4 @@
-main{
+.pawfile-page main{
   background: url("https://www.middletonhallretirementvillage.co.uk/wp-content/uploads/2018/01/pinboard-background-compressed.jpg") no-repeat fixed;
   background-size: cover; 
   color: white;
@@ -10,8 +10,8 @@ main{
 }
 
 @media (min-width: 900px){
-  main{
-    /* height: 100vh; */
+  .pawfile-page main{
+    height: 100vh;
     flex-flow: row wrap;
   }
 }

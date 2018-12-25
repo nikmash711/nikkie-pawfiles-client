@@ -1,7 +1,8 @@
 import React from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 import HomePage from './home/homepage';
-// import Pawfile from './pawfile';
+import PawfilePage from './pawfile/pawfilepage';
+
 
 import './App.css';
 
@@ -10,8 +11,10 @@ export default class App extends React.Component {
   render() {
     return (
       <Router>
-        <Route exact path="/home" component={HomePage}></Route>
-        {/* <Route exact path="/:pawfileName/:pawfileId" component={Pawfile}></Route> */}
+        <div className="routes">
+          <Route exact path="/home" component={HomePage}></Route>
+          <Route exact path="/:pawfileName/:pawfileId" component={PawfilePage}></Route>
+        </div>
       </Router>
     );
   }

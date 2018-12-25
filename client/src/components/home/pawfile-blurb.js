@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import './pawfile-blurb.css';
 
 export function PawfileBlurb(props){
-  console.log(props);
+  console.log('in pawfile burb props are',props);
   return(
     <article className= {`${props.gender.toLowerCase()} blurb`}>
       <Link to={`/${props.name}/${props.id}`}>

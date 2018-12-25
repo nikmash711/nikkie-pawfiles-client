@@ -1,0 +1,58 @@
+.sidebar{
+  padding:60px 0;
+  background-color: black;
+}
+
+.sidebar .blurb{
+  width:250px;
+  display: block;
+  margin: 25px auto;
+  -webkit-transform: none;
+  -moz-transform: none;
+  -o-transform: none;
+}
+
+.sidebar .blurb p{
+  font-size: 20px;
+}
+
+.sidebar .option-icons{
+  left: 70%;
+}
+
+.sidebar .option-icons .fa-external-link-alt{
+  display: none;
+}
+
+.reminders{
+  background-color:lightgray;
+}
+
+.sidebar .prof-pic{
+  width:100px;
+  height:100px;
+}
+
+@media(min-width: 450px){
+  .sidebar .option-icons{
+    left: 80%;
+  }
+}
+
+@media(min-width:900px){
+  .sidebar{
+    position: fixed;
+    width: 350px;
+    height: 100vh;
+  }
+
+  .sidebar .option-icons{
+    left: 70%;
+    text-align: right;
+  }
+
+  .blurb{
+    min-width: 300px;
+  }
+}
+
