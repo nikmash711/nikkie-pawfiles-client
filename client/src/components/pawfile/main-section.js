@@ -7,11 +7,10 @@ import './main-section.css'
 
 export function MainSection(props){
   const posts = props.pawfile.posts.map((post,index)=>(
-      post.type==="memory" ? (
+      post.type==="memory" ?
         <MemoryPost key={index} {...post}/>
-    ) : (
+     :
       <MedicalPost key={index} {...post}/>
-    )
     ))
 
     return(

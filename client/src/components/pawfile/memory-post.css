@@ -6,9 +6,13 @@
   color: lightgreen;
 }
 
-.post{
+.memory.post{
   display: flex;
   flex-direction: column;
+}
+
+.post-description{
+  padding-bottom: 10px;
 }
 
 .all-post-info{
@@ -25,7 +29,7 @@
 }
 
 @media(min-width:600px){
-  .post{
+  .memory.post{
     display: flex;
     flex-direction: row;
   }

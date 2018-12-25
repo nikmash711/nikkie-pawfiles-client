@@ -7,6 +7,7 @@
   padding-bottom: 20px;
   transition: none;
   display: block;
+  overflow: scroll;
 }
 
 nav.options{
@@ -112,9 +113,9 @@ button.new-medical{
   text-align: left;
 }
 
-.post-description{
-  padding-top:30px;
-  padding-bottom: 10px;
+.post-date{
+  padding-bottom: 20px;
+  display: block;
 }
 
 @media (min-width: 900px){

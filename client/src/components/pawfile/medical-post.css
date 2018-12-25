@@ -5,3 +5,11 @@
 .medical .post-title{
   color: red;
 }
+
+.post-symptoms{
+  list-style: none;
+}
+
+.medical p, .medical ul{
+  padding: 10px 0;
+}

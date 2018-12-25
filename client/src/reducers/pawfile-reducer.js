@@ -54,7 +54,6 @@ const initialState = {
           doctor: 'Dr. Moon',
           office: '1234 Sesame St',
           diagnosis: 'Gave her fluids for the day. Wont let her eat until tomorrow. Try laxatives.',
-          img: 'https://i.ibb.co/y8hFnkL/2.jpg'
         }
       ]
     },
