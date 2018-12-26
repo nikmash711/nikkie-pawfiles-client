@@ -10,7 +10,7 @@ const initialState = {
       species: "Cat",
       gender: "Female",
       breed: "Domestic Mix",
-      birthday: "October 2016",
+      birthday: "2016-10-26",
       bio: "Meow. I'm a cute troublemaker. I'll purr then hiss. Give me scritches?",
       img: "https://i.ibb.co/y8hFnkL/2.jpg",
       reminders: [
@@ -66,7 +66,7 @@ const initialState = {
       species: "Dog",
       gender: "Male",
       breed: "Pom/Yorkie Mix",
-      birthday: "January 2010",
+      birthday: "2010-01-10",
       bio: "Ruff. I want to always play and go on walks. Did you say snack?",
       img: "https://i.ibb.co/stMyFMp/IMG-6267.png",
       reminders: [

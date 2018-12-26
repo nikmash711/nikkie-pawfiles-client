@@ -67,7 +67,7 @@
   background-color: white;
   color: red;
   font-size:10px;
-  top: 30px;
+  top: 90%;
 }
 
 .new-pawfile-form .form-input{
@@ -92,13 +92,13 @@
   float: right;
 }
 
-.new-pawfile-form button:hover{
+.new-pawfile-form button:hover, .new-pawfile-form button:focus{
   background-color: white;
   color: black;
 }
 
 @media(min-width:500px){
   .new-pawfile-form .form-input{
-    width: 300px;
+    width: 350px;
   }
 }

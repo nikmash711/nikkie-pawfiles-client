@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';import {reduxForm, Field, Fieldset, SubmissionError, focus} from 'redux-form';
 import Input from './input';
 import {addingNewPawfile, addingNewForm} from '../../actions/index';
-import {required, nonEmpty, unSelected} from './validators';
+import {required, nonEmpty, unSelected, validURL} from './validators';
 
 import './add-new-pawfile-form.css';
 
@@ -32,6 +32,16 @@ export  class AddNewPawfileForm extends React.Component{
               id="name"
               validate={[required, nonEmpty]}
               /> 
+
+            <Field
+              component={Input}
+              label="Image URL:" 
+              type="url" 
+              name="img" 
+              id="img"
+              validate={[required, nonEmpty]}
+              >
+            </Field>
             
             <Field
               component={Input} 
@@ -39,17 +49,13 @@ export  class AddNewPawfileForm extends React.Component{
               name="species" 
               id="species"
               type = "text"
-              validate={[required, nonEmpty]}
+              element="select"
+              validate={[unSelected]}
               >
-            </Field>
-            
-            <Field
-              component={Input} 
-              label = "Breed:"
-              name="breed" 
-              id="breed"
-              type = "text"
-              >
+              <option value="" className="bold"> Select a Species</option>
+              <option value="Dog">Dog</option>
+              <option value="Cat">Cat</option>
+              <option value="Bird">Bird</option>
             </Field>
 
             <Field
@@ -68,10 +74,19 @@ export  class AddNewPawfileForm extends React.Component{
 
             <Field
               component={Input} 
+              label = "Breed:"
+              name="breed" 
+              id="breed"
+              type = "text"
+              >
+            </Field>
+
+            <Field
+              component={Input} 
               label = "Birthday:"
               name="birthday" 
               id="birthday"
-              type = "text"
+              type = "date"
               >
             </Field>
 
@@ -86,14 +101,7 @@ export  class AddNewPawfileForm extends React.Component{
               >
             </Field>
 
-            <Field
-              component={Input} 
-              label = "Image URL:"
-              name="img" 
-              id="img"
-              type = "text"
-              >
-            </Field>
+           
 
             <button type="submit">Save Pawfile</button>
             <button onClick={()=>this.props.dispatch(addingNewForm(false))} type="cancel">Cancel</button>
