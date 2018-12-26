@@ -1,7 +1,8 @@
-import {ADDING_NEW_FORM, ADDING_NEW_PAWFILE} from '../actions/index';
+import {ADDING_NEW_FORM, ADDING_NEW_PAWFILE, SORTING_ALL_PETS} from '../actions/index';
 
 const initialState = {
   user: {firstName: 'Nikkie', lastName: "Mashian"},
+  sortingPetsMethod: "",
   addingNewPawfile: false,
   pawfiles: [
     {
@@ -94,6 +95,13 @@ export const pawfileReducer = (state = initialState, action)=> {
         ...state.pawfiles,
         action.values
       ]
+    })
+  }
+
+  else if (action.type=== SORTING_ALL_PETS){
+    console.log('in reducer valye is', action.sortMethod);
+    return Object.assign({}, state, {
+      sortingPetsMethod: action.sortMethod,
     })
   }
   return state;

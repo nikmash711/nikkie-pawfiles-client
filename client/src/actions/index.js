@@ -9,3 +9,9 @@ export const addingNewPawfile = (values) => ({
     type: ADDING_NEW_PAWFILE,
     values
 });
+
+export const SORTING_ALL_PETS = 'SORTING_ALL_PETS';
+export const sortingAllPets = (sortMethod) => ({
+    type: SORTING_ALL_PETS,
+    sortMethod
+});

@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import PawfilesList from './pawfiles-list';
 import AddNewPawfileButton from './add-new-pawfile-button';
 import AddNewPawfileForm from './add-new-pawfile-form';
+import SortBySelect from './sort-by-select';
 import Header from './header';
 import './my-pawfiles.css'
 
@@ -11,8 +12,9 @@ export function MyPawfiles(props){
     <main>
       <div className="center-me">
         <Header/>
-        <AddNewPawfileButton/>
+        <SortBySelect/>
         <PawfilesList/>
+        <AddNewPawfileButton/>
         {props.addingNewPawfile && <AddNewPawfileForm/>} 
       </div>
     </main>

@@ -9,7 +9,3 @@ export const unSelected = value => {
   if (value === undefined) value = '';
   return value.trim() !== '' ? undefined : 'Please select';
 }
-
-// export const validURL = value => {
-//   return value.trim() !== '' ? undefined : 'Valid URL required';
-// }

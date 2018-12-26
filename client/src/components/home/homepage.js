@@ -10,7 +10,7 @@ export class HomePage extends React.Component{
   }
 
   render(){
-    console.log('home page props are', this.props.pawfiles);
+    console.log('home page props are', this.props);
     return(
       <div className="home">
         <Navbar/>
@@ -23,6 +23,7 @@ export class HomePage extends React.Component{
 
 const mapStateToProps = state => ({
   user: state.pawfile.user.firstName,
+  sortingPetsMethod: state.pawfile.sortingPetsMethod,
   pawfiles: state.pawfile.pawfiles,
   form: state.form.addingPawfileForm,
 });
