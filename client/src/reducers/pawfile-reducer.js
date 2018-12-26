@@ -1,5 +1,8 @@
+import {ADDING_NEW_FORM, ADDING_NEW_PAWFILE} from '../actions/index';
+
 const initialState = {
   user: {firstName: 'Nikkie', lastName: "Mashian"},
+  addingNewPawfile: false,
   pawfiles: [
     {
       id: 0,
@@ -65,7 +68,7 @@ const initialState = {
       breed: "Pom/Yorkie Mix",
       birthday: "January 2010",
       bio: "Ruff. I want to always play and go on walks. Did you say snack?",
-      img: "https://i.ibb.co/y8hFnkL/2.jpg",
+      img: "https://i.ibb.co/stMyFMp/IMG-6267.png",
       reminders: [
         {
           note: "Give Shot",
@@ -73,9 +76,25 @@ const initialState = {
         },
       ]
     },
+   
   ]
 };
 
-export default function reducer(state = initialState, action) {
+export const pawfileReducer = (state = initialState, action)=> {
+
+  if(action.type=== ADDING_NEW_FORM){
+    return Object.assign({}, state, {
+      addingNewPawfile: action.bool,
+    })
+  }
+
+  else if (action.type=== ADDING_NEW_PAWFILE){
+    return Object.assign({}, state, {
+      pawfiles: [
+        ...state.pawfiles,
+        action.values
+      ]
+    })
+  }
   return state;
 }

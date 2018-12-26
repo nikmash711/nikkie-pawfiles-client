@@ -6,7 +6,7 @@ import './header.css'
 export function Header(props){
   return(
     <header className="sticky"> 
-      <h1 className="section"> {props.user}'s Pawfiles</h1>
+      <h1 className="section"> {props.user}'s Pets</h1>
     </header>
   );
 }

@@ -10,9 +10,11 @@ export function PawfileBlurb(props){
       <Link to={`/${props.name}/${props.id}`}>
         <img src= {props.img} alt={props.name} className="prof-pic"/>
       </Link>
+
       <Link to={`/${props.name}/${props.id}`}>
         <h2>{props.name}</h2>
       </Link>
+
       <div className="option-icons">
         <Link to={`/${props.name}/${props.id}`}>
           <i className="fas fa-external-link-alt"></i>
@@ -20,11 +22,15 @@ export function PawfileBlurb(props){
         <i className="fas fa-edit"></i>
         <i className="fas fa-trash-alt"></i>
       </div>
+
       <p><strong>Species:</strong> {props.species}</p>
-      <p><strong>Breed:</strong> {props.breed}</p>
+
+      {props.breed && <p><strong>Breed:</strong> {props.breed}</p>}
+
       <p><strong>Gender:</strong> {props.gender}</p>
-      <p><strong>Birthday:</strong> {props.birthday}</p>
-      <p><strong>Bio:</strong> {props.bio}</p>
+      
+      {props.birthday && <p><strong>Birthday:</strong> {props.birthday}</p>}
+      {props.bio && <p><strong>Bio:</strong> {props.bio}</p>}
     </article>
   );
 }

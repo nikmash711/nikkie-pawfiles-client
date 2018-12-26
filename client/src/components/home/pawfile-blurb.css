@@ -4,7 +4,7 @@ a{
 }
 
 .blurb{
-  max-width:450px;
+  width: 270px;
   display:inline-block;
   padding:20px;
   margin:25px;
@@ -19,6 +19,7 @@ a{
   -moz-transform: rotate(-1deg);
   -o-transform: rotate(-1deg);
   transition:.5s;
+  vertical-align: top;
 }
 
 .blurb:hover, .blurb:focus{
@@ -118,7 +119,11 @@ a{
 
 @media(min-width: 350px){
   .option-icons{
-    left:75%;
+    left:73%;
+  }
+
+  .blurb{
+    width: 300px;
   }
 }
 
@@ -126,16 +131,20 @@ a{
   .option-icons{
     left:80%;
   }
+
+  .blurb{
+    width: 400px;
+  }
 }
 
 @media(min-width: 900px){
   .blurb{
-    min-width:400px;
+    width:450px;
   }
 }
 
 @media (min-width: 970px){
-  .blurb{
+  /* .blurb{
     min-width:450px;
-  }
+  } */
 }

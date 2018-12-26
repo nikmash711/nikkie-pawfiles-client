@@ -6,10 +6,11 @@ import MyPawfiles from './my-pawfiles';
 
 export class HomePage extends React.Component{
   componentDidMount(){
-    document.title = `${this.props.user}'s Pawfiles`;
+    document.title = `${this.props.user}'s Pets`;
   }
 
   render(){
+    console.log('home page props are', this.props.pawfiles);
     return(
       <div className="home">
         <Navbar/>
@@ -22,6 +23,8 @@ export class HomePage extends React.Component{
 
 const mapStateToProps = state => ({
   user: state.pawfile.user.firstName,
+  pawfiles: state.pawfile.pawfiles,
+  form: state.form.addingPawfileForm,
 });
 
 export default connect(mapStateToProps)(HomePage);
