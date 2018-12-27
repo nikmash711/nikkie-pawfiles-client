@@ -83,6 +83,8 @@ const initialState = {
 
 export const pawfileReducer = (state = initialState, action)=> {
 
+  console.log('the state is', state)
+
   if(action.type=== ADDING_NEW_FORM){
     return Object.assign({}, state, {
       addingNewPawfile: action.bool,
@@ -97,6 +99,17 @@ export const pawfileReducer = (state = initialState, action)=> {
       ]
     })
   }
+
+  // else if (action.type=== EDITING_PAWFILE){
+  //   return Object.assign({}, state, {
+  //     pawfiles: [
+  //       pawfiles[action.id] = {
+  //         ...state.pawfiles.action.id,
+  //         action.values
+  //       }
+  //     ]
+  //   })
+  // }
 
   else if (action.type=== SORTING_ALL_PETS){
     console.log('in reducer valye is', action.sortMethod);

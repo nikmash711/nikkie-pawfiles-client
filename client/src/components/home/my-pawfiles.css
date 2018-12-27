@@ -9,9 +9,12 @@ main{
   padding-bottom: 20px;
 }
 
+.no-pets{
+  height:100vh;
+}
+
 @media (min-width: 900px){
   main{
-    /* height: 100vh; */
     flex-flow: row wrap;
   }
 }

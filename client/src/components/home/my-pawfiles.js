@@ -8,11 +8,13 @@ import Header from './header';
 import './my-pawfiles.css'
 
 export function MyPawfiles(props){
+  let className = props.pawfiles.length<=1 ? "no-pets" : ""; //if there are no pets listed, make main stretch to 100% of viewport 
+
   return(
-    <main>
+    <main className={className}>
       <div className="center-me">
         <Header/>
-        <SortBySelect/>
+        {props.pawfiles.length>1 && <SortBySelect/>} 
         <PawfilesList/>
         <AddNewPawfileButton/>
         {props.addingNewPawfile && <AddNewPawfileForm/>} 
@@ -22,6 +24,7 @@ export function MyPawfiles(props){
 }
 
 const mapStateToProps = state => ({
+  pawfiles: state.pawfile.pawfiles,
   addingNewPawfile: state.pawfile.addingNewPawfile,
 });
 

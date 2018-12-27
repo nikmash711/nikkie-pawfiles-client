@@ -27,9 +27,7 @@ export class PawfilesList extends React.Component{
       //forgot how to do this - should I pass state? Key? 
     ));
 
-    console.log('pawfiles list is', pawfiles_list);
-
-    //see how to sort the pets
+    //how to sort the pets - better way to do this?
     switch(this.props.sortMethod){
       case "oldest":
         this.sortByOldest(pawfiles_list)

@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';import {reduxForm, Field, Fieldset, SubmissionError, focus} from 'redux-form';
 import Input from './input';
 import {addingNewPawfile, addingNewForm} from '../../actions/index';
-import {required, nonEmpty, unSelected, validURL} from './validators';
+import {required, nonEmpty, unSelected} from './validators';
 
 import './add-new-pawfile-form.css';
 
