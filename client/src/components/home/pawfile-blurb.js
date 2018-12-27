@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import './pawfile-blurb.css';
-import {changeCurrentPetId, showPawfileForm} from '../../actions/index';
+import {showPawfileForm, deletePawfile} from '../../actions/index';
 
 
 export class PawfileBlurb extends React.Component{
@@ -54,7 +54,7 @@ calculateAge(date) {
             <i className="fas fa-external-link-alt"></i>
           </Link>
           <button onClick={()=>this.props.dispatch(showPawfileForm(true,this.props.id))}><i className="fas fa-edit"></i></button>
-          <i className="fas fa-trash-alt"></i>
+          <button onClick={()=>this.props.dispatch(deletePawfile(this.props.id))}><i className="fas fa-trash-alt"></i></button>
         </div>
   
         <p><strong>Species:</strong> {this.props.species}</p>

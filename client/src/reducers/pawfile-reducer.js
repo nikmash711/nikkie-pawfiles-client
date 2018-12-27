@@ -1,5 +1,4 @@
-import {SHOW_PAWFILE_FORM, SUBMIT_NEW_PAWFILE, SORTING_ALL_PETS, ADDING_NEW_REMINDER, CHANGE_CURRENT_PET_ID, EDITING_PAWFILE, EDITING_PAWFILE_FORM} from '../actions/index';
-import { compose } from '../../../../../../../Library/Caches/typescript/3.2/node_modules/redux';
+import {SHOW_PAWFILE_FORM, SUBMIT_NEW_PAWFILE, SORTING_ALL_PETS, ADDING_NEW_REMINDER, DELETE_PAWFILE} from '../actions/index';
 
 const initialState = {
   user: {firstName: 'Nikkie', lastName: "Mashian"},
@@ -84,11 +83,9 @@ export const pawfileReducer = (state = initialState, action)=> {
       let pawfileToUpdate = state.pawfiles[action.id];
 
       //merge updated values with other stuff in the pawfile: 
-      // let updatedPawfile=[...pawfileToUpdate, updatedValues];
-
       let updatedPawfile = Object.assign({}, pawfileToUpdate, updatedValues)
 
-      const newArrayOfPawfiles = state.pawfiles.map((item, index)=> (index===action.id ? updatedPawfile : item))
+      const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id===action.id ? updatedPawfile : item))
   
       return Object.assign({}, state, {
           pawfiles: newArrayOfPawfiles
@@ -103,35 +100,29 @@ export const pawfileReducer = (state = initialState, action)=> {
     })
   }
 
+  else if(action.type===DELETE_PAWFILE){
+    console.log('deleting pawfile');
+    // const pawfileToDelete = state.pawfiles[action.id];
+    
+    const newArrayOfPawfiles = state.pawfiles.filter((item)=> (item.id!==action.id));
+
+    return Object.assign({}, state, {
+      pawfiles: newArrayOfPawfiles,
+    })
+  }
+
   else if (action.type=== ADDING_NEW_REMINDER){
     const newNote = action.values;
     //First, find the file with the ID you want. Then construct a new file object - stick it in a variable.
     const pawfileToUpdate = state.pawfiles[action.id];
     pawfileToUpdate.reminders=[...pawfileToUpdate.reminders, newNote];
     //  build up a new array of files. It should have all the old files, but in place of the one with the ID you want to change, you drop in the new file object from the variable you just created.
-    const newArrayOfPawfiles = state.pawfiles.map((item, index)=> (index===action.id ? pawfileToUpdate : item))
+    const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id===action.id ? pawfileToUpdate : item))
 
     return Object.assign({}, state, {
         pawfiles: newArrayOfPawfiles
     })
   }
-
-  // else if(action.type===EDITING_PAWFILE_FORM){
-  //   console.log('editing with id', action.id);
-  //   return Object.assign({}, state, {
-  //     editingPetId: action.id
-  //   })
-  // }
-
-  // else if (action.type === EDITING_PAWFILE){
-  //   let pawfileToUpdate = state.pawfiles[action.id];
-  //   pawfileToUpdate= [...pawfileToUpdate, action.values];
-  //   const newArrayOfPawfiles = state.pawfiles.map((item, index)=> (index===action.id ? pawfileToUpdate : item))
-
-  //   return Object.assign({}, state, {
-  //     pawfiles: newArrayOfPawfiles,
-  // })
-  // }
 
   else if (action.type=== SORTING_ALL_PETS){
     console.log('in reducer valye is', action.sortMethod);

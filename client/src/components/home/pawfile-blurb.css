@@ -113,6 +113,13 @@ a{
   width: 80px;
 }
 
+.option-icons button, .option-icons button:focus{
+  background-color: transparent;
+  border: none;
+  outline:0;
+  font-size:15px;
+}
+
 .option-icons i{
   margin: 5px;
 }

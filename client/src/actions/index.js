@@ -12,12 +12,11 @@ export const submitNewPawfile = (values, id) => ({
     id
 });
 
-// export const EDITING_PAWFILE_FORM = 'EDITING_PAWFILE_FORM';
-// export const editingPawfileForm = (id) => ({
-//     type: EDITING_PAWFILE_FORM,
-//     id
-// });
-
+export const DELETE_PAWFILE = 'DELETE_PAWFILE';
+export const deletePawfile = (id) => ({
+    type: DELETE_PAWFILE,
+    id
+})
 
 export const SORTING_ALL_PETS = 'SORTING_ALL_PETS';
 export const sortingAllPets = (sortMethod) => ({
@@ -31,16 +30,3 @@ export const addingNewReminder = (values, id) => ({
     values,
     id
 });
-
-// export const CHANGE_CURRENT_PET_ID = 'CHANGE_CURRENT_PET_ID';
-// export const changeCurrentPetId = (id) => ({
-//     type: CHANGE_CURRENT_PET_ID,
-//     id
-// });
-
-// export const EDITING_PAWFILE = 'EDITING_PAWFILE';
-// export const editingPawfile = (values,id) => ({
-//     type: EDITING_PAWFILE,
-//     values,
-//     id,
-// });

@@ -26,7 +26,7 @@ export class PawfileForm extends React.Component{
       <div className='new-pawfile-form-modal'>
           <form className="new-pawfile-form blurb" onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
           <button type="button" className = "close" onClick={()=>this.props.dispatch(showPawfileForm(false, undefined))}>X</button>
-          <h2>New Pawfile</h2>
+          <h2>{this.props.initialValues.name ? this.props.initialValues.name : "New Pawfile"}</h2>
 
             <Field
               component={Input}
