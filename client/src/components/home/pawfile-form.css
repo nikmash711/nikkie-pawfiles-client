@@ -1,6 +1,6 @@
 .new-pawfile-form-modal{
   position: fixed;
-  z-index: 1;
+  z-index: 100;
   left: 0;
   top: 0;
   width: 100%; 
@@ -11,6 +11,7 @@
 }
 
 .new-pawfile-form{
+  display: block;
   color: black;
   padding: 0;
   background-color: #fffd9b;
@@ -95,6 +96,11 @@
 .new-pawfile-form button:hover, .new-pawfile-form button:focus{
   background-color: white;
   color: black;
+}
+
+.buttons{
+  margin:auto;
+  width: fit-content;
 }
 
 @media(min-width:500px){

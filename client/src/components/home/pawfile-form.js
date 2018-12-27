@@ -106,8 +106,10 @@ export class PawfileForm extends React.Component{
               >
             </Field>
 
-            <button type="submit">Save Pawfile</button>
-            <button onClick={()=>this.props.dispatch(showPawfileForm(false, undefined))} type="cancel">Cancel</button>
+            <div className="buttons">
+              <button type="submit">Save Pawfile</button>
+              <button onClick={()=>this.props.dispatch(showPawfileForm(false, undefined))} type="cancel">Cancel</button>
+            </div>
           </form>
         </div>
     );

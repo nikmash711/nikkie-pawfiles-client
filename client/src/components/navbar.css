@@ -12,6 +12,15 @@
 
 .icon.right{
   float:right;
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+.icon.right:hover, .icon.right:focus{
+  cursor:pointer;
 }
 
 .link, .logo{
@@ -33,8 +42,12 @@
   background-color: #fff;
 }
 
-.link{
-  display:none;
+.show.link{
+  display:block;
+}
+
+.dontshow.link{
+  display: none;
 }
 
 .paw-logo{
@@ -55,7 +68,7 @@
     display: inline-block;
   }
 
-  .link{
+  .show.link, .dontshow.link{
     display: inline-block;
   }
 

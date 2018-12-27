@@ -1,10 +1,11 @@
-import {SHOW_PAWFILE_FORM, SUBMIT_NEW_PAWFILE, SORTING_ALL_PETS, ADDING_NEW_REMINDER, DELETE_PAWFILE} from '../actions/index';
+import {SHOW_PAWFILE_FORM, SUBMIT_NEW_PAWFILE, SORTING_ALL_PETS, ADDING_NEW_REMINDER, DELETE_PAWFILE, TOGGLE_NAVBAR} from '../actions/index';
 
 const initialState = {
   user: {firstName: 'Nikkie', lastName: "Mashian"},
   sortingPetsMethod: "",
   showPawfileForm: false,
   currentPetId: undefined,
+  toggleNavbar:false,
   pawfiles: [
     {
       id: 0,
@@ -128,6 +129,12 @@ export const pawfileReducer = (state = initialState, action)=> {
     console.log('in reducer valye is', action.sortMethod);
     return Object.assign({}, state, {
       sortingPetsMethod: action.sortMethod,
+    })
+  }
+
+  else if (action.type===TOGGLE_NAVBAR){
+    return Object.assign({}, state, {
+      toggleNavbar: !state.toggleNavbar,
     })
   }
 
