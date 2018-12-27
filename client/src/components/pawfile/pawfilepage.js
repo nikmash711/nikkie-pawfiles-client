@@ -38,7 +38,7 @@ export class PawfilePage extends React.Component{
       <div className="pawfile-page">
         <Navbar/>
         <Sidebar id={this.props.match.params.pawfileId}/>
-        {/* <MainSection/> */}
+        <MainSection id={this.props.match.params.pawfileId}/>
         <Footer/>
       </div>
     );

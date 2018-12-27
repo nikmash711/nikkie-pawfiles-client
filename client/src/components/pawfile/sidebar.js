@@ -11,7 +11,7 @@ export function Sidebar(props){
   // console.log('the currentId is', props.currentPetId);
   return(
       <aside className="sidebar left"> 
-        {/* <PawfileBlurb {...props.pawfile}/> */}
+        <PawfileBlurb {...props.specificPawfile}/>
         <ReminderBlurb {...props.specificPawfile} />
       </aside>      
     );

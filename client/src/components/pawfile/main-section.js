@@ -8,8 +8,8 @@ import './main-section.css'
 export function MainSection(props){
   let posts;
   
-  if(props.pawfile.posts){
-     posts = props.pawfile.posts.map((post,index)=>(
+  if(props.specificPawfile.posts){
+     posts = props.specificPawfile.posts.map((post,index)=>(
       post.type==="memory" ?
         <MemoryPost key={index} {...post}/>
      :
@@ -46,7 +46,8 @@ export function MainSection(props){
 }
 
 const mapStateToProps = (state,props) => ({
-  pawfile: state.pawfile.pawfiles[state.pawfile.currentPetId],
+  pawfiles: state.pawfile.pawfiles,
+  specificPawfile: state.pawfile.pawfiles[props.id]
 });
 
 export default connect(mapStateToProps)(MainSection);
