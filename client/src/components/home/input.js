@@ -6,6 +6,14 @@ export default class Input extends React.Component {
             this.input.focus();
         }
     }
+
+    todaysDate(){
+        let date = new Date().toISOString();
+        let dateArr = date.split('T');
+        let final = dateArr[0];
+        return final;
+    }
+
     render() {
         const Element = this.props.element || 'input';
 
@@ -26,10 +34,13 @@ export default class Input extends React.Component {
                     {this.props.label}
                     {error}
                 </label>
+
                 <Element
                     {...this.props.input}
                     id={this.props.input.name}
                     type={this.props.type}
+                    max = {this.props.type==="date"? this.todaysDate() : undefined}
+                    // I only want max on date elements but not sure how else to do it
                     ref={input => (this.input = input)}
                 >
                 {this.props.children}

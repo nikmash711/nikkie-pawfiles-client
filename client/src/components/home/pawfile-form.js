@@ -15,7 +15,7 @@ export class PawfileForm extends React.Component{
 
   onSubmit(values){
     console.log('values are', values);
-    this.props.dispatch(submitNewPawfile(values));
+    this.props.dispatch(submitNewPawfile(values, this.props.currentPetId));
     this.props.dispatch(showPawfileForm(false, undefined));
   }
 
@@ -91,6 +91,7 @@ export class PawfileForm extends React.Component{
               name="birthday" 
               id="birthday"
               type = "date"
+              max= {new Date().toLocaleDateString()}
               >
             </Field>
 
@@ -116,6 +117,7 @@ export class PawfileForm extends React.Component{
 function mapStateToProps(state) {
   let currentPetId = state.pawfile.currentPetId;
   return {
+    currentPetId: state.pawfile.currentPetId,
     initialValues: {
       name: currentPetId>=0 ? state.pawfile.pawfiles[currentPetId].name : "",
       img: currentPetId>=0 ? state.pawfile.pawfiles[currentPetId].img : "",

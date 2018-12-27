@@ -6,13 +6,36 @@ import {changeCurrentPetId, showPawfileForm} from '../../actions/index';
 
 
 export class PawfileBlurb extends React.Component{
-  calculateAge(birthday){
-    let bday = new Date(birthday);
-    var diff_ms = Date.now() - bday.getTime();
-    var age_dt = new Date(diff_ms); 
-  
-    return Math.abs(age_dt.getUTCFullYear() - 1970);
+
+isLeapYear(year) {
+  let d = new Date(year, 1, 28);
+  d.setDate(d.getDate() + 1);
+  return d.getMonth() == 1;
+}
+
+calculateAge(date) {
+  let d = new Date(date),
+      now = new Date();
+  let years = now.getFullYear() - d.getFullYear();
+  d.setFullYear(d.getFullYear() + years);
+  if (d > now) {
+      years--;
+      d.setFullYear(d.getFullYear() - 1);
   }
+  let days = (now.getTime() - d.getTime()) / (3600 * 24 * 1000);
+  let weeks= Math.floor(days/7);
+  let age_in_years= Math.floor(years + days / (this.isLeapYear(now.getFullYear()) ? 366 : 365))
+  ;
+  let final_age = age_in_years;
+
+  if(age_in_years===0){
+    final_age= `~ ${weeks} weeks`
+  }
+  if(weeks===0){
+    final_age=` ~ ${Math.floor(days)} days`
+  }
+  return final_age;
+}
 
   render(){
     return(

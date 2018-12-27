@@ -1,4 +1,5 @@
 import {SHOW_PAWFILE_FORM, SUBMIT_NEW_PAWFILE, SORTING_ALL_PETS, ADDING_NEW_REMINDER, CHANGE_CURRENT_PET_ID, EDITING_PAWFILE, EDITING_PAWFILE_FORM} from '../actions/index';
+import { compose } from '../../../../../../../Library/Caches/typescript/3.2/node_modules/redux';
 
 const initialState = {
   user: {firstName: 'Nikkie', lastName: "Mashian"},
@@ -77,6 +78,23 @@ export const pawfileReducer = (state = initialState, action)=> {
   }
 
   else if (action.type=== SUBMIT_NEW_PAWFILE){
+    //if its editing a current pawfile: 
+    if(action.id>=0){
+      const updatedValues = action.values;
+      let pawfileToUpdate = state.pawfiles[action.id];
+
+      //merge updated values with other stuff in the pawfile: 
+      // let updatedPawfile=[...pawfileToUpdate, updatedValues];
+
+      let updatedPawfile = Object.assign({}, pawfileToUpdate, updatedValues)
+
+      const newArrayOfPawfiles = state.pawfiles.map((item, index)=> (index===action.id ? updatedPawfile : item))
+  
+      return Object.assign({}, state, {
+          pawfiles: newArrayOfPawfiles
+      })
+    }
+    //if its a new pawfile: 
     return Object.assign({}, state, {
       pawfiles: [
         ...state.pawfiles,
@@ -84,13 +102,6 @@ export const pawfileReducer = (state = initialState, action)=> {
       ],
     })
   }
-
-  // else if (action.type===CHANGE_CURRENT_PET_ID){
-  //   console.log('CHANGING CURRENT ID TO', action.id);
-  //   return Object.assign({}, state, {
-  //     currentPetId: action.id
-  //   })
-  // }
 
   else if (action.type=== ADDING_NEW_REMINDER){
     const newNote = action.values;

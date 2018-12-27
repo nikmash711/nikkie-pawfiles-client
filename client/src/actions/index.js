@@ -9,6 +9,7 @@ export const SUBMIT_NEW_PAWFILE = 'SUBMIT_NEW_PAWFILE';
 export const submitNewPawfile = (values, id) => ({
     type: SUBMIT_NEW_PAWFILE,
     values,
+    id
 });
 
 // export const EDITING_PAWFILE_FORM = 'EDITING_PAWFILE_FORM';
