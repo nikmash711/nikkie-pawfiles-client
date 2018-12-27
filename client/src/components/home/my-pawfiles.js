@@ -2,13 +2,15 @@ import React from 'react';
 import {connect} from 'react-redux';
 import PawfilesList from './pawfiles-list';
 import AddNewPawfileButton from './add-new-pawfile-button';
-import AddNewPawfileForm from './add-new-pawfile-form';
+import PawfileForm from './pawfile-form';
 import SortBySelect from './sort-by-select';
 import Header from './header';
 import './my-pawfiles.css'
 
 export function MyPawfiles(props){
   let className = props.pawfiles.length<=1 ? "no-pets" : ""; //if there are no pets listed, make main stretch to 100% of viewport 
+
+  console.log('re-rendering mypawfiles with props', props.editingPetId);
 
   return(
     <main className={className}>
@@ -17,7 +19,7 @@ export function MyPawfiles(props){
         {props.pawfiles.length>1 && <SortBySelect/>} 
         <PawfilesList/>
         <AddNewPawfileButton/>
-        {props.addingNewPawfile && <AddNewPawfileForm/>} 
+        {(props.showPawfileForm && <PawfileForm/>) || (props.currentPetId>=0 && <PawfileForm/>)} 
       </div>
     </main>
   );
@@ -25,7 +27,8 @@ export function MyPawfiles(props){
 
 const mapStateToProps = state => ({
   pawfiles: state.pawfile.pawfiles,
-  addingNewPawfile: state.pawfile.addingNewPawfile,
+  showPawfileForm: state.pawfile.showPawfileForm,
+  currentPetId: state.pawfile.currentPetId,
 });
 
 export default connect(mapStateToProps)(MyPawfiles);

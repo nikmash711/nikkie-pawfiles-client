@@ -5,7 +5,7 @@ import Footer from '../footer'
 import Sidebar from './sidebar';
 import MainSection from './main-section';
 import {Link, Redirect} from 'react-router-dom';
-import {changeCurrentPetId} from '../../actions/index';
+// import {changeCurrentPetId} from '../../actions/index';
 
 export class PawfilePage extends React.Component{
   compo
@@ -14,7 +14,7 @@ export class PawfilePage extends React.Component{
   }
 
   componentWillUnmount(){
-    this.props.dispatch(changeCurrentPetId(""));
+    // this.props.dispatch(changeCurrentPetId(""));
   }
 
   validId(paramsId, paramsName){

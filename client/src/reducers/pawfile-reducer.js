@@ -1,10 +1,10 @@
-import {ADDING_NEW_FORM, ADDING_NEW_PAWFILE, SORTING_ALL_PETS, ADDING_NEW_REMINDER, CHANGE_CURRENT_PET_ID} from '../actions/index';
+import {SHOW_PAWFILE_FORM, SUBMIT_NEW_PAWFILE, SORTING_ALL_PETS, ADDING_NEW_REMINDER, CHANGE_CURRENT_PET_ID, EDITING_PAWFILE, EDITING_PAWFILE_FORM} from '../actions/index';
 
 const initialState = {
   user: {firstName: 'Nikkie', lastName: "Mashian"},
   sortingPetsMethod: "",
-  addingNewPawfile: false,
-  currentPetId: "",
+  showPawfileForm: false,
+  currentPetId: undefined,
   pawfiles: [
     {
       id: 0,
@@ -69,29 +69,28 @@ const initialState = {
 
 export const pawfileReducer = (state = initialState, action)=> {
 
-  console.log('state is', state);
-
-  if(action.type=== ADDING_NEW_FORM){
+  if(action.type=== SHOW_PAWFILE_FORM){
     return Object.assign({}, state, {
-      addingNewPawfile: action.bool,
+      showPawfileForm: action.bool,
+      currentPetId: action.id
     })
   }
 
-  else if (action.type=== ADDING_NEW_PAWFILE){
+  else if (action.type=== SUBMIT_NEW_PAWFILE){
     return Object.assign({}, state, {
       pawfiles: [
         ...state.pawfiles,
         action.values
-      ]
+      ],
     })
   }
 
-  else if (action.type===CHANGE_CURRENT_PET_ID){
-    console.log('CHANGING CURRENT ID TO', action.id);
-    return Object.assign({}, state, {
-      currentPetId: action.id
-    })
-  }
+  // else if (action.type===CHANGE_CURRENT_PET_ID){
+  //   console.log('CHANGING CURRENT ID TO', action.id);
+  //   return Object.assign({}, state, {
+  //     currentPetId: action.id
+  //   })
+  // }
 
   else if (action.type=== ADDING_NEW_REMINDER){
     const newNote = action.values;
@@ -99,22 +98,28 @@ export const pawfileReducer = (state = initialState, action)=> {
     const pawfileToUpdate = state.pawfiles[action.id];
     pawfileToUpdate.reminders=[...pawfileToUpdate.reminders, newNote];
     //  build up a new array of files. It should have all the old files, but in place of the one with the ID you want to change, you drop in the new file object from the variable you just created.
-    const newArrayOfPawfiles = state.pawfiles.map((item, index)=> (index===0 ? pawfileToUpdate : item))
+    const newArrayOfPawfiles = state.pawfiles.map((item, index)=> (index===action.id ? pawfileToUpdate : item))
 
     return Object.assign({}, state, {
         pawfiles: newArrayOfPawfiles
     })
   }
 
-  // else if (action.type=== EDITING_PAWFILE){
+  // else if(action.type===EDITING_PAWFILE_FORM){
+  //   console.log('editing with id', action.id);
   //   return Object.assign({}, state, {
-  //     pawfiles: [
-  //       pawfiles[action.id] = {
-  //         ...state.pawfiles.action.id,
-  //         action.values
-  //       }
-  //     ]
+  //     editingPetId: action.id
   //   })
+  // }
+
+  // else if (action.type === EDITING_PAWFILE){
+  //   let pawfileToUpdate = state.pawfiles[action.id];
+  //   pawfileToUpdate= [...pawfileToUpdate, action.values];
+  //   const newArrayOfPawfiles = state.pawfiles.map((item, index)=> (index===action.id ? pawfileToUpdate : item))
+
+  //   return Object.assign({}, state, {
+  //     pawfiles: newArrayOfPawfiles,
+  // })
   // }
 
   else if (action.type=== SORTING_ALL_PETS){

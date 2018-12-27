@@ -1,13 +1,13 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {addingNewForm} from '../../actions/index';
+import {showPawfileForm} from '../../actions/index';
 
 
 import './add-new-pawfile-button.css'
 
 export function AddNewPawfileButton(props){
   return(
-    <button onClick={()=>props.dispatch(addingNewForm(true))} className="tape">Add New Pawfile</button>
+    <button onClick={()=>props.dispatch(showPawfileForm(true, undefined))} className="tape">Add New Pawfile</button>
   );
 }
 

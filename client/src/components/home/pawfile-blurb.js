@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import './pawfile-blurb.css';
-import {changeCurrentPetId} from '../../actions/index';
+import {changeCurrentPetId, showPawfileForm} from '../../actions/index';
 
 
 export class PawfileBlurb extends React.Component{
@@ -30,7 +30,7 @@ export class PawfileBlurb extends React.Component{
           <Link to={`/${this.props.name}/${this.props.id}`}>
             <i className="fas fa-external-link-alt"></i>
           </Link>
-          <i className="fas fa-edit"></i>
+          <button onClick={()=>this.props.dispatch(showPawfileForm(true,this.props.id))}><i className="fas fa-edit"></i></button>
           <i className="fas fa-trash-alt"></i>
         </div>
   

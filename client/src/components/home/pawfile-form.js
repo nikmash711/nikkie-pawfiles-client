@@ -1,28 +1,31 @@
 import React from 'react';
-import {connect} from 'react-redux';import {reduxForm, Field, Fieldset, SubmissionError, focus} from 'redux-form';
+import {connect} from 'react-redux';
+import {reduxForm, Field, Fieldset, SubmissionError, focus} from 'redux-form';
 import Input from './input';
-import {addingNewPawfile, addingNewForm} from '../../actions/index';
+import {submitNewPawfile, showPawfileForm} from '../../actions/index';
 import {required, nonEmpty, unSelected} from './validators';
 
-import './add-new-pawfile-form.css';
+import './pawfile-form.css';
 
-export  class AddNewPawfileForm extends React.Component{
+export class PawfileForm extends React.Component{
 
   componentWillUnmount(){
-    this.props.dispatch(addingNewForm(false));
+    this.props.dispatch(showPawfileForm(false, undefined));
   }
 
   onSubmit(values){
     console.log('values are', values);
-    this.props.dispatch(addingNewPawfile(values));
-    this.props.dispatch(addingNewForm(false));
+    this.props.dispatch(submitNewPawfile(values));
+    this.props.dispatch(showPawfileForm(false, undefined));
   }
 
   render(){
+    console.log('the props in redux form is', this.props);
+
     return(
       <div className='new-pawfile-form-modal'>
           <form className="new-pawfile-form blurb" onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
-          <button type="button" className = "close" onClick={()=>this.props.dispatch(addingNewForm(false))}>X</button>
+          <button type="button" className = "close" onClick={()=>this.props.dispatch(showPawfileForm(false, undefined))}>X</button>
           <h2>New Pawfile</h2>
 
             <Field
@@ -69,8 +72,8 @@ export  class AddNewPawfileForm extends React.Component{
               validate={[unSelected]}
               >
               <option value=""> Select a Gender</option>
-              <option value="female">Female</option>
-              <option value="male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Male">Male</option>
             </Field>
 
             <Field
@@ -102,18 +105,29 @@ export  class AddNewPawfileForm extends React.Component{
               >
             </Field>
 
-           
-
             <button type="submit">Save Pawfile</button>
-            <button onClick={()=>this.props.dispatch(addingNewForm(false))} type="cancel">Cancel</button>
+            <button onClick={()=>this.props.dispatch(showPawfileForm(false, undefined))} type="cancel">Cancel</button>
           </form>
         </div>
     );
   }
 }
 
-export default reduxForm({
-  form: 'addingPawfileForm',
-})(AddNewPawfileForm);
+function mapStateToProps(state) {
+  let currentPetId = state.pawfile.currentPetId;
+  return {
+    initialValues: {
+      name: currentPetId>=0 ? state.pawfile.pawfiles[currentPetId].name : "",
+      img: currentPetId>=0 ? state.pawfile.pawfiles[currentPetId].img : "",
+      species: currentPetId>=0 ? state.pawfile.pawfiles[currentPetId].species : "",
+      gender: currentPetId>=0 ? state.pawfile.pawfiles[currentPetId].gender : "",
+      breed: currentPetId>=0 ? state.pawfile.pawfiles[currentPetId].breed : "",
+      birthday: currentPetId>=0 ? state.pawfile.pawfiles[currentPetId].birthday : "",
+      bio: currentPetId>=0 ? state.pawfile.pawfiles[currentPetId].bio : "",
+    }
+  }
+}
 
-// ADD IN VALIDATIONS TODAY 
+export default connect(mapStateToProps)(reduxForm({
+  form:'PawfileForm',
+})(PawfileForm));

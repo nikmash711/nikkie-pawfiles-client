@@ -1,14 +1,22 @@
-export const ADDING_NEW_FORM = 'ADDING_NEW_FORM';
-export const addingNewForm = (bool) => ({
-    type: ADDING_NEW_FORM,
-    bool
+export const SHOW_PAWFILE_FORM = 'SHOW_PAWFILE_FORM';
+export const showPawfileForm = (bool, id) => ({
+    type: SHOW_PAWFILE_FORM,
+    bool,
+    id
 });
 
-export const ADDING_NEW_PAWFILE = 'ADDING_NEW_PAWFILE';
-export const addingNewPawfile = (values) => ({
-    type: ADDING_NEW_PAWFILE,
-    values
+export const SUBMIT_NEW_PAWFILE = 'SUBMIT_NEW_PAWFILE';
+export const submitNewPawfile = (values, id) => ({
+    type: SUBMIT_NEW_PAWFILE,
+    values,
 });
+
+// export const EDITING_PAWFILE_FORM = 'EDITING_PAWFILE_FORM';
+// export const editingPawfileForm = (id) => ({
+//     type: EDITING_PAWFILE_FORM,
+//     id
+// });
+
 
 export const SORTING_ALL_PETS = 'SORTING_ALL_PETS';
 export const sortingAllPets = (sortMethod) => ({
@@ -23,8 +31,15 @@ export const addingNewReminder = (values, id) => ({
     id
 });
 
-export const CHANGE_CURRENT_PET_ID = 'CHANGE_CURRENT_PET_ID';
-export const changeCurrentPetId = (id) => ({
-    type: CHANGE_CURRENT_PET_ID,
-    id
-});
+// export const CHANGE_CURRENT_PET_ID = 'CHANGE_CURRENT_PET_ID';
+// export const changeCurrentPetId = (id) => ({
+//     type: CHANGE_CURRENT_PET_ID,
+//     id
+// });
+
+// export const EDITING_PAWFILE = 'EDITING_PAWFILE';
+// export const editingPawfile = (values,id) => ({
+//     type: EDITING_PAWFILE,
+//     values,
+//     id,
+// });
