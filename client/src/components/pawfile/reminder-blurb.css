@@ -1,3 +1,27 @@
 .reminders-list{
   border: 1px solid black;
+  list-style: none;
+}
+
+.new-reminder-form input{
+  background-color: transparent;
+  border: transparent;
+  border-bottom: 2px solid black;
+  margin-left: 10px;
+}
+
+.add-reminder-button{
+  float:right;
+  margin-right: 10px;
+}
+
+.more-options-button{
+  font-size:10px;
+  background-color:transparent;
+  border: none;
+  font-weight: bold;
+}
+
+.more-options{
+  position: absolute;
 }

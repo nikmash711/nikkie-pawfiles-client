@@ -5,10 +5,16 @@ import Footer from '../footer'
 import Sidebar from './sidebar';
 import MainSection from './main-section';
 import {Link, Redirect} from 'react-router-dom';
+import {changeCurrentPetId} from '../../actions/index';
 
 export class PawfilePage extends React.Component{
+  compo
   componentDidMount(){
     document.title = `${this.props.match.params.pawfileName}`;
+  }
+
+  componentWillUnmount(){
+    this.props.dispatch(changeCurrentPetId(""));
   }
 
   validId(paramsId, paramsName){
@@ -24,12 +30,15 @@ export class PawfilePage extends React.Component{
       return <Redirect to="/home" /> 
     } 
 
+    // this.props.dispatch(changeCurrentPetId(this.props.match.params.pawfileId)); 
+    //where do I put this line of code for it to properly change the state before trying to render sidebar or main section?
+
     console.log('in pawfile page props are', this.props);
     return(
       <div className="pawfile-page">
         <Navbar/>
         <Sidebar id={this.props.match.params.pawfileId}/>
-        <MainSection id={this.props.match.params.pawfileId}/>
+        {/* <MainSection/> */}
         <Footer/>
       </div>
     );
@@ -41,5 +50,3 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps)(PawfilePage);
-
-// export default connect ()(PawfilePage);

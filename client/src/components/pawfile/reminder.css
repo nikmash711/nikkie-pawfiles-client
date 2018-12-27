@@ -1,5 +1,4 @@
 .reminder{
-  list-style: none;
   display: flex;
   justify-content: space-between;
   padding: 10px 10px;
@@ -14,6 +13,8 @@
 
 .reminder-date{
   color: darkred;
+  width: -webkit-fill-available;
+  text-align: right;
 }
 
 .reminder:nth-child(even){
@@ -25,6 +26,7 @@
   padding: 2px;
   background-color: black;
   color: white;
+  height: fit-content;
 }
 
 .delete-reminder:hover, .delete-reminder:focus{

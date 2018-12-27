@@ -16,9 +16,10 @@ export function MainSection(props){
       <MedicalPost key={index} {...post}/>
     ))
   }
+  console.log('rerendering main section')
     return(
       <main>
-\        <nav className="options">
+        <nav className="options">
             <div className="add-buttons">
               <button className="new-memory">New Memory</button>
               <button className="new-medical">New Medical</button>
@@ -45,7 +46,7 @@ export function MainSection(props){
 }
 
 const mapStateToProps = (state,props) => ({
-  pawfile: state.pawfile.pawfiles[props.id],
+  pawfile: state.pawfile.pawfiles[state.pawfile.currentPetId],
 });
 
 export default connect(mapStateToProps)(MainSection);

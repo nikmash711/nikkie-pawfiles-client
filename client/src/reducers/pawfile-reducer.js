@@ -1,9 +1,10 @@
-import {ADDING_NEW_FORM, ADDING_NEW_PAWFILE, SORTING_ALL_PETS} from '../actions/index';
+import {ADDING_NEW_FORM, ADDING_NEW_PAWFILE, SORTING_ALL_PETS, ADDING_NEW_REMINDER, CHANGE_CURRENT_PET_ID} from '../actions/index';
 
 const initialState = {
   user: {firstName: 'Nikkie', lastName: "Mashian"},
   sortingPetsMethod: "",
   addingNewPawfile: false,
+  currentPetId: "",
   pawfiles: [
     {
       id: 0,
@@ -17,28 +18,13 @@ const initialState = {
       reminders: [
         {
           note: "Trim Nails",
-          date: "12/24/18"
+          date: "2018-12-24",
+          time: ""
         },
         {
           note: "Vet Appointment",
-          date: "12/30/18",
+          date: "2018-12-30",
         },
-        {
-          note: "Trim Nails",
-          date: "12/24/18"
-        },
-        {
-          note: "Vet Appointment",
-          date: "12/30/18",
-        },
-        {
-          note: "Trim Nails",
-          date: "12/24/18"
-        },
-        {
-          note: "Vet Appointment",
-          date: "12/30/18",
-        }
       ],
       posts: [
         {
@@ -83,7 +69,7 @@ const initialState = {
 
 export const pawfileReducer = (state = initialState, action)=> {
 
-  console.log('the state is', state)
+  console.log('state is', state);
 
   if(action.type=== ADDING_NEW_FORM){
     return Object.assign({}, state, {
@@ -97,6 +83,26 @@ export const pawfileReducer = (state = initialState, action)=> {
         ...state.pawfiles,
         action.values
       ]
+    })
+  }
+
+  else if (action.type===CHANGE_CURRENT_PET_ID){
+    console.log('CHANGING CURRENT ID TO', action.id);
+    return Object.assign({}, state, {
+      currentPetId: action.id
+    })
+  }
+
+  else if (action.type=== ADDING_NEW_REMINDER){
+    const newNote = action.values;
+    //First, find the file with the ID you want. Then construct a new file object - stick it in a variable.
+    const pawfileToUpdate = state.pawfiles[action.id];
+    pawfileToUpdate.reminders=[...pawfileToUpdate.reminders, newNote];
+    //  build up a new array of files. It should have all the old files, but in place of the one with the ID you want to change, you drop in the new file object from the variable you just created.
+    const newArrayOfPawfiles = state.pawfiles.map((item, index)=> (index===0 ? pawfileToUpdate : item))
+
+    return Object.assign({}, state, {
+        pawfiles: newArrayOfPawfiles
     })
   }
 
@@ -117,5 +123,6 @@ export const pawfileReducer = (state = initialState, action)=> {
       sortingPetsMethod: action.sortMethod,
     })
   }
+
   return state;
 }

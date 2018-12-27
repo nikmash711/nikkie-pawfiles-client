@@ -15,3 +15,16 @@ export const sortingAllPets = (sortMethod) => ({
     type: SORTING_ALL_PETS,
     sortMethod
 });
+
+export const ADDING_NEW_REMINDER = 'ADDING_NEW_REMINDER';
+export const addingNewReminder = (values, id) => ({
+    type: ADDING_NEW_REMINDER,
+    values,
+    id
+});
+
+export const CHANGE_CURRENT_PET_ID = 'CHANGE_CURRENT_PET_ID';
+export const changeCurrentPetId = (id) => ({
+    type: CHANGE_CURRENT_PET_ID,
+    id
+});

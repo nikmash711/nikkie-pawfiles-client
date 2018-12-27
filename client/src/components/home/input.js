@@ -15,7 +15,7 @@ export default class Input extends React.Component {
         }
 
         let className="";
-        console.log('in input.js, the props are', this.props);
+
         if(this.props.id==="name" || this.props.id==="gender" ||this.props.id==="species" || this.props.id==="img"){
             className="required";
         }

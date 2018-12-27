@@ -2,6 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import './pawfile-blurb.css';
+import {changeCurrentPetId} from '../../actions/index';
+
 
 export class PawfileBlurb extends React.Component{
   calculateAge(birthday){
@@ -23,6 +25,7 @@ export class PawfileBlurb extends React.Component{
           <h2>{this.props.name}</h2>
         </Link>
   
+
         <div className="option-icons">
           <Link to={`/${this.props.name}/${this.props.id}`}>
             <i className="fas fa-external-link-alt"></i>

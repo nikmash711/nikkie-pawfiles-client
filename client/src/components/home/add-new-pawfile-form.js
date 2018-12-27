@@ -13,6 +13,7 @@ export  class AddNewPawfileForm extends React.Component{
   }
 
   onSubmit(values){
+    console.log('values are', values);
     this.props.dispatch(addingNewPawfile(values));
     this.props.dispatch(addingNewForm(false));
   }
