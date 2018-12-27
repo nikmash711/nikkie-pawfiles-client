@@ -32,6 +32,7 @@ export const addingNewReminder = (values, id) => ({
 });
 
 export const TOGGLE_NAVBAR = "TOGGLE_NAVBAR";
-export const toggleNavbar = () =>({
-    type: TOGGLE_NAVBAR
+export const toggleNavbar = (bool) =>({
+    type: TOGGLE_NAVBAR,
+    bool
 })

@@ -133,6 +133,11 @@ export const pawfileReducer = (state = initialState, action)=> {
   }
 
   else if (action.type===TOGGLE_NAVBAR){
+    if(action.bool===true ||action.bool===false){
+      return Object.assign({}, state, {
+        toggleNavbar: action.bool,
+      })
+    }
     return Object.assign({}, state, {
       toggleNavbar: !state.toggleNavbar,
     })
