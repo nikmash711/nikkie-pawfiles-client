@@ -15,15 +15,15 @@ descriptions of each page there.
 
 ## User Stories/MVP: 
 1. User can create an account for themselves with a first name, last name, username, and password
-2. User will be directed to a home page where they see all their pets (if any) and can add a new pet pawfile by filling out a form (name, species, breed, gender, profile photo, brief bio.)
+2. User will be directed to a home page where they can see all their pets, can add a new pet pawfile by filling out a form (name, species, breed, birthday, gender, profile photo, brief bio.), and can sort their pets by age or name. 
 3. Single user can have as many "pawfiles" as they wish if they own more than one pet
 4. User can add posts for each pet - it can be a memory post with a title, description, date, and a photo URL corresponding to the memory, OR a medical related post where they can include a title, description, symptoms, labs, vet, location, date, and a link to a file. Once posted, only the info filled out will show (empty fields will not be displayed).
-5. Posts will be organized on the Pawfile chronologically
+5. Posts will be organized on the Pawfile chronologically by date user chose 
 6. User can search for specific posts on the Pawfile, and filter it by category
 7. There will be a sidebar on the Pawfile with a brief bio about the pet as well as a list of reminders for that pet: for
 example, need to buy more litter, or go get groomed next week, etc.
 8. The URL of the image the user links will show an actual image once posted, and the user can click on that image to see an enlarged version of it (images should be standard size) 
-9. Navbar with Home/My Pets (shows all pets and can get to individual pawfile through here), settings, logout.
+9. Navbar with Home/My Pets, About, Settings, Logout.
 
 ## Extension Features: 
 1. User can change their password
