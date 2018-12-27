@@ -33,7 +33,7 @@ example, need to buy more litter, or go get groomed next week, etc.
 5. When requests are sent via a GET method, they will be queried to the end of the url so the user can click back or search their history (use React Routers) 
 6. Users can search for vets in their area (Yelp api?) 
 7. User can directly upload a photo or file from their computer (for posts or profile photo) and not via an external link (that way they can upload files/records etc.) Can do this by either using GridFs, or saving that file to another db (like AWS), and storing a ref to it in my db. 
-8. Reminders can include a time, and can even push notifications to the user (to their notification center) - like for daily pills 
+8. Reminders can include a time, and can even push notifications to the user (to their notification center) - like for daily pills (https://medium.com/@jasminejacquelin/integrating-push-notifications-in-your-node-react-web-app-4e8d8190a52c)
 9. Use some of these pet puns throughout the app: https://www.lifelearn.com/2016/02/24/the-jumbo-reference-list-of-pet-puns/
 10. Parts of the design (and puns) will change based on whether it's a cat vs dog, male vs female. Design will hopefully look like an actual timeline
 11. "See more" at bottom of timeline to load more posts so db doesn't load all of them at once
