@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import './pawfile-blurb.css';
 import {showPawfileForm, deletePawfile} from '../../actions/index';
+import {formatDate} from '../helper-functions';
 
 
 export class PawfileBlurb extends React.Component{
@@ -40,13 +41,17 @@ calculateAge(date) {
   render(){
     return(
       <article className= {`${this.props.gender.toLowerCase()} blurb`}>
-        <Link to={`/${this.props.name}/${this.props.id}`}>
+
+      <div className="top">
+      <Link to={`/${this.props.name}/${this.props.id}`}>
           <img src= {this.props.img} alt={this.props.name} className="prof-pic"/>
         </Link>
   
         <Link to={`/${this.props.name}/${this.props.id}`}>
           <h2>{this.props.name}</h2>
         </Link>
+      </div>
+
   
 
         <div className="option-icons">
@@ -64,7 +69,7 @@ calculateAge(date) {
         <p><strong>Gender:</strong> {this.props.gender}</p>
         
         { this.props.birthday && 
-          <p><strong>Birthday:</strong> {new Date(this.props.birthday).toLocaleDateString()}</p> 
+          <p><strong>Birthday:</strong> {formatDate(this.props.birthday).toLocaleDateString()}</p> 
         }
 
         {

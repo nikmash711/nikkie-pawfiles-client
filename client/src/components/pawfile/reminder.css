@@ -6,27 +6,29 @@
 
 .reminder-note{
   width: -webkit-fill-available; 
-  font-family:"Reenie Beanie",arial,sans-serif;
-  font-size:20px;
-  text-shadow: 1px 1px black;
+  font-family:"Kalam";
+  font-size:15px;
 }
 
 .reminder-date{
   color: darkred;
-  width: -webkit-fill-available;
   text-align: right;
+  font-size: 10px;
+  margin:auto;
 }
 
-.reminder:nth-child(even){
+.reminder:nth-child(odd){
   background-color: #fff348;
 }
 
 .delete-reminder{
+  margin:auto;
   margin-right: 10px;
   padding: 2px;
   background-color: black;
   color: white;
   height: fit-content;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .delete-reminder:hover, .delete-reminder:focus{

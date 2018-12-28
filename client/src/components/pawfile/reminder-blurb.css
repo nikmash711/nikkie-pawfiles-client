@@ -1,13 +1,32 @@
+.blurb.reminders{
+  padding:0;
+}
+
 .reminders-list{
-  border: 1px solid black;
   list-style: none;
+}
+
+.new-reminder-form{
+  position: relative;
+  padding:0;
 }
 
 .new-reminder-form input{
   background-color: transparent;
   border: transparent;
-  border-bottom: 2px solid black;
+  /* border-bottom: 2px solid black; */
   margin-left: 10px;
+  padding:5px;
+  display: inline;
+  width: -webkit-fill-available;
+}
+
+.new-reminder-form .reminder-note{
+  width:110px
+}
+
+.new-reminder-form .reminder-date{
+  background-color:white;
 }
 
 .add-reminder-button{
@@ -15,13 +34,30 @@
   margin-right: 10px;
 }
 
+.new-reminder-form input:hover, .new-reminder-form input:focus, .more-options-button:hover, .more-options-button:focus{
+  outline:0;
+}
+
+.more-options-button:hover, .more-options-button:focus{
+  background-color:white;
+  cursor: pointer;
+}
+
 .more-options-button{
   font-size:10px;
-  background-color:transparent;
   border: none;
   font-weight: bold;
+  background-color: transparent;
 }
 
 .more-options{
   position: absolute;
+  top: -25px;
+  background-color: white;
+}
+
+@media(min-width:900px){
+  .new-reminder-form .reminder-note{
+    width: -webkit-fill-available;
+  }
 }

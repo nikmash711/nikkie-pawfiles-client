@@ -1,5 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {formatDate} from '../helper-functions';
+
 import './reminder.css'
 
 export function Reminder(props){
@@ -10,7 +12,7 @@ export function Reminder(props){
         <strong>{props.note}</strong>
       </span>
       <span className="reminder-date">
-        {props.date}
+        {formatDate(props.date).toLocaleDateString()}
       </span>
     </li>
   )

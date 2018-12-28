@@ -56,6 +56,8 @@
   text-align: left;
   margin: 5px;
   flex: 1;
+  font-family: 'Gloria Hallelujah';
+  font-weight: bold;
 }
 
 .required::after{
@@ -69,6 +71,7 @@
   color: red;
   font-size:10px;
   top: 90%;
+  padding: 2px;
 }
 
 .new-pawfile-form .form-input{
@@ -87,10 +90,12 @@
   cursor: pointer;
   margin: 10px;
   padding: 5px;
+  font-family: 'Gloria Hallelujah';
 }
 
-.close{
+button.close{
   float: right;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .new-pawfile-form button:hover, .new-pawfile-form button:focus{
@@ -107,4 +112,8 @@
   .new-pawfile-form .form-input{
     width: 350px;
   }
+
+  /* .new-pawfile-form input, .new-pawfile-form textarea, .new-pawfile-form select{
+    flex: 2;
+  } */
 }

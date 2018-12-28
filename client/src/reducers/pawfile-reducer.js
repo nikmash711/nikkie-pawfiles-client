@@ -19,12 +19,11 @@ const initialState = {
       reminders: [
         {
           note: "Trim Nails",
-          date: "2018-12-24",
-          time: ""
+          date: "2016-10-26",
         },
         {
           note: "Vet Appointment",
-          date: "2018-12-30",
+          date: "2016-11-26",
         },
       ],
       posts: [
@@ -113,10 +112,10 @@ export const pawfileReducer = (state = initialState, action)=> {
   }
 
   else if (action.type=== ADDING_NEW_REMINDER){
-    const newNote = action.values;
+    const newReminder = action.values;
     //First, find the file with the ID you want. Then construct a new file object - stick it in a variable.
     const pawfileToUpdate = state.pawfiles[action.id];
-    pawfileToUpdate.reminders=[...pawfileToUpdate.reminders, newNote];
+    pawfileToUpdate.reminders=[...pawfileToUpdate.reminders, newReminder];
     //  build up a new array of files. It should have all the old files, but in place of the one with the ID you want to change, you drop in the new file object from the variable you just created.
     const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id===action.id ? pawfileToUpdate : item))
 

@@ -1,17 +1,11 @@
 import React from 'react';
+import {todaysDate} from '../helper-functions';
 
 export default class Input extends React.Component {
     componentDidUpdate(prevProps) {
         if (!prevProps.meta.active && this.props.meta.active) {
             this.input.focus();
         }
-    }
-
-    todaysDate(){
-        let date = new Date().toISOString();
-        let dateArr = date.split('T');
-        let final = dateArr[0];
-        return final;
     }
 
     render() {
@@ -39,7 +33,7 @@ export default class Input extends React.Component {
                     {...this.props.input}
                     id={this.props.input.name}
                     type={this.props.type}
-                    max = {this.props.type==="date"? this.todaysDate() : undefined}
+                    max = {this.props.type==="date"? todaysDate() : undefined}
                     // I only want max on date elements but not sure how else to do it
                     ref={input => (this.input = input)}
                 >

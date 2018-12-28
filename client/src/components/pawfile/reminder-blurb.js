@@ -3,27 +3,34 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import Reminder from './reminder';
 import {addingNewReminder} from '../../actions/index';
+import {todaysDate} from '../helper-functions';
 
 import './reminder-blurb.css';
 
 export class ReminderBlurb extends React.Component{
 
-  constructor(props){
-    super(props)
+  // constructor(props){
+  //   super(props)
 
-    this.state={
-      showMoreOptions: false,
-    }
-  }
+  //   this.state={
+  //     showMoreOptions: false,
+  //   }
+  // }
+
+  // toggleMoreOptions(){
+  //   this.setState({
+  //     showMoreOptions: !this.state.showMoreOptions,
+  //   })
+  // }
 
   onSubmit(e){
     e.preventDefault();
-    const values={note: this.noteInput.value};
+    const values={note: this.noteInput.value, date: this.dateInput.value};
+    console.log('the values are', values);
     this.props.dispatch(addingNewReminder(values, this.props.id));
   }
   
   render(){
-    console.log('re-render');
     const reminders = this.props.reminders.map((reminder, index)=>(
       <Reminder key={index} {...reminder}/>
     ));
@@ -34,19 +41,20 @@ export class ReminderBlurb extends React.Component{
         <ul className = "reminders-list">
           {reminders}
           <li>
-          <form className="new-reminder-form">
+          <form className="new-reminder-form reminder" onSubmit={ (e)=> this.onSubmit(e)}>
             <label htmlFor="new-reminder"></label>
-            <input className="new-reminder-note" ref={input => this.noteInput = input} type="text" id="new-reminder" name="note" placeholder="Start typing..."/>
+            <input required className="new-reminder-note reminder-note" ref={input => this.noteInput = input} type="text" id="new-reminder" name="note" placeholder="Start typing..."/>
+            <input required className="reminder-date" ref={input => this.dateInput = input} type="date" min={todaysDate()}/>
 
-            <button type="button" className="more-options-button" onClick={()=>this.setState({showMoreOptions: true})}>More options</button>
+            {/* <button type="button" className="more-options-button" onClick={()=>this.toggleMoreOptions()}>More options</button> */}
 
-            {this.state.showMoreOptions && 
+            {/* {this.state.showMoreOptions && 
             <div className="more-options">
-              <p>Testing</p>
+              <input ref={input => this.dateInput = input} type="date" max={todaysDate()}/>
             </div>
-            }
+            } */}
 
-            <button className="add-reminder-button" type="submit" onClick={(e)=>this.onSubmit(e)}>Add</button>
+            {/* <button className="add-reminder-button" type="submit" onClick={(e)=>this.onSubmit(e)}>Add</button> */}
             {/* Have the time/date option be hidden unless user clicks a button that says time/date, then display visible and keep the values and submit with form  */}
             {/* <input type="date" />
             <input type="time" /> */}
