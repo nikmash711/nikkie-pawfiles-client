@@ -31,8 +31,21 @@ export const addingNewReminder = (values, id) => ({
     id
 });
 
+export const DELETE_REMINDER = 'DELETE_REMINDER';
+export const deleteReminder = (petId, reminderId) => ({
+    type: DELETE_REMINDER,
+    petId,
+    reminderId
+});
+
 export const TOGGLE_NAVBAR = "TOGGLE_NAVBAR";
 export const toggleNavbar = (bool) =>({
     type: TOGGLE_NAVBAR,
     bool
+})
+
+export const CHANGE_CURRENT_PET_ID = 'CHANGE_CURRENT_PET_ID';
+export const changeCurrentPetId = (id) => ({
+    type: CHANGE_CURRENT_PET_ID,
+    id
 })

@@ -21,7 +21,7 @@
   background-color: #fff348;
 }
 
-.delete-reminder{
+.delete-reminder, .add-reminder{
   margin:auto;
   margin-right: 10px;
   padding: 2px;

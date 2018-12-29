@@ -2,6 +2,10 @@
   padding:0;
 }
 
+.reminders h2{
+  padding-top: 20px;
+}
+
 .reminders-list{
   list-style: none;
 }

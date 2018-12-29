@@ -6,16 +6,16 @@ import Sidebar from './sidebar';
 import MainSection from './main-section';
 import PawfileForm from '../home/pawfile-form';
 import {Link, Redirect} from 'react-router-dom';
-// import {changeCurrentPetId} from '../../actions/index';
+import {changeCurrentPetId} from '../../actions/index';
 
 export class PawfilePage extends React.Component{
-  compo
   componentDidMount(){
     document.title = `${this.props.match.params.pawfileName}`;
+    this.props.dispatch(changeCurrentPetId(this.props.match.params.pawfileId));
   }
 
   componentWillUnmount(){
-    // this.props.dispatch(changeCurrentPetId(""));
+    this.props.dispatch(changeCurrentPetId(undefined));
   }
 
   validId(paramsId, paramsName){

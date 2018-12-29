@@ -9,30 +9,17 @@ import './reminder-blurb.css';
 
 export class ReminderBlurb extends React.Component{
 
-  // constructor(props){
-  //   super(props)
-
-  //   this.state={
-  //     showMoreOptions: false,
-  //   }
-  // }
-
-  // toggleMoreOptions(){
-  //   this.setState({
-  //     showMoreOptions: !this.state.showMoreOptions,
-  //   })
-  // }
-
   onSubmit(e){
     e.preventDefault();
     const values={note: this.noteInput.value, date: this.dateInput.value};
-    console.log('the values are', values);
     this.props.dispatch(addingNewReminder(values, this.props.id));
+    this.noteInput.value = "";
+    this.dateInput.value="";
   }
   
   render(){
     const reminders = this.props.reminders.map((reminder, index)=>(
-      <Reminder key={index} {...reminder}/>
+      <Reminder id={index} key={index} {...reminder}/>
     ));
   
     return(
@@ -42,7 +29,7 @@ export class ReminderBlurb extends React.Component{
           {reminders}
           <li>
           <form className="new-reminder-form reminder" onSubmit={ (e)=> this.onSubmit(e)}>
-            <label htmlFor="new-reminder"></label>
+            {/* <button className="add-reminder">+</button> */}
             <input required className="new-reminder-note reminder-note" ref={input => this.noteInput = input} type="text" id="new-reminder" name="note" placeholder="Start typing..."/>
             <input required className="reminder-date" ref={input => this.dateInput = input} type="date" min={todaysDate()}/>
 

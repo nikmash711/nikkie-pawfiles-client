@@ -1,4 +1,4 @@
-import {SHOW_PAWFILE_FORM, SUBMIT_NEW_PAWFILE, SORTING_ALL_PETS, ADDING_NEW_REMINDER, DELETE_PAWFILE, TOGGLE_NAVBAR} from '../actions/index';
+import {SHOW_PAWFILE_FORM, SUBMIT_NEW_PAWFILE, SORTING_ALL_PETS, ADDING_NEW_REMINDER, DELETE_PAWFILE, TOGGLE_NAVBAR, DELETE_REMINDER, CHANGE_CURRENT_PET_ID} from '../actions/index';
 
 const initialState = {
   user: {firstName: 'Nikkie', lastName: "Mashian"},
@@ -18,10 +18,12 @@ const initialState = {
       img: "https://i.ibb.co/y8hFnkL/2.jpg",
       reminders: [
         {
+          id: 0,
           note: "Trim Nails",
           date: "2016-10-26",
         },
         {
+          id: 1,
           note: "Vet Appointment",
           date: "2016-11-26",
         },
@@ -58,6 +60,7 @@ const initialState = {
       img: "https://i.ibb.co/stMyFMp/IMG-6267.png",
       reminders: [
         {
+          id: 0,
           note: "Give Shot",
           date: "Daily"
         },
@@ -70,6 +73,7 @@ const initialState = {
 export const pawfileReducer = (state = initialState, action)=> {
 
   if(action.type=== SHOW_PAWFILE_FORM){
+    console.log('changing petid')
     return Object.assign({}, state, {
       showPawfileForm: action.bool,
       currentPetId: action.id
@@ -101,9 +105,6 @@ export const pawfileReducer = (state = initialState, action)=> {
   }
 
   else if(action.type===DELETE_PAWFILE){
-    console.log('deleting pawfile');
-    // const pawfileToDelete = state.pawfiles[action.id];
-    
     const newArrayOfPawfiles = state.pawfiles.filter((item)=> (item.id!==action.id));
 
     return Object.assign({}, state, {
@@ -124,6 +125,25 @@ export const pawfileReducer = (state = initialState, action)=> {
     })
   }
 
+  else if(action.type=== DELETE_REMINDER){
+    let pawfileToUpdate =  state.pawfiles[action.petId];
+
+    const updatedReminders = pawfileToUpdate.reminders.filter((reminder)=> (reminder.id!==action.reminderId));
+
+    pawfileToUpdate.reminders=updatedReminders;
+
+    const updatedPawfile = Object.assign({},  state.pawfiles[action.petId], {
+      pawfileToUpdate
+    })
+
+    const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id===action.petId ? updatedPawfile : item))
+
+    return Object.assign({}, state, {
+      pawfiles: newArrayOfPawfiles
+  })
+
+  }
+
   else if (action.type=== SORTING_ALL_PETS){
     console.log('in reducer valye is', action.sortMethod);
     return Object.assign({}, state, {
@@ -139,6 +159,13 @@ export const pawfileReducer = (state = initialState, action)=> {
     }
     return Object.assign({}, state, {
       toggleNavbar: !state.toggleNavbar,
+    })
+  }
+
+  else if(action.type===CHANGE_CURRENT_PET_ID){
+    console.log('changing id', action.id);
+    return Object.assign({}, state, {
+      currentPetId: action.id
     })
   }
 
