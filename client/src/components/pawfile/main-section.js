@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import MemoryPost from './memory-post'
 import MedicalPost from './medical-post'
-import {showMedicalForm, showMemoryForm} from '../../actions/index';
+import {showMedicalForm, showMemoryForm, changeSearchTerm} from '../../actions/index';
 
 import './main-section.css'
 
@@ -19,6 +19,10 @@ export function MainSection(props){
     console.log('the posts are', posts); //why does it look weird 
     //automatically sort by newest to oldest
     posts.sort((a,b)=> new Date(b.props.date) - new Date(a.props.date))
+
+    if(props.currentSearchTerm){
+      posts = posts.filter(post=>post.props.title.toLowerCase().includes(props.currentSearchTerm) || post.props.date.includes(props.currentSearchTerm))
+    }
   }
   console.log('rerendering main section')
     return(
@@ -36,7 +40,7 @@ export function MainSection(props){
               </select>
             </div>
             <div className="search-input">
-              <input className="search" type="search" placeholder='Search Posts'/>
+              <input onChange={e=>props.dispatch(changeSearchTerm(e.target.value))} className="search" type="search" placeholder='Search Posts'/>
             </div>
           </nav>
           <ul className="posts">
@@ -48,7 +52,8 @@ export function MainSection(props){
 
 const mapStateToProps = (state,props) => ({
   pawfiles: state.pawfile.pawfiles,
-  specificPawfile: state.pawfile.pawfiles[props.id]
+  specificPawfile: state.pawfile.pawfiles[props.id],
+  currentSearchTerm: state.pawfile.currentSearchTerm
 });
 
 export default connect(mapStateToProps)(MainSection);

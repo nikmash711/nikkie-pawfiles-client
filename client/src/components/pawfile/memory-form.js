@@ -14,7 +14,6 @@ export class MemoryForm extends React.Component{
 
   onSubmit(values){
     values.type="memory";
-    console.log('values are', values);
     this.props.dispatch(submitMemoryForm(values, this.props.currentPetId));
     this.props.dispatch(showMemoryForm(false));
   }
