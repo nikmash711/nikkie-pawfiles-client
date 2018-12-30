@@ -65,6 +65,8 @@ calculateAge(date) {
         <p><strong>Species:</strong> {this.props.species}</p>
   
         {this.props.breed && <p><strong>Breed:</strong> {this.props.breed}</p>}
+
+        {this.props.weight && <p><strong>Weight:</strong> {this.props.weight}</p>}
   
         <p><strong>Gender:</strong> {this.props.gender}</p>
         

@@ -64,6 +64,15 @@ export class PawfileForm extends React.Component{
 
             <Field
               component={Input} 
+              label = "Breed:"
+              name="breed" 
+              id="breed"
+              type = "text"
+              >
+            </Field>
+
+            <Field
+              component={Input} 
               label = "Gender:"
               name="gender" 
               id="gender"
@@ -78,9 +87,9 @@ export class PawfileForm extends React.Component{
 
             <Field
               component={Input} 
-              label = "Breed:"
-              name="breed" 
-              id="breed"
+              label = "Weight:"
+              name="weight" 
+              id="weight"
               type = "text"
               >
             </Field>
