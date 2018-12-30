@@ -2,9 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import MemoryPost from './memory-post'
 import MedicalPost from './medical-post'
-import {showMedicalForm, showMemoryForm, changeSearchTerm} from '../../actions/index';
-import {filterBySearch, sortNewestToOldest} from '../helper-functions';
-
+import {showMedicalForm, showMemoryForm, changeSearchTerm, changeCategoryFilter} from '../../actions/index';
+import {filterBySearch, sortNewestToOldest, filterByCategory} from '../helper-functions';
 
 import './main-section.css'
 
@@ -26,6 +25,10 @@ export function MainSection(props){
     if(props.currentSearchTerm){
       posts = filterBySearch(props.currentSearchTerm, posts);
     }
+
+    if(props.categoryFilter){
+      posts = filterByCategory(props.categoryFilter, posts)
+    }
   }
     return(
       <main>
@@ -35,10 +38,10 @@ export function MainSection(props){
               <button onClick={()=>props.dispatch(showMedicalForm(true))} className="new-medical">New Medical</button>
             </div>
             <div className="filters">
-              <select className="filter-category" name="" id="">
-                <option value="">Filter by Category</option>
-                <option value="">Memories</option>
-                <option value="">Medical</option>
+              <select onChange={e=>props.dispatch(changeCategoryFilter(e.target.value))} className="filter-category" name="filter" id="filter">
+                <option value="">Show All Categories</option>
+                <option value="memory">Memories</option>
+                <option value="medical">Medical</option>
               </select>
             </div>
             <div className="search-input">
@@ -55,7 +58,8 @@ export function MainSection(props){
 const mapStateToProps = (state,props) => ({
   pawfiles: state.pawfile.pawfiles,
   specificPawfile: state.pawfile.pawfiles[props.id],
-  currentSearchTerm: state.pawfile.currentSearchTerm
+  currentSearchTerm: state.pawfile.currentSearchTerm,
+  categoryFilter: state.pawfile.categoryFilter
 });
 
 export default connect(mapStateToProps)(MainSection);

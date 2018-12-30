@@ -46,3 +46,7 @@ export function sortAtoZ(pawfiles_list){
 export function sortZtoA(pawfiles_list){
   pawfiles_list.sort((a,b)=> a.props.name > b.props.name ? -1 : a.props.name > b.props.name ? 1 : 0)
 }
+
+export function filterByCategory(filter, posts){
+  return posts.filter(post=>post.props.type===filter);
+}

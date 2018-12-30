@@ -81,3 +81,9 @@ export const changeSearchTerm = (searchTerm) =>({
     type: CHANGE_SEARCH_TERM,
     searchTerm
 })
+
+export const CHANGE_CATEGORY_FILTER = "CHANGE_CATEGORY_FILTER";
+export const changeCategoryFilter = (categoryFilter) =>({
+    type: CHANGE_CATEGORY_FILTER,
+    categoryFilter
+})

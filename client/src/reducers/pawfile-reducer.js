@@ -1,4 +1,4 @@
-import {SHOW_PAWFILE_FORM, SUBMIT_NEW_PAWFILE, SORTING_ALL_PETS, ADDING_NEW_REMINDER, DELETE_PAWFILE, TOGGLE_NAVBAR, DELETE_REMINDER, CHANGE_CURRENT_PET_ID, SHOW_MEDICAL_FORM, SUBMIT_MEDICAL_FORM, SHOW_MEMORY_FORM, SUBMIT_MEMORY_FORM, CHANGE_SEARCH_TERM} from '../actions/index';
+import {SHOW_PAWFILE_FORM, SUBMIT_NEW_PAWFILE, SORTING_ALL_PETS, ADDING_NEW_REMINDER, DELETE_PAWFILE, TOGGLE_NAVBAR, DELETE_REMINDER, CHANGE_CURRENT_PET_ID, SHOW_MEDICAL_FORM, SUBMIT_MEDICAL_FORM, SHOW_MEMORY_FORM, SUBMIT_MEMORY_FORM, CHANGE_SEARCH_TERM, CHANGE_CATEGORY_FILTER} from '../actions/index';
 
 const initialState = {
   user: {firstName: 'Nikkie', lastName: "Mashian"},
@@ -8,6 +8,7 @@ const initialState = {
   showMemoryForm: false,
   currentPetId: undefined,
   currentSearchTerm: "",
+  categoryFilter: "",
   toggleNavbar:false,
   pawfiles: [
     {
@@ -276,9 +277,14 @@ export const pawfileReducer = (state = initialState, action)=> {
   }
 
   else if(action.type===CHANGE_SEARCH_TERM){
-    console.log('search term is', action.searchTerm)
     return Object.assign({}, state, {
       currentSearchTerm: action.searchTerm,
+    })
+  }
+
+  else if(action.type===CHANGE_CATEGORY_FILTER){
+    return Object.assign({}, state, {
+      categoryFilter: action.categoryFilter,
     })
   }
 
