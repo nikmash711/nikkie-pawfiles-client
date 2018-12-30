@@ -119,21 +119,47 @@ export const pawfileReducer = (state = initialState, action)=> {
   else if(action.type===SUBMIT_MEDICAL_FORM){
     let pawfileToUpdate = state.pawfiles[action.id];
 
-    pawfileToUpdate.posts = [...pawfileToUpdate.posts, action.values];
+    let previousPosts = pawfileToUpdate.posts ? [...pawfileToUpdate.posts] : '';
+
+    if(previousPosts){
+      pawfileToUpdate.posts = [previousPosts, action.values];
+    }
+    else{
+      pawfileToUpdate.posts = [action.values];
+    }
+
 
     //this method only works if the pet has an existing or blank vaccination/prescription prop -- how will this work with backend?
     if(action.values.vaccinations){
       let vaccinationList = action.values.vaccinations.map(vaccination=>{
         return {name: vaccination, date: action.values.date}
       })
-      pawfileToUpdate.vaccinations = [...pawfileToUpdate.vaccinations, ...vaccinationList];
+
+      let previousVaccinations = pawfileToUpdate.vaccinations  ? [...pawfileToUpdate.vaccinations ] : '';
+
+      if(previousVaccinations){
+        pawfileToUpdate.vaccinations = [...pawfileToUpdate.vaccinations, ...vaccinationList];      
+      }
+      else{
+        pawfileToUpdate.vaccinations = [...vaccinationList];
+      }
     }
 
     if(action.values.prescriptions){
       let prescriptionList = action.values.prescriptions.map(prescription=>{
         return {name: prescription, date: action.values.date}
       })
-      pawfileToUpdate.prescriptions = [...pawfileToUpdate.prescriptions, ...prescriptionList];
+
+      let previousPrescriptions = pawfileToUpdate.prescriptions  ? [...pawfileToUpdate.prescriptions ] : '';
+
+      if(previousPrescriptions){
+        pawfileToUpdate.prescriptions = [...pawfileToUpdate.prescriptions, ...prescriptionList];
+     
+      }
+      else{
+        pawfileToUpdate.prescriptions = [...prescriptionList];
+      }
+
     }
 
     const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id===action.id ? pawfileToUpdate : item))
@@ -146,7 +172,15 @@ export const pawfileReducer = (state = initialState, action)=> {
   else if(action.type===SUBMIT_MEMORY_FORM){
     let pawfileToUpdate = state.pawfiles[action.id];
 
-    pawfileToUpdate.posts = [...pawfileToUpdate.posts, action.values];
+    //Can't think of another simpler way to do this -- if the pet doesn't already have any posts, how else can I add posts? Maybe this will get clarified when I implement backend?
+    let previousPosts = pawfileToUpdate.posts ? [...pawfileToUpdate.posts] : '';
+
+    if(previousPosts){
+      pawfileToUpdate.posts = [previousPosts, action.values];
+    }
+    else{
+      pawfileToUpdate.posts = [action.values];
+    }
 
     const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id===action.id ? pawfileToUpdate : item))
 
@@ -167,7 +201,16 @@ export const pawfileReducer = (state = initialState, action)=> {
     const newReminder = action.values;
     //First, find the file with the ID you want. Then construct a new file object - stick it in a variable.
     const pawfileToUpdate = state.pawfiles[action.id];
-    pawfileToUpdate.reminders=[...pawfileToUpdate.reminders, newReminder];
+
+    let previousReminders = pawfileToUpdate.reminders ? [...pawfileToUpdate.reminders] : '';
+
+    if(previousReminders){
+      pawfileToUpdate.reminders=[...pawfileToUpdate.reminders, newReminder];
+    }
+    else{
+      pawfileToUpdate.reminders=[newReminder];
+    }
+
     //  build up a new array of files. It should have all the old files, but in place of the one with the ID you want to change, you drop in the new file object from the variable you just created.
     const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id===action.id ? pawfileToUpdate : item))
 

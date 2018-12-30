@@ -67,7 +67,7 @@ export class MedicalForm extends React.Component{
             <Field
               component={Input}
               label="Symptoms:" 
-              type="textarea" 
+              element="textarea"
               name="symptoms" 
               id="symptoms"
               aria-describedby="instructions"
@@ -79,7 +79,7 @@ export class MedicalForm extends React.Component{
             <Field
               component={Input}
               label="Prescriptions:" 
-              type="textarea" 
+              element="textarea"
               name="prescriptions" 
               id="prescriptions"
               aria-describedby="instructions"
@@ -91,7 +91,7 @@ export class MedicalForm extends React.Component{
             <Field
               component={Input}
               label="Vaccinations:" 
-              type="textarea" 
+              element="textarea"
               name="vaccinations" 
               id="vaccinations"
               aria-describedby="instructions"
@@ -103,7 +103,7 @@ export class MedicalForm extends React.Component{
             <Field
               component={Input}
               label="Notes:" 
-              type="textarea" 
+              element="textarea"
               name="notes" 
               id="notes"
             /> 
