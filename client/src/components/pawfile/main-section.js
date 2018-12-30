@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import MemoryPost from './memory-post'
 import MedicalPost from './medical-post'
 import {showMedicalForm, showMemoryForm, changeSearchTerm} from '../../actions/index';
+import {filterBySearch, sortNewestToOldest} from '../helper-functions';
+
 
 import './main-section.css'
 
@@ -17,14 +19,14 @@ export function MainSection(props){
       <MedicalPost key={index} {...post}/>
     ))
     console.log('the posts are', posts); //why does it look weird 
-    //automatically sort by newest to oldest
-    posts.sort((a,b)=> new Date(b.props.date) - new Date(a.props.date))
+
+    //automatically sort posts newest to oldest
+    sortNewestToOldest(posts);
 
     if(props.currentSearchTerm){
-      posts = posts.filter(post=>post.props.title.toLowerCase().includes(props.currentSearchTerm) || post.props.date.toLowerCase().includes(props.currentSearchTerm))
+      posts = filterBySearch(props.currentSearchTerm, posts);
     }
   }
-  console.log('rerendering main section')
     return(
       <main>
         <nav className="options">

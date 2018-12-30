@@ -1,24 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import PawfileBlurb from './pawfile-blurb';
+import {sortByOldest, sortByYoungest, sortAtoZ, sortZtoA} from '../helper-functions';
+
 import './pawfiles-list.css';
 
 export class PawfilesList extends React.Component{
-  sortByOldest(pawfiles_list){
-    pawfiles_list.sort((a,b)=> new Date(a.props.birthday) - new Date(b.props.birthday))
-  }
-
-  sortByYoungest(pawfiles_list){
-    pawfiles_list.sort((a,b)=> new Date(b.props.birthday) - new Date(a.props.birthday))
-  }
-
-  sortAtoZ(pawfiles_list){
-    pawfiles_list.sort((a,b)=> a.props.name < b.props.name ? -1 : a.props.name < b.props.name ? 1 : 0)
-  }
-
-  sortZtoA(pawfiles_list){
-    pawfiles_list.sort((a,b)=> a.props.name > b.props.name ? -1 : a.props.name > b.props.name ? 1 : 0)
-  }
 
   render(){
 
@@ -30,16 +17,16 @@ export class PawfilesList extends React.Component{
     //how to sort the pets - better way to do this?
     switch(this.props.sortMethod){
       case "oldest":
-        this.sortByOldest(pawfiles_list)
+        sortByOldest(pawfiles_list)
         break;
       case "youngest":
-        this.sortByYoungest(pawfiles_list)
+        sortByYoungest(pawfiles_list)
         break;
       case "A-Z":
-        this.sortAtoZ(pawfiles_list)
+        sortAtoZ(pawfiles_list)
         break;
       case "Z-A":
-        this.sortZtoA(pawfiles_list)
+        sortZtoA(pawfiles_list)
         break;
       default: 
         console.log('in switch case default');
