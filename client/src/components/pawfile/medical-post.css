@@ -6,8 +6,9 @@
   color: red;
 }
 
-.post-symptoms{
-  list-style: none;
+.post-list{
+  list-style-type: disc;
+  margin-left:10px; 
 }
 
 .medical p, .medical ul{

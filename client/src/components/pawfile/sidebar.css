@@ -38,7 +38,7 @@
 }
 
 .sidebar .option-icons{
-  left: 70%;
+  left: 75%;
 }
 
 .sidebar .option-icons .fa-external-link-alt{
@@ -56,7 +56,7 @@
 
 @media(min-width: 450px){
   .sidebar .option-icons{
-    left: 80%;
+    left: 77%;
   }
 }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import {todaysDate} from '../helper-functions';
+import {todaysDate} from './helper-functions';
 
 export default class Input extends React.Component {
     componentDidUpdate(prevProps) {
@@ -18,7 +18,8 @@ export default class Input extends React.Component {
 
         let className="";
 
-        if(this.props.id==="name" || this.props.id==="gender" ||this.props.id==="species" || this.props.id==="img"){
+        // better way to do this? 
+        if(this.props.id==="name" || this.props.id==="gender" ||this.props.id==="species" || this.props.id==="img" || this.props.id==="date" || this.props.id==="title"){
             className="required";
         }
 

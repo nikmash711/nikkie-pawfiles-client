@@ -5,7 +5,6 @@ import './pawfile-blurb.css';
 import {showPawfileForm, deletePawfile} from '../../actions/index';
 import {formatDate} from '../helper-functions';
 
-
 export class PawfileBlurb extends React.Component{
 
 isLeapYear(year) {
@@ -51,9 +50,7 @@ calculateAge(date) {
           <h2>{this.props.name}</h2>
         </Link>
       </div>
-
   
-
         <div className="option-icons">
           <Link to={`/${this.props.name}/${this.props.id}`}>
             <i className="fas fa-external-link-alt"></i>

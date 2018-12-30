@@ -9,3 +9,7 @@ export function formatDate(dateString){
   let dateArr = dateString.split('-');
   return new Date(dateArr[0], dateArr[1]-1, dateArr[2]);
 }
+
+export function stringToArrayList(str){
+  return str.split(',');
+}

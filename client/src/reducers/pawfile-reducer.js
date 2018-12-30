@@ -1,9 +1,10 @@
-import {SHOW_PAWFILE_FORM, SUBMIT_NEW_PAWFILE, SORTING_ALL_PETS, ADDING_NEW_REMINDER, DELETE_PAWFILE, TOGGLE_NAVBAR, DELETE_REMINDER, CHANGE_CURRENT_PET_ID} from '../actions/index';
+import {SHOW_PAWFILE_FORM, SUBMIT_NEW_PAWFILE, SORTING_ALL_PETS, ADDING_NEW_REMINDER, DELETE_PAWFILE, TOGGLE_NAVBAR, DELETE_REMINDER, CHANGE_CURRENT_PET_ID, SHOW_MEDICAL_FORM, SUBMIT_MEDICAL_FORM} from '../actions/index';
 
 const initialState = {
   user: {firstName: 'Nikkie', lastName: "Mashian"},
   sortingPetsMethod: "",
   showPawfileForm: false,
+  showMedicalForm: false,
   currentPetId: undefined,
   toggleNavbar:false,
   pawfiles: [
@@ -42,11 +43,12 @@ const initialState = {
           id: 1,
           type: 'medical',
           title: 'Shes throwing up again:(',
-          date: '11/10/18',
-          symptoms: ['lethargic', 'no appetite'],
+          date: '2018-11-10',
+          symptoms: 'lethargic, no appetite',
+          vaccinations:'rabies',
+          prescriptions:'Frontline flea',
           doctor: 'Dr. Moon',
-          office: '1234 Sesame St',
-          diagnosis: 'Gave her fluids for the day. Wont let her eat until tomorrow. Try laxatives.',
+          notes: 'Gave her fluids for the day. Wont let her eat until tomorrow. Try laxatives.',
         }
       ]
     },
@@ -103,6 +105,20 @@ export const pawfileReducer = (state = initialState, action)=> {
         action.values
       ],
     })
+  }
+
+  else if(action.type===SUBMIT_MEDICAL_FORM){
+    let pawfileToUpdate = state.pawfiles[action.id];
+
+    pawfileToUpdate.posts = [...pawfileToUpdate.posts, action.values];
+
+    console.log('updated pawfile is', pawfileToUpdate);
+
+    const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id===action.id ? pawfileToUpdate : item))
+
+    return Object.assign({}, state, {
+      pawfiles: newArrayOfPawfiles
+  })
   }
 
   else if(action.type===DELETE_PAWFILE){
@@ -167,6 +183,12 @@ export const pawfileReducer = (state = initialState, action)=> {
     console.log('changing id', action.id);
     return Object.assign({}, state, {
       currentPetId: action.id
+    })
+  }
+
+  else if(action.type===SHOW_MEDICAL_FORM){
+    return Object.assign({}, state, {
+      showMedicalForm: action.bool
     })
   }
 

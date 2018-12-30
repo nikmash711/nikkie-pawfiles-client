@@ -12,6 +12,13 @@ export const submitNewPawfile = (values, id) => ({
     id
 });
 
+export const SUBMIT_MEDICAL_FORM = 'SUBMIT_MEDICAL_FORM';
+export const submitMedicalForm = (values, id) => ({
+    type: SUBMIT_MEDICAL_FORM,
+    values,
+    id
+});
+
 export const DELETE_PAWFILE = 'DELETE_PAWFILE';
 export const deletePawfile = (id) => ({
     type: DELETE_PAWFILE,
@@ -48,4 +55,10 @@ export const CHANGE_CURRENT_PET_ID = 'CHANGE_CURRENT_PET_ID';
 export const changeCurrentPetId = (id) => ({
     type: CHANGE_CURRENT_PET_ID,
     id
+})
+
+export const SHOW_MEDICAL_FORM = "SHOW_MEDICAL_FORM";
+export const showMedicalForm = (bool) =>({
+    type: SHOW_MEDICAL_FORM,
+    bool
 })

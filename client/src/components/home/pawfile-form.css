@@ -1,4 +1,4 @@
-.new-pawfile-form-modal{
+.form-modal{
   position: fixed;
   z-index: 100;
   left: 0;
@@ -10,7 +10,7 @@
   background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
 }
 
-.new-pawfile-form{
+.form{
   display: block;
   color: black;
   padding: 0;
@@ -22,11 +22,11 @@
   -o-transform: none;
 }
 
-.new-pawfile-form h2{
+.form h2{
   clear: both;
 }
 
-.new-pawfile-form input, .new-pawfile-form textarea, .new-pawfile-form select{
+.form input, .form textarea, .form select{
   border: transparent;
   border-bottom: 3px solid black;
   background-color: transparent;
@@ -35,24 +35,24 @@
   flex: 2;
 }
 
-.new-pawfile-form select:focus{
+.form select:focus{
   outline: 2px solid black;
 }
 
-.new-pawfile-form input:focus{
+.form input:focus{
   outline: 0;
 }
 
-.new-pawfile-form textarea:focus{
+.form textarea:focus{
   outline: 0;
 }
 
-.new-pawfile-form textarea{
+.form textarea{
   resize: none;
   border: 2px solid black;
 }
 
-.new-pawfile-form label{
+.form label{
   text-align: left;
   margin: 5px;
   flex: 1;
@@ -74,14 +74,14 @@
   padding: 2px;
 }
 
-.new-pawfile-form .form-input{
+.form .form-input{
   margin: 15px auto;
   display: flex;
   padding: 0px 20px;
   position: relative;
 }
 
-.new-pawfile-form button{
+.form button{
   outline: 0;
   background-color: black;
   border: 2px solid white;
@@ -98,7 +98,7 @@ button.close{
   font-family: 'Courier New', Courier, monospace;
 }
 
-.new-pawfile-form button:hover, .new-pawfile-form button:focus{
+.form button:hover, .form button:focus{
   background-color: white;
   color: black;
 }
@@ -109,11 +109,11 @@ button.close{
 }
 
 @media(min-width:500px){
-  .new-pawfile-form .form-input{
+  .form .form-input{
     width: 350px;
   }
 
-  /* .new-pawfile-form input, .new-pawfile-form textarea, .new-pawfile-form select{
+  /* .form input, .form textarea, .form select{
     flex: 2;
   } */
 }

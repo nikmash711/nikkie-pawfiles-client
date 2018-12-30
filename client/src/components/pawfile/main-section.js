@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import MemoryPost from './memory-post'
 import MedicalPost from './medical-post'
+import {showMedicalForm} from '../../actions/index';
 
 import './main-section.css'
 
@@ -22,7 +23,7 @@ export function MainSection(props){
         <nav className="options">
             <div className="add-buttons">
               <button className="new-memory">New Memory</button>
-              <button className="new-medical">New Medical</button>
+              <button onClick={()=>props.dispatch(showMedicalForm(true))} className="new-medical">New Medical</button>
             </div>
             <div className="filters">
               <select className="filter-category" name="" id="">
