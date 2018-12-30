@@ -7,7 +7,7 @@ export function MedicalPost(props){
   return(
     <li key={props.index} className={`${props.type.toLowerCase()} post`}>
       <h3 className="post-title">{props.title}</h3>
-      <span className="post-date">{formatDate(props.date).toDateString()}</span>
+      <span className="post-date">{props.date}</span>
       {props.symptoms && <ul className="post-list">
         <strong>Symptoms:</strong>
         {props.symptoms.map((symptom, index)=>(

@@ -9,7 +9,7 @@ export function MemoryPost(props){
     <li key={props.index} className={`${props.type.toLowerCase()} post`}>
       <div className="all-post-info">
         <h3 className="post-title">{props.title}</h3>
-        <span className="post-date">{formatDate(props.date).toDateString()}</span>
+        <span className="post-date">{props.date}</span>
         <p className="post-description">{props.description}</p>
       </div>
       {props.memory_img && <img className="post-img" src={props.memory_img} alt={props.title}/>}

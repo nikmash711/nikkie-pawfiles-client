@@ -37,7 +37,7 @@ const initialState = {
           id: 0,
           type: 'memory',
           title: 'Mushy learns how to open the door',
-          date: '2018-12-10',
+          date: 'Fri Dec 14 2018',
           description: 'I walked into the living room and saw her opening it with her claws. How dare she!',
           memory_img: 'https://i.ibb.co/y8hFnkL/2.jpg'
         },
@@ -45,7 +45,7 @@ const initialState = {
           id: 1,
           type: 'medical',
           title: 'Shes throwing up again:(',
-          date: '2018-11-10',
+          date: 'Fri Dec 14 2017',
           symptoms: ['lethargic', 'no appetite'],
           vaccinations:['rabies'],
           prescriptions:['Frontline flea'],

@@ -21,7 +21,7 @@ export function MainSection(props){
     posts.sort((a,b)=> new Date(b.props.date) - new Date(a.props.date))
 
     if(props.currentSearchTerm){
-      posts = posts.filter(post=>post.props.title.toLowerCase().includes(props.currentSearchTerm) || post.props.date.includes(props.currentSearchTerm))
+      posts = posts.filter(post=>post.props.title.toLowerCase().includes(props.currentSearchTerm) || post.props.date.toLowerCase().includes(props.currentSearchTerm))
     }
   }
   console.log('rerendering main section')
