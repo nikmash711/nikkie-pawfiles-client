@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import MemoryPost from './memory-post'
 import MedicalPost from './medical-post'
-import {showMedicalForm} from '../../actions/index';
+import {showMedicalForm, showMemoryForm} from '../../actions/index';
 
 import './main-section.css'
 
@@ -16,23 +16,23 @@ export function MainSection(props){
      :
       <MedicalPost key={index} {...post}/>
     ))
+    console.log('the posts are', posts); //why does it look weird 
+    //automatically sort by newest to oldest
+    posts.sort((a,b)=> new Date(b.props.date) - new Date(a.props.date))
   }
   console.log('rerendering main section')
     return(
       <main>
         <nav className="options">
             <div className="add-buttons">
-              <button className="new-memory">New Memory</button>
+              <button onClick={()=>props.dispatch(showMemoryForm(true))} className="new-memory">New Memory</button>
               <button onClick={()=>props.dispatch(showMedicalForm(true))} className="new-medical">New Medical</button>
             </div>
             <div className="filters">
               <select className="filter-category" name="" id="">
-                <option value="">Select Category</option>
+                <option value="">Filter by Category</option>
                 <option value="">Memories</option>
                 <option value="">Medical</option>
-              </select>
-              <select className="filter-date" name="" id="">
-                <option value="">Select Date</option>
               </select>
             </div>
             <div className="search-input">

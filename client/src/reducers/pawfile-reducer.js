@@ -1,10 +1,11 @@
-import {SHOW_PAWFILE_FORM, SUBMIT_NEW_PAWFILE, SORTING_ALL_PETS, ADDING_NEW_REMINDER, DELETE_PAWFILE, TOGGLE_NAVBAR, DELETE_REMINDER, CHANGE_CURRENT_PET_ID, SHOW_MEDICAL_FORM, SUBMIT_MEDICAL_FORM} from '../actions/index';
+import {SHOW_PAWFILE_FORM, SUBMIT_NEW_PAWFILE, SORTING_ALL_PETS, ADDING_NEW_REMINDER, DELETE_PAWFILE, TOGGLE_NAVBAR, DELETE_REMINDER, CHANGE_CURRENT_PET_ID, SHOW_MEDICAL_FORM, SUBMIT_MEDICAL_FORM, SHOW_MEMORY_FORM, SUBMIT_MEMORY_FORM} from '../actions/index';
 
 const initialState = {
   user: {firstName: 'Nikkie', lastName: "Mashian"},
   sortingPetsMethod: "",
   showPawfileForm: false,
   showMedicalForm: false,
+  showMemoryForm: false,
   currentPetId: undefined,
   toggleNavbar:false,
   pawfiles: [
@@ -35,22 +36,29 @@ const initialState = {
           id: 0,
           type: 'memory',
           title: 'Mushy learns how to open the door',
-          date: '12/10/18',
+          date: '2018-12-10',
           description: 'I walked into the living room and saw her opening it with her claws. How dare she!',
-          img: 'https://i.ibb.co/y8hFnkL/2.jpg'
+          memory_img: 'https://i.ibb.co/y8hFnkL/2.jpg'
         },
         {
           id: 1,
           type: 'medical',
           title: 'Shes throwing up again:(',
           date: '2018-11-10',
-          symptoms: 'lethargic, no appetite',
-          vaccinations:'rabies',
-          prescriptions:'Frontline flea',
+          symptoms: ['lethargic', 'no appetite'],
+          vaccinations:['rabies'],
+          prescriptions:['Frontline flea'],
           doctor: 'Dr. Moon',
           notes: 'Gave her fluids for the day. Wont let her eat until tomorrow. Try laxatives.',
         }
-      ]
+      ],
+      vaccinations: [
+        {
+          name: 'Rabies',
+          date: '2018-10-12'
+        }
+      ],
+      prescriptions:[]
     },
     {
       id: 1,
@@ -112,7 +120,32 @@ export const pawfileReducer = (state = initialState, action)=> {
 
     pawfileToUpdate.posts = [...pawfileToUpdate.posts, action.values];
 
-    console.log('updated pawfile is', pawfileToUpdate);
+    //this method only works if the pet has an existing or blank vaccination/prescription prop -- how will this work with backend?
+    if(action.values.vaccinations){
+      let vaccinationList = action.values.vaccinations.map(vaccination=>{
+        return {name: vaccination, date: action.values.date}
+      })
+      pawfileToUpdate.vaccinations = [...pawfileToUpdate.vaccinations, ...vaccinationList];
+    }
+
+    if(action.values.prescriptions){
+      let prescriptionList = action.values.prescriptions.map(prescription=>{
+        return {name: prescription, date: action.values.date}
+      })
+      pawfileToUpdate.prescriptions = [...pawfileToUpdate.prescriptions, ...prescriptionList];
+    }
+
+    const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id===action.id ? pawfileToUpdate : item))
+
+    return Object.assign({}, state, {
+      pawfiles: newArrayOfPawfiles
+  })
+  }
+
+  else if(action.type===SUBMIT_MEMORY_FORM){
+    let pawfileToUpdate = state.pawfiles[action.id];
+
+    pawfileToUpdate.posts = [...pawfileToUpdate.posts, action.values];
 
     const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id===action.id ? pawfileToUpdate : item))
 
@@ -189,6 +222,12 @@ export const pawfileReducer = (state = initialState, action)=> {
   else if(action.type===SHOW_MEDICAL_FORM){
     return Object.assign({}, state, {
       showMedicalForm: action.bool
+    })
+  }
+
+  else if(action.type===SHOW_MEMORY_FORM){
+    return Object.assign({}, state, {
+      showMemoryForm: action.bool
     })
   }
 

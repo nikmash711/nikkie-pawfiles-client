@@ -6,6 +6,7 @@ import Sidebar from './sidebar';
 import MainSection from './main-section';
 import PawfileForm from '../home/pawfile-form';
 import MedicalForm from './medical-form'
+import MemoryForm from './memory-form'
 import {Link, Redirect} from 'react-router-dom';
 import {changeCurrentPetId} from '../../actions/index';
 
@@ -43,6 +44,7 @@ export class PawfilePage extends React.Component{
         <MainSection id={this.props.match.params.pawfileId}/>
         {this.props.showPawfileForm && <PawfileForm/>} 
         {this.props.showMedicalForm && <MedicalForm/>} 
+        {this.props.showMemoryForm && <MemoryForm/>}
         <Footer/>
       </div>
     );
@@ -52,7 +54,8 @@ export class PawfilePage extends React.Component{
 const mapStateToProps = state => ({
   pawfiles: state.pawfile.pawfiles,
   showPawfileForm: state.pawfile.showPawfileForm,
-  showMedicalForm: state.pawfile.showMedicalForm
+  showMedicalForm: state.pawfile.showMedicalForm,
+  showMemoryForm: state.pawfile.showMemoryForm,
 });
 
 export default connect(mapStateToProps)(PawfilePage);

@@ -4,6 +4,7 @@ import {reduxForm, Field, Fieldset, SubmissionError, focus} from 'redux-form';
 import Input from '../input';
 import {submitMedicalForm, showMedicalForm} from '../../actions/index';
 import {required, nonEmpty, unSelected} from '../validators';
+import {stringToArrayList} from '../helper-functions';
 import '.././home/pawfile-form.css';
 
 export class MedicalForm extends React.Component{
@@ -13,6 +14,16 @@ export class MedicalForm extends React.Component{
 
   onSubmit(values){
     values.type="medical";
+    if(values.vaccinations){
+      values.vaccinations = stringToArrayList(values.vaccinations);
+    }
+    if(values.prescriptions){
+      values.prescriptions = stringToArrayList(values.prescriptions);
+    }
+    if(values.symptoms){
+      values.symptoms = stringToArrayList(values.symptoms);
+    }
+
     console.log('values are', values);
     this.props.dispatch(submitMedicalForm(values, this.props.currentPetId));
     this.props.dispatch(showMedicalForm(false));
