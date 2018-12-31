@@ -4,10 +4,6 @@ import HomePage from './home/homepage';
 import PawfilePage from './pawfile/pawfilepage';
 import {Redirect, Switch} from 'react-router-dom';
 
-
-import './App.css';
-
-
 export default class App extends React.Component {
   render() {
     return (

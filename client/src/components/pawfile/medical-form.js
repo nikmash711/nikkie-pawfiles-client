@@ -6,6 +6,7 @@ import {submitMedicalForm, showMedicalForm} from '../../actions/index';
 import {required, nonEmpty, unSelected} from '../validators';
 import {stringToArrayList, formatDate} from '../helper-functions';
 import '.././home/pawfile-form.css';
+import './medical-form.css'
 
 export class MedicalForm extends React.Component{
   componentWillUnmount(){
@@ -25,19 +26,16 @@ export class MedicalForm extends React.Component{
       values.symptoms = stringToArrayList(values.symptoms);
     }
 
-    console.log('values submitting are', values);
     this.props.dispatch(submitMedicalForm(values, this.props.currentPetId));
     this.props.dispatch(showMedicalForm(false));
   }
 
   render(){
-    console.log('showing med')
     return(
-      <div className='form-modal'>
+      <div className='form-modal med'>
           <form className="form" onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
           <button type="button" className = "close" onClick={()=>this.props.dispatch(showMedicalForm(false))}>X</button>
-          <h2>Medical Form</h2>
-
+          
             <Field
               component={Input}
               label="Title:" 

@@ -6,6 +6,7 @@ import {submitMemoryForm, showMemoryForm} from '../../actions/index';
 import {required, nonEmpty} from '../validators';
 import {stringToArrayList, formatDate} from '../helper-functions';
 import '.././home/pawfile-form.css';
+import './memory-form.css';
 
 export class MemoryForm extends React.Component{
   componentWillUnmount(){
@@ -20,12 +21,10 @@ export class MemoryForm extends React.Component{
   }
 
   render(){
-    console.log('showing memory')
     return(
-      <div className='form-modal'>
+      <div className='form-modal mem'>
           <form className="form" onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
           <button type="button" className = "close" onClick={()=>this.props.dispatch(showMemoryForm(false))}>X</button>
-          <h2>Memory Form</h2>
 
             <Field
               component={Input}

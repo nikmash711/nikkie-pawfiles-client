@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {reduxForm, Field, Fieldset, SubmissionError, focus} from 'redux-form';
 import Input from '../input';
-import {submitNewPawfile, showPawfileForm} from '../../actions/index';
+import {submitPawfile, showPawfileForm} from '../../actions/index';
 import {required, nonEmpty, unSelected} from '../validators';
 
 import './pawfile-form.css';
@@ -15,7 +15,7 @@ export class PawfileForm extends React.Component{
 
   onSubmit(values){
     console.log('values are', values);
-    this.props.dispatch(submitNewPawfile(values, this.props.currentPetId));
+    this.props.dispatch(submitPawfile(values, this.props.currentPetId));
     this.props.dispatch(showPawfileForm(false, undefined));
   }
 

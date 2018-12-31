@@ -1,55 +1,55 @@
 export const SHOW_PAWFILE_FORM = 'SHOW_PAWFILE_FORM';
-export const showPawfileForm = (bool, id) => ({
+export const showPawfileForm = (bool, currentPetId) => ({
     type: SHOW_PAWFILE_FORM,
     bool,
-    id
+    currentPetId
 });
 
-export const SUBMIT_NEW_PAWFILE = 'SUBMIT_NEW_PAWFILE';
-export const submitNewPawfile = (values, id) => ({
-    type: SUBMIT_NEW_PAWFILE,
+export const SUBMIT_PAWFILE = 'SUBMIT_PAWFILE';
+export const submitPawfile = (values, currentPetId) => ({
+    type: SUBMIT_PAWFILE,
     values,
-    id
+    currentPetId
 });
 
 export const SUBMIT_MEDICAL_FORM = 'SUBMIT_MEDICAL_FORM';
-export const submitMedicalForm = (values, id) => ({
+export const submitMedicalForm = (values, currentPetId) => ({
     type: SUBMIT_MEDICAL_FORM,
     values,
-    id
+    currentPetId
 });
 
 export const SUBMIT_MEMORY_FORM = 'SUBMIT_MEMORY_FORM';
-export const submitMemoryForm = (values, id) => ({
+export const submitMemoryForm = (values, currentPetId) => ({
     type: SUBMIT_MEMORY_FORM,
     values,
-    id
+    currentPetId
 });
 
 export const DELETE_PAWFILE = 'DELETE_PAWFILE';
-export const deletePawfile = (id) => ({
+export const deletePawfile = (currentPetId) => ({
     type: DELETE_PAWFILE,
-    id
+    currentPetId
 })
 
-export const SORTING_ALL_PETS = 'SORTING_ALL_PETS';
-export const sortingAllPets = (sortMethod) => ({
-    type: SORTING_ALL_PETS,
-    sortMethod
-});
-
 export const ADDING_NEW_REMINDER = 'ADDING_NEW_REMINDER';
-export const addingNewReminder = (values, id) => ({
+export const addingNewReminder = (values, currentPetId) => ({
     type: ADDING_NEW_REMINDER,
     values,
-    id
+    currentPetId
 });
 
 export const DELETE_REMINDER = 'DELETE_REMINDER';
-export const deleteReminder = (petId, reminderId) => ({
+export const deleteReminder = (currentPetId, reminderId) => ({
     type: DELETE_REMINDER,
-    petId,
+    currentPetId,
     reminderId
+});
+
+export const CHANGE_SORTING_PETS_METHOD = 'CHANGE_SORTING_PETS_METHOD';
+export const changeSortingPetsMethod = (sortMethod) => ({
+    type: CHANGE_SORTING_PETS_METHOD,
+    sortMethod
 });
 
 export const TOGGLE_NAVBAR = "TOGGLE_NAVBAR";
@@ -59,9 +59,9 @@ export const toggleNavbar = (bool) =>({
 })
 
 export const CHANGE_CURRENT_PET_ID = 'CHANGE_CURRENT_PET_ID';
-export const changeCurrentPetId = (id) => ({
+export const changeCurrentPetId = (currentPetId) => ({
     type: CHANGE_CURRENT_PET_ID,
-    id
+    currentPetId
 })
 
 export const SHOW_MEDICAL_FORM = "SHOW_MEDICAL_FORM";

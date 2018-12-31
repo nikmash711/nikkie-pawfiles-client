@@ -1,12 +1,12 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {sortingAllPets} from '../../actions/index';
+import {changeSortingPetsMethod} from '../../actions/index';
 
 import './sort-by-select.css'
 
 export function SortBySelect(props){
   return(
-    <select className="tape" onChange={e=>props.dispatch(sortingAllPets(e.target.value))}>
+    <select className="tape" onChange={e=>props.dispatch(changeSortingPetsMethod(e.target.value))}>
       <option value="">Sort By:</option>
       <option value="oldest">Oldest</option>
       <option value="youngest">Youngest</option>
