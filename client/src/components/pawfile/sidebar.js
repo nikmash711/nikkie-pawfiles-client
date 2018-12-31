@@ -8,29 +8,27 @@ import './sidebar.css'
 export class Sidebar extends React.Component{
 
   componentDidMount(){
-    document.title = this.props.specificPawfile ? `${this.props.specificPawfile.name}` : "Pawfile";
+    document.title = this.props.individualPawfile ? `${this.props.individualPawfile.name}` : "Pawfile";
   }
 
   componentDidUpdate(){
-    document.title = this.props.specificPawfile ? `${this.props.specificPawfile.name}` : "Pawfile";
+    document.title = this.props.individualPawfile ? `${this.props.individualPawfile.name}` : "Pawfile";
   }
 
   render(){
     console.log('rendering sidebar with props', this.props)
     return(
         <aside className="sidebar left"> 
-          <PawfileBlurb {...this.props.specificPawfile}/>
-          <ReminderBlurb {...this.props.specificPawfile} />
+          <PawfileBlurb {...this.props.individualPawfile}/>
+          <ReminderBlurb {...this.props.individualPawfile} />
         </aside>      
       );
   }
 }
 
-// let pawfileId = this.props.id;
 const mapStateToProps = (state, props) => ({
   //find the pawfile with an id equal to the one passed down in props
-  specificPawfile: state.pawfile.pawfiles.find(pawfile=> pawfile.id == props.id),
-  // pawfiles: state.pawfile.pawfiles,
+  individualPawfile: state.pawfile.individualPawfile
 });
 
 export default connect(mapStateToProps)(Sidebar);

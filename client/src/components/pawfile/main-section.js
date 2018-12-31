@@ -9,11 +9,11 @@ import './main-section.css'
 export function MainSection(props){
   let posts;
 
-  console.log('the posts are', props.specificPawfile.posts);
+  console.log('the posts are', props.individualPawfile.posts);
 
   //if this pet has some pre-existing posts: 
-  if(props.specificPawfile.posts){
-     posts = props.specificPawfile.posts.map((post,index)=>(
+  if(props.individualPawfile.posts){
+     posts = props.individualPawfile.posts.map((post,index)=>(
       post.type==="memory" ?
         <MemoryPost key={index} {...post}/>
       :
@@ -59,7 +59,7 @@ export function MainSection(props){
 }
 
 const mapStateToProps = (state,props) => ({
-  specificPawfile: state.pawfile.pawfiles.find(pawfile=> pawfile.id == props.id),
+  individualPawfile: state.pawfile.individualPawfile,
   currentSearchTerm: state.pawfile.currentSearchTerm,
   categoryFilter: state.pawfile.categoryFilter
 });

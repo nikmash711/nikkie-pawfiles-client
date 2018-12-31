@@ -1,4 +1,4 @@
-import {SHOW_PAWFILE_FORM, SUBMIT_PAWFILE, CHANGE_SORTING_PETS_METHOD, ADDING_NEW_REMINDER, DELETE_PAWFILE, TOGGLE_NAVBAR, DELETE_REMINDER, CHANGE_CURRENT_PET_ID, SHOW_MEDICAL_FORM, SUBMIT_MEDICAL_FORM, SHOW_MEMORY_FORM, SUBMIT_MEMORY_FORM, CHANGE_SEARCH_TERM, CHANGE_CATEGORY_FILTER, FETCH_PAWFILES_SUCCESS, FETCH_INDIVIDUAL_PAWFILE_SUCCESS, CHANGE_PENDING} from '../actions/index';
+import {SHOW_PAWFILE_FORM, SUBMIT_PAWFILE, CHANGE_SORTING_PETS_METHOD, ADDING_NEW_REMINDER, DELETE_PAWFILE, TOGGLE_NAVBAR, DELETE_REMINDER, CHANGE_CURRENT_PET_ID, SHOW_MEDICAL_FORM, SUBMIT_MEDICAL_FORM, SHOW_MEMORY_FORM, SUBMIT_MEMORY_FORM, CHANGE_SEARCH_TERM, CHANGE_CATEGORY_FILTER, FETCH_PAWFILES_SUCCESS, FETCH_INDIVIDUAL_PAWFILE_SUCCESS, CHANGE_PAWFILES_PENDING, CHANGE_INDIVIDUAL_PAWFILE_PENDING} from '../actions/index';
 
 //dummy initial state 
 const initialState = {
@@ -14,6 +14,7 @@ const initialState = {
   pawfiles: [],
   individualPawfile: {},
   pawfilesPending: true,
+  individualPawfilePending: true,
 };
 
 export const pawfileReducer = (state = initialState, action)=> {
@@ -238,9 +239,16 @@ export const pawfileReducer = (state = initialState, action)=> {
     })
   }
 
-  else if(action.type===CHANGE_PENDING){
+  else if(action.type===CHANGE_PAWFILES_PENDING){
+    console.log('changing pending to', action.bool);
     return Object.assign({}, state, {
-      pawfilesPending: true,
+      pawfilesPending: action.bool,
+    })
+  }
+
+  else if(action.type===  CHANGE_INDIVIDUAL_PAWFILE_PENDING){
+    return Object.assign({}, state, {
+      individualPawfilePending: action.bool,
     })
   }
 

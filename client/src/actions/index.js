@@ -102,9 +102,15 @@ export const fetchIndividualPawfileSuccess = pawfile => ({
     pawfile
 })
 
-export const CHANGE_PENDING = "CHANGE_PENDING";
-export const changePending = bool => ({
-    type: CHANGE_PENDING,
+export const CHANGE_PAWFILES_PENDING = "CHANGE_PAWFILES_PENDING";
+export const changePawfilesPending = bool => ({
+    type: CHANGE_PAWFILES_PENDING,
+    bool
+})
+
+export const CHANGE_INDIVIDUAL_PAWFILE_PENDING = "CHANGE_INDIVIDUAL_PAWFILE_PENDING";
+export const changeIndividualPawfilePending = bool => ({
+    type: CHANGE_INDIVIDUAL_PAWFILE_PENDING,
     bool
 })
 

@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import Navbar from '../navbar';
 import Footer from '../footer'
 import MyPawfiles from './my-pawfiles';
-import {fetchPawfiles, changePending} from '../../actions/index';
+import {fetchPawfiles, changePawfilesPending} from '../../actions/index';
 
 export class HomePage extends React.Component{
   componentDidMount(){
@@ -13,7 +13,8 @@ export class HomePage extends React.Component{
   }
 
   componentWillUnmount(){
-    this.props.dispatch(changePending(true));
+    console.log('homepage unmounting');
+    this.props.dispatch(changePawfilesPending(true));
   }
 
   componentDidUpdate(){

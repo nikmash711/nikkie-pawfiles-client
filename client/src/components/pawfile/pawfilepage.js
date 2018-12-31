@@ -8,12 +8,14 @@ import PawfileForm from '../home/pawfile-form';
 import MedicalForm from './medical-form'
 import MemoryForm from './memory-form'
 import {Redirect} from 'react-router-dom'
-import {showMedicalForm, showMemoryForm, changeSearchTerm, changeCategoryFilter, changeCurrentPetId, fetchIndividualPawfile, changePending} from '../../actions/index';
+import {showMedicalForm, showMemoryForm, changeSearchTerm, changeCategoryFilter, changeCurrentPetId, fetchIndividualPawfile, changeIndividualPawfilePending} from '../../actions/index';
 
 
 export class PawfilePage extends React.Component{
   componentDidMount(){
+    console.log('mounting pawfilepage');
     this.props.dispatch(changeCurrentPetId(this.props.match.params.pawfileId));
+    this.props.dispatch(fetchIndividualPawfile(this.props.match.params.pawfileId))
   }
 
   componentWillUnmount(){
@@ -23,6 +25,7 @@ export class PawfilePage extends React.Component{
     this.props.dispatch(showMemoryForm(false));
     this.props.dispatch(changeSearchTerm(""));
     this.props.dispatch(changeCategoryFilter(""));
+    this.props.dispatch(changeIndividualPawfilePending(true));
   }
 
   //I no longer need to check validId this way.
@@ -41,7 +44,12 @@ export class PawfilePage extends React.Component{
     // if(!this.validId(this.props.match.params.pawfileId)){
       console.log('invalid id', this.props.match.params.pawfileId);
       // return <Redirect to="/home" /> 
-    // } 
+    // }
+    
+    if(this.props.pawfilesPending){
+      console.log('pending pawfilepage');
+      return <p>Pending</p>
+    }
 
     return(
       <div className="pawfile-page">
@@ -65,3 +73,5 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps)(PawfilePage);
+
+//still problematic bc unless homepage fetched the data, we have to refetch it on pawfile page. cant depend on homepage 
