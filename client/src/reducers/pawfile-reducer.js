@@ -235,7 +235,7 @@ export const pawfileReducer = (state = initialState, action)=> {
     console.log('in success for indiv pawfile, fetched', action.pawfile.pawfile);
     return Object.assign({}, state, {
       individualPawfile: action.pawfile.pawfile,
-      pawfilesPending: false,
+      individualPawfilePending: false,
     })
   }
 

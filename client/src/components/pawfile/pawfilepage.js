@@ -46,7 +46,7 @@ export class PawfilePage extends React.Component{
       // return <Redirect to="/home" /> 
     // }
     
-    if(this.props.pawfilesPending){
+    if(this.props.individualPawfilePending){
       console.log('pending pawfilepage');
       return <p>Pending</p>
     }
@@ -69,7 +69,7 @@ const mapStateToProps = state => ({
   showPawfileForm: state.pawfile.showPawfileForm,
   showMedicalForm: state.pawfile.showMedicalForm,
   showMemoryForm: state.pawfile.showMemoryForm,
-  pawfilesPending: state.pawfile.pawfilesPending,
+  individualPawfilePending: state.pawfile.individualPawfilePending,
 });
 
 export default connect(mapStateToProps)(PawfilePage);
