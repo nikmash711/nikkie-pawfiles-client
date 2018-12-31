@@ -25,7 +25,7 @@ export class MedicalForm extends React.Component{
       values.symptoms = stringToArrayList(values.symptoms);
     }
 
-    console.log('values are', values);
+    console.log('values submitting are', values);
     this.props.dispatch(submitMedicalForm(values, this.props.currentPetId));
     this.props.dispatch(showMedicalForm(false));
   }
@@ -62,6 +62,14 @@ export class MedicalForm extends React.Component{
               name="doctor" 
               id="doctor"
               type = "text"
+            />
+
+            <Field
+              component={Input} 
+              label = "Doctor's Office:"
+              name="office" 
+              id="office"
+              type = "url"
             />
 
             <Field

@@ -1,14 +1,13 @@
 .medical{
-  border: 1px solid red;
-}
-
-.medical .post-title{
-  color: red;
+  border: 3px solid coral;
 }
 
 .post-list{
   list-style-type: disc;
-  margin-left:10px; 
+}
+
+.post-list li{
+  margin-left:20px; 
 }
 
 .medical p, .medical ul{

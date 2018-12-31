@@ -123,7 +123,7 @@ export const pawfileReducer = (state = initialState, action)=> {
     let previousPosts = pawfileToUpdate.posts ? [...pawfileToUpdate.posts] : '';
 
     if(previousPosts){
-      pawfileToUpdate.posts = [previousPosts, action.values];
+      pawfileToUpdate.posts = [...pawfileToUpdate.posts, action.values];
     }
     else{
       pawfileToUpdate.posts = [action.values];
@@ -177,11 +177,13 @@ export const pawfileReducer = (state = initialState, action)=> {
     let previousPosts = pawfileToUpdate.posts ? [...pawfileToUpdate.posts] : '';
 
     if(previousPosts){
-      pawfileToUpdate.posts = [previousPosts, action.values];
+      pawfileToUpdate.posts = [...pawfileToUpdate.posts, action.values];
     }
     else{
       pawfileToUpdate.posts = [action.values];
     }
+
+    // pawfileToUpdate.posts = [...pawfileToUpdate.posts, action.values];
 
     const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id===action.id ? pawfileToUpdate : item))
 

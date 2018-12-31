@@ -1,10 +1,10 @@
 .memory{
-  border: 1px solid lightgreen;
+  border: 3px solid lightgreen;
 }
 
-.memory .post-title{
+/* .memory .post-title{
   color: lightgreen;
-}
+} */
 
 .memory.post{
   display: flex;
