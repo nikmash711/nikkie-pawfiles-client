@@ -10,8 +10,8 @@ export class Reminder extends React.Component{
   render(){
     console.log('petid is', this.props.currentPetId);
     return(
-      <li data-id={`${this.props.id}`} className="reminder">
-        <button onClick={()=>{this.props.dispatch(deleteReminder(this.props.currentPetId, this.props.id))}} className="delete-reminder">X</button>
+      <li data-id={`${this.props.reminderId}`} className="reminder">
+        <button onClick={()=>{this.props.dispatch(deleteReminder(this.props.currentPetId, this.props.reminderId))}} className="delete-reminder">X</button>
         <span className="reminder-note">
           <strong>{this.props.note}</strong>
         </span>

@@ -4,20 +4,22 @@ import MemoryPost from './memory-post'
 import MedicalPost from './medical-post'
 import {showMedicalForm, showMemoryForm, changeSearchTerm, changeCategoryFilter} from '../../actions/index';
 import {filterBySearch, sortNewestToOldest, filterByCategory} from '../helper-functions';
-
 import './main-section.css'
 
 export function MainSection(props){
   let posts;
-  
+
+  console.log('the posts are', props.specificPawfile.posts);
+
+  //if this pet has some pre-existing posts: 
   if(props.specificPawfile.posts){
      posts = props.specificPawfile.posts.map((post,index)=>(
       post.type==="memory" ?
         <MemoryPost key={index} {...post}/>
-     :
-      <MedicalPost key={index} {...post}/>
+      :
+        <MedicalPost key={index} {...post}/>
     ))
-    console.log('the posts are', posts); //why does it look weird 
+    console.log('the posts are2', posts); //why does it look weird 
 
     //automatically sort posts newest to oldest
     sortNewestToOldest(posts);
@@ -30,6 +32,7 @@ export function MainSection(props){
       posts = filterByCategory(props.categoryFilter, posts)
     }
   }
+
     return(
       <main>
         <nav className="options">

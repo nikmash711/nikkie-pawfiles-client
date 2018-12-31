@@ -7,7 +7,6 @@ import './sidebar.css'
 
 export function Sidebar(props){
   console.log('rendering sidebar')
-  // console.log('the pawfile is', props.pawfile);
   // console.log('the currentId is', props.currentPetId);
   return(
       <aside className="sidebar left"> 
@@ -21,7 +20,7 @@ const mapStateToProps = (state, props) => ({
   // currentPetId: state.pawfile.currentPetId,
   // pawfile: state.pawfile.pawfiles[state.pawfile.currentPetId],
 
-  //I HAVE to include line 25 or else it doesn't realize the state has been updated...There's probably a better way to do this
+  //I HAVE to include line 24 or else it doesn't realize the state has been updated (like when I add a reminder)...There's probably a better way to do this
   pawfiles: state.pawfile.pawfiles,
   specificPawfile: state.pawfile.pawfiles[props.id]
 });

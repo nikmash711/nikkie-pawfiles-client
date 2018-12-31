@@ -1,12 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {formatDate} from '../helper-functions';
 import {Link} from 'react-router-dom';
-
 import './medical-post.css'
 
 export function MedicalPost(props){
-  console.log('in medical post, props.type is', props.type);
   return(
     <li key={props.index} className={`${props.type.toLowerCase()} post`}>
       <strong><h3 className="post-title">{props.title}</h3></strong>

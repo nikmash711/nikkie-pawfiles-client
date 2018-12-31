@@ -4,7 +4,7 @@ import {reduxForm, Field, Fieldset, SubmissionError, focus} from 'redux-form';
 import Input from '../input';
 import {submitMemoryForm, showMemoryForm} from '../../actions/index';
 import {required, nonEmpty} from '../validators';
-import {stringToArrayList, formatDate} from '../helper-functions';
+import {formatDate} from '../helper-functions';
 import '.././home/pawfile-form.css';
 import './memory-form.css';
 
@@ -73,12 +73,11 @@ export class MemoryForm extends React.Component{
 }
 
 function mapStateToProps(state) {
-  let currentPetId = state.pawfile.currentPetId;
+  // let currentPetId = state.pawfile.currentPetId;
   return {
-    // to get the initial values if the user is editing the form: 
     currentPetId: state.pawfile.currentPetId,
+    // to get the initial values if the user is editing the form: 
     // initialValues: {
-    //   name: currentPetId>=0 ? state.pawfile.pawfiles[currentPetId].name : "",
     // }
   }
 }

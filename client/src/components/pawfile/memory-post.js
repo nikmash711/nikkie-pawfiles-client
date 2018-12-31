@@ -1,7 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {formatDate} from '../helper-functions';
-
 import './memory-post.css'
 
 export function MemoryPost(props){
