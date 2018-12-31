@@ -41,7 +41,7 @@ const initialState = {
           title: 'Mushy learns how to open the door',
           date: 'Fri Dec 14 2018',
           description: 'I walked into the living room and saw her opening it with her claws. How dare she!',
-          memory_img: 'https://i.ibb.co/y8hFnkL/2.jpg'
+          memory_img: 'https://i.ibb.co/YXHrzCq/Screen-Shot-2018-12-31-at-8-30-37-AM.png" alt="Screen-Shot-2018-12-31-at-8-30-37-AM'
         },
         {
           id: 1,
@@ -98,7 +98,7 @@ export const pawfileReducer = (state = initialState, action)=> {
     //if its editing an existing pawfile: 
     if(action.currentPetId>=0){
       const updatedValues = action.values;
-      let pawfileToUpdate = state.pawfiles[action.currentPetId];
+      let pawfileToUpdate = {...state.pawfiles[action.currentPetId]};
 
       //merge updated values with rest of pawfile: 
       let updatedPawfile = Object.assign({}, pawfileToUpdate, updatedValues)
@@ -119,7 +119,7 @@ export const pawfileReducer = (state = initialState, action)=> {
   }
 
   else if(action.type===SUBMIT_MEDICAL_FORM){
-    let pawfileToUpdate = state.pawfiles[action.currentPetId];
+    let pawfileToUpdate = {...state.pawfiles[action.currentPetId]};
 
     //check if there's any previous posts for this pet. How we handle adding the new post depends on this.
     let previousPosts = pawfileToUpdate.posts ? [...pawfileToUpdate.posts] : '';
@@ -173,7 +173,7 @@ export const pawfileReducer = (state = initialState, action)=> {
   }
 
   else if(action.type===SUBMIT_MEMORY_FORM){
-    let pawfileToUpdate = state.pawfiles[action.currentPetId];
+    let pawfileToUpdate = {...state.pawfiles[action.currentPetId]};
 
     let previousPosts = pawfileToUpdate.posts ? [...pawfileToUpdate.posts] : '';
 
@@ -202,10 +202,12 @@ export const pawfileReducer = (state = initialState, action)=> {
   else if (action.type=== ADDING_NEW_REMINDER){
     const newReminder = action.values;
 
-    const pawfileToUpdate = state.pawfiles[action.currentPetId];
+    //create a new obj -this was the problem (I was directly mutating state)
+    const pawfileToUpdate = {...state.pawfiles[action.currentPetId]};
 
     let previousReminders = pawfileToUpdate.reminders ? [...pawfileToUpdate.reminders] : '';
 
+    //
     if(previousReminders){
       pawfileToUpdate.reminders=[...pawfileToUpdate.reminders, newReminder];
     }
@@ -221,7 +223,7 @@ export const pawfileReducer = (state = initialState, action)=> {
   }
 
   else if(action.type=== DELETE_REMINDER){
-    let pawfileToUpdate =  state.pawfiles[action.currentPetId];
+    let pawfileToUpdate =  {...state.pawfiles[action.currentPetId]};
 
     const updatedReminders = pawfileToUpdate.reminders.filter((reminder)=> (reminder.id!==action.reminderId));
 

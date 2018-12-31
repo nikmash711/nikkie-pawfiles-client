@@ -6,8 +6,7 @@ import ReminderBlurb from './reminder-blurb';
 import './sidebar.css'
 
 export function Sidebar(props){
-  console.log('rendering sidebar')
-  // console.log('the currentId is', props.currentPetId);
+  console.log('rendering sidebar with props', props)
   return(
       <aside className="sidebar left"> 
         <PawfileBlurb {...props.specificPawfile}/>
@@ -17,12 +16,8 @@ export function Sidebar(props){
 }
 
 const mapStateToProps = (state, props) => ({
-  // currentPetId: state.pawfile.currentPetId,
-  // pawfile: state.pawfile.pawfiles[state.pawfile.currentPetId],
-
-  //I HAVE to include line 24 or else it doesn't realize the state has been updated (like when I add a reminder)...There's probably a better way to do this
-  pawfiles: state.pawfile.pawfiles,
-  specificPawfile: state.pawfile.pawfiles[props.id]
+  //find the pawfile with an id equal to the one passed down in props
+  specificPawfile: state.pawfile.pawfiles.find(pawfile=> pawfile.id==props.id)
 });
 
 export default connect(mapStateToProps)(Sidebar);

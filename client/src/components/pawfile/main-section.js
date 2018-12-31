@@ -59,8 +59,7 @@ export function MainSection(props){
 }
 
 const mapStateToProps = (state,props) => ({
-  pawfiles: state.pawfile.pawfiles,
-  specificPawfile: state.pawfile.pawfiles[props.id],
+  specificPawfile: state.pawfile.pawfiles.find(pawfile=> pawfile.id==props.id),
   currentSearchTerm: state.pawfile.currentSearchTerm,
   categoryFilter: state.pawfile.categoryFilter
 });
