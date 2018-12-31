@@ -11,7 +11,7 @@ export default class App extends React.Component {
         <Switch>
           <Route exact path="/home" component={HomePage}></Route>
           <Route exact path="/:pawfileId" component={PawfilePage}></Route>
-          <Redirect exact from="*" to="/home" />
+          {/* <Redirect exact from="*" to="/home" /> */}
           {/* if user tries to access a route that doesn't exist, they will be redirected to home page */}
         </Switch>
       </Router>

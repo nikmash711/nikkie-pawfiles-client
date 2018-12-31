@@ -1,8 +1,8 @@
-import {SHOW_PAWFILE_FORM, SUBMIT_PAWFILE, CHANGE_SORTING_PETS_METHOD, ADDING_NEW_REMINDER, DELETE_PAWFILE, TOGGLE_NAVBAR, DELETE_REMINDER, CHANGE_CURRENT_PET_ID, SHOW_MEDICAL_FORM, SUBMIT_MEDICAL_FORM, SHOW_MEMORY_FORM, SUBMIT_MEMORY_FORM, CHANGE_SEARCH_TERM, CHANGE_CATEGORY_FILTER, FETCH_PAWFILES_SUCCESS} from '../actions/index';
+import {SHOW_PAWFILE_FORM, SUBMIT_PAWFILE, CHANGE_SORTING_PETS_METHOD, ADDING_NEW_REMINDER, DELETE_PAWFILE, TOGGLE_NAVBAR, DELETE_REMINDER, CHANGE_CURRENT_PET_ID, SHOW_MEDICAL_FORM, SUBMIT_MEDICAL_FORM, SHOW_MEMORY_FORM, SUBMIT_MEMORY_FORM, CHANGE_SEARCH_TERM, CHANGE_CATEGORY_FILTER, FETCH_PAWFILES_SUCCESS, FETCH_INDIVIDUAL_PAWFILE_SUCCESS, CHANGE_PENDING} from '../actions/index';
 
 //dummy initial state 
 const initialState = {
-  user: "",
+  user: {firstName: 'Nikkie', lastName: 'Mashian'},
   sortingPetsMethod: "",
   showPawfileForm: false,
   showMedicalForm: false,
@@ -12,9 +12,9 @@ const initialState = {
   categoryFilter: "",
   toggleNavbar:false,
   pawfiles: [],
+  individualPawfile: {},
   pawfilesPending: true,
 };
-
 
 export const pawfileReducer = (state = initialState, action)=> {
 
@@ -225,10 +225,26 @@ export const pawfileReducer = (state = initialState, action)=> {
   else if (action.type === FETCH_PAWFILES_SUCCESS) {
     console.log('in success, fetched', action.pawfiles);
     return Object.assign({}, state, {
-      ...action.pawfiles,
+      pawfiles: action.pawfiles.pawfiles,
       pawfilesPending: false,
     })
-}
+  }
+
+  else if (action.type===FETCH_INDIVIDUAL_PAWFILE_SUCCESS){
+    console.log('in success for indiv pawfile, fetched', action.pawfile.pawfile);
+    return Object.assign({}, state, {
+      individualPawfile: action.pawfile.pawfile,
+      pawfilesPending: false,
+    })
+  }
+
+  else if(action.type===CHANGE_PENDING){
+    return Object.assign({}, state, {
+      pawfilesPending: true,
+    })
+  }
 
   return state;
 }
+
+//load all the pawfiles in state regardless of page, and then display what you want from that state. differentiate state from display. 

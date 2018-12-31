@@ -24,10 +24,13 @@ export class Sidebar extends React.Component{
         </aside>      
       );
   }
-  }
+}
+
+// let pawfileId = this.props.id;
 const mapStateToProps = (state, props) => ({
   //find the pawfile with an id equal to the one passed down in props
-  specificPawfile: state.pawfile.pawfiles.find(pawfile=> pawfile.id==props.id)
+  specificPawfile: state.pawfile.pawfiles.find(pawfile=> pawfile.id == props.id),
+  // pawfiles: state.pawfile.pawfiles,
 });
 
 export default connect(mapStateToProps)(Sidebar);

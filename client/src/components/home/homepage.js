@@ -3,13 +3,17 @@ import {connect} from 'react-redux';
 import Navbar from '../navbar';
 import Footer from '../footer'
 import MyPawfiles from './my-pawfiles';
-import {fetchPawfiles} from '../../actions/index';
-
+import {fetchPawfiles, changePending} from '../../actions/index';
 
 export class HomePage extends React.Component{
   componentDidMount(){
-    this.props.dispatch(fetchPawfiles());
+    console.log('homepage mounting');
     document.title = this.props.user ? `${this.props.user}'s Pets` : 'All Pets';
+    this.props.dispatch(fetchPawfiles());
+  }
+
+  componentWillUnmount(){
+    this.props.dispatch(changePending(true));
   }
 
   componentDidUpdate(){
@@ -17,6 +21,11 @@ export class HomePage extends React.Component{
   }
 
   render(){
+    if(this.props.pawfilesPending){
+      console.log('pending');
+      return <p>Loading</p>
+    }
+
     return(
       <div className="home">
         <Navbar/>
@@ -29,6 +38,7 @@ export class HomePage extends React.Component{
 
 const mapStateToProps = state => ({
   user: state.pawfile.user.firstName,
+  pawfilesPending: state.pawfile.pawfilesPending
 });
 
 export default connect(mapStateToProps)(HomePage);
