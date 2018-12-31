@@ -98,12 +98,12 @@ export const pawfileReducer = (state = initialState, action)=> {
     //if its editing an existing pawfile: 
     if(action.currentPetId>=0){
       const updatedValues = action.values;
-      let pawfileToUpdate = {...state.pawfiles[action.currentPetId]};
+      let pawfileToUpdate = {...state.pawfiles.find(pawfile=> pawfile.id==action.currentPetId)};
 
       //merge updated values with rest of pawfile: 
       let updatedPawfile = Object.assign({}, pawfileToUpdate, updatedValues)
 
-      const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id===action.currentPetId ? updatedPawfile : item))
+      const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id==action.currentPetId ? updatedPawfile : item))
   
       return Object.assign({}, state, {
           pawfiles: newArrayOfPawfiles
@@ -119,7 +119,7 @@ export const pawfileReducer = (state = initialState, action)=> {
   }
 
   else if(action.type===SUBMIT_MEDICAL_FORM){
-    let pawfileToUpdate = {...state.pawfiles[action.currentPetId]};
+    let pawfileToUpdate = {...state.pawfiles.find(pawfile=> pawfile.id==action.currentPetId)};
 
     //check if there's any previous posts for this pet. How we handle adding the new post depends on this.
     let previousPosts = pawfileToUpdate.posts ? [...pawfileToUpdate.posts] : '';
@@ -165,7 +165,7 @@ export const pawfileReducer = (state = initialState, action)=> {
       }
     }
 
-    const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id===action.currentPetId ? pawfileToUpdate : item))
+    const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id==action.currentPetId ? pawfileToUpdate : item))
 
     return Object.assign({}, state, {
       pawfiles: newArrayOfPawfiles
@@ -173,7 +173,7 @@ export const pawfileReducer = (state = initialState, action)=> {
   }
 
   else if(action.type===SUBMIT_MEMORY_FORM){
-    let pawfileToUpdate = {...state.pawfiles[action.currentPetId]};
+    let pawfileToUpdate = {...state.pawfiles.find(pawfile=> pawfile.id==action.currentPetId)};
 
     let previousPosts = pawfileToUpdate.posts ? [...pawfileToUpdate.posts] : '';
 
@@ -184,7 +184,7 @@ export const pawfileReducer = (state = initialState, action)=> {
       pawfileToUpdate.posts = [action.values];
     }
 
-    const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id===action.currentPetId ? pawfileToUpdate : item))
+    const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id==action.currentPetId ? pawfileToUpdate : item))
 
     return Object.assign({}, state, {
       pawfiles: newArrayOfPawfiles
@@ -203,7 +203,7 @@ export const pawfileReducer = (state = initialState, action)=> {
     const newReminder = action.values;
 
     //create a new obj -this was the problem (I was directly mutating state)
-    const pawfileToUpdate = {...state.pawfiles[action.currentPetId]};
+    let pawfileToUpdate = {...state.pawfiles.find(pawfile=> pawfile.id==action.currentPetId)};
 
     let previousReminders = pawfileToUpdate.reminders ? [...pawfileToUpdate.reminders] : '';
 
@@ -215,7 +215,7 @@ export const pawfileReducer = (state = initialState, action)=> {
       pawfileToUpdate.reminders=[newReminder];
     }
 
-    const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id===action.currentPetId ? pawfileToUpdate : item))
+    const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id==action.currentPetId ? pawfileToUpdate : item))
 
     return Object.assign({}, state, {
         pawfiles: newArrayOfPawfiles
@@ -223,17 +223,19 @@ export const pawfileReducer = (state = initialState, action)=> {
   }
 
   else if(action.type=== DELETE_REMINDER){
-    let pawfileToUpdate =  {...state.pawfiles[action.currentPetId]};
+    let pawfileToUpdate = {...state.pawfiles.find(pawfile=> pawfile.id==action.currentPetId)};
 
     const updatedReminders = pawfileToUpdate.reminders.filter((reminder)=> (reminder.id!==action.reminderId));
 
     pawfileToUpdate.reminders=updatedReminders;
 
-    const updatedPawfile = Object.assign({},  state.pawfiles[action.currentPetId], {
-      pawfileToUpdate
-    })
+    // const updatedPawfile = Object.assign({}, state.pawfiles.find(pawfile=> pawfile.id==action.currentPetId), {
+    //   pawfileToUpdate
+    // })
 
-    const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id===action.currentPetId ? updatedPawfile : item))
+    const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id==action.currentPetId ? pawfileToUpdate : item))
+
+    console.log('newArrayOfPawfiles is', newArrayOfPawfiles)
 
     return Object.assign({}, state, {
       pawfiles: newArrayOfPawfiles

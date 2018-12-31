@@ -8,7 +8,7 @@ import './reminder.css'
 export class Reminder extends React.Component{
 
   render(){
-    console.log('petid is', this.props.currentPetId);
+    console.log('in reminders petid is', this.props.currentPetId, 'and reminderid is', this.props.reminderId);
     return(
       <li data-id={`${this.props.reminderId}`} className="reminder">
         <button onClick={()=>{this.props.dispatch(deleteReminder(this.props.currentPetId, this.props.reminderId))}} className="delete-reminder">X</button>
