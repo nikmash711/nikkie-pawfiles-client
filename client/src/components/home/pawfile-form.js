@@ -4,7 +4,6 @@ import {reduxForm, Field, Fieldset, SubmissionError, focus} from 'redux-form';
 import Input from '../input';
 import {submitPawfile, showPawfileForm} from '../../actions/index';
 import {required, nonEmpty, unSelected} from '../validators';
-
 import './pawfile-form.css';
 
 export class PawfileForm extends React.Component{
@@ -14,7 +13,6 @@ export class PawfileForm extends React.Component{
   }
 
   onSubmit(values){
-    console.log('values are', values);
     this.props.dispatch(submitPawfile(values, this.props.currentPetId));
     this.props.dispatch(showPawfileForm(false, undefined));
   }
@@ -23,8 +21,10 @@ export class PawfileForm extends React.Component{
     return(
       <div className='form-modal'>
           <form className="form blurb" onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
-          <button type="button" className = "close" onClick={()=>this.props.dispatch(showPawfileForm(false, undefined))}>X</button>
-          <h2>{this.props.initialValues.name ? this.props.initialValues.name : "New Pawfile"}</h2>
+
+            <button type="button" className = "close" onClick={()=>this.props.dispatch(showPawfileForm(false, undefined))}>X</button>
+
+            <h2>{this.props.initialValues.name ? this.props.initialValues.name : "New Pawfile"}</h2>
 
             <Field
               component={Input}
@@ -42,8 +42,7 @@ export class PawfileForm extends React.Component{
               name="img" 
               id="img"
               validate={[required, nonEmpty]}
-              >
-            </Field>
+            />
             
             <Field
               component={Input} 
@@ -66,8 +65,7 @@ export class PawfileForm extends React.Component{
               name="breed" 
               id="breed"
               type = "text"
-              >
-            </Field>
+            />
 
             <Field
               component={Input} 
@@ -89,8 +87,7 @@ export class PawfileForm extends React.Component{
               name="weight" 
               id="weight"
               type = "text"
-              >
-            </Field>
+            />
 
             <Field
               component={Input} 
@@ -98,9 +95,8 @@ export class PawfileForm extends React.Component{
               name="birthday" 
               id="birthday"
               type = "date"
-              max= {new Date().toLocaleDateString()}
-              >
-            </Field>
+              // max= {new Date().toLocaleDateString()}
+            />
 
             <Field
               component={Input} 
@@ -110,13 +106,13 @@ export class PawfileForm extends React.Component{
               id="bio"
               type = "textarea"
               className="test"
-              >
-            </Field>
+            />
 
             <div className="buttons">
               <button type="submit">Save Pawfile</button>
-              <button onClick={()=>this.props.dispatch(showPawfileForm(false, undefined))} type="cancel">Cancel</button>
+              <button onClick={()=>this.props.dispatch(showPawfileForm(false, undefined))} type="button">Cancel</button>
             </div>
+            
           </form>
         </div>
     );

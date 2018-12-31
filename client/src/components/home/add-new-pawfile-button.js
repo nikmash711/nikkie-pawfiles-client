@@ -1,8 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {showPawfileForm} from '../../actions/index';
-
-
 import './add-new-pawfile-button.css'
 
 export function AddNewPawfileButton(props){

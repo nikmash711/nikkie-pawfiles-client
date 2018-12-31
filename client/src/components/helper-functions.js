@@ -1,3 +1,33 @@
+export function isLeapYear(year) {
+  let d = new Date(year, 1, 28);
+  d.setDate(d.getDate() + 1);
+  return d.getMonth() == 1;
+}
+
+export function calculateAge(date) {
+  let d = new Date(date),
+      now = new Date();
+  let years = now.getFullYear() - d.getFullYear();
+  d.setFullYear(d.getFullYear() + years);
+  if (d > now) {
+      years--;
+      d.setFullYear(d.getFullYear() - 1);
+  }
+  let days = (now.getTime() - d.getTime()) / (3600 * 24 * 1000);
+  let weeks= Math.floor(days/7);
+  let age_in_years= Math.floor(years + days / (isLeapYear(now.getFullYear()) ? 366 : 365))
+  ;
+  let final_age = age_in_years;
+
+  if(age_in_years===0){
+    final_age= `~ ${weeks} weeks`
+  }
+  if(weeks===0){
+    final_age=` ~ ${Math.floor(days)} days`
+  }
+  return final_age;
+}
+
 export function todaysDate (){
   let date = new Date().toISOString();
   let dateArr = date.split('T');

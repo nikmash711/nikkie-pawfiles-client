@@ -18,7 +18,7 @@ export default class Input extends React.Component {
 
         let className="";
 
-        // better way to do this? 
+        //Question: better way to do this? 
         if(this.props.id==="name" || this.props.id==="gender" ||this.props.id==="species" || this.props.id==="img" || this.props.id==="date" || this.props.id==="title" || this.props.id==="description" ){
             className="required";
         }
@@ -35,7 +35,7 @@ export default class Input extends React.Component {
                     id={this.props.input.name}
                     type={this.props.type}
                     max = {this.props.type==="date"? todaysDate() : undefined}
-                    // I only want max on date elements but not sure how else to do it
+                    //Question: I only want max on date elements but not sure how else to do it
                     ref={input => (this.input = input)}
                 >
                 {this.props.children}

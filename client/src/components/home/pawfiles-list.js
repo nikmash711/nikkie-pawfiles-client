@@ -2,19 +2,16 @@ import React from 'react';
 import {connect} from 'react-redux';
 import PawfileBlurb from './pawfile-blurb';
 import {sortByOldest, sortByYoungest, sortAtoZ, sortZtoA} from '../helper-functions';
-
 import './pawfiles-list.css';
 
 export class PawfilesList extends React.Component{
-
   render(){
-
     const pawfiles_list = this.props.pawfiles.map((pawfile,index)=>(
-      <PawfileBlurb {...pawfile} key={index}/>
-      //forgot how to do this - should I pass state? Key? 
+      <PawfileBlurb {...pawfile}/>
+      //Question: Is it okay that I'm passing state here from parent to child? Wasn't sure how else to do it 
     ));
 
-    //how to sort the pets - better way to do this?
+    //Sorting pets
     switch(this.props.sortMethod){
       case "oldest":
         sortByOldest(pawfiles_list)
@@ -29,7 +26,6 @@ export class PawfilesList extends React.Component{
         sortZtoA(pawfiles_list)
         break;
       default: 
-        console.log('in switch case default');
         break;
     }
   

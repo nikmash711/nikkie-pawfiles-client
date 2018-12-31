@@ -8,9 +8,6 @@
   -webkit-box-shadow: 10px 10px 20px rgba(0,0,0,.5);
   -moz-box-shadow: 10px 10px 20px rgba(0,0,0,.5);
   box-shadow: 10px 10px 20px #000;
-  /* -webkit-transform: rotate(-2deg);
-  -moz-transform: rotate(-1deg);
-  -o-transform: rotate(-1deg); */
   transition:.5s;
   background-color: #fffd9b;
 }
@@ -22,8 +19,6 @@
   text-align: left;
   font-size:45px;
 }
-
-/* @media(min-width: ) */
 
 @media(min-width:480px){
   .sticky h1{

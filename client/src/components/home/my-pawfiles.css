@@ -9,6 +9,10 @@ main{
   padding-bottom: 20px;
 }
 
+.center-me{
+  margin:auto;
+}
+
 .no-pets{
   height:100vh;
 }
@@ -19,6 +23,3 @@ main{
   }
 }
 
-.center-me{
-  margin:auto;
-}

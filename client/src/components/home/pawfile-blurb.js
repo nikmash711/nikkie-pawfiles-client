@@ -1,56 +1,25 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import './pawfile-blurb.css';
 import {showPawfileForm, deletePawfile} from '../../actions/index';
-import {formatDate} from '../helper-functions';
+import {formatDate, calculateAge} from '../helper-functions';
+import './pawfile-blurb.css';
 
 export class PawfileBlurb extends React.Component{
-
-isLeapYear(year) {
-  let d = new Date(year, 1, 28);
-  d.setDate(d.getDate() + 1);
-  return d.getMonth() == 1;
-}
-
-calculateAge(date) {
-  let d = new Date(date),
-      now = new Date();
-  let years = now.getFullYear() - d.getFullYear();
-  d.setFullYear(d.getFullYear() + years);
-  if (d > now) {
-      years--;
-      d.setFullYear(d.getFullYear() - 1);
-  }
-  let days = (now.getTime() - d.getTime()) / (3600 * 24 * 1000);
-  let weeks= Math.floor(days/7);
-  let age_in_years= Math.floor(years + days / (this.isLeapYear(now.getFullYear()) ? 366 : 365))
-  ;
-  let final_age = age_in_years;
-
-  if(age_in_years===0){
-    final_age= `~ ${weeks} weeks`
-  }
-  if(weeks===0){
-    final_age=` ~ ${Math.floor(days)} days`
-  }
-  return final_age;
-}
 
   render(){
     return(
       <article className= {`${this.props.gender.toLowerCase()} blurb`}>
-
-      <div className="top">
-      <Link to={`/${this.props.name}/${this.props.id}`}>
-          <img src= {this.props.img} alt={this.props.name} className="prof-pic"/>
-        </Link>
-  
-        <Link to={`/${this.props.name}/${this.props.id}`}>
-          <h2>{this.props.name}</h2>
-        </Link>
-      </div>
-  
+        <div className="top">
+          <Link to={`/${this.props.name}/${this.props.id}`}>
+              <img src= {this.props.img} alt={this.props.name} className="prof-pic"/>
+          </Link>
+    
+          <Link to={`/${this.props.name}/${this.props.id}`}>
+            <h2>{this.props.name}</h2>
+          </Link>
+        </div>
+    
         <div className="option-icons">
           <Link to={`/${this.props.name}/${this.props.id}`}>
             <i className="fas fa-external-link-alt"></i>
@@ -58,7 +27,7 @@ calculateAge(date) {
           <button onClick={()=>this.props.dispatch(showPawfileForm(true,this.props.id))}><i className="fas fa-edit"></i></button>
           <button onClick={()=>this.props.dispatch(deletePawfile(this.props.id))}><i className="fas fa-trash-alt"></i></button>
         </div>
-  
+    
         <p><strong>Species:</strong> {this.props.species}</p>
   
         {this.props.breed && <p><strong>Breed:</strong> {this.props.breed}</p>}
@@ -67,15 +36,20 @@ calculateAge(date) {
   
         <p><strong>Gender:</strong> {this.props.gender}</p>
         
-        { this.props.birthday && 
+        { 
+          this.props.birthday && 
           <p><strong>Birthday:</strong> {formatDate(this.props.birthday).toLocaleDateString()}</p> 
         }
 
         {
-        this.props.birthday && 
-        <p><strong>Age:</strong> {this.calculateAge(this.props.birthday)}</p>
+          this.props.birthday && 
+          <p><strong>Age:</strong> {calculateAge(this.props.birthday)}</p>
         }
-        {this.props.bio && <p><strong>Bio:</strong> {this.props.bio}</p>}
+        
+        {
+          this.props.bio && 
+          <p><strong>Bio:</strong> {this.props.bio}</p>
+        }
       </article>
     );
   }
