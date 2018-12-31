@@ -13,7 +13,6 @@ import {showMedicalForm, showMemoryForm, changeSearchTerm, changeCategoryFilter,
 
 export class PawfilePage extends React.Component{
   componentDidMount(){
-    document.title = `${this.props.match.params.pawfileName}`;
     this.props.dispatch(changeCurrentPetId(this.props.match.params.pawfileId));
     //where do I put the above line of code for it to properly change the currentId before trying to render sidebar or main section? As of now Sidebar and MainSection don't get the id from currentPetId in the state, but instead are passed an id from this parent element. 
   }
@@ -27,13 +26,24 @@ export class PawfilePage extends React.Component{
     this.props.dispatch(changeCategoryFilter(""));
   }
 
-  validId(paramsId, paramsName){
-    return this.props.pawfiles.find(pawfile=> pawfile.id==paramsId && pawfile.name==paramsName)
+  validId(paramsId){
+    console.log('paramsId in the fn is', paramsId, 'length of pawfiles', this.props.pawfiles.length);
+    //  this.props.pawfiles.map(pawfile=> console.log(pawfile.id == paramsId))
+    return this.props.pawfiles.find(pawfile=> pawfile.id==paramsId)
   }
 
   render(){
+    console.log('paramId in render is', this.props.match.params.pawfileId)
+    console.log('the return value of fn validId is', this.validId(this.props.match.params.pawfileId))
+
+    if(this.props.pawfilePending){
+      return <p>Loading</p>
+    }
+
     //if user is trying to access a pet that no longer exists or never did: 
-    if(!this.validId(this.props.match.params.pawfileId, this.props.match.params.pawfileName)){
+    if(!this.validId(this.props.match.params.pawfileId)){
+      console.log('invalid id', this.props.match.params.pawfileId);
+      return <p>REDIRECT </p>
       return <Redirect to="/home" /> 
     } 
 
@@ -54,9 +64,11 @@ export class PawfilePage extends React.Component{
 
 const mapStateToProps = state => ({
   pawfiles: state.pawfile.pawfiles,
+  // specificPawfile: state.pawfile.pawfiles.find(pawfile=> pawfile.id== this.props.match.params.pawfileId),
   showPawfileForm: state.pawfile.showPawfileForm,
   showMedicalForm: state.pawfile.showMedicalForm,
   showMemoryForm: state.pawfile.showMemoryForm,
+  pawfilePending: state.pawfile.pawfilesPending,
 });
 
 export default connect(mapStateToProps)(PawfilePage);

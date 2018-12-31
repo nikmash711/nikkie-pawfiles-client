@@ -1,8 +1,8 @@
-import {SHOW_PAWFILE_FORM, SUBMIT_PAWFILE, CHANGE_SORTING_PETS_METHOD, ADDING_NEW_REMINDER, DELETE_PAWFILE, TOGGLE_NAVBAR, DELETE_REMINDER, CHANGE_CURRENT_PET_ID, SHOW_MEDICAL_FORM, SUBMIT_MEDICAL_FORM, SHOW_MEMORY_FORM, SUBMIT_MEMORY_FORM, CHANGE_SEARCH_TERM, CHANGE_CATEGORY_FILTER} from '../actions/index';
+import {SHOW_PAWFILE_FORM, SUBMIT_PAWFILE, CHANGE_SORTING_PETS_METHOD, ADDING_NEW_REMINDER, DELETE_PAWFILE, TOGGLE_NAVBAR, DELETE_REMINDER, CHANGE_CURRENT_PET_ID, SHOW_MEDICAL_FORM, SUBMIT_MEDICAL_FORM, SHOW_MEMORY_FORM, SUBMIT_MEMORY_FORM, CHANGE_SEARCH_TERM, CHANGE_CATEGORY_FILTER, FETCH_PAWFILES_SUCCESS} from '../actions/index';
 
 //dummy initial state 
 const initialState = {
-  user: {firstName: 'Nikkie', lastName: "Mashian"},
+  user: "",
   sortingPetsMethod: "",
   showPawfileForm: false,
   showMedicalForm: false,
@@ -11,78 +11,10 @@ const initialState = {
   currentSearchTerm: "",
   categoryFilter: "",
   toggleNavbar:false,
-  pawfiles: [
-    {
-      id: 0,
-      name: "Mushy",
-      species: "Cat",
-      gender: "Female",
-      breed: "Domestic Mix",
-      weight: '8 lbs',
-      birthday: "2016-10-26",
-      bio: "Meow. I'm a cute troublemaker. I'll purr then hiss. Give me scritches?",
-      img: "https://i.ibb.co/y8hFnkL/2.jpg",
-      reminders: [
-        {
-          id: 0,
-          note: "Trim Nails",
-          date: "2016-10-26",
-        },
-        {
-          id: 1,
-          note: "Vet Appointment",
-          date: "2016-11-26",
-        },
-      ],
-      posts: [
-        {
-          id: 0,
-          type: 'memory',
-          title: 'Mushy learns how to open the door',
-          date: 'Fri Dec 14 2018',
-          description: 'I walked into the living room and saw her opening it with her claws. How dare she!',
-          memory_img: 'https://i.ibb.co/YXHrzCq/Screen-Shot-2018-12-31-at-8-30-37-AM.png" alt="Screen-Shot-2018-12-31-at-8-30-37-AM'
-        },
-        {
-          id: 1,
-          type: 'medical',
-          title: 'Shes throwing up again:(',
-          date: 'Fri Dec 14 2017',
-          symptoms: ['lethargic', 'no appetite'],
-          vaccinations:['rabies'],
-          prescriptions:['Frontline flea'],
-          doctor: 'Dr. Moon',
-          notes: 'Gave her fluids for the day. Wont let her eat until tomorrow. Try laxatives.',
-        }
-      ],
-      vaccinations: [
-        {
-          name: 'Rabies',
-          date: '2018-10-12'
-        }
-      ],
-      prescriptions:[]
-    },
-    {
-      id: 1,
-      name: "Muffin",
-      species: "Dog",
-      gender: "Male",
-      breed: "Pom/Yorkie Mix",
-      birthday: "2010-01-10",
-      bio: "Ruff. I want to always play and go on walks. Did you say snack?",
-      img: "https://i.ibb.co/stMyFMp/IMG-6267.png",
-      reminders: [
-        {
-          id: 0,
-          note: "Give Shot",
-          date: "Daily"
-        },
-      ]
-    },
-   
-  ]
+  pawfiles: [],
+  pawfilesPending: true,
 };
+
 
 export const pawfileReducer = (state = initialState, action)=> {
 
@@ -289,6 +221,14 @@ export const pawfileReducer = (state = initialState, action)=> {
       categoryFilter: action.categoryFilter,
     })
   }
+
+  else if (action.type === FETCH_PAWFILES_SUCCESS) {
+    console.log('in success, fetched', action.pawfiles);
+    return Object.assign({}, state, {
+      ...action.pawfiles,
+      pawfilesPending: false,
+    })
+}
 
   return state;
 }

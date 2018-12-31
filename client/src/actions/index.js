@@ -1,3 +1,5 @@
+import {API_BASE_URL} from '../config';
+
 export const SHOW_PAWFILE_FORM = 'SHOW_PAWFILE_FORM';
 export const showPawfileForm = (bool, currentPetId) => ({
     type: SHOW_PAWFILE_FORM,
@@ -87,3 +89,22 @@ export const changeCategoryFilter = (categoryFilter) =>({
     type: CHANGE_CATEGORY_FILTER,
     categoryFilter
 })
+
+export const FETCH_PAWFILES_SUCCESS = 'FETCH_PAWFILES_SUCCESS';
+export const fetchPawfilesSuccess = pawfiles => ({
+    type: FETCH_PAWFILES_SUCCESS,
+    pawfiles
+});
+
+export const fetchPawfiles = () => dispatch => {
+    fetch(`${API_BASE_URL}/pawfiles`)
+        .then(res => {
+            if (!res.ok) {
+                return Promise.reject(res.statusText);
+            }
+            return res.json();
+        })
+        .then(pawfiles => {
+            dispatch(fetchPawfilesSuccess(pawfiles));
+        });
+};
