@@ -1,4 +1,4 @@
-import {SHOW_PAWFILE_FORM, SUBMIT_PAWFILE, CHANGE_SORTING_PETS_METHOD, ADDING_NEW_REMINDER, DELETE_PAWFILE, TOGGLE_NAVBAR, DELETE_REMINDER, CHANGE_CURRENT_PET_ID, SHOW_MEDICAL_FORM, SUBMIT_MEDICAL_FORM, SHOW_MEMORY_FORM, SUBMIT_MEMORY_FORM, CHANGE_SEARCH_TERM, CHANGE_CATEGORY_FILTER, FETCH_PAWFILES_SUCCESS, FETCH_INDIVIDUAL_PAWFILE_SUCCESS, CHANGE_PAWFILES_PENDING, CHANGE_INDIVIDUAL_PAWFILE_PENDING, FETCH_INDIVIDUAL_PAWFILE_REQUEST, FETCH_INDIVIDUAL_PAWFILE_ERROR, CHANGE_ERROR} from '../actions/index';
+import {SHOW_PAWFILE_FORM, SUBMIT_PAWFILE, CHANGE_SORTING_PETS_METHOD, ADDING_NEW_REMINDER, DELETE_PAWFILE, TOGGLE_NAVBAR, DELETE_REMINDER, CHANGE_CURRENT_PET_ID, SHOW_MEDICAL_FORM, SUBMIT_MEDICAL_FORM, SHOW_MEMORY_FORM, SUBMIT_MEMORY_FORM, CHANGE_SEARCH_TERM, CHANGE_CATEGORY_FILTER, FETCH_PAWFILES_SUCCESS, FETCH_INDIVIDUAL_PAWFILE_SUCCESS, CHANGE_PAWFILES_PENDING, CHANGE_INDIVIDUAL_PAWFILE_PENDING, FETCH_INDIVIDUAL_PAWFILE_REQUEST, FETCH_INDIVIDUAL_PAWFILE_ERROR, CHANGE_ERROR, CREATE_PAWFILE_REQUEST, CREATE_PAWFILE_SUCCESS} from '../actions/index';
 
 //dummy initial state 
 const initialState = {
@@ -233,15 +233,15 @@ export const pawfileReducer = (state = initialState, action)=> {
   else if (action.type === FETCH_PAWFILES_SUCCESS) {
     console.log('in success, fetched', action.pawfiles);
     return Object.assign({}, state, {
-      pawfiles: action.pawfiles.pawfiles,
+      pawfiles: action.pawfiles,
       pawfilesPending: false,
     })
   }
 
   else if (action.type===FETCH_INDIVIDUAL_PAWFILE_SUCCESS){
-    console.log('in success for indiv pawfile, fetched', action.pawfile.pawfile);
+    console.log('in success for indiv pawfile, fetched', action.pawfile);
     return Object.assign({}, state, {
-      individualPawfile: action.pawfile.pawfile,
+      individualPawfile: action.pawfile,
       individualPawfilePending: false,
     })
   }
@@ -273,7 +273,30 @@ export const pawfileReducer = (state = initialState, action)=> {
     })
   }
 
+  else if (action.type===CREATE_PAWFILE_REQUEST){
+    return Object.assign({}, state, {
+      pawfilesPending: true,
+    })
+  }
+
+  else if(action.type===CREATE_PAWFILE_SUCCESS){
+    return Object.assign({}, state, {
+      pawfiles: [
+        ...state.pawfiles,
+        action.values
+      ],
+      pawfilesPending: false,
+    })
+  }
+
   return state;
 }
 
 //load all the pawfiles in state regardless of page, and then display what you want from that state. differentiate state from display. 
+
+// return Object.assign({}, state, {
+//   pawfiles: [
+//     ...state.pawfiles,
+//     action.values
+//   ],
+// })

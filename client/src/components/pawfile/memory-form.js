@@ -50,7 +50,6 @@ export class MemoryForm extends React.Component{
               type="textarea" 
               name="description" 
               id="description"
-              validate={[required, nonEmpty]}
             /> 
 
             <Field

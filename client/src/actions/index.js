@@ -7,13 +7,6 @@ export const showPawfileForm = (bool, currentPetId) => ({
     currentPetId
 });
 
-export const SUBMIT_PAWFILE = 'SUBMIT_PAWFILE';
-export const submitPawfile = (values, currentPetId) => ({
-    type: SUBMIT_PAWFILE,
-    values,
-    currentPetId
-});
-
 export const SUBMIT_MEDICAL_FORM = 'SUBMIT_MEDICAL_FORM';
 export const submitMedicalForm = (values, currentPetId) => ({
     type: SUBMIT_MEDICAL_FORM,
@@ -90,6 +83,8 @@ export const changeCategoryFilter = (categoryFilter) =>({
     categoryFilter
 })
 
+// ASYNC ACTIONS 
+
 export const FETCH_PAWFILES_SUCCESS = 'FETCH_PAWFILES_SUCCESS';
 export const fetchPawfilesSuccess = pawfiles => ({
     type: FETCH_PAWFILES_SUCCESS,
@@ -145,7 +140,7 @@ export const fetchPawfiles = () => dispatch => {
 
 export const fetchIndividualPawfile = (pawfileId) => dispatch => {
     dispatch(fetchIndividualPawfileRequest());
-    fetch(`${API_BASE_URL}/${pawfileId}`)
+    fetch(`${API_BASE_URL}/pawfiles/${pawfileId}`)
     .then(res => {
         if (!res.ok) {
             return Promise.reject(res.statusText);
@@ -158,3 +153,48 @@ export const fetchIndividualPawfile = (pawfileId) => dispatch => {
         dispatch(fetchIndividualPawfileError(err));
     });
 };
+
+export const CREATE_PAWFILE_REQUEST = "CREATE_PAWFILE_REQUEST";
+export const createPawfileRequest = () => ({
+    type: CREATE_PAWFILE_REQUEST,
+})
+
+export const CREATE_PAWFILE_SUCCESS = "CREATE_PAWFILE_SUCCESS";
+export const createPawfileSuccess = (pawfile) => ({
+    type: CREATE_PAWFILE_SUCCESS,
+    pawfile
+})
+
+export const createNewPawfile = (values, currentPetId) => dispatch =>{
+    //could be editing a pawfile or submitting it, it's the same form
+    const method = currentPetId ? "PUT" : "POST";
+    console.log('method is', method);
+    dispatch(createPawfileRequest());
+    fetch(`${API_BASE_URL}/pawfiles`, { 
+        method: method,
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values)
+    })
+    .then(res => {
+        if (!res.ok) {
+            return Promise.reject(res.statusText);
+        }
+        return res.json();
+    }).then(pawfile => {
+        console.log('successful creating of', pawfile);
+        dispatch(createPawfileSuccess(pawfile));
+    }).catch(err => {
+        dispatch(fetchIndividualPawfileError(err));
+    });
+
+}
+
+export const SUBMIT_PAWFILE = 'SUBMIT_PAWFILE';
+export const submitPawfile = (values, currentPetId) => ({
+    type: SUBMIT_PAWFILE,
+    values,
+    currentPetId
+});

@@ -19,7 +19,7 @@ export default class Input extends React.Component {
         let className="";
 
         //Question: better way to do this? 
-        if(this.props.id==="name" || this.props.id==="gender" ||this.props.id==="species" || this.props.id==="img" || this.props.id==="date" || this.props.id==="title" || this.props.id==="description" ){
+        if(this.props.id==="name" || this.props.id==="gender" ||this.props.id==="species" || this.props.id==="img" || this.props.id==="date" || this.props.id==="title" ){
             className="required";
         }
 
