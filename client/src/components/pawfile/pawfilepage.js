@@ -29,27 +29,31 @@ export class PawfilePage extends React.Component{
   }
 
   //I no longer need to check validId this way.
-  validId(paramsId){
-    console.log('paramsId in the fn is', paramsId, 'length of pawfiles', this.props.pawfiles.length);
-    //  this.props.pawfiles.map(pawfile=> console.log(pawfile.id == paramsId))
-    return this.props.pawfiles.find(pawfile=> pawfile.id==paramsId)
-  }
+  // validId(paramsId){
+  //   console.log('paramsId in the fn is', paramsId, 'length of pawfiles', this.props.pawfiles.length);
+  //   return this.props.pawfiles.find(pawfile=> pawfile.id==paramsId)
+  // }
 
   render(){
     console.log('props in pawfilepage are', this.props)
     console.log('paramId in render is', this.props.match.params.pawfileId)
     // console.log('the return value of fn validId is', this.validId(this.props.match.params.pawfileId))
-
-    //if user is trying to access a pet that no longer exists or never did: 
-    // if(!this.validId(this.props.match.params.pawfileId)){
-      console.log('invalid id', this.props.match.params.pawfileId);
-      // return <Redirect to="/home" /> 
-    // }
     
     if(this.props.individualPawfilePending){
       console.log('pending pawfilepage');
       return <p>Pending</p>
     }
+
+    console.log('in pawfile page the error is', this.props.error);
+    if(this.props.error){
+      return <Redirect to="/home" /> 
+    }
+
+    //if user is trying to access a pet that no longer exists or never did: 
+    // if(!this.validId(this.props.match.params.pawfileId)){
+    //   console.log('invalid id', this.props.match.params.pawfileId);
+    //   return <Redirect to="/home" /> 
+    // }
 
     return(
       <div className="pawfile-page">
@@ -70,8 +74,9 @@ const mapStateToProps = state => ({
   showMedicalForm: state.pawfile.showMedicalForm,
   showMemoryForm: state.pawfile.showMemoryForm,
   individualPawfilePending: state.pawfile.individualPawfilePending,
+  error: state.pawfile.error
 });
 
 export default connect(mapStateToProps)(PawfilePage);
 
-//still problematic bc unless homepage fetched the data, we have to refetch it on pawfile page. cant depend on homepage 
+//still problematic bc unless homepage fetched the data, we have to refetch it on pawfile page. cant depend on homepage. made its own

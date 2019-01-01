@@ -1,4 +1,4 @@
-import {SHOW_PAWFILE_FORM, SUBMIT_PAWFILE, CHANGE_SORTING_PETS_METHOD, ADDING_NEW_REMINDER, DELETE_PAWFILE, TOGGLE_NAVBAR, DELETE_REMINDER, CHANGE_CURRENT_PET_ID, SHOW_MEDICAL_FORM, SUBMIT_MEDICAL_FORM, SHOW_MEMORY_FORM, SUBMIT_MEMORY_FORM, CHANGE_SEARCH_TERM, CHANGE_CATEGORY_FILTER, FETCH_PAWFILES_SUCCESS, FETCH_INDIVIDUAL_PAWFILE_SUCCESS, CHANGE_PAWFILES_PENDING, CHANGE_INDIVIDUAL_PAWFILE_PENDING} from '../actions/index';
+import {SHOW_PAWFILE_FORM, SUBMIT_PAWFILE, CHANGE_SORTING_PETS_METHOD, ADDING_NEW_REMINDER, DELETE_PAWFILE, TOGGLE_NAVBAR, DELETE_REMINDER, CHANGE_CURRENT_PET_ID, SHOW_MEDICAL_FORM, SUBMIT_MEDICAL_FORM, SHOW_MEMORY_FORM, SUBMIT_MEMORY_FORM, CHANGE_SEARCH_TERM, CHANGE_CATEGORY_FILTER, FETCH_PAWFILES_SUCCESS, FETCH_INDIVIDUAL_PAWFILE_SUCCESS, CHANGE_PAWFILES_PENDING, CHANGE_INDIVIDUAL_PAWFILE_PENDING, FETCH_INDIVIDUAL_PAWFILE_REQUEST, FETCH_INDIVIDUAL_PAWFILE_ERROR, CHANGE_ERROR} from '../actions/index';
 
 //dummy initial state 
 const initialState = {
@@ -15,6 +15,7 @@ const initialState = {
   individualPawfile: {},
   pawfilesPending: true,
   individualPawfilePending: true,
+  error:""
 };
 
 export const pawfileReducer = (state = initialState, action)=> {
@@ -223,6 +224,12 @@ export const pawfileReducer = (state = initialState, action)=> {
     })
   }
 
+  else if(action.type===CHANGE_ERROR){
+    return Object.assign({}, state, {
+      error: action.bool,
+    })
+  }
+
   else if (action.type === FETCH_PAWFILES_SUCCESS) {
     console.log('in success, fetched', action.pawfiles);
     return Object.assign({}, state, {
@@ -236,6 +243,20 @@ export const pawfileReducer = (state = initialState, action)=> {
     return Object.assign({}, state, {
       individualPawfile: action.pawfile.pawfile,
       individualPawfilePending: false,
+    })
+  }
+
+  else if (action.type===FETCH_INDIVIDUAL_PAWFILE_REQUEST){
+    return Object.assign({}, state, {
+      individualPawfilePending: true,
+    })
+  }
+
+  else if (action.type===FETCH_INDIVIDUAL_PAWFILE_ERROR){
+    console.log('in error of fetching');
+    return Object.assign({}, state, {
+      individualPawfilePending: false,
+      error: true,
     })
   }
 

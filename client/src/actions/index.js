@@ -102,6 +102,16 @@ export const fetchIndividualPawfileSuccess = pawfile => ({
     pawfile
 })
 
+export const FETCH_INDIVIDUAL_PAWFILE_REQUEST = "FETCH_INDIVIDUAL_PAWFILE_REQUEST";
+export const fetchIndividualPawfileRequest = () => ({
+    type: FETCH_INDIVIDUAL_PAWFILE_REQUEST,
+})
+
+export const FETCH_INDIVIDUAL_PAWFILE_ERROR = "FETCH_INDIVIDUAL_PAWFILE_ERROR";
+export const fetchIndividualPawfileError = () => ({
+    type: FETCH_INDIVIDUAL_PAWFILE_ERROR,
+})
+
 export const CHANGE_PAWFILES_PENDING = "CHANGE_PAWFILES_PENDING";
 export const changePawfilesPending = bool => ({
     type: CHANGE_PAWFILES_PENDING,
@@ -111,6 +121,12 @@ export const changePawfilesPending = bool => ({
 export const CHANGE_INDIVIDUAL_PAWFILE_PENDING = "CHANGE_INDIVIDUAL_PAWFILE_PENDING";
 export const changeIndividualPawfilePending = bool => ({
     type: CHANGE_INDIVIDUAL_PAWFILE_PENDING,
+    bool
+})
+
+export const CHANGE_ERROR = "CHANGE_ERROR";
+export const changeError = bool => ({
+    type: CHANGE_ERROR,
     bool
 })
 
@@ -128,14 +144,17 @@ export const fetchPawfiles = () => dispatch => {
 };
 
 export const fetchIndividualPawfile = (pawfileId) => dispatch => {
+    dispatch(fetchIndividualPawfileRequest());
     fetch(`${API_BASE_URL}/${pawfileId}`)
-        .then(res => {
-            if (!res.ok) {
-                return Promise.reject(res.statusText);
-            }
-            return res.json();
-        })
-        .then(pawfile => {
-            dispatch(fetchIndividualPawfileSuccess(pawfile));
-        });
+    .then(res => {
+        if (!res.ok) {
+            return Promise.reject(res.statusText);
+        }
+        return res.json();
+    }).then(pawfile => {
+        console.log('successful fetching of', pawfile);
+        dispatch(fetchIndividualPawfileSuccess(pawfile));
+    }).catch(err => {
+        dispatch(fetchIndividualPawfileError(err));
+    });
 };
