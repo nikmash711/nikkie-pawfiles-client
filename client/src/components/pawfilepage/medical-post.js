@@ -1,6 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import {deletePost} from '../../actions/post-crud';
+
 import './medical-post.css'
 
 export function MedicalPost(props){
@@ -8,21 +10,21 @@ export function MedicalPost(props){
     <li key={props.index} className={`${props.type.toLowerCase()} post`}>
       <strong><h3 className="post-title">{props.title}</h3></strong>
       <span className="post-date">{props.date}</span>
-      {props.symptoms && <ul className="post-list">
+      {props.symptoms.length>0 && <ul className="post-list">
         <strong>Symptoms:</strong>
         {props.symptoms.map((symptom, index)=>(
         <li key={index}>{symptom}</li>
         ))}
       </ul>}
 
-      {props.vaccinations && <ul className="post-list">
+      {props.vaccinations.length>0 && <ul className="post-list">
         <strong>Vaccinations:</strong>
         {props.vaccinations.map((vaccination, index)=>(
         <li key={index}>{vaccination}</li>
         ))}
       </ul>}
 
-      {props.prescriptions && <ul className="post-list">
+      {props.prescriptions.length>0 && <ul className="post-list">
         <strong>Prescriptions:</strong>
         {props.prescriptions.map((prescription, index)=>(
         <li key={index}>{prescription}</li>
@@ -37,8 +39,16 @@ export function MedicalPost(props){
           } 
           </p>
         }
+        <button onClick={()=>props.dispatch(deletePost(props.currentPetId, props.postId))}><i className="fas fa-trash-alt"></i></button>
+
     </li>
   );
 }
 
-export default connect()(MedicalPost);
+function mapStateToProps(state) {
+  return {
+    currentPetId: state.pawfile.currentPetId,
+  }
+}
+
+export default connect(mapStateToProps)(MedicalPost);

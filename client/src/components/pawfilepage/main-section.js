@@ -15,9 +15,9 @@ export function MainSection(props){
   if(props.individualPawfile.posts){
      posts = props.individualPawfile.posts.map((post,index)=>(
       post.type==="memory" ?
-        <MemoryPost key={index} {...post}/>
+        <MemoryPost key={index} postId={post.id} {...post}/>
       :
-        <MedicalPost key={index} {...post}/>
+        <MedicalPost key={index} postId={post.id} {...post}/>
     ))
     console.log('the posts are2', posts); //why does it look weird 
 

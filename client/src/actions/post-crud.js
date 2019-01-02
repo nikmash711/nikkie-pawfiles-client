@@ -40,3 +40,37 @@ export const submitPost = (values, currentPetId) => dispatch =>{
         dispatch(crudError(err));
     });
 }
+
+/* DELETE POST */
+export const DELETE_POST_SUCCESS = 'DELETE_POST_SUCCESS';
+export const deletePostSuccess = (currentPetId, postId) => ({
+    type: DELETE_POST_SUCCESS,
+    currentPetId,
+    postId
+});
+
+export const DELETE_POST_REQUEST = "DELETE_POST_REQUEST";
+export const deletePostRequest = () => ({
+    type: DELETE_POST_REQUEST,
+})
+
+export const deletePost = (currentPetId, postId) => dispatch =>{
+    dispatch(deletePostRequest());
+    fetch(`${API_BASE_URL}/posts/${currentPetId}/${postId}`, { 
+        method: "DELETE",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        }
+    })
+    .then(res => {
+        if (!res.ok) {
+            return Promise.reject(res.statusText);
+        }
+        console.log('successful deleting');
+        dispatch(deletePostSuccess(currentPetId, postId));
+    })
+    .catch(err => {
+        dispatch(crudError(err));
+    });
+  }

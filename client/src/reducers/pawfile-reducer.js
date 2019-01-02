@@ -1,10 +1,10 @@
-import {SHOW_PAWFILE_FORM, CHANGE_SORTING_PETS_METHOD, TOGGLE_NAVBAR, CHANGE_CURRENT_PET_ID, SHOW_MEDICAL_FORM, SUBMIT_MEDICAL_FORM, SHOW_MEMORY_FORM, SUBMIT_MEMORY_FORM, CHANGE_SEARCH_TERM, CHANGE_CATEGORY_FILTER,} from '../actions/index';
+import {SHOW_PAWFILE_FORM, CHANGE_SORTING_PETS_METHOD, TOGGLE_NAVBAR, CHANGE_CURRENT_PET_ID, SHOW_MEDICAL_FORM, SHOW_MEMORY_FORM, CHANGE_SEARCH_TERM, CHANGE_CATEGORY_FILTER,} from '../actions/index';
 
 import {FETCH_PAWFILES_SUCCESS, FETCH_INDIVIDUAL_PAWFILE_SUCCESS, CHANGE_PAWFILES_PENDING, CHANGE_INDIVIDUAL_PAWFILE_PENDING, FETCH_INDIVIDUAL_PAWFILE_REQUEST, FETCH_INDIVIDUAL_PAWFILE_ERROR, CHANGE_ERROR, SUBMIT_PAWFILE_REQUEST, SUBMIT_PAWFILE_SUCCESS, DELETE_PAWFILE_REQUEST, DELETE_PAWFILE_SUCCESS} from '../actions/pawfile-crud'
 
 import {SUBMIT_REMINDER_REQUEST, SUBMIT_REMINDER_SUCCESS, CRUD_ERROR, DELETE_REMINDER_REQUEST, DELETE_REMINDER_SUCCESS} from '../actions/reminder-crud'
 
-import {SUBMIT_POST_REQUEST, SUBMIT_POST_SUCCESS} from '../actions/post-crud'
+import {SUBMIT_POST_REQUEST, SUBMIT_POST_SUCCESS, DELETE_POST_REQUEST, DELETE_POST_SUCCESS} from '../actions/post-crud'
 
 
 //dummy initial state 
@@ -230,7 +230,7 @@ export const pawfileReducer = (state = initialState, action)=> {
     })
   }
 
-  /* FOR POSTS */
+  /* POSTS */
   else if (action.type===SUBMIT_POST_REQUEST){
     return Object.assign({}, state, {
       pawfilesPending: true,
@@ -253,6 +253,32 @@ export const pawfileReducer = (state = initialState, action)=> {
     return Object.assign({}, state, {
         pawfilesPending: false,
         pawfiles: newArrayOfPawfiles
+    })
+  }
+
+  else if (action.type===DELETE_POST_REQUEST){
+    return Object.assign({}, state, {
+      pawfilesPending: true,
+    })
+  }
+
+
+  else if(action.type=== DELETE_POST_SUCCESS){
+    let pawfileToUpdate = {...state.pawfiles.find(pawfile=> pawfile.id==action.currentPetId)};
+
+    console.log('in deleting post reducer, pawfile to update is', pawfileToUpdate, 'post to update is', action.postId);
+
+    const updatedPosts = pawfileToUpdate.posts.filter((post)=> (post.id!==action.postId));
+
+    pawfileToUpdate.posts=updatedPosts;
+
+    const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id==action.currentPetId ? pawfileToUpdate : item))
+
+    console.log('in deleting post reducer, new array is', newArrayOfPawfiles);
+
+    return Object.assign({}, state, {
+      pawfiles: newArrayOfPawfiles,
+      pawfilesPending: false,
     })
   }
 
@@ -301,25 +327,6 @@ export const pawfileReducer = (state = initialState, action)=> {
   //     else{
   //       pawfileToUpdate.prescriptions = [...prescriptionList];
   //     }
-  //   }
-
-  //   const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id==action.currentPetId ? pawfileToUpdate : item))
-
-  //   return Object.assign({}, state, {
-  //     pawfiles: newArrayOfPawfiles
-  //   })
-  // }
-
-  // else if(action.type===SUBMIT_MEMORY_FORM){
-  //   let pawfileToUpdate = {...state.pawfiles.find(pawfile=> pawfile.id==action.currentPetId)};
-
-  //   let previousPosts = pawfileToUpdate.posts ? [...pawfileToUpdate.posts] : '';
-
-  //   if(previousPosts){
-  //     pawfileToUpdate.posts = [...pawfileToUpdate.posts, action.values];
-  //   }
-  //   else{
-  //     pawfileToUpdate.posts = [action.values];
   //   }
 
   //   const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id==action.currentPetId ? pawfileToUpdate : item))
