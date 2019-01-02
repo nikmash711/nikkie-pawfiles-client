@@ -62,14 +62,6 @@ export class PawfileForm extends React.Component{
 
             <Field
               component={Input} 
-              label = "Breed:"
-              name="breed" 
-              id="breed"
-              type = "text"
-            />
-
-            <Field
-              component={Input} 
               label = "Gender:"
               name="gender" 
               id="gender"
@@ -81,6 +73,14 @@ export class PawfileForm extends React.Component{
               <option value="Female">Female</option>
               <option value="Male">Male</option>
             </Field>
+
+            <Field
+              component={Input} 
+              label = "Breed:"
+              name="breed" 
+              id="breed"
+              type = "text"
+            />
 
             <Field
               component={Input} 
@@ -136,6 +136,7 @@ function mapStateToProps(state) {
       species: currentPetId ? individualPawfile.species : "",
       gender: currentPetId ?individualPawfile.gender : "",
       breed: currentPetId ? individualPawfile.breed : "",
+      weight: currentPetId ? individualPawfile.weight : "",
       birthday: currentPetId ? individualPawfile.birthday : "",
       bio: currentPetId ? individualPawfile.bio : "",
     }

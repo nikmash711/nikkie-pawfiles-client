@@ -7,9 +7,9 @@ export const submitReminderRequest = () => ({
 })
 
 export const SUBMIT_REMINDER_SUCCESS = "SUBMIT_REMINDER_SUCCESS";
-export const submitReminderSuccess = (reminder, currentPetId) => ({
+export const submitReminderSuccess = (pawfile, currentPetId) => ({
     type: SUBMIT_REMINDER_SUCCESS,
-    reminder,
+    pawfile,
     currentPetId
 })
 
@@ -34,9 +34,9 @@ export const submitReminder = (values, currentPetId) => dispatch =>{
             return Promise.reject(res.statusText);
         }
         return res.json();
-    }).then(reminder => {
-        console.log('in actions, got back reminder:', reminder);
-        dispatch(submitReminderSuccess(reminder, currentPetId));
+    }).then(pawfile => {
+        console.log('in actions, got back pawfile:', pawfile);
+        dispatch(submitReminderSuccess(pawfile, currentPetId));
     }).catch(err => {
         dispatch(crudError(err));
     });

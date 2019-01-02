@@ -284,24 +284,13 @@ export const pawfileReducer = (state = initialState, action)=> {
     })
   }
 
+  //not getting back a single reminder, but the whole pawfile. fix.
   else if (action.type=== SUBMIT_REMINDER_SUCCESS){
-    const newReminder = action.reminder;
+    const updatedPawfile = action.pawfile;
 
-    //create a new obj -this was the problem (I was directly mutating state)
-    let pawfileToUpdate = {...state.pawfiles.find(pawfile=> pawfile.id==action.currentPetId)};
+    const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id==action.currentPetId ? updatedPawfile : item))
 
-    let previousReminders = pawfileToUpdate.reminders ? [...pawfileToUpdate.reminders] : '';
-
-    //
-    if(previousReminders){
-      pawfileToUpdate.reminders=[...pawfileToUpdate.reminders, newReminder];
-    }
-    else{
-      pawfileToUpdate.reminders=[newReminder];
-    }
-
-    const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id==action.currentPetId ? pawfileToUpdate : item))
-
+    console.log('in reminder reducer, new array of apwfiles is', newArrayOfPawfiles);
     return Object.assign({}, state, {
         pawfilesPending: false,
         pawfiles: newArrayOfPawfiles

@@ -14,7 +14,9 @@ export class PawfileBlurb extends React.Component{
       <article className= {`${this.props.gender.toLowerCase()} blurb`}>
         <div className="top">
             <img src= {this.props.img} alt={this.props.name} className="prof-pic"/>
-            <h2>{this.props.name}</h2>
+            <Link to={`/${this.props.id}`} className="">
+              <h2>{this.props.name}</h2>
+            </Link>
         </div>
     
         <div className="option-icons">
@@ -23,13 +25,13 @@ export class PawfileBlurb extends React.Component{
         </div>
     
         <p><strong>Species:</strong> {this.props.species}</p>
+
+        <p><strong>Gender:</strong> {this.props.gender}</p>
   
         {this.props.breed && <p><strong>Breed:</strong> {this.props.breed}</p>}
 
         {this.props.weight && <p><strong>Weight:</strong> {this.props.weight}</p>}
-  
-        <p><strong>Gender:</strong> {this.props.gender}</p>
-        
+          
         { 
           this.props.birthday && 
           <p><strong>Birthday:</strong> {formatDate(this.props.birthday).toLocaleDateString()}</p> 
