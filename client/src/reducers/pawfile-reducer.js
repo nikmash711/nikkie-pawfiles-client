@@ -1,4 +1,4 @@
-import {SHOW_PAWFILE_FORM, SUBMIT_PAWFILE, CHANGE_SORTING_PETS_METHOD, ADDING_NEW_REMINDER, DELETE_PAWFILE, TOGGLE_NAVBAR, DELETE_REMINDER, CHANGE_CURRENT_PET_ID, SHOW_MEDICAL_FORM, SUBMIT_MEDICAL_FORM, SHOW_MEMORY_FORM, SUBMIT_MEMORY_FORM, CHANGE_SEARCH_TERM, CHANGE_CATEGORY_FILTER, FETCH_PAWFILES_SUCCESS, FETCH_INDIVIDUAL_PAWFILE_SUCCESS, CHANGE_PAWFILES_PENDING, CHANGE_INDIVIDUAL_PAWFILE_PENDING, FETCH_INDIVIDUAL_PAWFILE_REQUEST, FETCH_INDIVIDUAL_PAWFILE_ERROR, CHANGE_ERROR, SUBMIT_PAWFILE_REQUEST, SUBMIT_PAWFILE_SUCCESS} from '../actions/index';
+import {SHOW_PAWFILE_FORM, SUBMIT_PAWFILE, CHANGE_SORTING_PETS_METHOD, ADDING_NEW_REMINDER, DELETE_PAWFILE, TOGGLE_NAVBAR, DELETE_REMINDER, CHANGE_CURRENT_PET_ID, SHOW_MEDICAL_FORM, SUBMIT_MEDICAL_FORM, SHOW_MEMORY_FORM, SUBMIT_MEMORY_FORM, CHANGE_SEARCH_TERM, CHANGE_CATEGORY_FILTER, FETCH_PAWFILES_SUCCESS, FETCH_INDIVIDUAL_PAWFILE_SUCCESS, CHANGE_PAWFILES_PENDING, CHANGE_INDIVIDUAL_PAWFILE_PENDING, FETCH_INDIVIDUAL_PAWFILE_REQUEST, FETCH_INDIVIDUAL_PAWFILE_ERROR, CHANGE_ERROR, SUBMIT_PAWFILE_REQUEST, SUBMIT_PAWFILE_SUCCESS, DELETE_PAWFILE_REQUEST, DELETE_PAWFILE_SUCCESS} from '../actions/index';
 
 //dummy initial state 
 const initialState = {
@@ -98,14 +98,6 @@ export const pawfileReducer = (state = initialState, action)=> {
 
     return Object.assign({}, state, {
       pawfiles: newArrayOfPawfiles
-    })
-  }
-
-  else if(action.type===DELETE_PAWFILE){
-    const newArrayOfPawfiles = state.pawfiles.filter((item)=> (item.id!==action.currentPetId));
-
-    return Object.assign({}, state, {
-      pawfiles: newArrayOfPawfiles,
     })
   }
 
@@ -257,7 +249,7 @@ export const pawfileReducer = (state = initialState, action)=> {
 
   else if(action.type===SUBMIT_PAWFILE_SUCCESS){
     //if its editing an existing pawfile: 
-    if(action.currentPetId>=0){
+    if(action.currentPetId){
       console.log('updating in reducer with pawfile', action.pawfile);
       const updatedPawfile = action.pawfile;
 
@@ -274,8 +266,24 @@ export const pawfileReducer = (state = initialState, action)=> {
     return Object.assign({}, state, {
       pawfiles: [
         ...state.pawfiles,
-        action.values
+        action.pawfile
       ],
+      pawfilesPending: false,
+    })
+  }
+
+  else if (action.type===DELETE_PAWFILE_REQUEST){
+    return Object.assign({}, state, {
+      pawfilesPending: true,
+    })
+  }
+
+  else if(action.type===DELETE_PAWFILE_SUCCESS){
+    console.log('in deleting success reducer')
+    const newArrayOfPawfiles = state.pawfiles.filter((pawfile)=> (pawfile.id!==action.currentPetId));
+
+    return Object.assign({}, state, {
+      pawfiles: newArrayOfPawfiles,
       pawfilesPending: false,
     })
   }

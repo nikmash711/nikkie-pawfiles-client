@@ -21,12 +21,6 @@ export const submitMemoryForm = (values, currentPetId) => ({
     currentPetId
 });
 
-export const DELETE_PAWFILE = 'DELETE_PAWFILE';
-export const deletePawfile = (currentPetId) => ({
-    type: DELETE_PAWFILE,
-    currentPetId
-})
-
 export const ADDING_NEW_REMINDER = 'ADDING_NEW_REMINDER';
 export const addingNewReminder = (values, currentPetId) => ({
     type: ADDING_NEW_REMINDER,
@@ -193,5 +187,41 @@ export const submitPawfile = (values, currentPetId) => dispatch =>{
     }).catch(err => {
         dispatch(fetchIndividualPawfileError(err));
     });
+}
 
+export const DELETE_PAWFILE_SUCCESS = 'DELETE_PAWFILE_SUCCESS';
+export const deletePawfileSuccess = (currentPetId) => ({
+    type: DELETE_PAWFILE_SUCCESS,
+    currentPetId
+})
+
+export const DELETE_PAWFILE_REQUEST = "DELETE_PAWFILE_REQUEST";
+export const deletePawfileRequest = () => ({
+    type: DELETE_PAWFILE_REQUEST,
+})
+
+export const deletePawfile = (currentPetId) => dispatch =>{
+    dispatch(deletePawfileRequest());
+    fetch(`${API_BASE_URL}/pawfiles/${currentPetId}`, { 
+        method: "DELETE",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        }
+    })
+    .then(res => {
+        if (!res.ok) {
+            return Promise.reject(res.statusText);
+        }
+        console.log("HERE");
+        console.log('successful deleting');
+        dispatch(deletePawfileSuccess(currentPetId));
+        // return res.json();
+    })
+    // .then(() => {
+    //     console.log('successful deleting');
+        //  dispatch(deletePawfileSuccess(currentPetId));})
+    .catch(err => {
+        dispatch(fetchIndividualPawfileError(err));
+    });
 }

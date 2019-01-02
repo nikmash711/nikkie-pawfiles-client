@@ -17,6 +17,7 @@ export class Sidebar extends React.Component{
 
   render(){
     console.log('rendering sidebar with props', this.props)
+    //return redirect if individualpawfile doesnt exist
     return(
         <aside className="sidebar left"> 
           <PawfileBlurb {...this.props.individualPawfile}/>

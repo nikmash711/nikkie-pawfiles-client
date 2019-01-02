@@ -28,32 +28,27 @@ export class PawfilePage extends React.Component{
     this.props.dispatch(changeIndividualPawfilePending(true));
   }
 
-  //I no longer need to check validId this way.
-  // validId(paramsId){
-  //   console.log('paramsId in the fn is', paramsId, 'length of pawfiles', this.props.pawfiles.length);
-  //   return this.props.pawfiles.find(pawfile=> pawfile.id==paramsId)
-  // }
+  validId(paramsId){
+    return this.props.pawfiles.find(pawfile=> pawfile.id==paramsId)
+  }
 
   render(){
     console.log('props in pawfilepage are', this.props)
-    console.log('paramId in render is', this.props.match.params.pawfileId)
-    // console.log('the return value of fn validId is', this.validId(this.props.match.params.pawfileId))
     
     if(this.props.pawfilesPending){
       console.log('pending pawfilepage');
       return <p>Pending</p>
     }
 
-    console.log('in pawfile page the error is', this.props.error);
     if(this.props.error){
+      console.log('in pawfile page the error is', this.props.error);
       return <Redirect to="/home" /> 
     }
 
-    //if user is trying to access a pet that no longer exists or never did: 
-    // if(!this.validId(this.props.match.params.pawfileId)){
-    //   console.log('invalid id', this.props.match.params.pawfileId);
-    //   return <Redirect to="/home" /> 
-    // }
+    // if user is trying to access a pet that no longer exists or never did, or just deleted the pawfile from within the pawfile itself, then redirect them
+    if(!this.validId(this.props.match.params.pawfileId)){
+      return <Redirect to="/home" /> 
+    }
 
     return(
       <div className="pawfile-page">
@@ -69,13 +64,16 @@ export class PawfilePage extends React.Component{
   }
 }
 
-const mapStateToProps = state => ({
-  showPawfileForm: state.pawfile.showPawfileForm,
-  showMedicalForm: state.pawfile.showMedicalForm,
-  showMemoryForm: state.pawfile.showMemoryForm,
-  pawfilesPending: state.pawfile.pawfilesPending,
-  error: state.pawfile.error
-});
+function mapStateToProps(state) {
+  return {
+    pawfiles: state.pawfile.pawfiles,
+    showPawfileForm: state.pawfile.showPawfileForm,
+    showMedicalForm: state.pawfile.showMedicalForm,
+    showMemoryForm: state.pawfile.showMemoryForm,
+    pawfilesPending: state.pawfile.pawfilesPending,
+    error: state.pawfile.error,
+    }
+  }
 
 export default connect(mapStateToProps)(PawfilePage);
 
