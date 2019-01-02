@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {deletePost} from '../../actions/post-crud';
 import './memory-post.css'
 
 export function MemoryPost(props){
@@ -11,8 +12,16 @@ export function MemoryPost(props){
         {props.description && <p className="post-description">{props.description}</p>}
       </div>
       {props.memory_img && <img className="post-img" src={props.memory_img} alt={props.title}/>}
+      <button onClick={()=>props.dispatch(deletePost(props.currentPetId, props.postId))}><i className="fas fa-trash-alt"></i></button>
+
     </li>
   );
 }
 
-export default connect()(MemoryPost);
+function mapStateToProps(state) {
+  return {
+    currentPetId: state.pawfile.currentPetId,
+  }
+}
+
+export default connect(mapStateToProps)(MemoryPost);
