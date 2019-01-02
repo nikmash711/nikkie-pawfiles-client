@@ -8,14 +8,14 @@ import PawfileForm from '../home/pawfile-form';
 import MedicalForm from './medical-form'
 import MemoryForm from './memory-form'
 import {Redirect} from 'react-router-dom'
-import {showMedicalForm, showMemoryForm, changeSearchTerm, changeCategoryFilter, changeCurrentPetId, fetchIndividualPawfile, changeIndividualPawfilePending} from '../../actions/index';
+import {showMedicalForm, showMemoryForm, changeSearchTerm, changeCategoryFilter, changeCurrentPetId, fetchIndividualPawfile, changeIndividualPawfilePending, fetchPawfiles} from '../../actions/index';
 
 
 export class PawfilePage extends React.Component{
   componentDidMount(){
     console.log('mounting pawfilepage');
     this.props.dispatch(changeCurrentPetId(this.props.match.params.pawfileId));
-    this.props.dispatch(fetchIndividualPawfile(this.props.match.params.pawfileId))
+    this.props.dispatch(fetchPawfiles())
   }
 
   componentWillUnmount(){
@@ -39,7 +39,7 @@ export class PawfilePage extends React.Component{
     console.log('paramId in render is', this.props.match.params.pawfileId)
     // console.log('the return value of fn validId is', this.validId(this.props.match.params.pawfileId))
     
-    if(this.props.individualPawfilePending){
+    if(this.props.pawfilesPending){
       console.log('pending pawfilepage');
       return <p>Pending</p>
     }
@@ -73,7 +73,7 @@ const mapStateToProps = state => ({
   showPawfileForm: state.pawfile.showPawfileForm,
   showMedicalForm: state.pawfile.showMedicalForm,
   showMemoryForm: state.pawfile.showMemoryForm,
-  individualPawfilePending: state.pawfile.individualPawfilePending,
+  pawfilesPending: state.pawfile.pawfilesPending,
   error: state.pawfile.error
 });
 

@@ -121,18 +121,19 @@ export class PawfileForm extends React.Component{
 
 function mapStateToProps(state) {
   let currentPetId = state.pawfile.currentPetId;
-  let specificPawfile = state.pawfile.pawfiles.find(pawfile=>pawfile.id===currentPetId);
+  let individualPawfile = state.pawfile.pawfiles.find(pawfile=>pawfile.id==currentPetId);
+  console.log('in mapstatetoprops in pawfile form, state is', state.pawfile)
   return {
     // to get the initial values if the user is editing the form: 
     currentPetId: state.pawfile.currentPetId,
     initialValues: {
-      name: currentPetId>=0 ? specificPawfile.name : "",
-      img: currentPetId>=0 ? specificPawfile.img : "",
-      species: currentPetId>=0 ? specificPawfile.species : "",
-      gender: currentPetId>=0 ?specificPawfile.gender : "",
-      breed: currentPetId>=0 ? specificPawfile.breed : "",
-      birthday: currentPetId>=0 ? specificPawfile.birthday : "",
-      bio: currentPetId>=0 ? specificPawfile.bio : "",
+      name: currentPetId>=0 ? individualPawfile.name : "",
+      img: currentPetId>=0 ? individualPawfile.img : "",
+      species: currentPetId>=0 ? individualPawfile.species : "",
+      gender: currentPetId>=0 ?individualPawfile.gender : "",
+      breed: currentPetId>=0 ? individualPawfile.breed : "",
+      birthday: currentPetId>=0 ? individualPawfile.birthday : "",
+      bio: currentPetId>=0 ? individualPawfile.bio : "",
     }
   }
 }

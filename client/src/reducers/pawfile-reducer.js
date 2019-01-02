@@ -258,12 +258,14 @@ export const pawfileReducer = (state = initialState, action)=> {
   else if(action.type===SUBMIT_PAWFILE_SUCCESS){
     //if its editing an existing pawfile: 
     if(action.currentPetId>=0){
+      console.log('updating in reducer with pawfile', action.pawfile);
       const updatedPawfile = action.pawfile;
 
       const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id==action.currentPetId ? updatedPawfile : item))
   
       return Object.assign({}, state, {
           pawfiles: newArrayOfPawfiles,
+          // individualPawfile: action.pawfile,
           pawfilesPending: false,
       })
     }
