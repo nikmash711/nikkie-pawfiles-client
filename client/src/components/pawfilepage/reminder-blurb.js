@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import Reminder from './reminder';
-import {addingNewReminder} from '../../actions/index';
+import {submitReminder} from '../../actions/reminder-crud';
 import {todaysDate} from '../helper-functions';
 import './reminder-blurb.css';
 
@@ -10,7 +10,7 @@ export class ReminderBlurb extends React.Component{
   onSubmit(e){
     e.preventDefault();
     const values={note: this.noteInput.value, date: this.dateInput.value};
-    this.props.dispatch(addingNewReminder(values, this.props.id));
+    this.props.dispatch(submitReminder(values, this.props.id));
     this.noteInput.value = "";
     this.dateInput.value="";
   }

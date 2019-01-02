@@ -80,7 +80,7 @@ a{
   width: fit-content;
 }
 
-.blurb h2:hover, .blurb h2:focus, .option-icons i:hover, .option-icons i:focus, .option-icons button:hover, .option-icons button:focus{
+.option-icons i:hover, .option-icons i:focus, .option-icons button:hover, .option-icons button:focus{
   text-shadow: white 2px 2px 2px;
   cursor: pointer;
 }
@@ -104,10 +104,6 @@ a{
   display:block;
 }
 
-.prof-pic:hover, .prof-pic:focus{
-  border: 3px solid white;
-}
-
 .option-icons{
   position: absolute;
   top: 12px;
@@ -126,6 +122,24 @@ a{
   margin: 5px;
 }
 
+.view-pawfile{
+  display: inline-block;
+  background-color: transparent;
+  border: 2px solid black;
+  padding: 10px;
+  margin-top:10px;
+  font-family:"Reenie Beanie",arial,sans-serif;
+  font-size: 25px;
+  text-shadow: black 1px 1px 0px;
+}
+
+.view-pawfile:hover, .view-pawfile:focus{
+  outline: 0;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+}
+
 @media(min-width: 350px){
   .option-icons{
     left:73%;
@@ -138,7 +152,7 @@ a{
 
 @media(min-width: 500px){
   .option-icons{
-    left:80%;
+    left:83%;
   }
 
   .blurb{

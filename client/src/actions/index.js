@@ -19,13 +19,6 @@ export const submitMemoryForm = (values, currentPetId) => ({
     currentPetId
 });
 
-export const ADDING_NEW_REMINDER = 'ADDING_NEW_REMINDER';
-export const addingNewReminder = (values, currentPetId) => ({
-    type: ADDING_NEW_REMINDER,
-    values,
-    currentPetId
-});
-
 export const DELETE_REMINDER = 'DELETE_REMINDER';
 export const deleteReminder = (currentPetId, reminderId) => ({
     type: DELETE_REMINDER,

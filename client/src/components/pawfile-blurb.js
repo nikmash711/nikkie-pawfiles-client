@@ -13,19 +13,11 @@ export class PawfileBlurb extends React.Component{
     return(
       <article className= {`${this.props.gender.toLowerCase()} blurb`}>
         <div className="top">
-          <Link to={`/${this.props.id}`}>
-              <img src= {this.props.img} alt={this.props.name} className="prof-pic"/>
-          </Link>
-    
-          <Link to={`/${this.props.id}`}>
+            <img src= {this.props.img} alt={this.props.name} className="prof-pic"/>
             <h2>{this.props.name}</h2>
-          </Link>
         </div>
     
         <div className="option-icons">
-          <Link to={`/${this.props.id}`}>
-            <i className="fas fa-external-link-alt"></i>
-          </Link>
           <button onClick={()=>this.props.dispatch(showPawfileForm(true,this.props.id))}><i className="fas fa-edit"></i></button>
           <button onClick={()=>this.props.dispatch(deletePawfile(this.props.id))}><i className="fas fa-trash-alt"></i></button>
         </div>
@@ -52,6 +44,10 @@ export class PawfileBlurb extends React.Component{
           this.props.bio && 
           <p><strong>Bio:</strong> {this.props.bio}</p>
         }
+
+        <Link to={`/${this.props.id}`} className="view-pawfile">
+          View Pawfile
+        </Link>
       </article>
     );
   }
