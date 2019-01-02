@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import PawfileBlurb from './pawfile-blurb';
+import PawfileBlurb from '../pawfile-blurb';
 import {sortByOldest, sortByYoungest, sortAtoZ, sortZtoA} from '../helper-functions';
 import './pawfiles-list.css';
 

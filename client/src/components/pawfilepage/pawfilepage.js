@@ -4,11 +4,12 @@ import Navbar from '../navbar';
 import Footer from '../footer'
 import Sidebar from './sidebar';
 import MainSection from './main-section';
-import PawfileForm from '../home/pawfile-form';
+import PawfileForm from '../pawfile-form';
 import MedicalForm from './medical-form'
 import MemoryForm from './memory-form'
 import {Redirect} from 'react-router-dom'
-import {showMedicalForm, showMemoryForm, changeSearchTerm, changeCategoryFilter, changeCurrentPetId, fetchIndividualPawfile, changeIndividualPawfilePending, fetchPawfiles} from '../../actions/index';
+import {showMedicalForm, showMemoryForm, changeSearchTerm, changeCategoryFilter, changeCurrentPetId} from '../../actions/index';
+import { fetchIndividualPawfile, changeIndividualPawfilePending, fetchPawfiles } from '../../actions/pawfile-crud';
 
 
 export class PawfilePage extends React.Component{

@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import PawfileBlurb from '../home/pawfile-blurb';
+import PawfileBlurb from '../pawfile-blurb';
 import ReminderBlurb from './reminder-blurb';
 
 import './sidebar.css'

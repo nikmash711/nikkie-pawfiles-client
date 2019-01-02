@@ -3,7 +3,8 @@ import {connect} from 'react-redux';
 import Navbar from '../navbar';
 import Footer from '../footer'
 import MyPawfiles from './my-pawfiles';
-import {fetchPawfiles, changePawfilesPending, changeError, changeSortingPetsMethod} from '../../actions/index';
+import {changeSortingPetsMethod} from '../../actions/index';
+import {fetchPawfiles, changePawfilesPending, changeError, } from '../../actions/pawfile-crud';
 
 export class HomePage extends React.Component{
   componentDidMount(){

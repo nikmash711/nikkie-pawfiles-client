@@ -5,7 +5,7 @@ import Input from '../input';
 import {submitMedicalForm, showMedicalForm} from '../../actions/index';
 import {required, nonEmpty} from '../validators';
 import {stringToArrayList, formatDate} from '../helper-functions';
-import '.././home/pawfile-form.css';
+import '../pawfile-form.css';
 import './medical-form.css'
 
 export class MedicalForm extends React.Component{

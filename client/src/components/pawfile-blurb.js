@@ -1,8 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import {showPawfileForm, deletePawfile} from '../../actions/index';
-import {formatDate, calculateAge} from '../helper-functions';
+import {showPawfileForm} from '../actions/index';
+import {deletePawfile} from '../actions/pawfile-crud';
+import {formatDate, calculateAge} from './helper-functions';
 import './pawfile-blurb.css';
 
 export class PawfileBlurb extends React.Component{

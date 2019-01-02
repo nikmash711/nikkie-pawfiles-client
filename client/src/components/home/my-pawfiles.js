@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import PawfilesList from './pawfiles-list';
 import AddNewPawfileButton from './add-new-pawfile-button';
-import PawfileForm from './pawfile-form';
+import PawfileForm from '../pawfile-form';
 import SortBySelect from './sort-by-select';
 import Header from './header';
 import './my-pawfiles.css'

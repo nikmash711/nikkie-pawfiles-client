@@ -5,7 +5,7 @@ import Input from '../input';
 import {submitMemoryForm, showMemoryForm} from '../../actions/index';
 import {required, nonEmpty} from '../validators';
 import {formatDate} from '../helper-functions';
-import '.././home/pawfile-form.css';
+import '../pawfile-form.css';
 import './memory-form.css';
 
 export class MemoryForm extends React.Component{
