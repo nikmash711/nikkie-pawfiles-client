@@ -37,8 +37,8 @@ export function MainSection(props){
       <main>
         <nav className="options">
             <div className="add-buttons">
-              <button onClick={()=>props.dispatch(showMemoryForm(true))} className="new-memory">New Memory</button>
-              <button onClick={()=>props.dispatch(showMedicalForm(true))} className="new-medical">New Medical</button>
+              <button onClick={()=>props.dispatch(showMemoryForm(true, undefined))} className="new-memory">New Memory</button>
+              <button onClick={()=>props.dispatch(showMedicalForm(true, undefined))} className="new-medical">New Medical</button>
             </div>
             <div className="filters">
               <select onChange={e=>props.dispatch(changeCategoryFilter(e.target.value))} className="filter-category" name="filter" id="filter">

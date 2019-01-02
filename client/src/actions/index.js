@@ -38,15 +38,17 @@ export const changeCurrentPetId = (currentPetId) => ({
 })
 
 export const SHOW_MEDICAL_FORM = "SHOW_MEDICAL_FORM";
-export const showMedicalForm = (bool) =>({
+export const showMedicalForm = (bool, currentPostId) =>({
     type: SHOW_MEDICAL_FORM,
-    bool
+    bool,
+    currentPostId
 })
 
 export const SHOW_MEMORY_FORM = "SHOW_MEMORY_FORM";
-export const showMemoryForm = (bool) =>({
+export const showMemoryForm = (bool, currentPostId) =>({
     type: SHOW_MEMORY_FORM,
-    bool
+    bool,
+    currentPostId
 })
 
 export const CHANGE_SEARCH_TERM = "CHANGE_SEARCH_TERM";

@@ -5,27 +5,25 @@ import Input from '../input';
 import {showMemoryForm} from '../../actions/index';
 import {submitPost} from '../../actions/post-crud';
 import {required, nonEmpty} from '../validators';
-import {formatDate} from '../helper-functions';
 import '../pawfile-form.css';
 import './memory-form.css';
 
 export class MemoryForm extends React.Component{
   componentWillUnmount(){
-    this.props.dispatch(showMemoryForm(false));
+    this.props.dispatch(showMemoryForm(false, undefined));
   }
 
   onSubmit(values){
     values.type="memory";
-    values.date = formatDate(values.date).toDateString();
-    this.props.dispatch(submitPost(values, this.props.currentPetId));
-    this.props.dispatch(showMemoryForm(false));
+    this.props.dispatch(submitPost(values, this.props.currentPetId, this.props.currentPostId));
+    this.props.dispatch(showMemoryForm(false, undefined));
   }
 
   render(){
     return(
       <div className='form-modal mem'>
           <form className="form" onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
-          <button type="button" className = "close" onClick={()=>this.props.dispatch(showMemoryForm(false))}>X</button>
+          <button type="button" className = "close" onClick={()=>this.props.dispatch(showMemoryForm(false, undefined))}>X</button>
 
             <Field
               component={Input}
@@ -64,7 +62,7 @@ export class MemoryForm extends React.Component{
             
             <div className="buttons">
               <button type="submit">Save</button>
-              <button onClick={()=>this.props.dispatch(showMemoryForm(false))} type="cancel">Cancel</button>
+              <button onClick={()=>this.props.dispatch(showMemoryForm(false, undefined))} type="cancel">Cancel</button>
             </div>
           </form>
         </div>
@@ -73,12 +71,22 @@ export class MemoryForm extends React.Component{
 }
 
 function mapStateToProps(state) {
-  // let currentPetId = state.pawfile.currentPetId;
+  //see if there's a postId (editing), or no id means new post. Is this efficient?
+  let currentPostId = state.pawfile.currentPostId;
+  let currentPetId = state.pawfile.currentPetId;
+  let individualPawfile = state.pawfile.pawfiles.find(pawfile=>pawfile.id==currentPetId);
+  let individualPost = individualPawfile.posts.find(post=>post.id==currentPostId);
+
   return {
+    currentPostId: state.pawfile.currentPostId,
     currentPetId: state.pawfile.currentPetId,
     // to get the initial values if the user is editing the form: 
-    // initialValues: {
-    // }
+    initialValues: {
+      title: individualPost ? individualPost.title : "",
+      date: individualPost ? individualPost.date : "",
+      description: individualPost ? individualPost.description : "",
+      memory_img: individualPost ? individualPost.memory_img : "",
+    }
   }
 }
 

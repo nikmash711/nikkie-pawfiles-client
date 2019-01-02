@@ -15,6 +15,7 @@ const initialState = {
   showMedicalForm: false,
   showMemoryForm: false,
   currentPetId: undefined,
+  currentPostId: undefined,
   currentSearchTerm: "",
   categoryFilter: "",
   toggleNavbar:false,
@@ -61,13 +62,15 @@ export const pawfileReducer = (state = initialState, action)=> {
 
   else if(action.type===SHOW_MEDICAL_FORM){
     return Object.assign({}, state, {
-      showMedicalForm: action.bool
+      showMedicalForm: action.bool,
+      currentPostId: action. currentPostId,
     })
   }
 
   else if(action.type===SHOW_MEMORY_FORM){
     return Object.assign({}, state, {
-      showMemoryForm: action.bool
+      showMemoryForm: action.bool,
+      currentPostId: action. currentPostId,
     })
   }
 

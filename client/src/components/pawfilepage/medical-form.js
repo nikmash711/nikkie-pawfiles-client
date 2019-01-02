@@ -5,7 +5,7 @@ import Input from '../input';
 import {showMedicalForm} from '../../actions/index';
 import {submitPost} from '../../actions/post-crud';
 import {required, nonEmpty} from '../validators';
-import {stringToArrayList, formatDate} from '../helper-functions';
+import {stringToArrayList, arrayToString} from '../helper-functions';
 import '../pawfile-form.css';
 import './medical-form.css'
 
@@ -16,7 +16,6 @@ export class MedicalForm extends React.Component{
 
   onSubmit(values){
     values.type="medical";
-    values.date = formatDate(values.date).toDateString();
     if(values.vaccinations){
       values.vaccinations = stringToArrayList(values.vaccinations);
     }
@@ -27,15 +26,15 @@ export class MedicalForm extends React.Component{
       values.symptoms = stringToArrayList(values.symptoms);
     }
 
-    this.props.dispatch(submitPost(values, this.props.currentPetId));
-    this.props.dispatch(showMedicalForm(false));
+    this.props.dispatch(submitPost(values, this.props.currentPetId, this.props.currentPostId));
+    this.props.dispatch(showMedicalForm(false, undefined));
   }
 
   render(){
     return(
       <div className='form-modal med'>
           <form className="form" onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
-          <button type="button" className = "close" onClick={()=>this.props.dispatch(showMedicalForm(false))}>X</button>
+          <button type="button" className = "close" onClick={()=>this.props.dispatch(showMedicalForm(false, undefined))}>X</button>
           
             <Field
               component={Input}
@@ -117,7 +116,7 @@ export class MedicalForm extends React.Component{
             
             <div className="buttons">
               <button type="submit">Save</button>
-              <button onClick={()=>this.props.dispatch(showMedicalForm(false))} type="cancel">Cancel</button>
+              <button onClick={()=>this.props.dispatch(showMedicalForm(false, undefined))} type="cancel">Cancel</button>
             </div>
           </form>
         </div>
@@ -126,12 +125,26 @@ export class MedicalForm extends React.Component{
 }
 
 function mapStateToProps(state) {
-  // let currentPetId = state.pawfile.currentPetId;
+  //see if there's a postId (editing), or no id means new post. Is this efficient?
+  let currentPostId = state.pawfile.currentPostId;
+  let currentPetId = state.pawfile.currentPetId;
+  let individualPawfile = state.pawfile.pawfiles.find(pawfile=>pawfile.id==currentPetId);
+  let individualPost = individualPawfile.posts.find(post=>post.id==currentPostId);
+
   return {
+    currentPostId: state.pawfile.currentPostId,
     currentPetId: state.pawfile.currentPetId,
     // to get the initial values if the user is editing the form: 
-    // initialValues: {
-    // }
+    initialValues: {
+      title: individualPost ? individualPost.title : "",
+      date: individualPost ? individualPost.date : "",
+      doctor: individualPost ? individualPost.doctor : "",
+      office: individualPost ? individualPost.office : "",
+      symptoms:individualPost ? arrayToString(individualPost.symptoms) : "",
+      prescriptions:individualPost ? arrayToString(individualPost.prescriptions) : "",
+      vaccinations:individualPost ? arrayToString(individualPost.vaccinations) : "",
+      notes: individualPost ? individualPost.notes : "",
+    }
   }
 }
 

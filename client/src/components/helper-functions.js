@@ -44,6 +44,10 @@ export function stringToArrayList(str){
   return str.split(',');
 }
 
+export function arrayToString(arr){
+  return arr.join(', ');
+}
+
 export function filterBySearch(searchTerm, posts){
   console.log('the posts in theh helper are', posts);
   return posts.filter(post=>

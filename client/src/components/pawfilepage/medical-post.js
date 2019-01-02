@@ -2,6 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {deletePost} from '../../actions/post-crud';
+import {showMedicalForm} from '../../actions/index';
+import {formatDate} from '../helper-functions';
 
 import './medical-post.css'
 
@@ -9,7 +11,7 @@ export function MedicalPost(props){
   return(
     <li key={props.index} className={`${props.type.toLowerCase()} post`}>
       <strong><h3 className="post-title">{props.title}</h3></strong>
-      <span className="post-date">{props.date}</span>
+      <span className="post-date">{formatDate(props.date).toDateString()}</span>
       {props.symptoms.length>0 && <ul className="post-list">
         <strong>Symptoms:</strong>
         {props.symptoms.map((symptom, index)=>(
@@ -40,6 +42,8 @@ export function MedicalPost(props){
           </p>
         }
         <button onClick={()=>props.dispatch(deletePost(props.currentPetId, props.postId))}><i className="fas fa-trash-alt"></i></button>
+        <button onClick={()=>props.dispatch(showMedicalForm(true, props.postId))}><i className="fas fa-edit"></i></button>
+
 
     </li>
   );

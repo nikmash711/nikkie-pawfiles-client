@@ -18,10 +18,13 @@ export const crudError = () => ({
   type: CRUD_ERROR,
 })
 
-export const submitPost = (values, currentPetId) => dispatch =>{
+export const submitPost = (values, currentPetId, postId) => dispatch =>{
+    //could be editing a post or submitting a new one, it's the same form
+    const method = postId ? "PUT" : "POST";
+    const path = postId ? `${API_BASE_URL}/posts/${currentPetId}/${postId}` : `${API_BASE_URL}/posts/${currentPetId}`; 
     dispatch(submitPostRequest());
-    fetch(`${API_BASE_URL}/posts/${currentPetId}`, { 
-        method: "POST",
+    fetch(path, { 
+        method: method,
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
