@@ -1,4 +1,4 @@
-import {SHOW_PAWFILE_FORM, SUBMIT_PAWFILE, CHANGE_SORTING_PETS_METHOD, ADDING_NEW_REMINDER, DELETE_PAWFILE, TOGGLE_NAVBAR, DELETE_REMINDER, CHANGE_CURRENT_PET_ID, SHOW_MEDICAL_FORM, SUBMIT_MEDICAL_FORM, SHOW_MEMORY_FORM, SUBMIT_MEMORY_FORM, CHANGE_SEARCH_TERM, CHANGE_CATEGORY_FILTER, FETCH_PAWFILES_SUCCESS, FETCH_INDIVIDUAL_PAWFILE_SUCCESS, CHANGE_PAWFILES_PENDING, CHANGE_INDIVIDUAL_PAWFILE_PENDING, FETCH_INDIVIDUAL_PAWFILE_REQUEST, FETCH_INDIVIDUAL_PAWFILE_ERROR, CHANGE_ERROR, CREATE_PAWFILE_REQUEST, CREATE_PAWFILE_SUCCESS} from '../actions/index';
+import {SHOW_PAWFILE_FORM, SUBMIT_PAWFILE, CHANGE_SORTING_PETS_METHOD, ADDING_NEW_REMINDER, DELETE_PAWFILE, TOGGLE_NAVBAR, DELETE_REMINDER, CHANGE_CURRENT_PET_ID, SHOW_MEDICAL_FORM, SUBMIT_MEDICAL_FORM, SHOW_MEMORY_FORM, SUBMIT_MEMORY_FORM, CHANGE_SEARCH_TERM, CHANGE_CATEGORY_FILTER, FETCH_PAWFILES_SUCCESS, FETCH_INDIVIDUAL_PAWFILE_SUCCESS, CHANGE_PAWFILES_PENDING, CHANGE_INDIVIDUAL_PAWFILE_PENDING, FETCH_INDIVIDUAL_PAWFILE_REQUEST, FETCH_INDIVIDUAL_PAWFILE_ERROR, CHANGE_ERROR, SUBMIT_PAWFILE_REQUEST, SUBMIT_PAWFILE_SUCCESS} from '../actions/index';
 
 //dummy initial state 
 const initialState = {
@@ -25,30 +25,6 @@ export const pawfileReducer = (state = initialState, action)=> {
     return Object.assign({}, state, {
       showPawfileForm: action.bool,
       currentPetId: action.currentPetId
-    })
-  }
-
-  else if (action.type=== SUBMIT_PAWFILE){
-    //if its editing an existing pawfile: 
-    if(action.currentPetId>=0){
-      const updatedValues = action.values;
-      let pawfileToUpdate = {...state.pawfiles.find(pawfile=> pawfile.id==action.currentPetId)};
-
-      //merge updated values with rest of pawfile: 
-      let updatedPawfile = Object.assign({}, pawfileToUpdate, updatedValues)
-
-      const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id==action.currentPetId ? updatedPawfile : item))
-  
-      return Object.assign({}, state, {
-          pawfiles: newArrayOfPawfiles
-      })
-    }
-    //if its a new pawfile: 
-    return Object.assign({}, state, {
-      pawfiles: [
-        ...state.pawfiles,
-        action.values
-      ],
     })
   }
 
@@ -273,13 +249,26 @@ export const pawfileReducer = (state = initialState, action)=> {
     })
   }
 
-  else if (action.type===CREATE_PAWFILE_REQUEST){
+  else if (action.type===SUBMIT_PAWFILE_REQUEST){
     return Object.assign({}, state, {
       pawfilesPending: true,
     })
   }
 
-  else if(action.type===CREATE_PAWFILE_SUCCESS){
+  else if(action.type===SUBMIT_PAWFILE_SUCCESS){
+    //if its editing an existing pawfile: 
+    if(action.currentPetId>=0){
+      const updatedPawfile = action.pawfile;
+
+      const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id==action.currentPetId ? updatedPawfile : item))
+  
+      return Object.assign({}, state, {
+          pawfiles: newArrayOfPawfiles,
+          pawfilesPending: false,
+      })
+    }
+
+    //if its a new obj
     return Object.assign({}, state, {
       pawfiles: [
         ...state.pawfiles,
@@ -293,10 +282,3 @@ export const pawfileReducer = (state = initialState, action)=> {
 }
 
 //load all the pawfiles in state regardless of page, and then display what you want from that state. differentiate state from display. 
-
-// return Object.assign({}, state, {
-//   pawfiles: [
-//     ...state.pawfiles,
-//     action.values
-//   ],
-// })

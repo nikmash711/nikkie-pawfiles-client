@@ -13,7 +13,7 @@ export class PawfileForm extends React.Component{
   }
 
   onSubmit(values){
-    this.props.dispatch(createNewPawfile(values, this.props.currentPetId));
+    this.props.dispatch(submitPawfile(values, this.props.currentPetId));
     this.props.dispatch(showPawfileForm(false, undefined));
   }
 
@@ -121,17 +121,18 @@ export class PawfileForm extends React.Component{
 
 function mapStateToProps(state) {
   let currentPetId = state.pawfile.currentPetId;
+  let specificPawfile = state.pawfile.pawfiles.find(pawfile=>pawfile.id===currentPetId);
   return {
     // to get the initial values if the user is editing the form: 
     currentPetId: state.pawfile.currentPetId,
     initialValues: {
-      name: currentPetId>=0 ? state.pawfile.pawfiles[currentPetId].name : "",
-      img: currentPetId>=0 ? state.pawfile.pawfiles[currentPetId].img : "",
-      species: currentPetId>=0 ? state.pawfile.pawfiles[currentPetId].species : "",
-      gender: currentPetId>=0 ? state.pawfile.pawfiles[currentPetId].gender : "",
-      breed: currentPetId>=0 ? state.pawfile.pawfiles[currentPetId].breed : "",
-      birthday: currentPetId>=0 ? state.pawfile.pawfiles[currentPetId].birthday : "",
-      bio: currentPetId>=0 ? state.pawfile.pawfiles[currentPetId].bio : "",
+      name: currentPetId>=0 ? specificPawfile.name : "",
+      img: currentPetId>=0 ? specificPawfile.img : "",
+      species: currentPetId>=0 ? specificPawfile.species : "",
+      gender: currentPetId>=0 ?specificPawfile.gender : "",
+      breed: currentPetId>=0 ? specificPawfile.breed : "",
+      birthday: currentPetId>=0 ? specificPawfile.birthday : "",
+      bio: currentPetId>=0 ? specificPawfile.bio : "",
     }
   }
 }

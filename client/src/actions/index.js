@@ -154,23 +154,27 @@ export const fetchIndividualPawfile = (pawfileId) => dispatch => {
     });
 };
 
-export const CREATE_PAWFILE_REQUEST = "CREATE_PAWFILE_REQUEST";
-export const createPawfileRequest = () => ({
-    type: CREATE_PAWFILE_REQUEST,
+export const SUBMIT_PAWFILE_REQUEST = "SUBMIT_PAWFILE_REQUEST";
+export const submitPawfileRequest = () => ({
+    type: SUBMIT_PAWFILE_REQUEST,
 })
 
-export const CREATE_PAWFILE_SUCCESS = "CREATE_PAWFILE_SUCCESS";
-export const createPawfileSuccess = (pawfile) => ({
-    type: CREATE_PAWFILE_SUCCESS,
-    pawfile
+export const SUBMIT_PAWFILE_SUCCESS = "SUBMIT_PAWFILE_SUCCESS";
+export const submitPawfileSuccess = (pawfile, currentPetId) => ({
+    type: SUBMIT_PAWFILE_SUCCESS,
+    pawfile,
+    currentPetId
 })
 
-export const createNewPawfile = (values, currentPetId) => dispatch =>{
+export const submitPawfile = (values, currentPetId) => dispatch =>{
     //could be editing a pawfile or submitting it, it's the same form
     const method = currentPetId ? "PUT" : "POST";
-    console.log('method is', method);
-    dispatch(createPawfileRequest());
-    fetch(`${API_BASE_URL}/pawfiles`, { 
+    const path = currentPetId ? `${API_BASE_URL}/pawfiles/${currentPetId}` : `${API_BASE_URL}/pawfiles`; 
+
+    console.log('the values being sent are', values)
+
+    dispatch(submitPawfileRequest());
+    fetch(path, { 
         method: method,
         headers: {
             'Accept': 'application/json',
@@ -184,17 +188,10 @@ export const createNewPawfile = (values, currentPetId) => dispatch =>{
         }
         return res.json();
     }).then(pawfile => {
-        console.log('successful creating of', pawfile);
-        dispatch(createPawfileSuccess(pawfile));
+        console.log('successful creating or updating of', pawfile);
+        dispatch(submitPawfileSuccess(pawfile, currentPetId));
     }).catch(err => {
         dispatch(fetchIndividualPawfileError(err));
     });
 
 }
-
-export const SUBMIT_PAWFILE = 'SUBMIT_PAWFILE';
-export const submitPawfile = (values, currentPetId) => ({
-    type: SUBMIT_PAWFILE,
-    values,
-    currentPetId
-});
