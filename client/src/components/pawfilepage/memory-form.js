@@ -2,7 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {reduxForm, Field, Fieldset, SubmissionError, focus} from 'redux-form';
 import Input from '../input';
-import {submitMemoryForm, showMemoryForm} from '../../actions/index';
+import {showMemoryForm} from '../../actions/index';
+import {submitPost} from '../../actions/post-crud';
 import {required, nonEmpty} from '../validators';
 import {formatDate} from '../helper-functions';
 import '../pawfile-form.css';
@@ -16,7 +17,7 @@ export class MemoryForm extends React.Component{
   onSubmit(values){
     values.type="memory";
     values.date = formatDate(values.date).toDateString();
-    this.props.dispatch(submitMemoryForm(values, this.props.currentPetId));
+    this.props.dispatch(submitPost(values, this.props.currentPetId));
     this.props.dispatch(showMemoryForm(false));
   }
 

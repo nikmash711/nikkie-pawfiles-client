@@ -2,7 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {reduxForm, Field, Fieldset, SubmissionError, focus} from 'redux-form';
 import Input from '../input';
-import {submitMedicalForm, showMedicalForm} from '../../actions/index';
+import {showMedicalForm} from '../../actions/index';
+import {submitPost} from '../../actions/post-crud';
 import {required, nonEmpty} from '../validators';
 import {stringToArrayList, formatDate} from '../helper-functions';
 import '../pawfile-form.css';
@@ -26,7 +27,7 @@ export class MedicalForm extends React.Component{
       values.symptoms = stringToArrayList(values.symptoms);
     }
 
-    this.props.dispatch(submitMedicalForm(values, this.props.currentPetId));
+    this.props.dispatch(submitPost(values, this.props.currentPetId));
     this.props.dispatch(showMedicalForm(false));
   }
 

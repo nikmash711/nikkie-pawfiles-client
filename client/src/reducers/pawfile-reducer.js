@@ -1,8 +1,11 @@
-import {SHOW_PAWFILE_FORM, CHANGE_SORTING_PETS_METHOD, ADDING_NEW_REMINDER, TOGGLE_NAVBAR, DELETE_REMINDER, CHANGE_CURRENT_PET_ID, SHOW_MEDICAL_FORM, SUBMIT_MEDICAL_FORM, SHOW_MEMORY_FORM, SUBMIT_MEMORY_FORM, CHANGE_SEARCH_TERM, CHANGE_CATEGORY_FILTER,} from '../actions/index';
+import {SHOW_PAWFILE_FORM, CHANGE_SORTING_PETS_METHOD, TOGGLE_NAVBAR, CHANGE_CURRENT_PET_ID, SHOW_MEDICAL_FORM, SUBMIT_MEDICAL_FORM, SHOW_MEMORY_FORM, SUBMIT_MEMORY_FORM, CHANGE_SEARCH_TERM, CHANGE_CATEGORY_FILTER,} from '../actions/index';
 
 import {FETCH_PAWFILES_SUCCESS, FETCH_INDIVIDUAL_PAWFILE_SUCCESS, CHANGE_PAWFILES_PENDING, CHANGE_INDIVIDUAL_PAWFILE_PENDING, FETCH_INDIVIDUAL_PAWFILE_REQUEST, FETCH_INDIVIDUAL_PAWFILE_ERROR, CHANGE_ERROR, SUBMIT_PAWFILE_REQUEST, SUBMIT_PAWFILE_SUCCESS, DELETE_PAWFILE_REQUEST, DELETE_PAWFILE_SUCCESS} from '../actions/pawfile-crud'
 
 import {SUBMIT_REMINDER_REQUEST, SUBMIT_REMINDER_SUCCESS, CRUD_ERROR, DELETE_REMINDER_REQUEST, DELETE_REMINDER_SUCCESS} from '../actions/reminder-crud'
+
+import {SUBMIT_POST_REQUEST, SUBMIT_POST_SUCCESS} from '../actions/post-crud'
+
 
 //dummy initial state 
 const initialState = {
@@ -29,79 +32,6 @@ export const pawfileReducer = (state = initialState, action)=> {
     return Object.assign({}, state, {
       showPawfileForm: action.bool,
       currentPetId: action.currentPetId
-    })
-  }
-
-  else if(action.type===SUBMIT_MEDICAL_FORM){
-    let pawfileToUpdate = {...state.pawfiles.find(pawfile=> pawfile.id==action.currentPetId)};
-
-    //check if there's any previous posts for this pet. How we handle adding the new post depends on this.
-    let previousPosts = pawfileToUpdate.posts ? [...pawfileToUpdate.posts] : '';
-
-    if(previousPosts){
-      pawfileToUpdate.posts = [...pawfileToUpdate.posts, action.values];
-    }
-    else{
-      pawfileToUpdate.posts = [action.values];
-    }
-
-    //check if there's any previous vaccinations, prescriptions, etc. for this pet. How we handle adding the new ones depends on this.
-    if(action.values.vaccinations)
-    {
-      let vaccinationList = action.values.vaccinations.map(vaccination=>{
-        return {name: vaccination, date: action.values.date}
-      })
-
-      let previousVaccinations = pawfileToUpdate.vaccinations  ? [...pawfileToUpdate.vaccinations ] : '';
-
-      if(previousVaccinations){
-        pawfileToUpdate.vaccinations = [...pawfileToUpdate.vaccinations, ...vaccinationList];      
-      }
-      else{
-        pawfileToUpdate.vaccinations = [...vaccinationList];
-      }
-    }
-
-    if(action.values.prescriptions)
-    {
-      let prescriptionList = action.values.prescriptions.map(prescription=>{
-        return {name: prescription, date: action.values.date}
-      })
-
-      let previousPrescriptions = pawfileToUpdate.prescriptions  ? [...pawfileToUpdate.prescriptions ] : '';
-
-      if(previousPrescriptions){
-        pawfileToUpdate.prescriptions = [...pawfileToUpdate.prescriptions, ...prescriptionList];
-     
-      }
-      else{
-        pawfileToUpdate.prescriptions = [...prescriptionList];
-      }
-    }
-
-    const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id==action.currentPetId ? pawfileToUpdate : item))
-
-    return Object.assign({}, state, {
-      pawfiles: newArrayOfPawfiles
-    })
-  }
-
-  else if(action.type===SUBMIT_MEMORY_FORM){
-    let pawfileToUpdate = {...state.pawfiles.find(pawfile=> pawfile.id==action.currentPetId)};
-
-    let previousPosts = pawfileToUpdate.posts ? [...pawfileToUpdate.posts] : '';
-
-    if(previousPosts){
-      pawfileToUpdate.posts = [...pawfileToUpdate.posts, action.values];
-    }
-    else{
-      pawfileToUpdate.posts = [action.values];
-    }
-
-    const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id==action.currentPetId ? pawfileToUpdate : item))
-
-    return Object.assign({}, state, {
-      pawfiles: newArrayOfPawfiles
     })
   }
 
@@ -285,23 +215,14 @@ export const pawfileReducer = (state = initialState, action)=> {
 
 
   else if(action.type=== DELETE_REMINDER_SUCCESS){
-    console.log('in deleting reminder success reducer')
-
     let pawfileToUpdate = {...state.pawfiles.find(pawfile=> pawfile.id==action.currentPetId)};
 
     const updatedReminders = pawfileToUpdate.reminders.filter((reminder)=> (reminder.id!==action.reminderId));
 
     pawfileToUpdate.reminders=updatedReminders;
 
-    console.log('in delete reminder reducer, updated pawfile is', pawfileToUpdate)
-
-    // const updatedPawfile = Object.assign({}, state.pawfiles.find(pawfile=> pawfile.id==action.currentPetId), {
-    //   pawfileToUpdate
-    // })
 
     const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id==action.currentPetId ? pawfileToUpdate : item))
-
-    console.log('newArrayOfPawfiles is', newArrayOfPawfiles)
 
     return Object.assign({}, state, {
       pawfiles: newArrayOfPawfiles,
@@ -309,6 +230,104 @@ export const pawfileReducer = (state = initialState, action)=> {
     })
   }
 
+  /* FOR POSTS */
+  else if (action.type===SUBMIT_POST_REQUEST){
+    return Object.assign({}, state, {
+      pawfilesPending: true,
+    })
+  }
+
+  else if (action.type===CRUD_ERROR){
+    return Object.assign({}, state, {
+      pawfilesPending: false,
+      error: true,
+    })
+  }
+
+  //not getting back a single post, but the whole pawfile.
+  else if (action.type=== SUBMIT_POST_SUCCESS){
+    const updatedPawfile = action.pawfile;
+
+    const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id==action.currentPetId ? updatedPawfile : item))
+
+    return Object.assign({}, state, {
+        pawfilesPending: false,
+        pawfiles: newArrayOfPawfiles
+    })
+  }
+
+  // else if(action.type===SUBMIT_MEDICAL_FORM){
+  //   let pawfileToUpdate = {...state.pawfiles.find(pawfile=> pawfile.id==action.currentPetId)};
+
+  //   //check if there's any previous posts for this pet. How we handle adding the new post depends on this.
+  //   let previousPosts = pawfileToUpdate.posts ? [...pawfileToUpdate.posts] : '';
+
+  //   if(previousPosts){
+  //     pawfileToUpdate.posts = [...pawfileToUpdate.posts, action.values];
+  //   }
+  //   else{
+  //     pawfileToUpdate.posts = [action.values];
+  //   }
+
+  //   //check if there's any previous vaccinations, prescriptions, etc. for this pet. How we handle adding the new ones depends on this.
+  //   if(action.values.vaccinations)
+  //   {
+  //     let vaccinationList = action.values.vaccinations.map(vaccination=>{
+  //       return {name: vaccination, date: action.values.date}
+  //     })
+
+  //     let previousVaccinations = pawfileToUpdate.vaccinations  ? [...pawfileToUpdate.vaccinations ] : '';
+
+  //     if(previousVaccinations){
+  //       pawfileToUpdate.vaccinations = [...pawfileToUpdate.vaccinations, ...vaccinationList];      
+  //     }
+  //     else{
+  //       pawfileToUpdate.vaccinations = [...vaccinationList];
+  //     }
+  //   }
+
+  //   if(action.values.prescriptions)
+  //   {
+  //     let prescriptionList = action.values.prescriptions.map(prescription=>{
+  //       return {name: prescription, date: action.values.date}
+  //     })
+
+  //     let previousPrescriptions = pawfileToUpdate.prescriptions  ? [...pawfileToUpdate.prescriptions ] : '';
+
+  //     if(previousPrescriptions){
+  //       pawfileToUpdate.prescriptions = [...pawfileToUpdate.prescriptions, ...prescriptionList];
+     
+  //     }
+  //     else{
+  //       pawfileToUpdate.prescriptions = [...prescriptionList];
+  //     }
+  //   }
+
+  //   const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id==action.currentPetId ? pawfileToUpdate : item))
+
+  //   return Object.assign({}, state, {
+  //     pawfiles: newArrayOfPawfiles
+  //   })
+  // }
+
+  // else if(action.type===SUBMIT_MEMORY_FORM){
+  //   let pawfileToUpdate = {...state.pawfiles.find(pawfile=> pawfile.id==action.currentPetId)};
+
+  //   let previousPosts = pawfileToUpdate.posts ? [...pawfileToUpdate.posts] : '';
+
+  //   if(previousPosts){
+  //     pawfileToUpdate.posts = [...pawfileToUpdate.posts, action.values];
+  //   }
+  //   else{
+  //     pawfileToUpdate.posts = [action.values];
+  //   }
+
+  //   const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id==action.currentPetId ? pawfileToUpdate : item))
+
+  //   return Object.assign({}, state, {
+  //     pawfiles: newArrayOfPawfiles
+  //   })
+  // }
 
   return state;
 }

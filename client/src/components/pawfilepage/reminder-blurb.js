@@ -28,7 +28,7 @@ export class ReminderBlurb extends React.Component{
           <li>
             <form className="new-reminder-form reminder" onSubmit={ (e)=> this.onSubmit(e)}>
               <input required className="new-reminder-note reminder-note" ref={input => this.noteInput = input} type="text" id="new-reminder" name="note" placeholder="New reminder..."/>
-              <input required className="reminder-date" ref={input => this.dateInput = input} type="date" min={todaysDate()}/>
+              <input required className="reminder-date" ref={input => this.dateInput = input} type="date" defaultValue={todaysDate()} min={todaysDate()}/>
               <button type="submit" className="add-reminder">Add</button>
 
               {/* <button type="button" className="more-options-button" onClick={()=>this.toggleMoreOptions()}>More options</button> */}
