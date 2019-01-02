@@ -17,7 +17,7 @@ export class ReminderBlurb extends React.Component{
   
   render(){
     const reminders = this.props.reminders.map((reminder, index)=>(
-      <Reminder reminderId={index} key={index} {...reminder}/>
+      <Reminder reminderId={reminder.id} key={index} {...reminder}/>
     ));
 
     return(

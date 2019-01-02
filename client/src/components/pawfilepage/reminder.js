@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {formatDate} from '../helper-functions';
-import {deleteReminder} from '../../actions/index';
+import {deleteReminder} from '../../actions/reminder-crud';
 
 import './reminder.css'
 

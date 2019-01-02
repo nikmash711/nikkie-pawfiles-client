@@ -41,3 +41,38 @@ export const submitReminder = (values, currentPetId) => dispatch =>{
         dispatch(crudError(err));
     });
 }
+
+/* DELETE */
+export const DELETE_REMINDER_SUCCESS = 'DELETE_REMINDER_SUCCESS';
+export const deleteReminderSuccess = (currentPetId, reminderId) => ({
+    type: DELETE_REMINDER_SUCCESS,
+    currentPetId,
+    reminderId
+});
+
+export const DELETE_REMINDER_REQUEST = "DELETE_REMINDER_REQUEST";
+export const deleteReminderRequest = () => ({
+    type: DELETE_REMINDER_REQUEST,
+})
+
+export const deleteReminder = (currentPetId, reminderId) => dispatch =>{
+    console.log('in delete reminder action, deleting reminder with id', reminderId, 'in pet with id', currentPetId);
+    dispatch(deleteReminderRequest());
+    fetch(`${API_BASE_URL}/reminders/${currentPetId}/${reminderId}`, { 
+        method: "DELETE",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        }
+    })
+    .then(res => {
+        if (!res.ok) {
+            return Promise.reject(res.statusText);
+        }
+        console.log('successful deleting');
+        dispatch(deleteReminderSuccess(currentPetId, reminderId));
+    })
+    .catch(err => {
+        dispatch(crudError(err));
+    });
+  }

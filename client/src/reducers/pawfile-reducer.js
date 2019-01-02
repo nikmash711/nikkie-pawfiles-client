@@ -2,7 +2,7 @@ import {SHOW_PAWFILE_FORM, CHANGE_SORTING_PETS_METHOD, ADDING_NEW_REMINDER, TOGG
 
 import {FETCH_PAWFILES_SUCCESS, FETCH_INDIVIDUAL_PAWFILE_SUCCESS, CHANGE_PAWFILES_PENDING, CHANGE_INDIVIDUAL_PAWFILE_PENDING, FETCH_INDIVIDUAL_PAWFILE_REQUEST, FETCH_INDIVIDUAL_PAWFILE_ERROR, CHANGE_ERROR, SUBMIT_PAWFILE_REQUEST, SUBMIT_PAWFILE_SUCCESS, DELETE_PAWFILE_REQUEST, DELETE_PAWFILE_SUCCESS} from '../actions/pawfile-crud'
 
-import {SUBMIT_REMINDER_REQUEST, SUBMIT_REMINDER_SUCCESS, CRUD_ERROR} from '../actions/reminder-crud'
+import {SUBMIT_REMINDER_REQUEST, SUBMIT_REMINDER_SUCCESS, CRUD_ERROR, DELETE_REMINDER_REQUEST, DELETE_REMINDER_SUCCESS} from '../actions/reminder-crud'
 
 //dummy initial state 
 const initialState = {
@@ -99,26 +99,6 @@ export const pawfileReducer = (state = initialState, action)=> {
     }
 
     const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id==action.currentPetId ? pawfileToUpdate : item))
-
-    return Object.assign({}, state, {
-      pawfiles: newArrayOfPawfiles
-    })
-  }
-
-  else if(action.type=== DELETE_REMINDER){
-    let pawfileToUpdate = {...state.pawfiles.find(pawfile=> pawfile.id==action.currentPetId)};
-
-    const updatedReminders = pawfileToUpdate.reminders.filter((reminder)=> (reminder.id!==action.reminderId));
-
-    pawfileToUpdate.reminders=updatedReminders;
-
-    // const updatedPawfile = Object.assign({}, state.pawfiles.find(pawfile=> pawfile.id==action.currentPetId), {
-    //   pawfileToUpdate
-    // })
-
-    const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id==action.currentPetId ? pawfileToUpdate : item))
-
-    console.log('newArrayOfPawfiles is', newArrayOfPawfiles)
 
     return Object.assign({}, state, {
       pawfiles: newArrayOfPawfiles
@@ -296,7 +276,42 @@ export const pawfileReducer = (state = initialState, action)=> {
         pawfiles: newArrayOfPawfiles
     })
   }
+
+  else if (action.type===DELETE_REMINDER_REQUEST){
+    return Object.assign({}, state, {
+      pawfilesPending: true,
+    })
+  }
+
+
+  else if(action.type=== DELETE_REMINDER_SUCCESS){
+    console.log('in deleting reminder success reducer')
+
+    let pawfileToUpdate = {...state.pawfiles.find(pawfile=> pawfile.id==action.currentPetId)};
+
+    const updatedReminders = pawfileToUpdate.reminders.filter((reminder)=> (reminder.id!==action.reminderId));
+
+    pawfileToUpdate.reminders=updatedReminders;
+
+    console.log('in delete reminder reducer, updated pawfile is', pawfileToUpdate)
+
+    // const updatedPawfile = Object.assign({}, state.pawfiles.find(pawfile=> pawfile.id==action.currentPetId), {
+    //   pawfileToUpdate
+    // })
+
+    const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id==action.currentPetId ? pawfileToUpdate : item))
+
+    console.log('newArrayOfPawfiles is', newArrayOfPawfiles)
+
+    return Object.assign({}, state, {
+      pawfiles: newArrayOfPawfiles,
+      pawfilesPending: false,
+    })
+  }
+
+
   return state;
 }
+
 
 //load all the pawfiles in state regardless of page, and then display what you want from that state. differentiate state from display. 
