@@ -5,20 +5,6 @@ export const showPawfileForm = (bool, currentPetId) => ({
     currentPetId
 });
 
-export const SUBMIT_MEDICAL_FORM = 'SUBMIT_MEDICAL_FORM';
-export const submitMedicalForm = (values, currentPetId) => ({
-    type: SUBMIT_MEDICAL_FORM,
-    values,
-    currentPetId
-});
-
-export const SUBMIT_MEMORY_FORM = 'SUBMIT_MEMORY_FORM';
-export const submitMemoryForm = (values, currentPetId) => ({
-    type: SUBMIT_MEMORY_FORM,
-    values,
-    currentPetId
-});
-
 export const CHANGE_SORTING_PETS_METHOD = 'CHANGE_SORTING_PETS_METHOD';
 export const changeSortingPetsMethod = (sortMethod) => ({
     type: CHANGE_SORTING_PETS_METHOD,
@@ -50,6 +36,13 @@ export const showMemoryForm = (bool, currentPostId) =>({
     bool,
     currentPostId
 })
+
+export const SHOW_REMINDER_FORM = 'SHOW_REMINDER_FORM';
+export const showReminderForm = (bool, currentReminderId) => ({
+    type: SHOW_REMINDER_FORM,
+    bool,
+    currentReminderId
+});
 
 export const CHANGE_SEARCH_TERM = "CHANGE_SEARCH_TERM";
 export const changeSearchTerm = (searchTerm) =>({

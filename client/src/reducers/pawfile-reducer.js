@@ -1,4 +1,4 @@
-import {SHOW_PAWFILE_FORM, CHANGE_SORTING_PETS_METHOD, TOGGLE_NAVBAR, CHANGE_CURRENT_PET_ID, SHOW_MEDICAL_FORM, SHOW_MEMORY_FORM, CHANGE_SEARCH_TERM, CHANGE_CATEGORY_FILTER,} from '../actions/index';
+import {SHOW_PAWFILE_FORM, CHANGE_SORTING_PETS_METHOD, TOGGLE_NAVBAR, CHANGE_CURRENT_PET_ID, SHOW_MEDICAL_FORM, SHOW_MEMORY_FORM, SHOW_REMINDER_FORM, CHANGE_SEARCH_TERM, CHANGE_CATEGORY_FILTER,} from '../actions/index';
 
 import {FETCH_PAWFILES_SUCCESS, FETCH_INDIVIDUAL_PAWFILE_SUCCESS, CHANGE_PAWFILES_PENDING, CHANGE_INDIVIDUAL_PAWFILE_PENDING, FETCH_INDIVIDUAL_PAWFILE_REQUEST, FETCH_INDIVIDUAL_PAWFILE_ERROR, CHANGE_ERROR, SUBMIT_PAWFILE_REQUEST, SUBMIT_PAWFILE_SUCCESS, DELETE_PAWFILE_REQUEST, DELETE_PAWFILE_SUCCESS} from '../actions/pawfile-crud'
 
@@ -14,8 +14,10 @@ const initialState = {
   showPawfileForm: false,
   showMedicalForm: false,
   showMemoryForm: false,
+  showReminderForm: false,
   currentPetId: undefined,
   currentPostId: undefined,
+  currentReminderId: undefined,
   currentSearchTerm: "",
   categoryFilter: "",
   toggleNavbar:false,
@@ -30,6 +32,7 @@ export const pawfileReducer = (state = initialState, action)=> {
 
   //Either when user clicks "add new pawfile", or clicks to edit a current pawfile. Need to set the currentPetId to either the id of the pet being edited, or undefined if it's a new pet/closing form
   if(action.type=== SHOW_PAWFILE_FORM){
+    console.log('in show pawfile form reducer');
     return Object.assign({}, state, {
       showPawfileForm: action.bool,
       currentPetId: action.currentPetId
@@ -60,17 +63,25 @@ export const pawfileReducer = (state = initialState, action)=> {
     })
   }
 
+  else if(action.type===SHOW_REMINDER_FORM){
+    console.log('in show reminder form reducer');
+    return Object.assign({}, state, {
+      showReminderForm: action.bool,
+      currentReminderId: action.currentReminderId,
+    })
+  }
+
   else if(action.type===SHOW_MEDICAL_FORM){
     return Object.assign({}, state, {
       showMedicalForm: action.bool,
-      currentPostId: action. currentPostId,
+      currentPostId: action.currentPostId,
     })
   }
 
   else if(action.type===SHOW_MEMORY_FORM){
     return Object.assign({}, state, {
       showMemoryForm: action.bool,
-      currentPostId: action. currentPostId,
+      currentPostId: action.currentPostId,
     })
   }
 

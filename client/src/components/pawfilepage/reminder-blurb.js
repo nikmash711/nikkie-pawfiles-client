@@ -2,19 +2,13 @@ import React from 'react';
 import {connect} from 'react-redux';
 import Reminder from './reminder';
 import {submitReminder} from '../../actions/reminder-crud';
+import {showReminderForm} from '../../actions/index';
+import ReminderForm from './reminder-form'
 import {todaysDate} from '../helper-functions';
 import './reminder-blurb.css';
 
 export class ReminderBlurb extends React.Component{
 
-  onSubmit(e){
-    e.preventDefault();
-    const values={note: this.noteInput.value, date: this.dateInput.value};
-    this.props.dispatch(submitReminder(values, this.props.id));
-    this.noteInput.value = "";
-    this.dateInput.value="";
-  }
-  
   render(){
     const reminders = this.props.reminders.map((reminder, index)=>(
       <Reminder reminderId={reminder.id} key={index} {...reminder}/>
@@ -23,14 +17,9 @@ export class ReminderBlurb extends React.Component{
     return(
       <article className="blurb reminders">
         <h2>Reminders</h2>
+        <button onClick={()=>{this.props.dispatch(showReminderForm(true, undefined))}} className="add-reminder">Add</button>
         <ul className = "reminders-list">
           {reminders}
-          <li>
-            <form className="new-reminder-form reminder" onSubmit={ (e)=> this.onSubmit(e)}>
-              <input required className="new-reminder-note reminder-note" ref={input => this.noteInput = input} type="text" id="new-reminder" name="note" placeholder="New reminder..."/>
-              <input required className="reminder-date" ref={input => this.dateInput = input} type="date" defaultValue={todaysDate()} min={todaysDate()}/>
-              <button type="submit" className="add-reminder">Add</button>
-
               {/* <button type="button" className="more-options-button" onClick={()=>this.toggleMoreOptions()}>More options</button> */}
 
               {/* {this.state.showMoreOptions && 
@@ -43,12 +32,18 @@ export class ReminderBlurb extends React.Component{
               {/* Have the time/date option be hidden unless user clicks a button that says time/date, then display visible and keep the values and submit with form  */}
               {/* <input type="date" />
               <input type="time" /> */}
-            </form>
-          </li>
         </ul>
+        {this.props.showReminderForm && <ReminderForm/>}
       </article>
     );
   }
 }
 
-export default connect()(ReminderBlurb);
+function mapStateToProps(state) {
+  return {
+    showReminderForm: state.pawfile.showReminderForm,
+    currentReminderId: state.pawfile.currentReminderId
+  }
+}
+
+export default connect(mapStateToProps)(ReminderBlurb);

@@ -18,11 +18,13 @@ export const crudError = () => ({
   type: CRUD_ERROR,
 })
 
-export const submitReminder = (values, currentPetId) => dispatch =>{
+export const submitReminder = (values, currentPetId, reminderId) => dispatch =>{
+    const method = reminderId ? "PUT" : "POST";
+    const path = reminderId ? `${API_BASE_URL}/reminders/${currentPetId}/${reminderId}` : `${API_BASE_URL}/reminders/${currentPetId}`; 
 
     dispatch(submitReminderRequest());
-    fetch(`${API_BASE_URL}/reminders/${currentPetId}`, { 
-        method: "POST",
+    fetch(path, { 
+        method: method,
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',

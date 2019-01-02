@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {formatDate} from '../helper-functions';
+import {showReminderForm} from '../../actions/index';
 import {deleteReminder} from '../../actions/reminder-crud';
 
 import './reminder.css'
@@ -12,6 +13,7 @@ export class Reminder extends React.Component{
     return(
       <li data-id={`${this.props.reminderId}`} className="reminder">
         <button onClick={()=>{this.props.dispatch(deleteReminder(this.props.currentPetId, this.props.reminderId))}} className="delete-reminder">X</button>
+        <button onClick={()=>{this.props.dispatch(showReminderForm(true, this.props.reminderId))}} className="edit-reminder">Edit</button>
         <span className="reminder-note">
           <strong>{this.props.note}</strong>
         </span>

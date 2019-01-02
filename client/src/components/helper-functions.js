@@ -41,7 +41,8 @@ export function formatDate(dateString){
 }
 
 export function stringToArrayList(str){
-  return str.split(',');
+  const arr = str.split(',');
+  return arr.map(item=>item.trim());
 }
 
 export function arrayToString(arr){
