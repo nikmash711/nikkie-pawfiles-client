@@ -32,7 +32,7 @@ export class ReminderForm extends React.Component{
           
           <fieldset className="reminder-fieldset">
             <label htmlFor="note" className="required note-label">Reminder:</label>
-            <input required className="new-reminder-note" ref={input => this.noteInput = input} type="text" id="note" name="note" placeholder="New reminder..." defaultValue={this.props.individualReminder ? this.props.individualReminder.note : ""}/>
+            <input required className="new-reminder-note" ref={input => this.noteInput = input} type="text" id="note" name="note" maxLength="22" placeholder="New reminder..." defaultValue={this.props.individualReminder ? this.props.individualReminder.note : ""}/>
           </fieldset>
 
           <fieldset className="date-time-options">

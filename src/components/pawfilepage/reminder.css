@@ -5,9 +5,10 @@
 }
 
 .reminder-note{
-  width: -webkit-fill-available; 
+  width: 200px;; 
   font-family:"Kalam";
   font-size:15px;
+  overflow: auto;
 }
 
 .reminder-date, .reminder-time{
@@ -40,7 +41,7 @@
 .sidebar .reminder .option-icons{
   position: static;
   text-align: left;
-  width: 70px;
+  width: 50px;
 }
 
 .reminder .option-icons button{

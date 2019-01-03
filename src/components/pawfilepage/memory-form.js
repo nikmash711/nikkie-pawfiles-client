@@ -5,6 +5,7 @@ import Input from '../input';
 import {showMemoryForm} from '../../actions/index';
 import {submitPost} from '../../actions/post-crud';
 import {required, nonEmpty} from '../validators';
+import {todaysDate} from '../helper-functions';
 import '../pawfile-form.css';
 import './memory-form.css';
 
@@ -29,6 +30,7 @@ export class MemoryForm extends React.Component{
 
             <Field
               component={Input}
+              className="required"
               label="Title:" 
               type="text" 
               name="title" 
@@ -38,10 +40,12 @@ export class MemoryForm extends React.Component{
 
             <Field
               component={Input} 
+              className="required"
               label = "Date:"
               name="date" 
               id="date"
               type = "date"
+              max= {todaysDate()}
               validate={[required, nonEmpty]}
             />
 
@@ -49,6 +53,7 @@ export class MemoryForm extends React.Component{
               component={Input}
               label="Description:" 
               element="textarea" 
+              maxLength = '180'
               name="description" 
               id="description"
             /> 

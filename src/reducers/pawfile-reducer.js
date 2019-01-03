@@ -59,6 +59,7 @@ export const pawfileReducer = (state = initialState, action)=> {
         toggleNavbar: action.bool,
       })
     }
+    console.log('the bool is', action.bool)
     return Object.assign({}, state, {
       toggleNavbar: !state.toggleNavbar,
     })

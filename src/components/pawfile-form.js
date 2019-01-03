@@ -5,6 +5,7 @@ import Input from './input';
 import {showPawfileForm} from '../actions/index';
 import {submitPawfile} from '../actions/pawfile-crud';
 import {required, nonEmpty, unSelected} from './validators';
+import {todaysDate} from './helper-functions';
 import './pawfile-form.css';
 
 export class PawfileForm extends React.Component{
@@ -29,15 +30,18 @@ export class PawfileForm extends React.Component{
 
             <Field
               component={Input}
+              className="required"
               label="Name:" 
               type="text" 
               name="name" 
               id="name"
+              maxLength = '10'
               validate={[required, nonEmpty]}
               /> 
 
             <Field
               component={Input}
+              className="required"
               label="Image URL:" 
               type="url" 
               name="img" 
@@ -47,6 +51,7 @@ export class PawfileForm extends React.Component{
             
             <Field
               component={Input} 
+              className="required"
               label = "Species:"
               name="species" 
               id="species"
@@ -62,6 +67,7 @@ export class PawfileForm extends React.Component{
 
             <Field
               component={Input} 
+              className="required"
               label = "Gender:"
               name="gender" 
               id="gender"
@@ -76,6 +82,7 @@ export class PawfileForm extends React.Component{
 
             <Field
               component={Input} 
+              maxLength = '10'
               label = "Breed:"
               name="breed" 
               id="breed"
@@ -84,6 +91,7 @@ export class PawfileForm extends React.Component{
 
             <Field
               component={Input} 
+              maxLength = '10'
               label = "Weight:"
               name="weight" 
               id="weight"
@@ -96,7 +104,7 @@ export class PawfileForm extends React.Component{
               name="birthday" 
               id="birthday"
               type = "date"
-              // max= {new Date().toLocaleDateString()}
+              max= {todaysDate()}
             />
 
             <Field
@@ -105,7 +113,7 @@ export class PawfileForm extends React.Component{
               label = "Bio:"
               name="bio" 
               id="bio"
-              type = "textarea"
+              maxLength = '180'
               className="test"
             />
 

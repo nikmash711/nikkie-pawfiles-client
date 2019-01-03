@@ -62,6 +62,9 @@ export function MainSection(props){
     );
 }
 
+//make a default props mock object with empty or null values for everything needed. then dont use pawfilepending
+//MainSection.defaultProps= {}
+
 const mapStateToProps = (state,props) => ({
   individualPawfile: state.pawfile.pawfiles.find(pawfile=>pawfile.id==props.id),
   currentSearchTerm: state.pawfile.currentSearchTerm,

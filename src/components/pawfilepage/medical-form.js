@@ -6,6 +6,7 @@ import {showMedicalForm} from '../../actions/index';
 import {submitPost} from '../../actions/post-crud';
 import {required, nonEmpty} from '../validators';
 import {stringToArrayList, arrayToString} from '../helper-functions';
+import {todaysDate} from '../helper-functions';
 import '../pawfile-form.css';
 import './medical-form.css'
 
@@ -35,6 +36,7 @@ export class MedicalForm extends React.Component{
           
             <Field
               component={Input}
+              className="required"
               label="Title:" 
               type="text" 
               name="title" 
@@ -44,10 +46,12 @@ export class MedicalForm extends React.Component{
 
             <Field
               component={Input} 
+              className="required"
               label = "Date:"
               name="date" 
               id="date"
               type = "date"
+              max= {todaysDate()}
               validate={[required, nonEmpty]}
             />
 
@@ -70,10 +74,12 @@ export class MedicalForm extends React.Component{
             <div id="instructions">
                 Please type the symptoms (if any) as a comma-seperated list.
             </div>
+
             <Field
               component={Input}
               label="Symptoms:" 
               element="textarea"
+              maxLength = '180'
               name="symptoms" 
               id="symptoms"
               aria-describedby="instructions"
@@ -84,6 +90,7 @@ export class MedicalForm extends React.Component{
               component={Input}
               label="Prescriptions:" 
               element="textarea"
+              maxLength = '180'
               name="prescriptions" 
               id="prescriptions"
               aria-describedby="instructions"
@@ -96,6 +103,7 @@ export class MedicalForm extends React.Component{
               component={Input}
               label="Vaccinations:" 
               element="textarea"
+              maxLength = '180'
               name="vaccinations" 
               id="vaccinations"
               aria-describedby="instructions"
@@ -108,6 +116,7 @@ export class MedicalForm extends React.Component{
               component={Input}
               label="Notes:" 
               element="textarea"
+              maxLength = '180'
               name="notes" 
               id="notes"
             /> 
