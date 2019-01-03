@@ -1,0 +1,90 @@
+.sidebar{
+  padding-top:60px;
+  padding-bottom: 20px;
+  background-color: black;
+  border-right: 1px solid white;
+}
+
+.sidebar .blurb{
+  width:250px;
+  display: block;
+  margin: 25px auto;
+  -webkit-transform: none;
+  -moz-transform: none;
+  -o-transform: none;
+}
+
+.sidebar .blurb h2{
+  font-size: 53px;
+}
+
+.sidebar .top{
+  margin-bottom: 10px;
+}
+
+.sidebar .blurb .top{
+  display: flex;
+  align-items: center;
+}
+
+.sidebar .blurb .top h2{
+  margin-left: 10px;
+}
+
+.sidebar .blurb::before{
+  -webkit-transform: none;
+  -moz-transform: none;
+  -o-transform: none;
+}
+
+.sidebar .blurb p{
+  font-size: 20px;
+}
+
+.sidebar .option-icons{
+  left: 75%;
+}
+
+.sidebar .view-pawfile{
+  display: none;
+}
+
+.reminders{
+  background-color: #fffd9b;
+}
+
+.sidebar .prof-pic{
+  width:100px;
+  height:100px;
+  margin: 0;
+}
+
+@media(min-width: 450px){
+  .sidebar .option-icons{
+    left: 77%;
+  }
+
+  .sidebar .blurb
+  {
+    width: 300px;
+  }
+}
+
+@media(min-width:900px){
+  .sidebar{
+    position: fixed;
+    width: 350px;
+    height: 100vh;
+    overflow: scroll;
+  }
+
+  .sidebar .option-icons{
+    left: 70%;
+    text-align: right;
+  }
+
+  .sidebar .blurb{
+    min-width: 300px;
+  }
+}
+

@@ -1,0 +1,181 @@
+.pawfile-page main{
+  background: url("https://www.middletonhallretirementvillage.co.uk/wp-content/uploads/2018/01/pinboard-background-compressed.jpg") no-repeat fixed;
+  background-size: cover; 
+  color: white;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  transition: none;
+  display: block;
+  overflow: scroll;
+}
+
+nav.options{
+  margin:10px 10px;
+}
+
+.new-memory, .new-medical, .filter-category, .filter-date, .search{
+  padding:10px;
+  height:45px;
+  transition: .5s;
+  margin:10px 10px;
+  /* width:150px; */
+  -webkit-box-shadow: 10px 10px 20px rgba(0,0,0,.5);
+  -moz-box-shadow: 10px 10px 20px rgba(0,0,0,.5);
+  box-shadow: 10px 10px 20px #000;
+  border: transparent;
+  font-family:"Kalam";
+  font-size: 20px;
+  /* text-shadow: 1px 1px black; */
+}
+
+.add-buttons{
+  order:1;
+}
+
+.filters{
+  order:2;
+}
+
+.search-input{
+  order:3;
+}
+
+.options button:hover, .options select:hover, .options input:hover, .options button:focus, .options select:focus, .options input:focus{
+  -webkit-box-shadow: 20px 20px 20px rgba(0,0,0,.5);
+  -moz-box-shadow: 20px 20px 20px rgba(0,0,0,.5);
+  box-shadow: 20px 20px 20px #000;
+  text-shadow: 1px 1px white;
+  cursor:pointer;
+  outline: none;
+}
+
+button.new-memory{
+  background-color:lightgreen;
+  color:black;
+}
+
+button.new-medical{
+  background-color: coral;
+  color:black;
+}
+
+.filters select{
+  background-color:#e4d3ff;
+  color:black;
+}
+
+.search{
+  background-color:white;
+  color: black;
+  text-align: center;
+  width:auto;
+  font-style:italic;
+}
+
+::placeholder{ 
+  color: black;
+  font-style:italic;
+  text-shadow: none;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder,::-ms-input-placeholder {
+  font-style:italic;
+}
+
+@media(min-width: 633px){
+  .add-buttons, .filters{
+    display:inline;
+  }
+
+  .new-memory, .new-medical, .filter-category, .filter-date, .search{
+    width:auto;
+  }
+}
+
+.posts{
+  width: 100%;
+  padding: 0 20px;
+}
+
+.post{
+  background-color: white;
+  color: black;
+  margin: 20px auto;
+  text-align: left;
+  padding:10px 10px 0px 10px;
+  max-width:800px;
+  list-style: none;
+  box-shadow: 10px 10px 20px #000;
+}
+
+.post:hover, .post:focus{
+  box-shadow: 20px 20px 20px #000;
+}
+
+.post-title{
+  font-size:20px;
+  text-align: left;
+  font-family: "Kalam",arial,sans-serif;
+}
+
+.post-date{
+  padding-bottom: 20px;
+  font-size:12px;
+  display: block;
+}
+
+@media (min-width: 900px){
+  .pawfile-page main{
+    height: 100vh;
+    padding-top: 60px;
+    margin-left: 350px; /*to adjust for sidebar*/
+  }
+
+  .add-buttons, .filters{
+    display:inline;
+  }
+  
+  .add-buttons{
+    order:1;
+  }
+  
+  .filters{
+    order:2;
+  }
+  
+  .search-input{
+    order:3;
+  }
+
+
+}
+
+@media(min-width: 1235px){
+  .options{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+  } 
+
+  .add-buttons, .filters{
+    display:inline-block;
+  }
+
+  .add-buttons{
+    order:1;
+  }
+
+  .filters{
+    order:3;
+  }
+
+  .search-input{
+    order:2;
+  }
+
+  /* .new-memory, .new-medical, .filter-category, .filter-date, .search{
+    font-size: 30px;
+  } */
+}

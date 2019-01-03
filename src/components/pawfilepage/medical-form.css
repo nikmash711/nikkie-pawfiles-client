@@ -1,0 +1,13 @@
+.med .form{
+  color: black;
+  padding: 0;
+  background-color: white;
+  margin: 130px auto;
+  border: 3px solid coral;
+  width: 75%;
+}
+
+.form-input{
+  clear:both;
+}
+

@@ -1,0 +1,49 @@
+.blurb.reminders{
+  padding:0;
+}
+
+.reminders h2{
+  padding-top: 20px;
+}
+
+.reminders-list{
+  list-style: none;
+}
+
+.more-options-button:hover, .more-options-button:focus{
+  background-color:white;
+  cursor: pointer;
+}
+
+.more-options-button{
+  font-size:10px;
+  border: none;
+  font-weight: bold;
+  background-color: transparent;
+}
+
+.more-options{
+  position: absolute;
+  top: -25px;
+  background-color: white;
+}
+
+
+.add-reminder{
+  display: inline-block;
+  background-color:black;
+  color:white;
+  border: 1px solid black;
+  margin:auto;
+  font-family: "Kalam";
+  padding: 1px 5px;
+  font-size:13px;
+}
+
+.add-reminder:hover, .add-reminder:focus{
+  outline:0;
+  background-color: transparent;
+  color:black;
+  border: 1px solid black;
+  cursor:pointer;
+}

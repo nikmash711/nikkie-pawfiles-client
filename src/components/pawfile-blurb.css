@@ -1,0 +1,173 @@
+a{
+  text-decoration: none;
+  color: black;
+}
+
+.blurb{
+  width: 270px;
+  display:inline-block;
+  padding:20px;
+  margin:25px;
+  font-size:15px;
+  color: black;
+  flex:1;
+  position: relative;
+  -webkit-box-shadow: 10px 10px 20px rgba(0,0,0,.5);
+  -moz-box-shadow: 10px 10px 20px rgba(0,0,0,.5);
+  box-shadow: 10px 10px 20px #000;
+  -webkit-transform: rotate(-2deg);
+  -moz-transform: rotate(-1deg);
+  -o-transform: rotate(-1deg);
+  transition:.5s;
+  vertical-align: top;
+}
+
+.blurb:hover, .blurb:focus{
+  -webkit-box-shadow: 20px 20px 20px rgba(0,0,0,.5);
+  -moz-box-shadow: 20px 20px 20px rgba(0,0,0,.5);
+  box-shadow: 20px 20px 20px #000;
+}
+
+.blurb:nth-child(even) {
+  -webkit-transform: rotate(2deg);
+  -moz-transform: rotate(1deg);
+  -o-transform: rotate(1deg);
+}
+
+.blurb p {
+  font-family:"Gloria Hallelujah",arial,sans-serif;
+  color: #000;
+  text-shadow: black 1px 1px 0px;
+  text-align: left;
+  font-size:23px;
+  line-height: 1.5;
+}
+
+/* the tape */
+.blurb::before {
+  content: ' ';
+  display: block;
+  position: absolute;
+  /* left: 140px; */
+  left:40%;
+  top: -15px;
+  width: 75px;
+  height: 25px;
+  z-index: 2;
+  background-color: rgba(243,245,228,0.5);
+  border: 2px solid rgba(255,255,255,0.5);
+  -webkit-box-shadow: 0 0 5px #888;
+  -moz-box-shadow: 0 0 5px #888;
+  box-shadow: 2px 2px 2px #000;
+  -webkit-transform: rotate(-4deg);
+  -moz-transform: rotate(-4deg);
+  -o-transform: rotate(-4deg);
+}
+
+.blurb:nth-child(even)::before {
+  -webkit-transform: rotate(1deg);
+  -moz-transform: rotate(1deg);
+  -o-transform: rotate(1deg);
+}
+
+.blurb h2{
+  margin: 10px auto;
+  font-size:60px;
+  font-family:"Reenie Beanie",arial,sans-serif;
+  color: #000;
+  text-shadow: black 1px 1px 0px;
+  transition: .5s;
+  width: fit-content;
+}
+
+.option-icons i:hover, .option-icons i:focus, .option-icons button:hover, .option-icons button:focus{
+  text-shadow: white 2px 2px 2px;
+  cursor: pointer;
+}
+
+.female{
+  background-color: lightpink;
+}
+
+.male{
+  background-color:lightblue;
+}
+
+.prof-pic{
+  width: 150px;
+  height:150px;
+  border: 3px solid black;
+  margin:auto;
+  margin-top:10px;
+  border-radius: 100px;
+  background-color: black;
+  display:block;
+}
+
+.option-icons{
+  position: absolute;
+  top: 12px;
+  left: 65%;
+  width: 80px;
+}
+
+.option-icons button, .option-icons button:focus{
+  background-color: transparent;
+  border: none;
+  outline:0;
+  font-size:15px;
+}
+
+.option-icons i{
+  margin: 5px;
+}
+
+.view-pawfile{
+  display: inline-block;
+  background-color: transparent;
+  border: 2px solid black;
+  padding: 10px;
+  margin-top:10px;
+  font-family:"Reenie Beanie",arial,sans-serif;
+  font-size: 25px;
+  text-shadow: black 1px 1px 0px;
+}
+
+.view-pawfile:hover, .view-pawfile:focus{
+  outline: 0;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+}
+
+@media(min-width: 350px){
+  .option-icons{
+    left:73%;
+  }
+
+  .blurb{
+    width: 300px;
+  }
+}
+
+@media(min-width: 500px){
+  .option-icons{
+    left:83%;
+  }
+
+  .blurb{
+    width: 400px;
+  }
+}
+
+@media(min-width: 900px){
+  .blurb{
+    width:450px;
+  }
+}
+
+@media (min-width: 970px){
+  /* .blurb{
+    min-width:450px;
+  } */
+}

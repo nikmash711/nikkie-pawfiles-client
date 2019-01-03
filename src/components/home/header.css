@@ -1,0 +1,27 @@
+
+.sticky{
+  display:inline-block;
+  padding:20px;
+  margin:25px auto;
+  font-size:15px;
+  color: black;
+  -webkit-box-shadow: 10px 10px 20px rgba(0,0,0,.5);
+  -moz-box-shadow: 10px 10px 20px rgba(0,0,0,.5);
+  box-shadow: 10px 10px 20px #000;
+  transition:.5s;
+  background-color: #fffd9b;
+}
+
+.sticky h1 {
+  font-family:"Reenie Beanie",arial,sans-serif;
+  color: #000;
+  text-shadow: black 1px 1px 0px;
+  text-align: left;
+  font-size:45px;
+}
+
+@media(min-width:480px){
+  .sticky h1{
+    font-size: 70px;
+  }
+}

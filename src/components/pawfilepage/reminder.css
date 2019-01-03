@@ -1,0 +1,48 @@
+.reminder{
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 10px;
+}
+
+.reminder-note{
+  width: -webkit-fill-available; 
+  font-family:"Kalam";
+  font-size:15px;
+}
+
+.reminder-date, .reminder-time{
+  color: darkred;
+  text-align: right;
+  font-size: 10px;
+  margin:auto;
+  display:block;
+}
+
+.reminder:nth-child(odd){
+  background-color: #fff348;
+}
+
+.delete-reminder{
+  margin:auto;
+  margin-right: 10px;
+  padding: 2px;
+  background-color: black;
+  color: white;
+  height: fit-content;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.delete-reminder:hover, .delete-reminder:focus{
+  background-color: gray;
+  cursor: pointer;
+}
+
+.sidebar .reminder .option-icons{
+  position: static;
+  text-align: left;
+  width: 70px;
+}
+
+.reminder .option-icons button{
+    font-size:12px;
+}

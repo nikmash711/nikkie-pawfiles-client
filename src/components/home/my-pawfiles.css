@@ -1,0 +1,25 @@
+main{
+  background: url("https://www.middletonhallretirementvillage.co.uk/wp-content/uploads/2018/01/pinboard-background-compressed.jpg") no-repeat fixed;
+  background-size: cover; 
+  color: white;
+  text-align: center;
+  display:flex;
+  flex-flow: column wrap;
+  padding-top: 60px;
+  padding-bottom: 20px;
+}
+
+.center-me{
+  margin:auto;
+}
+
+.no-pets{
+  height:100vh;
+}
+
+@media (min-width: 900px){
+  main{
+    flex-flow: row wrap;
+  }
+}
+
