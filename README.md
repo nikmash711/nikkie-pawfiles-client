@@ -12,7 +12,7 @@ their vaccination schedule, or a cute memory you just don't want to
 forget, this is the place to document it all :)
 
 ## User Stories/MVP: 
-[ ] 1. User can create an account for themselves with a first name, last name, username, and password
+- [ ] 1. User can create an account for themselves with a first name, last name, username, and password
 [x] 2. User will be directed to a home page where they can see all their pets, can add a new pet pawfile by filling out a form (name, species, breed, birthday, gender, profile photo, brief bio.), and can sort their pets by age or name. 
 [x] 3. Single user can have as many "pawfiles" as they wish if they own more than one pet
 [x] 4. User can add posts for each pet - it can be a memory post with a title, description, date, and a photo URL corresponding to the memory, OR a medical related post where they can include a title, description, symptoms, labs, vet, location, date, and a link to a file. Once posted, only the info filled out will show (empty fields will not be displayed).
