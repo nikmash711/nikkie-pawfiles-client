@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {submitReminder} from '../../actions/reminder-crud';
 import {showReminderForm} from '../../actions/index';
-import {todaysDate} from '../helper-functions';
+import {todaysDate, changeMilitaryFormat} from '../helper-functions';
 import './reminder-blurb.css';
 import './reminder-form.css';
 
@@ -13,7 +13,7 @@ export class ReminderForm extends React.Component{
 
   onSubmit(e){
     e.preventDefault();
-    const values={note: this.noteInput.value, date: this.dateInput.value};
+    const values={note: this.noteInput.value, date: this.dateInput.value, time:this.timeInput.value};
     this.props.dispatch(submitReminder(values, this.props.currentPetId, this.props.currentReminderId));
     this.noteInput.value = "";
     this.dateInput.value="";
@@ -25,9 +25,12 @@ export class ReminderForm extends React.Component{
     return(
       <div className="reminder-form-modal">
         <form className="new-reminder-form" onSubmit={ (e)=> this.onSubmit(e)}>
+
           <input required className="new-reminder-note reminder-note" ref={input => this.noteInput = input} type="text" id="new-reminder" name="note" placeholder="New reminder..." defaultValue={this.props.individualReminder ? this.props.individualReminder.note : ""}/>
 
-          <input required className="reminder-date" ref={input => this.dateInput = input} type="date" defaultValue={this.props.individualReminder ? this.props.individualReminder.date : todaysDate()} />
+          <input required className="reminder-date" ref={input => this.dateInput = input} type="date" defaultValue={this.props.individualReminder ? this.props.individualReminder.date : todaysDate()} min={ todaysDate()} />
+
+          <input required className="reminder-time" ref={input => this.timeInput = input} type="time" defaultValue={this.props.individualReminder ? this.props.individualReminder.time : ""} />
 
           <button type="submit" className="save-reminder">Save</button>
 

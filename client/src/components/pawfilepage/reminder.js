@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {formatDate} from '../helper-functions';
+import {formatDate, changeMilitaryFormat} from '../helper-functions';
 import {showReminderForm} from '../../actions/index';
 import {deleteReminder} from '../../actions/reminder-crud';
 
@@ -27,6 +27,12 @@ export class Reminder extends React.Component{
         <span className="reminder-date">
           {formatDate(this.props.date).toLocaleDateString()}
         </span>
+        {
+          this.props.time && 
+          <span className="reminder-time">
+          {changeMilitaryFormat(this.props.time)}
+        </span>
+        }
       </li>
     )
   }

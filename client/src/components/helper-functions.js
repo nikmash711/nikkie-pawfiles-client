@@ -40,6 +40,14 @@ export function formatDate(dateString){
   return new Date(dateArr[0], dateArr[1]-1, dateArr[2]);
 }
 
+export function changeMilitaryFormat(military_time){
+    var hours24 = parseInt(military_time.substring(0,2));
+    var hours = ((hours24 + 11) % 12) + 1;
+    var amPm = hours24 > 11 ? 'PM' : 'AM';
+    var minutes = military_time.substring(2);
+    return hours + minutes + amPm;
+}
+
 export function stringToArrayList(str){
   const arr = str.split(',');
   return arr.map(item=>item.trim());
