@@ -7,6 +7,10 @@ import {filterBySearch, sortNewestToOldest, filterByCategory} from '../helper-fu
 import './main-section.css'
 
 export function MainSection(props){
+  if(props.pawfilesPending){
+    return (<main></main>)
+  }
+
   let posts;
 
   console.log('the posts are', props.individualPawfile.posts);
@@ -61,7 +65,8 @@ export function MainSection(props){
 const mapStateToProps = (state,props) => ({
   individualPawfile: state.pawfile.pawfiles.find(pawfile=>pawfile.id==props.id),
   currentSearchTerm: state.pawfile.currentSearchTerm,
-  categoryFilter: state.pawfile.categoryFilter
+  categoryFilter: state.pawfile.categoryFilter,
+  pawfilesPending: state.pawfile.pawfilesPending,
 });
 
 export default connect(mapStateToProps)(MainSection);

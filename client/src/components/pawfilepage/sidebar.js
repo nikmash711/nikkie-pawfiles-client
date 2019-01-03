@@ -16,6 +16,10 @@ export class Sidebar extends React.Component{
   }
 
   render(){
+    if(this.props.pawfilesPending){
+      return(<aside className="sidebar left"></aside>); 
+    }
+
     console.log('rendering sidebar with props', this.props)
     //return redirect if individualpawfile doesnt exist
     return(
@@ -29,7 +33,8 @@ export class Sidebar extends React.Component{
 
 const mapStateToProps = (state, props) => ({
   //find the pawfile with an id equal to the one passed down in props
-  individualPawfile: state.pawfile.pawfiles.find(pawfile=>pawfile.id==props.id)
+  individualPawfile: state.pawfile.pawfiles.find(pawfile=>pawfile.id==props.id),
+  pawfilesPending: state.pawfile.pawfilesPending,
 });
 
 export default connect(mapStateToProps)(Sidebar);

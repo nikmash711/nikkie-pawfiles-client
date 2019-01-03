@@ -16,7 +16,6 @@ export class HomePage extends React.Component{
 
   componentWillUnmount(){
     console.log('homepage unmounting');
-    this.props.dispatch(changePawfilesPending(true));
     this.props.dispatch(changeSortingPetsMethod(""));
   }
 
@@ -25,10 +24,6 @@ export class HomePage extends React.Component{
   }
 
   render(){
-    if(this.props.pawfilesPending){
-      console.log('pending');
-      return <p>Loading</p>
-    }
 
     return(
       <div className="home">

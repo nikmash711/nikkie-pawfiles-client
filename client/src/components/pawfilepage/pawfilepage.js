@@ -35,9 +35,17 @@ export class PawfilePage extends React.Component{
   render(){
     console.log('props in pawfilepage are', this.props)
     
+    // this.props.pawfilesPending
     if(this.props.pawfilesPending){
       console.log('pending pawfilepage');
-      return <p>Pending</p>
+      return(
+        <div className="pawfile-page">
+          <Navbar/>
+          <Sidebar/>
+          <MainSection/>
+          <Footer/>
+        </div>
+      )
     }
 
     if(this.props.error){
