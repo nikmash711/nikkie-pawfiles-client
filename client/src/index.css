@@ -3,6 +3,7 @@
   margin:0;
   padding:0;
   transition: .5s;
+  outline:0;
 }
 
 html,body{

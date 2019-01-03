@@ -20,9 +20,9 @@ export class ReminderBlurb extends React.Component{
         <h2>Reminders</h2>
         <ul className = "reminders-list">
           {reminders}
-          <li className="reminder">
+          <div className="reminder">
             <button onClick={()=>{this.props.dispatch(showReminderForm(true, undefined))}} className="add-reminder">+ Add New</button>
-          </li>
+          </div>
         </ul>
         {this.props.showReminderForm && <ReminderForm/>}
       </article>

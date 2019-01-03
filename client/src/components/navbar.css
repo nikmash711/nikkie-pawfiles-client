@@ -32,7 +32,7 @@
   cursor:pointer;
 }
 
-.link:hover:before{
+.link:hover:before, .link:focus:before{
   font-family: "Font Awesome 5 Free"; 
   font-weight: 900; 
   content: "\f1b0";
@@ -44,7 +44,7 @@
   display: inline-block;
 }
 
-.link:hover {
+.link:hover, .link:focus {
   color: #333;
   background-color: #fff;
 }
