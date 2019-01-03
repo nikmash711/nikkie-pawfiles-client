@@ -189,11 +189,22 @@ export const pawfileReducer = (state = initialState, action)=> {
     })
   }
 
-  //not getting back a single reminder, but the whole pawfile. fix.
   else if (action.type=== SUBMIT_REMINDER_SUCCESS){
-    const updatedPawfile = action.pawfile;
+    //figure out which pawfile I need to updated 
+    let pawfileToUpdate = {...state.pawfiles.find(pawfile=> pawfile.id==action.currentPetId)};
 
-    const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id==action.currentPetId ? updatedPawfile : item))
+    //if I'm editing a reminder: 
+    if(action.reminderId){
+      console.log('EDITING');
+      let reminderToUpdate = action.reminder;
+      pawfileToUpdate.reminders = pawfileToUpdate.reminders.map((reminder)=> (reminder.id==action.reminderId ? reminderToUpdate : reminder))
+    }
+    //if I'm adding a reminder: 
+    else{
+      pawfileToUpdate.reminders = [...pawfileToUpdate.reminders, action.reminder];
+    }
+
+    const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id==action.currentPetId ? pawfileToUpdate : item))
 
     console.log('in reminder reducer, new array of apwfiles is', newArrayOfPawfiles);
     return Object.assign({}, state, {
