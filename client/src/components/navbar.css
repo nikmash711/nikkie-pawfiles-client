@@ -32,6 +32,13 @@
   cursor:pointer;
 }
 
+.link:hover:before{
+  font-family: "Font Awesome 5 Free"; 
+  font-weight: 900; 
+  content: "\f1b0";
+  margin-right: 5px;
+}
+
 .logo{
   text-align:left;
   display: inline-block;
