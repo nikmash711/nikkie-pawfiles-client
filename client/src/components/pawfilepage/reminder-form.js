@@ -7,6 +7,10 @@ import './reminder-blurb.css';
 import './reminder-form.css';
 
 export class ReminderForm extends React.Component{
+  componentDidMount(){
+    this.noteInput.focus();
+  }
+
   componentWillUnmount(){
     this.props.dispatch(showReminderForm(false, undefined));
   }
@@ -26,16 +30,19 @@ export class ReminderForm extends React.Component{
       <div className="reminder-form-modal">
         <form className="new-reminder-form" onSubmit={ (e)=> this.onSubmit(e)}>
           
-          <label htmlFor="note" className="required">Note:</label>
-          <input required className="new-reminder-note" ref={input => this.noteInput = input} type="text" id="note" name="note" placeholder="New reminder..." defaultValue={this.props.individualReminder ? this.props.individualReminder.note : ""}/>
+          <fieldset className="reminder-fieldset">
+            <label htmlFor="note" className="required note-label">Reminder:</label>
+            <input required className="new-reminder-note" ref={input => this.noteInput = input} type="text" id="note" name="note" placeholder="New reminder..." defaultValue={this.props.individualReminder ? this.props.individualReminder.note : ""}/>
+          </fieldset>
 
-          <div className="date-time-options">
+          <fieldset className="date-time-options">
+            <legend className="date-time-legend">Date/Time</legend>
             <label htmlFor="date">Date:</label>
             <input className="reminder-date" ref={input => this.dateInput = input} type="date" id="date" defaultValue={this.props.individualReminder ? this.props.individualReminder.date : todaysDate()} min={ todaysDate()} />
 
             <label htmlFor="time">Time:</label>
             <input className="reminder-time" ref={input => this.timeInput = input} type="time" id="time" defaultValue={this.props.individualReminder ? this.props.individualReminder.time : ""} />
-          </div>
+          </fieldset>
          
           <div className="buttons">
             <button type="submit" className="save-reminder">Save</button>

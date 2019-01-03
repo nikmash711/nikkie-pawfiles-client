@@ -12,7 +12,6 @@
   position: relative;
   padding:0;
   display: block;
-  padding-bottom:5px;
   color: black;
   background-color: #fff348;
   -webkit-transform: none;
@@ -29,7 +28,7 @@
 .new-reminder-form .new-reminder-note{
   margin-left:5px;
   margin-bottom:10px;
-  width: 250px;
+  width: 200px;
 }
 
 .new-reminder-form .reminder-date{
@@ -37,7 +36,7 @@
 }
 
 .new-reminder-form .new-reminder-note:focus{
-  border: 3px solid black;
+  border: 2px solid black;
 }
 
 .new-reminder-form input:hover, .new-reminder-form input:focus, .more-options-button:hover, .more-options-button:focus{
@@ -80,5 +79,23 @@
 
 .date-time-options{
   display:block;
-  border-top:1px solid black;
+  border: none;
+  border-top:2px solid black;
+  border-bottom:2px solid black;
+  text-align: center;
+}
+
+.date-time-legend{
+  text-align: center;
+  font-family: 'Kalam'
+}
+
+.new-reminder-form .note-label{
+  font-size: 15px;
+  margin-left: 10px;
+}
+
+.reminder-fieldset{
+  border:none;
+  padding-top:5px;
 }
