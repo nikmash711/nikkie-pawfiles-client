@@ -242,12 +242,24 @@ export const pawfileReducer = (state = initialState, action)=> {
     })
   }
 
-  //not getting back a single post, but the whole pawfile.
   else if (action.type=== SUBMIT_POST_SUCCESS){
-    const updatedPawfile = action.pawfile;
+    //figure out which pawfile I need to updated 
+    let pawfileToUpdate = {...state.pawfiles.find(pawfile=> pawfile.id==action.currentPetId)};
 
-    const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id==action.currentPetId ? updatedPawfile : item))
+    //if I'm editing a post: 
+    if(action.postId){
+      console.log('EDITING');
+      let postToUpdate = action.post;
+      pawfileToUpdate.posts = pawfileToUpdate.posts.map((post)=> (post.id==action.postId ? postToUpdate : post))
+    }
+    //if I'm adding a post: 
+    else{
+      pawfileToUpdate.posts = [...pawfileToUpdate.posts, action.post];
+    }
 
+    const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id==action.currentPetId ? pawfileToUpdate : item))
+
+    console.log('in reminder reducer, new array of apwfiles is', newArrayOfPawfiles);
     return Object.assign({}, state, {
         pawfilesPending: false,
         pawfiles: newArrayOfPawfiles

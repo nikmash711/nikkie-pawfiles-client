@@ -7,10 +7,11 @@ export const submitPostRequest = () => ({
 })
 
 export const SUBMIT_POST_SUCCESS = "SUBMIT_POST_SUCCESS";
-export const submitPostSuccess = (pawfile, currentPetId) => ({
+export const submitPostSuccess = (post, currentPetId, postId) => ({
     type: SUBMIT_POST_SUCCESS,
-    pawfile,
-    currentPetId
+    post,
+    currentPetId,
+    postId
 })
 
 export const CRUD_ERROR = "CRUD_ERROR";
@@ -36,9 +37,9 @@ export const submitPost = (values, currentPetId, postId) => dispatch =>{
             return Promise.reject(res.statusText);
         }
         return res.json();
-    }).then(pawfile => {
-        console.log('in actions, got back pawfile:', pawfile);
-        dispatch(submitPostSuccess(pawfile, currentPetId));
+    }).then(post => {
+        console.log('in actions, got back post:', post);
+        dispatch(submitPostSuccess(post, currentPetId, postId));
     }).catch(err => {
         dispatch(crudError(err));
     });
