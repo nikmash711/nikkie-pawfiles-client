@@ -15,16 +15,11 @@ export class MedicalForm extends React.Component{
   }
 
   onSubmit(values){
+    console.log('values are', values);
     values.type="medical";
-    if(values.vaccinations){
-      values.vaccinations = stringToArrayList(values.vaccinations);
-    }
-    if(values.prescriptions){
-      values.prescriptions = stringToArrayList(values.prescriptions);
-    }
-    if(values.symptoms){
-      values.symptoms = stringToArrayList(values.symptoms);
-    }
+    values.vaccinations = stringToArrayList(values.vaccinations);
+    values.prescriptions = stringToArrayList(values.prescriptions);
+    values.symptoms = stringToArrayList(values.symptoms);
 
     this.props.dispatch(submitPost(values, this.props.currentPetId, this.props.currentPostId));
     this.props.dispatch(showMedicalForm(false, undefined));

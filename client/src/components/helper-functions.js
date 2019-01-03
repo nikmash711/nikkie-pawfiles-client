@@ -50,6 +50,11 @@ export function changeMilitaryFormat(military_time){
 }
 
 export function stringToArrayList(str){
+  console.log('str is', str);
+  if(str.trim()===""){
+    console.log('here');
+    return [];
+  }
   const arr = str.split(',');
   return arr.map(item=>item.trim());
 }

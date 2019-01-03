@@ -8,6 +8,7 @@ import {formatDate} from '../helper-functions';
 import './medical-post.css'
 
 export function MedicalPost(props){
+  console.log('in medpost, propa are', props);
   return(
     <li key={props.index} className={`${props.type.toLowerCase()} post`}>
       <strong><h3 className="post-title">{props.title}</h3></strong>
