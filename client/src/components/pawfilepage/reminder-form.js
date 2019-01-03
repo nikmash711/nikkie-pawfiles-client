@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {submitReminder} from '../../actions/reminder-crud';
 import {showReminderForm} from '../../actions/index';
-import {todaysDate, changeMilitaryFormat} from '../helper-functions';
+import {todaysDate} from '../helper-functions';
 import './reminder-blurb.css';
 import './reminder-form.css';
 

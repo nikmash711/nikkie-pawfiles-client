@@ -1,4 +1,4 @@
-import {SHOW_PAWFILE_FORM, CHANGE_SORTING_PETS_METHOD, TOGGLE_NAVBAR, CHANGE_CURRENT_PET_ID, SHOW_MEDICAL_FORM, SHOW_MEMORY_FORM, SHOW_REMINDER_FORM, CHANGE_SEARCH_TERM, CHANGE_CATEGORY_FILTER,} from '../actions/index';
+import {SHOW_PAWFILE_FORM, CHANGE_SORTING_PETS_METHOD, TOGGLE_NAVBAR, SHOW_MEDICAL_FORM, SHOW_MEMORY_FORM, SHOW_REMINDER_FORM, CHANGE_SEARCH_TERM, CHANGE_CATEGORY_FILTER, CHANGE_CURRENT_PET_ID} from '../actions/index';
 
 import {FETCH_PAWFILES_SUCCESS, FETCH_PAWFILES_REQUEST, CHANGE_PAWFILES_PENDING, CHANGE_ERROR, SUBMIT_PAWFILE_REQUEST, SUBMIT_PAWFILE_SUCCESS, DELETE_PAWFILE_REQUEST, DELETE_PAWFILE_SUCCESS} from '../actions/pawfile-crud'
 
@@ -15,36 +15,35 @@ const initialState = {
   showMedicalForm: false,
   showMemoryForm: false,
   showReminderForm: false,
+  currentSearchTerm: "",
+  categoryFilter: "",
+  toggleNavbar:false,
+
   currentPawfileFormId: undefined,
   currentPetId: undefined,
   currentPostId: undefined,
   currentReminderId: undefined,
-  currentSearchTerm: "",
-  categoryFilter: "",
-  toggleNavbar:false,
   pawfiles: [],
-  individualPawfile: {},
   pawfilesPending: true,
-  individualPawfilePending: true,
-  error:""
+  error: false,
 };
 
 export const pawfileReducer = (state = initialState, action)=> {
 
-  //Either when user clicks "add new pawfile", or clicks to edit a current pawfile. Need to set the currentPetId to either the id of the pet being edited, or undefined if it's a new pet/closing form
+  /* GENERAL STUFF */
+
+  //Either when user clicks "add new pawfile", or clicks to edit a current pawfile.
   if(action.type=== SHOW_PAWFILE_FORM){
     console.log('IN SHOW reducer, currentPawfileFormId is', action.currentPawfileFormId)
     return Object.assign({}, state, {
       showPawfileForm: action.bool,
       currentPawfileFormId: action.currentPawfileFormId
-      //  ? action.currentPetId : state.currentPetId
     })
   }
 
   else if(action.type===CHANGE_CURRENT_PET_ID){
-    console.log('changing id', action.currentPetId);
     return Object.assign({}, state, {
-      currentPetId: action.currentPetId
+      currentPetId: action.currentPetId,
     })
   }
 
@@ -99,17 +98,25 @@ export const pawfileReducer = (state = initialState, action)=> {
     })
   }
 
+  /* CRUD-RELATED STUFF */
+
   else if(action.type===CHANGE_ERROR){
     return Object.assign({}, state, {
       error: action.bool,
     })
+  }  
+  
+  else if (action.type===CRUD_ERROR){
+    return Object.assign({}, state, {
+      pawfilesPending: false,
+      error: true,
+    })
   }
 
-  else if (action.type === FETCH_PAWFILES_SUCCESS) {
-    console.log('successfully fetching all pawfiles', action.pawfiles);
+  else if(action.type===CHANGE_PAWFILES_PENDING){
+    console.log('changing pending to', action.bool);
     return Object.assign({}, state, {
-      pawfiles: action.pawfiles,
-      pawfilesPending: false,
+      pawfilesPending: action.bool,
     })
   }
 
@@ -119,10 +126,11 @@ export const pawfileReducer = (state = initialState, action)=> {
     })
   }
 
-  else if(action.type===CHANGE_PAWFILES_PENDING){
-    console.log('changing pending to', action.bool);
+  else if (action.type === FETCH_PAWFILES_SUCCESS) {
+    console.log('successfully fetching all pawfiles', action.pawfiles);
     return Object.assign({}, state, {
-      pawfilesPending: action.bool,
+      pawfiles: action.pawfiles,
+      pawfilesPending: false,
     })
   }
 
@@ -181,13 +189,6 @@ export const pawfileReducer = (state = initialState, action)=> {
     })
   }
 
-  else if (action.type===CRUD_ERROR){
-    return Object.assign({}, state, {
-      pawfilesPending: false,
-      error: true,
-    })
-  }
-
   //not getting back a single reminder, but the whole pawfile. fix.
   else if (action.type=== SUBMIT_REMINDER_SUCCESS){
     const updatedPawfile = action.pawfile;
@@ -206,7 +207,6 @@ export const pawfileReducer = (state = initialState, action)=> {
       pawfilesPending: true,
     })
   }
-
 
   else if(action.type=== DELETE_REMINDER_SUCCESS){
     let pawfileToUpdate = {...state.pawfiles.find(pawfile=> pawfile.id==action.currentPetId)};
@@ -231,13 +231,6 @@ export const pawfileReducer = (state = initialState, action)=> {
     })
   }
 
-  else if (action.type===CRUD_ERROR){
-    return Object.assign({}, state, {
-      pawfilesPending: false,
-      error: true,
-    })
-  }
-
   //not getting back a single post, but the whole pawfile.
   else if (action.type=== SUBMIT_POST_SUCCESS){
     const updatedPawfile = action.pawfile;
@@ -255,7 +248,6 @@ export const pawfileReducer = (state = initialState, action)=> {
       pawfilesPending: true,
     })
   }
-
 
   else if(action.type=== DELETE_POST_SUCCESS){
     let pawfileToUpdate = {...state.pawfiles.find(pawfile=> pawfile.id==action.currentPetId)};

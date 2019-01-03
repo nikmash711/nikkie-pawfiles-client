@@ -13,6 +13,11 @@ export const changeError = bool => ({
     bool
 })
 
+export const CRUD_ERROR = "CRUD_ERROR";
+export const crudError = () => ({
+  type: CRUD_ERROR,
+})
+
 /* GET ACTIONS */
 
 export const FETCH_PAWFILES_SUCCESS = 'FETCH_PAWFILES_SUCCESS';
@@ -26,11 +31,6 @@ export const fetchPawfilesRequest = () => ({
     type: FETCH_PAWFILES_REQUEST,
 })
 
-
-export const CRUD_ERROR = "CRUD_ERROR";
-export const crudError = () => ({
-  type: CRUD_ERROR,
-})
 
 export const fetchPawfiles = () => dispatch => {
     dispatch(fetchPawfilesRequest());
