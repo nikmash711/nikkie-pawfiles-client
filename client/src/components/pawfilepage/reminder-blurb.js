@@ -1,10 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import Reminder from './reminder';
-import {submitReminder} from '../../actions/reminder-crud';
 import {showReminderForm} from '../../actions/index';
 import ReminderForm from './reminder-form'
-import {todaysDate} from '../helper-functions';
 import './reminder-blurb.css';
 
 export class ReminderBlurb extends React.Component{
@@ -19,7 +17,7 @@ export class ReminderBlurb extends React.Component{
         <h2>Reminders</h2>
         <ul className = "reminders-list">
           {reminders}
-          <li class="reminder">
+          <li className="reminder">
             <button onClick={()=>{this.props.dispatch(showReminderForm(true, undefined))}} className="add-reminder">+ Add New</button>
           </li>
         </ul>

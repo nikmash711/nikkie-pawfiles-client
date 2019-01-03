@@ -44,6 +44,8 @@ function mapStateToProps(state) {
   let currentPetId = state.pawfile.currentPetId;
   let individualPawfile = state.pawfile.pawfiles.find(pawfile=>pawfile.id==currentPetId);
 
+  console.log('in reminder-form mapstate, the currentPetId is', currentPetId)
+
   return {
     currentReminderId: state.pawfile.currentReminderId,
     currentPetId: state.pawfile.currentPetId,

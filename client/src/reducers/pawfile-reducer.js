@@ -32,10 +32,10 @@ export const pawfileReducer = (state = initialState, action)=> {
 
   //Either when user clicks "add new pawfile", or clicks to edit a current pawfile. Need to set the currentPetId to either the id of the pet being edited, or undefined if it's a new pet/closing form
   if(action.type=== SHOW_PAWFILE_FORM){
-    console.log('in show pawfile form reducer');
+    console.log('in show pawfile form reducer, currentPetId is', action.currentPetId);
     return Object.assign({}, state, {
       showPawfileForm: action.bool,
-      currentPetId: action.currentPetId
+      currentPetId: action.currentPetId ? action.currentPetId : state.currentPetId
     })
   }
 

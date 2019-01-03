@@ -10,12 +10,12 @@ import './pawfile-form.css';
 export class PawfileForm extends React.Component{
 
   componentWillUnmount(){
-    this.props.dispatch(showPawfileForm(false, undefined));
+    this.props.dispatch(showPawfileForm(false));
   }
 
   onSubmit(values){
     this.props.dispatch(submitPawfile(values, this.props.currentPetId));
-    this.props.dispatch(showPawfileForm(false, undefined));
+    this.props.dispatch(showPawfileForm(false));
   }
 
   render(){
@@ -23,7 +23,7 @@ export class PawfileForm extends React.Component{
       <div className='form-modal'>
           <form className="form blurb" onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
 
-            <button type="button" className = "close" onClick={()=>this.props.dispatch(showPawfileForm(false, undefined))}>X</button>
+            <button type="button" className = "close" onClick={()=>this.props.dispatch(showPawfileForm(false))}>X</button>
 
             <h2>{this.props.initialValues.name ? this.props.initialValues.name : "New Pawfile"}</h2>
 
@@ -111,7 +111,7 @@ export class PawfileForm extends React.Component{
 
             <div className="buttons">
               <button type="submit">Save Pawfile</button>
-              <button onClick={()=>this.props.dispatch(showPawfileForm(false, undefined))} type="button">Cancel</button>
+              <button onClick={()=>this.props.dispatch(showPawfileForm(false))} type="button">Cancel</button>
             </div>
             
           </form>
