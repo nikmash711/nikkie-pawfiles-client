@@ -1,14 +1,9 @@
 import {API_BASE_URL} from '../config';
+
 /* GENERAL */
 export const CHANGE_PAWFILES_PENDING = "CHANGE_PAWFILES_PENDING";
 export const changePawfilesPending = bool => ({
     type: CHANGE_PAWFILES_PENDING,
-    bool
-})
-
-export const CHANGE_INDIVIDUAL_PAWFILE_PENDING = "CHANGE_INDIVIDUAL_PAWFILE_PENDING";
-export const changeIndividualPawfilePending = bool => ({
-    type: CHANGE_INDIVIDUAL_PAWFILE_PENDING,
     bool
 })
 
@@ -26,48 +21,32 @@ export const fetchPawfilesSuccess = pawfiles => ({
     pawfiles
 });
 
-export const FETCH_INDIVIDUAL_PAWFILE_SUCCESS = "FETCH_INDIVIDUAL_PAWFILE_SUCCESS";
-export const fetchIndividualPawfileSuccess = pawfile => ({
-    type: FETCH_INDIVIDUAL_PAWFILE_SUCCESS,
-    pawfile
+export const FETCH_PAWFILES_REQUEST = "FETCH_PAWFILES_REQUEST";
+export const fetchPawfilesRequest = () => ({
+    type: FETCH_PAWFILES_REQUEST,
 })
 
-export const FETCH_INDIVIDUAL_PAWFILE_REQUEST = "FETCH_INDIVIDUAL_PAWFILE_REQUEST";
-export const fetchIndividualPawfileRequest = () => ({
-    type: FETCH_INDIVIDUAL_PAWFILE_REQUEST,
+
+export const CRUD_ERROR = "CRUD_ERROR";
+export const crudError = () => ({
+  type: CRUD_ERROR,
 })
 
-export const FETCH_INDIVIDUAL_PAWFILE_ERROR = "FETCH_INDIVIDUAL_PAWFILE_ERROR";
-export const fetchIndividualPawfileError = () => ({
-    type: FETCH_INDIVIDUAL_PAWFILE_ERROR,
-})
 export const fetchPawfiles = () => dispatch => {
-  fetch(`${API_BASE_URL}/pawfiles`)
-      .then(res => {
-          if (!res.ok) {
-              return Promise.reject(res.statusText);
-          }
-          return res.json();
-      })
-      .then(pawfiles => {
-          dispatch(fetchPawfilesSuccess(pawfiles));
-      });
-};
-
-export const fetchIndividualPawfile = (pawfileId) => dispatch => {
-  dispatch(fetchIndividualPawfileRequest());
-  fetch(`${API_BASE_URL}/pawfiles/${pawfileId}`)
-  .then(res => {
-      if (!res.ok) {
-          return Promise.reject(res.statusText);
-      }
-      return res.json();
-  }).then(pawfile => {
-      console.log('successful fetching of', pawfile);
-      dispatch(fetchIndividualPawfileSuccess(pawfile));
-  }).catch(err => {
-      dispatch(fetchIndividualPawfileError(err));
-  });
+    dispatch(fetchPawfilesRequest());
+    fetch(`${API_BASE_URL}/pawfiles`)
+        .then(res => {
+            if (!res.ok) {
+                return Promise.reject(res.statusText);
+            }
+            return res.json();
+        })
+        .then(pawfiles => {
+            dispatch(fetchPawfilesSuccess(pawfiles));
+        })
+        .catch(err => {
+            dispatch(crudError());
+        });
 };
 
 /* POST & PUT ACTIONS */
@@ -105,7 +84,7 @@ export const submitPawfile = (values, currentPetId) => dispatch =>{
     }).then(pawfile => {
         dispatch(submitPawfileSuccess(pawfile, currentPetId));
     }).catch(err => {
-        dispatch(fetchIndividualPawfileError(err));
+        dispatch(crudError());
     });
 }
 
@@ -140,6 +119,6 @@ export const deletePawfile = (currentPetId) => dispatch =>{
       dispatch(deletePawfileSuccess(currentPetId));
   })
   .catch(err => {
-      dispatch(fetchIndividualPawfileError(err));
+      dispatch(crudError());
   });
 }

@@ -9,7 +9,7 @@ import MedicalForm from './medical-form'
 import MemoryForm from './memory-form'
 import {Redirect} from 'react-router-dom'
 import {showMedicalForm, showMemoryForm, changeSearchTerm, changeCategoryFilter, changeCurrentPetId} from '../../actions/index';
-import {changeIndividualPawfilePending, fetchPawfiles } from '../../actions/pawfile-crud';
+import { fetchPawfiles } from '../../actions/pawfile-crud';
 
 
 export class PawfilePage extends React.Component{
@@ -26,7 +26,6 @@ export class PawfilePage extends React.Component{
     this.props.dispatch(showMemoryForm(false));
     this.props.dispatch(changeSearchTerm(""));
     this.props.dispatch(changeCategoryFilter(""));
-    this.props.dispatch(changeIndividualPawfilePending(true));
   }
 
   validId(paramsId){

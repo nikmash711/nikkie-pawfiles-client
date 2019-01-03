@@ -1,6 +1,6 @@
 import {SHOW_PAWFILE_FORM, CHANGE_SORTING_PETS_METHOD, TOGGLE_NAVBAR, CHANGE_CURRENT_PET_ID, SHOW_MEDICAL_FORM, SHOW_MEMORY_FORM, SHOW_REMINDER_FORM, CHANGE_SEARCH_TERM, CHANGE_CATEGORY_FILTER,} from '../actions/index';
 
-import {FETCH_PAWFILES_SUCCESS, FETCH_INDIVIDUAL_PAWFILE_SUCCESS, CHANGE_PAWFILES_PENDING, CHANGE_INDIVIDUAL_PAWFILE_PENDING, FETCH_INDIVIDUAL_PAWFILE_REQUEST, FETCH_INDIVIDUAL_PAWFILE_ERROR, CHANGE_ERROR, SUBMIT_PAWFILE_REQUEST, SUBMIT_PAWFILE_SUCCESS, DELETE_PAWFILE_REQUEST, DELETE_PAWFILE_SUCCESS} from '../actions/pawfile-crud'
+import {FETCH_PAWFILES_SUCCESS, FETCH_PAWFILES_REQUEST, CHANGE_PAWFILES_PENDING, CHANGE_ERROR, SUBMIT_PAWFILE_REQUEST, SUBMIT_PAWFILE_SUCCESS, DELETE_PAWFILE_REQUEST, DELETE_PAWFILE_SUCCESS} from '../actions/pawfile-crud'
 
 import {SUBMIT_REMINDER_REQUEST, SUBMIT_REMINDER_SUCCESS, CRUD_ERROR, DELETE_REMINDER_REQUEST, DELETE_REMINDER_SUCCESS} from '../actions/reminder-crud'
 
@@ -111,25 +111,9 @@ export const pawfileReducer = (state = initialState, action)=> {
     })
   }
 
-  else if (action.type===FETCH_INDIVIDUAL_PAWFILE_SUCCESS){
-    console.log('in success for indiv pawfile, fetched', action.pawfile);
+  else if (action.type === FETCH_PAWFILES_REQUEST) {
     return Object.assign({}, state, {
-      individualPawfile: action.pawfile,
-      individualPawfilePending: false,
-    })
-  }
-
-  else if (action.type===FETCH_INDIVIDUAL_PAWFILE_REQUEST){
-    return Object.assign({}, state, {
-      individualPawfilePending: true,
-    })
-  }
-
-  else if (action.type===FETCH_INDIVIDUAL_PAWFILE_ERROR){
-    console.log('in error of fetching');
-    return Object.assign({}, state, {
-      individualPawfilePending: false,
-      error: true,
+      pawfilesPending: true,
     })
   }
 
@@ -137,12 +121,6 @@ export const pawfileReducer = (state = initialState, action)=> {
     console.log('changing pending to', action.bool);
     return Object.assign({}, state, {
       pawfilesPending: action.bool,
-    })
-  }
-
-  else if(action.type===  CHANGE_INDIVIDUAL_PAWFILE_PENDING){
-    return Object.assign({}, state, {
-      individualPawfilePending: action.bool,
     })
   }
 
