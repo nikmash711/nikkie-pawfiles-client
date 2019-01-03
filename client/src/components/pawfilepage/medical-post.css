@@ -1,5 +1,6 @@
 .medical{
   border: 3px solid coral;
+  position: relative;
 }
 
 .post-list{

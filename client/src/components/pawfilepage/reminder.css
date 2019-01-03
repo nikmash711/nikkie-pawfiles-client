@@ -35,3 +35,13 @@
   background-color: gray;
   cursor: pointer;
 }
+
+.sidebar .reminder .option-icons{
+  position: static;
+  text-align: left;
+  width: 70px;
+}
+
+.reminder .option-icons button{
+    font-size:12px;
+}

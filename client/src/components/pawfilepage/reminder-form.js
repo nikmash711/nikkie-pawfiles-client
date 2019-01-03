@@ -4,6 +4,7 @@ import {submitReminder} from '../../actions/reminder-crud';
 import {showReminderForm} from '../../actions/index';
 import {todaysDate} from '../helper-functions';
 import './reminder-blurb.css';
+import './reminder-form.css';
 
 export class ReminderForm extends React.Component{
   componentWillUnmount(){
@@ -22,13 +23,13 @@ export class ReminderForm extends React.Component{
   render(){
     console.log('individual reminder is', this.props.individualReminder);
     return(
-      <div className="form-modal">
-        <form className="new-reminder-form reminder form" onSubmit={ (e)=> this.onSubmit(e)}>
+      <div className="reminder-form-modal">
+        <form className="new-reminder-form" onSubmit={ (e)=> this.onSubmit(e)}>
           <input required className="new-reminder-note reminder-note" ref={input => this.noteInput = input} type="text" id="new-reminder" name="note" placeholder="New reminder..." defaultValue={this.props.individualReminder ? this.props.individualReminder.note : ""}/>
 
           <input required className="reminder-date" ref={input => this.dateInput = input} type="date" defaultValue={this.props.individualReminder ? this.props.individualReminder.date : todaysDate()} />
 
-          <button type="submit" className="add-reminder">Add</button>
+          <button type="submit" className="save-reminder">Save</button>
 
           <button onClick={()=>this.props.dispatch(showReminderForm(false, undefined))} type="button" className="cancel-reminder">Cancel</button>
         </form>

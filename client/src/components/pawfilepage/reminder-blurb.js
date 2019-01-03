@@ -17,21 +17,11 @@ export class ReminderBlurb extends React.Component{
     return(
       <article className="blurb reminders">
         <h2>Reminders</h2>
-        <button onClick={()=>{this.props.dispatch(showReminderForm(true, undefined))}} className="add-reminder">Add</button>
         <ul className = "reminders-list">
           {reminders}
-              {/* <button type="button" className="more-options-button" onClick={()=>this.toggleMoreOptions()}>More options</button> */}
-
-              {/* {this.state.showMoreOptions && 
-              <div className="more-options">
-                <input ref={input => this.dateInput = input} type="date" max={todaysDate()}/>
-              </div>
-              } */}
-
-              {/* <button className="add-reminder-button" type="submit" onClick={(e)=>this.onSubmit(e)}>Add</button> */}
-              {/* Have the time/date option be hidden unless user clicks a button that says time/date, then display visible and keep the values and submit with form  */}
-              {/* <input type="date" />
-              <input type="time" /> */}
+          <li class="reminder">
+            <button onClick={()=>{this.props.dispatch(showReminderForm(true, undefined))}} className="add-reminder">+ Add New</button>
+          </li>
         </ul>
         {this.props.showReminderForm && <ReminderForm/>}
       </article>
@@ -47,3 +37,15 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(ReminderBlurb);
+{/* <button type="button" className="more-options-button" onClick={()=>this.toggleMoreOptions()}>More options</button> */}
+
+{/* {this.state.showMoreOptions && 
+<div className="more-options">
+  <input ref={input => this.dateInput = input} type="date" max={todaysDate()}/>
+</div>
+} */}
+
+{/* <button className="add-reminder-button" type="submit" onClick={(e)=>this.onSubmit(e)}>Add</button> */}
+{/* Have the time/date option be hidden unless user clicks a button that says time/date, then display visible and keep the values and submit with form  */}
+{/* <input type="date" />
+<input type="time" /> */}
