@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import Reminder from './reminder';
 import {showReminderForm} from '../../actions/index';
 import ReminderForm from './reminder-form'
+import {sortOldestToNewest} from '../helper-functions';
 import './reminder-blurb.css';
 
 export class ReminderBlurb extends React.Component{
@@ -11,6 +12,8 @@ export class ReminderBlurb extends React.Component{
     const reminders = this.props.reminders.map((reminder, index)=>(
       <Reminder reminderId={reminder.id} key={index} {...reminder}/>
     ));
+
+    sortOldestToNewest(reminders);
 
     return(
       <article className="blurb reminders">
@@ -35,15 +38,3 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(ReminderBlurb);
-{/* <button type="button" className="more-options-button" onClick={()=>this.toggleMoreOptions()}>More options</button> */}
-
-{/* {this.state.showMoreOptions && 
-<div className="more-options">
-  <input ref={input => this.dateInput = input} type="date" max={todaysDate()}/>
-</div>
-} */}
-
-{/* <button className="add-reminder-button" type="submit" onClick={(e)=>this.onSubmit(e)}>Add</button> */}
-{/* Have the time/date option be hidden unless user clicks a button that says time/date, then display visible and keep the values and submit with form  */}
-{/* <input type="date" />
-<input type="time" /> */}

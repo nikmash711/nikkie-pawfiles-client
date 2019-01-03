@@ -61,12 +61,15 @@ export class MedicalForm extends React.Component{
 
             <Field
               component={Input} 
-              label = "Doctor's Office:"
+              label = "Dr's Office:"
               name="office" 
               id="office"
               type = "url"
             />
 
+            <div id="instructions">
+                Please type the symptoms (if any) as a comma-seperated list.
+            </div>
             <Field
               component={Input}
               label="Symptoms:" 
@@ -75,9 +78,7 @@ export class MedicalForm extends React.Component{
               id="symptoms"
               aria-describedby="instructions"
             /> 
-            <div id="instructions">
-                Please type the symptoms (if any) as a comma-seperated list.
-            </div>
+            
 
             <Field
               component={Input}

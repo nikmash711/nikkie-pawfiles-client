@@ -80,6 +80,10 @@ export function sortNewestToOldest(posts){
   return posts.sort((postA, postB)=> new Date(postB.props.date) - new Date(postA.props.date));
 }
 
+export function sortOldestToNewest(items){
+  return items.sort((itemA, itemB)=> new Date(itemA.props.date) - new Date(itemB.props.date));
+}
+
 export function sortByOldest(pawfiles_list){
   pawfiles_list.sort((a,b)=> new Date(a.props.birthday) - new Date(b.props.birthday))
 }

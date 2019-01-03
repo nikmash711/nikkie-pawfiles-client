@@ -48,7 +48,7 @@ export class MemoryForm extends React.Component{
             <Field
               component={Input}
               label="Description:" 
-              type="textarea" 
+              element="textarea" 
               name="description" 
               id="description"
             /> 

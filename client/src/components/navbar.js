@@ -14,7 +14,7 @@ export class Navbar extends React.Component{
   
     return( 
       <nav className="main-navbar">
-        <Link className="logo" to="#">Pawfiles</Link>
+        <Link className="logo" to="/home">Pawfiles</Link>
         <button onClick={()=>this.props.dispatch(toggleNavbar())} className="icon right"><i className="fa fa-bars"></i></button>
          <div className = "right">
          <Link className={className} to ="/home">Home</Link>

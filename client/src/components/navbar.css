@@ -29,7 +29,7 @@
   padding: 20px;
   text-align: center;
   transition: .5s;
-  /* position:relative; */
+  cursor:pointer;
 }
 
 .logo{

@@ -26,18 +26,17 @@
   padding:5px;
 }
 
-.new-reminder-form .reminder-note{
-  /* margin-left:10px; */
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
+.new-reminder-form .new-reminder-note{
+  margin-left:5px;
   margin-bottom:10px;
+  width: 250px;
 }
 
 .new-reminder-form .reminder-date{
   width:120px;
 }
 
-.new-reminder-form .reminder-note:focus{
+.new-reminder-form .new-reminder-note:focus{
   border: 3px solid black;
 }
 
@@ -77,4 +76,9 @@
   color:black;
   border: 1px solid black;
   cursor:pointer;
+}
+
+.date-time-options{
+  display:block;
+  border-top:1px solid black;
 }
