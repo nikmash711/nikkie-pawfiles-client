@@ -30,8 +30,8 @@ export class ReminderForm extends React.Component{
           <input required className="new-reminder-note" ref={input => this.noteInput = input} type="text" id="note" name="note" placeholder="New reminder..." defaultValue={this.props.individualReminder ? this.props.individualReminder.note : ""}/>
 
           <div className="date-time-options">
-            <label htmlFor="date" className="required">Date:</label>
-            <input required className="reminder-date" ref={input => this.dateInput = input} type="date" id="date" defaultValue={this.props.individualReminder ? this.props.individualReminder.date : todaysDate()} min={ todaysDate()} />
+            <label htmlFor="date">Date:</label>
+            <input className="reminder-date" ref={input => this.dateInput = input} type="date" id="date" defaultValue={this.props.individualReminder ? this.props.individualReminder.date : todaysDate()} min={ todaysDate()} />
 
             <label htmlFor="time">Time:</label>
             <input className="reminder-time" ref={input => this.timeInput = input} type="time" id="time" defaultValue={this.props.individualReminder ? this.props.individualReminder.time : ""} />

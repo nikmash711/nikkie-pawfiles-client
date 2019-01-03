@@ -12,10 +12,6 @@ export class Reminder extends React.Component{
     console.log('in reminders petid is', this.props.currentPetId, 'and reminderid is', this.props.reminderId);
     return(
       <li data-id={`${this.props.reminderId}`} className="reminder">
-        {/* <button onClick={()=>{this.props.dispatch(deleteReminder(this.props.currentPetId, this.props.reminderId))}} className="delete-reminder">X</button>
-        <button onClick={()=>{this.props.dispatch(showReminderForm(true, this.props.reminderId))}} className="edit-reminder">Edit</button> */}
-
-
         <div className="option-icons">
           <button onClick={()=> this.props.dispatch(deleteReminder(this.props.currentPetId, this.props.reminderId))}><i className="fas fa-trash-alt"></i></button>
           <button onClick={()=> this.props.dispatch(showReminderForm(true, this.props.reminderId))}><i className="fas fa-edit"></i></button>
@@ -26,9 +22,12 @@ export class Reminder extends React.Component{
         </span>
 
         <div className="date-and-time">
-        <span className="reminder-date">
-            {formatDate(this.props.date).toLocaleDateString()}
-          </span>
+          {
+            this.props.date && 
+            <span className="reminder-date">
+              {formatDate(this.props.date).toLocaleDateString()}
+            </span>
+          }
           {
             this.props.time && 
             <span className="reminder-time">
