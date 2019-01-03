@@ -25,23 +25,23 @@ example, need to buy more litter, or go get groomed next week, etc.
 - [x] 10. User can edit and delete their posts and info about their pets (and pictures). 
 
 ## Extension Features: 
-[ ] 1. User can change their password
-[ ] 2. Users can see other user's Pawfiles (read-only) via a link
-[x] 3. Users can edit/delete their posts, reminders, update their pet's profile photo, etc.
-[ ] 4. Users will only be logged out after a certain amount of time, not every time they refresh or leave the browser (implement auth stuff) 
-[x] 5. When requests are sent via a GET method, they will be queried to the end of the url so the user can click back or search their history (use React Routers) 
-[ ] 6. Users can search for vets in their area (Yelp api?) 
-[ ] 7. User can directly upload a photo or file from their computer (for posts or profile photo) and not via an external link (that way they can upload files/records etc.) Can do this by either using GridFs, or saving that file to another db (like AWS), and storing a ref to it in my db. 
-[ ] 8. Reminders can include a time, and can even push notifications to the user (to their notification center) - like for daily pills (https://medium.com/@jasminejacquelin/integrating-push-notifications-in-your-node-react-web-app-4e8d8190a52c)
-[ ] 9. Use some of these pet puns throughout the app: https://www.lifelearn.com/2016/02/24/the-jumbo-reference-list-of-pet-puns/
-[ ] 10. Parts of the design (and puns) will change based on whether it's a cat vs dog, male vs female. Design will hopefully look like an actual timeline
-[ ] 11. "See more" at bottom of timeline to load more posts so db doesn't load all of them at once
-[ ] 12. Make it an app for flex week!
-[ ] 13. Ability to change password when logged in
-[ ] 14. Ability to reset password (this would involve storing user's emails, a security issue. Or they would have to report a problem, and then I'd need some way of verifying their identity). https://nodemailer.com/about/, https://www.mailgun.com/blog/how-to-send-transactional-email-in-a-nodejs-app-using-the-mailgun-api, https://www.w3schools.com/nodejs/nodejs_email.asp
-[ ] 15. Settings tab will lead to a settings page where user can update their name (not username), password, email(?), profile picture, etc. 
-[ ] 16. Use an API for maps so when user types in address for vet, it loads and comes up and they can click it. It'll link to Google Maps 
-[ ] 17. When a user adds a vaccination, prescription, or doctor to their medical post, it will be added to a history tab for that category so they can easily view a list of vaccinations, prescriptions, and doctors for a given pet
+- [ ] 1. User can change their password
+- [ ] 2. Users can see other user's Pawfiles (read-only) via a link
+- [x] 3. Users can edit/delete their posts, reminders, update their pet's profile photo, etc.
+- [ ] 4. Users will only be logged out after a certain amount of time, not every time they refresh or leave the browser (implement auth stuff) 
+- [x] 5. When requests are sent via a GET method, they will be queried to the end of the url so the user can click back or search their history (use React Routers) 
+- [ ] 6. Users can search for vets in their area (Yelp api?) 
+- [ ] 7. User can directly upload a photo or file from their computer (for posts or profile photo) and not via an external link (that way they can upload files/records etc.) Can do this by either using GridFs, or saving that file to another db (like AWS), and storing a ref to it in my db. 
+- [ ] 8. Reminders can include a time, and can even push notifications to the user (to their notification center) - like for daily pills (https://medium.com/@jasminejacquelin/integrating-push-notifications-in-your-node-react-web-app-4e8d8190a52c)
+- [ ] 9. Use some of these pet puns throughout the app: https://www.lifelearn.com/2016/02/24/the-jumbo-reference-list-of-pet-puns/
+- [ ] 10. Parts of the design (and puns) will change based on whether it's a cat vs dog, male vs female. Design will hopefully look like an actual timeline
+- [ ] 11. "See more" at bottom of timeline to load more posts so db doesn't load all of them at once
+- [ ] 12. Make it an app for flex week!
+- [ ] 13. Ability to change password when logged in
+- [ ] 14. Ability to reset password (this would involve storing user's emails, a security issue. Or they would have to report a problem, and then I'd need some way of verifying their identity). https://nodemailer.com/about/, https://www.mailgun.com/blog/how-to-send-transactional-email-in-a-nodejs-app-using-the-mailgun-api, https://www.w3schools.com/nodejs/nodejs_email.asp
+- [ ] 15. Settings tab will lead to a settings page where user can update their name (not username), password, email(?), profile picture, etc. 
+- [ ] 16. Use an API for maps so when user types in address for vet, it loads and comes up and they can click it. It'll link to Google Maps 
+- [ ] 17. When a user adds a vaccination, prescription, or doctor to their medical post, it will be added to a history tab for that category so they can easily view a list of vaccinations, prescriptions, and doctors for a given pet
 
 ## Foreseeable Issues: 
 1. Storing images/files in MongoDB (I think I'd have to use something called GridFS) 
