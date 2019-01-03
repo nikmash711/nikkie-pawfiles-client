@@ -42,8 +42,9 @@ export function MedicalPost(props){
           </p>
         }
         <div className="option-icons">
-          <button onClick={()=>props.dispatch(deletePost(props.currentPetId, props.postId))}><i className="fas fa-trash-alt"></i></button>
           <button onClick={()=>props.dispatch(showMedicalForm(true, props.postId))}><i className="fas fa-edit"></i></button>
+          <button onClick={()=>props.dispatch(deletePost(props.currentPetId, props.postId))}><i className="fas fa-trash-alt"></i></button>
+
         </div>
        
 

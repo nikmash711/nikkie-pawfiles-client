@@ -24,15 +24,18 @@ export class Reminder extends React.Component{
         <span className="reminder-note">
           <strong>{this.props.note}</strong>
         </span>
+
+        <div className="date-and-time">
         <span className="reminder-date">
-          {formatDate(this.props.date).toLocaleDateString()}
-        </span>
-        {
-          this.props.time && 
-          <span className="reminder-time">
-          {changeMilitaryFormat(this.props.time)}
-        </span>
-        }
+            {formatDate(this.props.date).toLocaleDateString()}
+          </span>
+          {
+            this.props.time && 
+            <span className="reminder-time">
+            {changeMilitaryFormat(this.props.time)}
+          </span>
+          }
+        </div>
       </li>
     )
   }

@@ -10,11 +10,12 @@
   font-size:15px;
 }
 
-.reminder-date{
+.reminder-date, .reminder-time{
   color: darkred;
   text-align: right;
   font-size: 10px;
   margin:auto;
+  display:block;
 }
 
 .reminder:nth-child(odd){

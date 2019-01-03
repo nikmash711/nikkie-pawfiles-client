@@ -83,14 +83,16 @@
 
 .form button{
   outline: 0;
-  background-color: black;
-  border: 2px solid white;
-  color: white;
+  background-color: transparent;
+  border: 2px solid black;
+  color: black;
   font-size: 20px;
   cursor: pointer;
   margin: 10px;
   padding: 5px;
   font-family: 'Gloria Hallelujah';
+  font-size:14px;
+  font-weight: 700;
 }
 
 button.close{
@@ -99,8 +101,8 @@ button.close{
 }
 
 .form button:hover, .form button:focus{
-  background-color: white;
-  color: black;
+  background-color: black;
+  color: white;
 }
 
 .buttons{
