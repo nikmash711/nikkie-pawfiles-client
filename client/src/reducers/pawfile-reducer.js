@@ -15,6 +15,7 @@ const initialState = {
   showMedicalForm: false,
   showMemoryForm: false,
   showReminderForm: false,
+  currentPawfileFormId: undefined,
   currentPetId: undefined,
   currentPostId: undefined,
   currentReminderId: undefined,
@@ -32,10 +33,18 @@ export const pawfileReducer = (state = initialState, action)=> {
 
   //Either when user clicks "add new pawfile", or clicks to edit a current pawfile. Need to set the currentPetId to either the id of the pet being edited, or undefined if it's a new pet/closing form
   if(action.type=== SHOW_PAWFILE_FORM){
-    console.log('in show reducer, currentPETID is', action.currentPetId)
+    console.log('IN SHOW reducer, currentPawfileFormId is', action.currentPawfileFormId)
     return Object.assign({}, state, {
       showPawfileForm: action.bool,
-      currentPetId: action.currentPetId ? action.currentPetId : state.currentPetId
+      currentPawfileFormId: action.currentPawfileFormId
+      //  ? action.currentPetId : state.currentPetId
+    })
+  }
+
+  else if(action.type===CHANGE_CURRENT_PET_ID){
+    console.log('changing id', action.currentPetId);
+    return Object.assign({}, state, {
+      currentPetId: action.currentPetId
     })
   }
 
@@ -53,13 +62,6 @@ export const pawfileReducer = (state = initialState, action)=> {
     }
     return Object.assign({}, state, {
       toggleNavbar: !state.toggleNavbar,
-    })
-  }
-
-  else if(action.type===CHANGE_CURRENT_PET_ID){
-    console.log('changing id', action.currentPetId);
-    return Object.assign({}, state, {
-      currentPetId: action.currentPetId
     })
   }
 

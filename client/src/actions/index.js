@@ -1,8 +1,8 @@
 export const SHOW_PAWFILE_FORM = 'SHOW_PAWFILE_FORM';
-export const showPawfileForm = (bool, currentPetId) => ({
+export const showPawfileForm = (bool, currentPawfileFormId) => ({
     type: SHOW_PAWFILE_FORM,
     bool,
-    currentPetId
+    currentPawfileFormId
 });
 
 export const CHANGE_SORTING_PETS_METHOD = 'CHANGE_SORTING_PETS_METHOD';

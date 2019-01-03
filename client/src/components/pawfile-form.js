@@ -10,12 +10,12 @@ import './pawfile-form.css';
 export class PawfileForm extends React.Component{
 
   componentWillUnmount(){
-    this.props.dispatch(showPawfileForm(false));
+    this.props.dispatch(showPawfileForm(false, undefined));
   }
 
   onSubmit(values){
-    this.props.dispatch(submitPawfile(values, this.props.currentPetId));
-    this.props.dispatch(showPawfileForm(false));
+    this.props.dispatch(submitPawfile(values, this.props.currentPawfileFormId));
+    this.props.dispatch(showPawfileForm(false, undefined));
   }
 
   render(){
@@ -23,7 +23,7 @@ export class PawfileForm extends React.Component{
       <div className='form-modal'>
           <form className="form blurb" onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
 
-            <button type="button" className = "close" onClick={()=>this.props.dispatch(showPawfileForm(false))}>X</button>
+            <button type="button" className = "close" onClick={()=>this.props.dispatch(showPawfileForm(false, undefined))}>X</button>
 
             <h2>{this.props.initialValues.name ? this.props.initialValues.name : "New Pawfile"}</h2>
 
@@ -111,7 +111,7 @@ export class PawfileForm extends React.Component{
 
             <div className="buttons">
               <button type="submit">Save Pawfile</button>
-              <button onClick={()=>this.props.dispatch(showPawfileForm(false))} type="button">Cancel</button>
+              <button onClick={()=>this.props.dispatch(showPawfileForm(false, undefined))} type="button">Cancel</button>
             </div>
             
           </form>
@@ -122,23 +122,23 @@ export class PawfileForm extends React.Component{
 
 function mapStateToProps(state) {
   console.log('state is', state);
-  let currentPetId = state.pawfile.currentPetId;
-  console.log('currentPetId is', currentPetId);
-  let individualPawfile = state.pawfile.pawfiles.find(pawfile=>pawfile.id==currentPetId);
+  let currentPawfileFormId = state.pawfile.currentPawfileFormId;
+  console.log('currentPawfileFormId is', currentPawfileFormId);
+  let individualPawfile = state.pawfile.pawfiles.find(pawfile=>pawfile.id==currentPawfileFormId);
   console.log('individual pawfile is', individualPawfile);
 
   return {
     // to get the initial values if the user is editing the form: 
-    currentPetId: state.pawfile.currentPetId,
+    currentPawfileFormId: state.pawfile.currentPawfileFormId,
     initialValues: {
-      name: currentPetId ? individualPawfile.name : "",
-      img: currentPetId ? individualPawfile.img : "",
-      species: currentPetId ? individualPawfile.species : "",
-      gender: currentPetId ?individualPawfile.gender : "",
-      breed: currentPetId ? individualPawfile.breed : "",
-      weight: currentPetId ? individualPawfile.weight : "",
-      birthday: currentPetId ? individualPawfile.birthday : "",
-      bio: currentPetId ? individualPawfile.bio : "",
+      name: currentPawfileFormId ? individualPawfile.name : "",
+      img: currentPawfileFormId ? individualPawfile.img : "",
+      species: currentPawfileFormId ? individualPawfile.species : "",
+      gender: currentPawfileFormId ?individualPawfile.gender : "",
+      breed: currentPawfileFormId ? individualPawfile.breed : "",
+      weight: currentPawfileFormId ? individualPawfile.weight : "",
+      birthday: currentPawfileFormId ? individualPawfile.birthday : "",
+      bio: currentPawfileFormId ? individualPawfile.bio : "",
     }
   }
 }
