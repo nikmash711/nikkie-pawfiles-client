@@ -25,6 +25,8 @@ export class MemoryForm extends React.Component{
           <form className="form" onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
           <button type="button" className = "close" onClick={()=>this.props.dispatch(showMemoryForm(false, undefined))}>X</button>
 
+          <h2 className="post-heading">{this.props.initialValues.title ? this.props.initialValues.title : "New Memory"}</h2>
+
             <Field
               component={Input}
               label="Title:" 

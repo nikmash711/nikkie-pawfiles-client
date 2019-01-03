@@ -22,6 +22,7 @@ export default class Input extends React.Component {
         if(this.props.id==="name" || this.props.id==="gender" ||this.props.id==="species" || this.props.id==="img" || this.props.id==="date" || this.props.id==="title" ){
             className="required";
         }
+        
 
         return (
             <div className="form-input">
@@ -29,11 +30,12 @@ export default class Input extends React.Component {
                     {this.props.label}
                     {error}
                 </label>
-
+            
                 <Element
                     {...this.props.input}
                     id={this.props.input.name}
                     type={this.props.type}
+                    maxLength = {this.props.type==="textarea"? '180' : undefined}
                     max = {this.props.type==="date"? todaysDate() : undefined}
                     //Question: I only want max on date elements but not sure how else to do it
                     ref={input => (this.input = input)}
