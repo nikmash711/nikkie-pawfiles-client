@@ -41,11 +41,12 @@ export function formatDate(dateString){
 }
 
 export function changeMilitaryFormat(military_time){
-    var hours24 = parseInt(military_time.substring(0,2));
-    var hours = ((hours24 + 11) % 12) + 1;
-    var amPm = hours24 > 11 ? 'PM' : 'AM';
-    var minutes = military_time.substring(2);
-    return hours + minutes + amPm;
+    let hours24 = parseInt(military_time.substring(0,2));
+    let hours = ((hours24 + 11) % 12) + 1;
+    let amPm = hours24 > 11 ? 'PM' : 'AM';
+    let minutes = military_time.substring(2);
+    minutes = minutes.split(':').join('');
+    return hours + ':' + minutes + amPm;
 }
 
 export function stringToArrayList(str){

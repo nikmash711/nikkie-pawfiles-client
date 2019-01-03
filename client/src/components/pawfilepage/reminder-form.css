@@ -15,7 +15,6 @@
   padding-bottom:5px;
   color: black;
   background-color: #fff348;
-  border: 1px solid #888;
   -webkit-transform: none;
   -moz-transform: none;
   -o-transform: none;
@@ -28,9 +27,54 @@
 }
 
 .new-reminder-form .reminder-note{
-  margin-left:10px;
+  /* margin-left:10px; */
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  margin-bottom:10px;
+}
+
+.new-reminder-form .reminder-date{
+  width:120px;
+}
+
+.new-reminder-form .reminder-note:focus{
+  border: 3px solid black;
 }
 
 .new-reminder-form input:hover, .new-reminder-form input:focus, .more-options-button:hover, .more-options-button:focus{
   outline:0;
+}
+
+.new-reminder-form label{
+  font-family: "Kalam";
+  font-size:12px;
+}
+
+.new-reminder-form label, .new-reminder-form .reminder-date, .new-reminder-form .reminder-time{
+  display: inline-block;
+  font-weight: 700;
+  margin-left:5px;
+}
+
+.new-reminder-form .reminder-date:focus, .new-reminder-form .reminder-time:focus{
+  border: 1px solid darkred;
+}
+
+.new-reminder-form button{
+  display: inline-block;
+  background-color:black;
+  color:white;
+  border: 1px solid black;
+  margin:10px;
+  font-family: "Kalam";
+  padding: 1px 5px;
+  font-size:13px;
+}
+
+.new-reminder-form button:hover, .new-reminder-form button:focus{
+  outline:0;
+  background-color: transparent;
+  color:black;
+  border: 1px solid black;
+  cursor:pointer;
 }

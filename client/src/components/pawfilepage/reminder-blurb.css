@@ -28,12 +28,22 @@
   background-color: white;
 }
 
-.add-reminder, .save-reminder, .cancel-reminder{
-  margin: auto;
-  padding: 2px;
-  background-color: black;
-  color: white;
-  display: block;
-  margin-bottom:5px;
+
+.add-reminder{
+  display: inline-block;
+  background-color:black;
+  color:white;
+  border: 1px solid black;
+  margin:auto;
+  font-family: "Kalam";
+  padding: 1px 5px;
+  font-size:13px;
 }
 
+.add-reminder:hover, .add-reminder button:focus{
+  outline:0;
+  background-color: transparent;
+  color:black;
+  border: 1px solid black;
+  cursor:pointer;
+}

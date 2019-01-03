@@ -28,13 +28,16 @@ export class ReminderForm extends React.Component{
 
           <input required className="new-reminder-note reminder-note" ref={input => this.noteInput = input} type="text" id="new-reminder" name="note" placeholder="New reminder..." defaultValue={this.props.individualReminder ? this.props.individualReminder.note : ""}/>
 
-          <input required className="reminder-date" ref={input => this.dateInput = input} type="date" defaultValue={this.props.individualReminder ? this.props.individualReminder.date : todaysDate()} min={ todaysDate()} />
+          <label htmlFor="date" className="required">Date:</label>
+          <input required className="reminder-date" ref={input => this.dateInput = input} type="date" id="date" defaultValue={this.props.individualReminder ? this.props.individualReminder.date : todaysDate()} min={ todaysDate()} />
 
-          <input required className="reminder-time" ref={input => this.timeInput = input} type="time" defaultValue={this.props.individualReminder ? this.props.individualReminder.time : ""} />
+          <label htmlFor="time">Time:</label>
+          <input required className="reminder-time" ref={input => this.timeInput = input} type="time" id="time" defaultValue={this.props.individualReminder ? this.props.individualReminder.time : ""} />
 
-          <button type="submit" className="save-reminder">Save</button>
-
-          <button onClick={()=>this.props.dispatch(showReminderForm(false, undefined))} type="button" className="cancel-reminder">Cancel</button>
+          <div className="buttons">
+            <button type="submit" className="save-reminder">Save</button>
+            <button onClick={()=>this.props.dispatch(showReminderForm(false, undefined))} type="button" className="cancel-reminder">Cancel</button>
+          </div>
         </form>
       </div>
 
