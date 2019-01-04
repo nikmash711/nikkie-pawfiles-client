@@ -24,9 +24,8 @@ const initialState = {
   currentPostId: undefined,
   currentReminderId: undefined,
   pawfiles: [],
-  pawfilesPending: true,
-  allPawfilesPending: true,
-  loadPending: true,
+  pawfilesPending: true, //only for fetching/requesting ALL pawfiles
+  loadPending: true, //all other requests/fetches. currently not doing anything with it
   error: false,
 };
 
@@ -116,16 +115,9 @@ export const pawfileReducer = (state = initialState, action)=> {
     })
   }
 
-  else if(action.type===CHANGE_PAWFILES_PENDING){
-    console.log('changing pending to', action.bool);
-    return Object.assign({}, state, {
-      allPawfilesPending: action.bool,
-    })
-  }
-
   else if (action.type === FETCH_PAWFILES_REQUEST) {
     return Object.assign({}, state, {
-      allPawfilesPending: true,
+      pawfilesPending: true,
     })
   }
 
@@ -133,7 +125,6 @@ export const pawfileReducer = (state = initialState, action)=> {
     console.log('successfully fetching all pawfiles', action.pawfiles);
     return Object.assign({}, state, {
       pawfiles: action.pawfiles,
-      allPawfilesPending: false,
       pawfilesPending: false,
     })
   }

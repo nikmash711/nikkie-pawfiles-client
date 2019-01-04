@@ -1,11 +1,6 @@
 import {API_BASE_URL} from '../config';
 
 /* GENERAL */
-export const CHANGE_PAWFILES_PENDING = "CHANGE_PAWFILES_PENDING";
-export const changePawfilesPending = bool => ({
-    type: CHANGE_PAWFILES_PENDING,
-    bool
-})
 
 export const CHANGE_ERROR = "CHANGE_ERROR";
 export const changeError = bool => ({

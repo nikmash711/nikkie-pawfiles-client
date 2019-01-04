@@ -69,7 +69,7 @@ export class PawfilePage extends React.Component{
 
 function mapStateToProps(state) {
   return {
-    allPawfilesPending: state.pawfile.allPawfilesPending,
+    pawfilesPending: state.pawfile.pawfilesPending,
     pawfiles: state.pawfile.pawfiles,
     showPawfileForm: state.pawfile.showPawfileForm,
     showMedicalForm: state.pawfile.showMedicalForm,

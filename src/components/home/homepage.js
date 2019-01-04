@@ -4,7 +4,7 @@ import Navbar from '../navbar';
 import Footer from '../footer'
 import MyPawfiles from './my-pawfiles';
 import {changeSortingPetsMethod} from '../../actions/index';
-import {fetchPawfiles, changePawfilesPending, changeError, } from '../../actions/pawfile-crud';
+import {fetchPawfiles, changeError, } from '../../actions/pawfile-crud';
 
 export class HomePage extends React.Component{
   componentDidMount(){
@@ -16,7 +16,6 @@ export class HomePage extends React.Component{
 
   componentWillUnmount(){
     console.log('homepage UNmounting');
-    this.props.dispatch(changePawfilesPending(true));
     this.props.dispatch(changeSortingPetsMethod(""));
   }
 
@@ -25,6 +24,16 @@ export class HomePage extends React.Component{
   }
 
   render(){
+  
+    if(this.props.pawfilesPending){
+      console.log('pending');
+      return(
+        <div className="home">
+          <Navbar/>
+          <Footer/>
+      </div>
+      )
+    }
 
     return(
       <div className="home">
