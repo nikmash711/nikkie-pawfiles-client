@@ -69,7 +69,7 @@ export class MemoryForm extends React.Component{
             
             <div className="buttons">
               <button type="submit">Save</button>
-              <button onClick={()=>this.props.dispatch(showMemoryForm(false, undefined))} type="cancel">Cancel</button>
+              <button onClick={()=>this.props.dispatch(showMemoryForm(false, undefined))} type="button">Cancel</button>
             </div>
           </form>
         </div>

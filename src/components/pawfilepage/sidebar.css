@@ -59,6 +59,16 @@
   margin: 0;
 }
 
+.sidebar .blurb .edit-span{
+  left: 28px;
+  top: -26px;
+}
+
+.sidebar .blurb .delete-span{
+  left: 46px;
+  top: -26px;
+}
+
 @media(min-width: 450px){
   .sidebar .option-icons{
     left: 77%;

@@ -140,6 +140,28 @@ a{
   color: white;
 }
 
+.edit-span{
+  position: absolute;
+  left: 14px;
+  top: -26px;
+  opacity:0;
+  background-color:white;
+  padding:3px;
+}
+
+.delete-span{
+  position: absolute;
+  left: 32px;
+  top: -26px;
+  opacity:0;
+  background-color:white;
+  padding: 3px;
+}
+
+.edit-button:hover + .edit-span, .edit-button:focus + .edit-span, .delete-button:hover + .delete-span, .delete-button:focus + .delete-span{
+  opacity:1;
+}
+
 @media(min-width: 350px){
   .option-icons{
     left:73%;

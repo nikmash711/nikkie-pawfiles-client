@@ -123,7 +123,7 @@ export class MedicalForm extends React.Component{
             
             <div className="buttons">
               <button type="submit">Save</button>
-              <button onClick={()=>this.props.dispatch(showMedicalForm(false, undefined))} type="cancel">Cancel</button>
+              <button onClick={()=>this.props.dispatch(showMedicalForm(false, undefined))} type="button">Cancel</button>
             </div>
           </form>
         </div>

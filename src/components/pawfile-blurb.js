@@ -20,8 +20,10 @@ export class PawfileBlurb extends React.Component{
         </div>
     
         <div className="option-icons">
-          <button onClick={()=>this.props.dispatch(showPawfileForm(true,this.props.id))}><i className="fas fa-edit"></i></button>
-          <button onClick={()=>this.props.dispatch(deletePawfile(this.props.id))}><i className="fas fa-trash-alt"></i></button>
+          <button type="button" className="edit-button" aria-label = "edit" onClick={()=>this.props.dispatch(showPawfileForm(true,this.props.id))}><i className="fas fa-edit"></i></button>
+          <span className = "edit-span">Edit</span>
+          <button type="button" className="delete-button" aria-label = "delete" onClick={()=>this.props.dispatch(deletePawfile(this.props.id))}><i className="fas fa-trash-alt"></i></button>
+          <span className = "delete-span js-delete-span">Delete</span>
         </div>
     
         <p><strong>Species:</strong> {this.props.species}</p>
