@@ -25,6 +25,8 @@ const initialState = {
   currentReminderId: undefined,
   pawfiles: [],
   pawfilesPending: true,
+  allPawfilesPending: true,
+  loadPending: true,
   error: false,
 };
 
@@ -117,13 +119,13 @@ export const pawfileReducer = (state = initialState, action)=> {
   else if(action.type===CHANGE_PAWFILES_PENDING){
     console.log('changing pending to', action.bool);
     return Object.assign({}, state, {
-      pawfilesPending: action.bool,
+      allPawfilesPending: action.bool,
     })
   }
 
   else if (action.type === FETCH_PAWFILES_REQUEST) {
     return Object.assign({}, state, {
-      pawfilesPending: true,
+      allPawfilesPending: true,
     })
   }
 
@@ -131,13 +133,14 @@ export const pawfileReducer = (state = initialState, action)=> {
     console.log('successfully fetching all pawfiles', action.pawfiles);
     return Object.assign({}, state, {
       pawfiles: action.pawfiles,
+      allPawfilesPending: false,
       pawfilesPending: false,
     })
   }
 
   else if (action.type===SUBMIT_PAWFILE_REQUEST){
     return Object.assign({}, state, {
-      pawfilesPending: true,
+      loadPending: true,
     })
   }
 
@@ -152,7 +155,7 @@ export const pawfileReducer = (state = initialState, action)=> {
       return Object.assign({}, state, {
           pawfiles: newArrayOfPawfiles,
           // individualPawfile: action.pawfile,
-          pawfilesPending: false,
+          loadPending: false,
       })
     }
 
@@ -163,13 +166,13 @@ export const pawfileReducer = (state = initialState, action)=> {
         ...state.pawfiles,
         action.pawfile
       ],
-      pawfilesPending: false,
+      loadPending: false,
     })
   }
 
   else if (action.type===DELETE_PAWFILE_REQUEST){
     return Object.assign({}, state, {
-      pawfilesPending: true,
+      loadPending: true,
     })
   }
 
@@ -179,14 +182,14 @@ export const pawfileReducer = (state = initialState, action)=> {
 
     return Object.assign({}, state, {
       pawfiles: newArrayOfPawfiles,
-      pawfilesPending: false,
+      loadPending: false,
     })
   }
 
   // FOR REMINDER: 
   else if (action.type===SUBMIT_REMINDER_REQUEST){
     return Object.assign({}, state, {
-      pawfilesPending: true,
+      loadPending: true,
     })
   }
 
@@ -209,14 +212,14 @@ export const pawfileReducer = (state = initialState, action)=> {
 
     console.log('in reminder reducer, new array of apwfiles is', newArrayOfPawfiles);
     return Object.assign({}, state, {
-        pawfilesPending: false,
+        loadPending: false, 
         pawfiles: newArrayOfPawfiles
     })
   }
 
   else if (action.type===DELETE_REMINDER_REQUEST){
     return Object.assign({}, state, {
-      pawfilesPending: true,
+      loadPending: true,
     })
   }
 
@@ -232,14 +235,14 @@ export const pawfileReducer = (state = initialState, action)=> {
 
     return Object.assign({}, state, {
       pawfiles: newArrayOfPawfiles,
-      pawfilesPending: false,
+      loadPending: false,
     })
   }
 
   /* POSTS */
   else if (action.type===SUBMIT_POST_REQUEST){
     return Object.assign({}, state, {
-      pawfilesPending: true,
+      loadPending: true,
     })
   }
 
@@ -262,14 +265,14 @@ export const pawfileReducer = (state = initialState, action)=> {
 
     console.log('in reminder reducer, new array of apwfiles is', newArrayOfPawfiles);
     return Object.assign({}, state, {
-        pawfilesPending: false,
+        loadPending: false,
         pawfiles: newArrayOfPawfiles
     })
   }
 
   else if (action.type===DELETE_POST_REQUEST){
     return Object.assign({}, state, {
-      pawfilesPending: true,
+      loadPending: true,
     })
   }
 
@@ -288,7 +291,7 @@ export const pawfileReducer = (state = initialState, action)=> {
 
     return Object.assign({}, state, {
       pawfiles: newArrayOfPawfiles,
-      pawfilesPending: false,
+      loadPending: false,
     })
   }
 

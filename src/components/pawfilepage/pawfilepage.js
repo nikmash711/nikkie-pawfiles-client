@@ -35,8 +35,8 @@ export class PawfilePage extends React.Component{
   render(){
     console.log('props in pawfilepage are', this.props)
     
-    if(this.props.pawfilesPending){
-      console.log('pending pawfilepage');
+    if(this.props.allPawfilesPending){
+      console.log('PENDING pawfilepage!!!!!!');
       return(
         <div className="pawfile-page">
           <Navbar/>
@@ -77,7 +77,7 @@ function mapStateToProps(state) {
     showPawfileForm: state.pawfile.showPawfileForm,
     showMedicalForm: state.pawfile.showMedicalForm,
     showMemoryForm: state.pawfile.showMemoryForm,
-    pawfilesPending: state.pawfile.pawfilesPending,
+    allPawfilesPending: state.pawfile.allPawfilesPending,
     error: state.pawfile.error,
     }
   }
