@@ -9,7 +9,6 @@ import {SUBMIT_POST_REQUEST, SUBMIT_POST_SUCCESS, DELETE_POST_REQUEST, DELETE_PO
 
 //dummy initial state 
 const initialState = {
-  user: {firstName: 'Nikkie', lastName: 'Mashian'},
   sortingPetsMethod: "",
   showPawfileForm: false,
   showMedicalForm: false,

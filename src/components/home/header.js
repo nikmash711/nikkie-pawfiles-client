@@ -6,13 +6,13 @@ import './header.css'
 export function Header(props){
   return(
     <header className="sticky"> 
-      <h1 className="section"> {props.user}'s Pets</h1>
+      <h1 className="section"> {props.firstName}'s Pets</h1>
     </header>
   );
 }
 
 const mapStateToProps = state => ({
-  user: state.pawfile.user.firstName,
+  firstName: state.auth.currentUser.firstName,
 });
 
 export default connect(mapStateToProps)(Header);

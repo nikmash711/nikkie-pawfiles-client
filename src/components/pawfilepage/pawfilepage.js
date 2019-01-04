@@ -10,6 +10,7 @@ import MemoryForm from './memory-form'
 import {Redirect} from 'react-router-dom'
 import {showMedicalForm, showMemoryForm, changeSearchTerm, changeCategoryFilter, changeCurrentPetId} from '../../actions/index';
 import { fetchPawfiles } from '../../actions/pawfile-crud';
+import requiresLogin from '../requires-login';
 
 
 export class PawfilePage extends React.Component{
@@ -28,12 +29,13 @@ export class PawfilePage extends React.Component{
   }
 
   validId(paramsId){
+    console.log('in validId, return', this.props.pawfiles.find(pawfile=> pawfile.id==paramsId))
     return this.props.pawfiles.find(pawfile=> pawfile.id==paramsId)
   }
 
   render(){    
     console.log('pawfile page props are', this.props)
-    if(this.props.pawfiles.length===0){
+    if(this.props.pawfilesPending){
       console.log('PENDING pawfilepage!!!!!!');
       return(
         <div className="pawfile-page">
@@ -78,7 +80,7 @@ function mapStateToProps(state) {
     }
   }
 
-export default connect(mapStateToProps)(PawfilePage);
+export default requiresLogin()(connect(mapStateToProps)(PawfilePage));
 
 //still problematic bc unless homepage fetched the data, we have to refetch it on pawfile page. cant depend on homepage. made its own
 

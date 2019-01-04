@@ -10,8 +10,8 @@ import requiresLogin from '../requires-login';
 
 export class HomePage extends React.Component{
   componentDidMount(){
-    console.log('homepage mounting');
-    document.title = this.props.user ? `${this.props.user}'s Pets` : 'All Pets';
+    console.log('homepage mounting with props', this.props);
+    document.title = this.props.firstName ? `${this.props.firstName}'s Pets` : 'All Pets';
     this.props.dispatch(fetchPawfiles());
     this.props.dispatch(changeError(false));
   }
@@ -22,7 +22,7 @@ export class HomePage extends React.Component{
   }
 
   componentDidUpdate(){
-    document.title = this.props.user ? `${this.props.user}'s Pets` : 'All Pets';
+    document.title = this.props.firstName ? `${this.props.firstName}'s Pets` : 'All Pets';  
   }
 
   render(){
@@ -48,8 +48,7 @@ export class HomePage extends React.Component{
 }
 
 const mapStateToProps = state => ({
-  user: state.pawfile.user.firstName,
-  username: state.auth.currentUser.username,
+  firstName: state.auth.currentUser.firstName,
   pawfilesPending: state.pawfile.pawfilesPending
 });
 

@@ -1,4 +1,5 @@
 import {API_BASE_URL} from '../config';
+import {normalizeResponseErrors} from './utils';
 
 /* POST & PUT ACTIONS */
 export const SUBMIT_POST_REQUEST = "SUBMIT_POST_REQUEST";
@@ -19,25 +20,25 @@ export const crudError = () => ({
   type: CRUD_ERROR,
 })
 
-export const submitPost = (values, currentPetId, postId) => dispatch =>{
+export const submitPost = (values, currentPetId, postId) => (dispatch, getState) =>{
     //could be editing a post or submitting a new one, it's the same form
     const method = postId ? "PUT" : "POST";
     const path = postId ? `${API_BASE_URL}/posts/${currentPetId}/${postId}` : `${API_BASE_URL}/posts/${currentPetId}`; 
     dispatch(submitPostRequest());
+    const authToken = getState().auth.authToken;
+
     fetch(path, { 
         method: method,
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
+            Authorization: `Bearer ${authToken}`
         },
         body: JSON.stringify(values)
     })
-    .then(res => {
-        if (!res.ok) {
-            return Promise.reject(res.statusText);
-        }
-        return res.json();
-    }).then(post => {
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
+    .then(post => {
         console.log('in actions, got back post:', post);
         dispatch(submitPostSuccess(post, currentPetId, postId));
     }).catch(err => {
@@ -58,19 +59,19 @@ export const deletePostRequest = () => ({
     type: DELETE_POST_REQUEST,
 })
 
-export const deletePost = (currentPetId, postId) => dispatch =>{
+export const deletePost = (currentPetId, postId) => (dispatch, getState) =>{
     dispatch(deletePostRequest());
+    const authToken = getState().auth.authToken;
     fetch(`${API_BASE_URL}/posts/${currentPetId}/${postId}`, { 
         method: "DELETE",
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
+            Authorization: `Bearer ${authToken}`
         }
     })
-    .then(res => {
-        if (!res.ok) {
-            return Promise.reject(res.statusText);
-        }
+    .then(res => normalizeResponseErrors(res))
+    .then(() => {
         console.log('successful deleting');
         dispatch(deletePostSuccess(currentPetId, postId));
     })

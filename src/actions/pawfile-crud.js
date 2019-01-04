@@ -61,26 +61,25 @@ export const submitPawfileSuccess = (pawfile, currentPetId) => ({
     currentPetId
 })
 
-export const submitPawfile = (values, currentPetId) => dispatch =>{
+export const submitPawfile = (values, currentPetId) => (dispatch, getState) =>{
     //could be editing a pawfile or submitting it, it's the same form
     const method = currentPetId ? "PUT" : "POST";
     const path = currentPetId ? `${API_BASE_URL}/pawfiles/${currentPetId}` : `${API_BASE_URL}/pawfiles`; 
 
     dispatch(submitPawfileRequest());
+    const authToken = getState().auth.authToken;
     fetch(path, { 
         method: method,
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
+            Authorization: `Bearer ${authToken}`
         },
         body: JSON.stringify(values)
     })
-    .then(res => {
-        if (!res.ok) {
-            return Promise.reject(res.statusText);
-        }
-        return res.json();
-    }).then(pawfile => {
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
+    .then(pawfile => {
         dispatch(submitPawfileSuccess(pawfile, currentPetId));
     }).catch(err => {
         dispatch(crudError());
@@ -100,19 +99,19 @@ export const deletePawfileRequest = () => ({
     type: DELETE_PAWFILE_REQUEST,
 })
 
-export const deletePawfile = (currentPetId) => dispatch =>{
+export const deletePawfile = (currentPetId) => (dispatch, getState) =>{
   dispatch(deletePawfileRequest());
+  const authToken = getState().auth.authToken;
   fetch(`${API_BASE_URL}/pawfiles/${currentPetId}`, { 
       method: "DELETE",
       headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
+          Authorization: `Bearer ${authToken}`
       }
   })
-  .then(res => {
-      if (!res.ok) {
-          return Promise.reject(res.statusText);
-      }
+  .then(res => normalizeResponseErrors(res))
+  .then(() => {
       console.log("HERE");
       console.log('successful deleting');
       dispatch(deletePawfileSuccess(currentPetId));
