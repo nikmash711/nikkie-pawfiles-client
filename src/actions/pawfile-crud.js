@@ -1,4 +1,5 @@
 import {API_BASE_URL} from '../config';
+import {normalizeResponseErrors} from './utils';
 
 /* GENERAL */
 
@@ -27,15 +28,18 @@ export const fetchPawfilesRequest = () => ({
 })
 
 
-export const fetchPawfiles = () => dispatch => {
+export const fetchPawfiles = () => (dispatch, getState) => {
     dispatch(fetchPawfilesRequest());
-    fetch(`${API_BASE_URL}/pawfiles`)
-        .then(res => {
-            if (!res.ok) {
-                return Promise.reject(res.statusText);
-            }
-            return res.json();
-        })
+    const authToken = getState().auth.authToken;
+    fetch(`${API_BASE_URL}/pawfiles`, {
+        method: 'GET',
+        headers: {
+            // Provide our auth token as credentials
+            Authorization: `Bearer ${authToken}`
+        }
+    })
+        .then(res => normalizeResponseErrors(res))
+        .then(res => res.json())
         .then(pawfiles => {
             dispatch(fetchPawfilesSuccess(pawfiles));
         })

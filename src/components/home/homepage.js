@@ -5,6 +5,8 @@ import Footer from '../footer'
 import MyPawfiles from './my-pawfiles';
 import {changeSortingPetsMethod} from '../../actions/index';
 import {fetchPawfiles, changeError, } from '../../actions/pawfile-crud';
+import requiresLogin from '../requires-login';
+
 
 export class HomePage extends React.Component{
   componentDidMount(){
@@ -47,7 +49,8 @@ export class HomePage extends React.Component{
 
 const mapStateToProps = state => ({
   user: state.pawfile.user.firstName,
+  username: state.auth.currentUser.username,
   pawfilesPending: state.pawfile.pawfilesPending
 });
 
-export default connect(mapStateToProps)(HomePage);
+export default requiresLogin()(connect(mapStateToProps)(HomePage));
