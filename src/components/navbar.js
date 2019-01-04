@@ -19,23 +19,20 @@ export class Navbar extends React.Component{
   render(){
     let className = this.props.toggleNavbar ? "show link" : "dontshow link";
 
-    // Only render the log out button if we are logged in
-    let logOutButton;
-    if (this.props.loggedIn) {
-        logOutButton = (
-            <button className={className} onClick={() => this.logOut()}>Log out</button>
-        );
-    }
+
   
     return( 
       <nav className="main-navbar">
         <Link className="logo" to="/home">Pawfiles</Link>
         <button onClick={()=>this.props.dispatch(toggleNavbar())} className="icon right"><i className="fa fa-bars"></i></button>
          <div className = "right">
-         <Link className={className} to ="/home">Home</Link>
-         <Link className={className} to ="/about">About</Link>
-         <Link className={className} to ="#">Settings</Link>
-         {logOutButton}
+         {this.props.loggedIn && <Link className={className} to ="/home">Home</Link>}
+         {this.props.loggedIn && <Link className={className} to ="/about">About</Link>}
+        { this.props.loggedIn && <Link className={className} to ="#">Settings</Link>}
+         {this.props.loggedIn && <button id="logout" className={className} onClick={() => this.logOut()}>Log out</button>}
+
+         {!this.props.loggedIn && <Link className={className} to ="/">Log In</Link>}
+         {!this.props.loggedIn && <Link className={className} to ="/register">Register</Link>}
        </div>
       </nav>
     );

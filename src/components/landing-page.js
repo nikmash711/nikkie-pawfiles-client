@@ -1,8 +1,12 @@
 import React from 'react';
+import Navbar from './navbar';
+import Footer from './footer';
 import {connect} from 'react-redux';
 import {Link, Redirect} from 'react-router-dom';
 
 import LoginForm from './login-form';
+
+import './landing-page.css'
 
 export function LandingPage(props) {
     // If we are logged in redirect straight to the user's homepage
@@ -11,10 +15,12 @@ export function LandingPage(props) {
     }
 
     return (
-        <div className="home">
-            <h2>Welcome to Foo App</h2>
+        <div className="landing-page">
+            <Navbar/>
+        <main className="landing-page">
             <LoginForm />
-            <Link to="/register">Register</Link>
+        </main>
+            <Footer/>
         </div>
     );
 }

@@ -6,8 +6,12 @@
   border-bottom: 2px solid white;
 }
 
-.main-navbar a, .main-navbar button{
+.main-navbar a, .main-navbar #logout{
   padding:20px;
+}
+
+#logout{
+  width:100%;
 }
 
 .icon.right{
@@ -81,6 +85,10 @@
 
   .show.link, .dontshow.link{
     display: inline-block;
+  }
+
+  #logout{
+    width:auto;
   }
 
   .right{
