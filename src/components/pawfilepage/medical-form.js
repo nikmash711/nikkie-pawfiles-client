@@ -144,7 +144,7 @@ function mapStateToProps(state) {
     // to get the initial values if the user is editing the form: 
     initialValues: {
       title: individualPost ? individualPost.title : "",
-      date: individualPost ? individualPost.date : "",
+      date: individualPost ? individualPost.date : todaysDate(),
       doctor: individualPost ? individualPost.doctor : "",
       office: individualPost ? individualPost.office : "",
       symptoms:individualPost ? arrayToString(individualPost.symptoms) : "",

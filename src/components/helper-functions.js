@@ -29,10 +29,14 @@ export function calculateAge(date) {
 }
 
 export function todaysDate (){
-  let date = new Date().toISOString();
-  let dateArr = date.split('T');
-  let final = dateArr[0];
-  return final;
+  let date = new Date().toLocaleDateString();
+  let dateArr = date.split('/');
+  let year = dateArr[2];
+  let month = dateArr[0].length===1 ? "0" + dateArr[0] : dateArr[0] ;
+  let day = dateArr[1].length===1 ? "0" + dateArr[1] : dateArr[1] ;
+  let finalDate = year + "-" + month + "-" + day;
+  console.log('DATE', finalDate);
+  return finalDate;
 }
 
 export function formatDate(dateString){
