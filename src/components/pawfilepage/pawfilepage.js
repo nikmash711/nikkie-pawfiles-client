@@ -21,7 +21,6 @@ export class PawfilePage extends React.Component{
 
   componentWillUnmount(){
     //set everything back to default when this component ummounts
-    this.props.dispatch(changeCurrentPetId(undefined));
     this.props.dispatch(showMedicalForm(false));
     this.props.dispatch(showMemoryForm(false));
     this.props.dispatch(changeSearchTerm(""));
@@ -32,16 +31,13 @@ export class PawfilePage extends React.Component{
     return this.props.pawfiles.find(pawfile=> pawfile.id==paramsId)
   }
 
-  render(){
-    console.log('props in pawfilepage are', this.props)
-    
-    if(this.props.allPawfilesPending){
+  render(){    
+    console.log('pawfile page props are', this.props)
+    if(this.props.pawfiles.length===0){
       console.log('PENDING pawfilepage!!!!!!');
       return(
         <div className="pawfile-page">
           <Navbar/>
-          <Sidebar/>
-          <MainSection/>
           <Footer/>
         </div>
       )
@@ -73,11 +69,11 @@ export class PawfilePage extends React.Component{
 
 function mapStateToProps(state) {
   return {
+    allPawfilesPending: state.pawfile.allPawfilesPending,
     pawfiles: state.pawfile.pawfiles,
     showPawfileForm: state.pawfile.showPawfileForm,
     showMedicalForm: state.pawfile.showMedicalForm,
     showMemoryForm: state.pawfile.showMemoryForm,
-    allPawfilesPending: state.pawfile.allPawfilesPending,
     error: state.pawfile.error,
     }
   }
