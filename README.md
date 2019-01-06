@@ -12,7 +12,7 @@ their vaccination schedule, or a cute memory you just don't want to
 forget, this is the place to document it all :)
 
 ## User Stories/MVP: 
-- [ ] 1. User can create an account for themselves with a first name, last name, username, and password
+- [x] 1. User can create an account for themselves with a first name, last name, username, and password
 - [x] 2. User will be directed to a home page where they can see all their pets, can add a new pet pawfile by filling out a form (name, species, breed, birthday, gender, profile photo, brief bio.), and can sort their pets by age or name. 
 - [x] 3. Single user can have as many "pawfiles" as they wish if they own more than one pet
 - [x] 4. User can add posts for each pet - it can be a memory post with a title, description, date, and a photo URL corresponding to the memory, OR a medical related post where they can include a title, description, symptoms, labs, vet, location, date, and a link to a file. Once posted, only the info filled out will show (empty fields will not be displayed).
@@ -28,11 +28,11 @@ example, need to buy more litter, or go get groomed next week, etc.
 - [ ] 1. User can change their password
 - [ ] 2. Users can see other user's Pawfiles (read-only) via a link
 - [x] 3. Users can edit/delete their posts, reminders, update their pet's profile photo, etc.
-- [ ] 4. Users will only be logged out after a certain amount of time, not every time they refresh or leave the browser (implement auth stuff) 
+- [x] 4. Users will only be logged out after a certain amount of time, not every time they refresh or leave the browser
 - [x] 5. When requests are sent via a GET method, they will be queried to the end of the url so the user can click back or search their history (use React Routers) 
 - [ ] 6. Users can search for vets in their area (Yelp api?) 
 - [ ] 7. User can directly upload a photo or file from their computer (for posts or profile photo) and not via an external link (that way they can upload files/records etc.) Can do this by either using GridFs, or saving that file to another db (like AWS), and storing a ref to it in my db. 
-- [ ] 8. Reminders can include a time, and can even push notifications to the user (to their notification center) - like for daily pills (https://medium.com/@jasminejacquelin/integrating-push-notifications-in-your-node-react-web-app-4e8d8190a52c)
+- [ ] 8. Reminders can push notifications to the user (to their notification center) - like for daily pills (https://medium.com/@jasminejacquelin/integrating-push-notifications-in-your-node-react-web-app-4e8d8190a52c)
 - [ ] 9. Use some of these pet puns throughout the app: https://www.lifelearn.com/2016/02/24/the-jumbo-reference-list-of-pet-puns/
 - [ ] 10. Parts of the design (and puns) will change based on whether it's a cat vs dog, male vs female. Design will hopefully look like an actual timeline
 - [ ] 11. "See more" at bottom of timeline to load more posts so db doesn't load all of them at once
