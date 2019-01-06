@@ -13,7 +13,7 @@ forget, this is the place to document it all :)
 
 ## User Stories/MVP: 
 - [x] 1. User can create an account for themselves with a first name, last name, username, and password
-- [x] 2. User will be directed to a home page where they can see all their pets, can add a new pet pawfile by filling out a form (name, species, breed, birthday, gender, profile photo, brief bio.), and can sort their pets by age or name. 
+- [x] 2. User will be directed to a home page where they can see all their pets, can add a new pet pawfile by filling out a form (name, species, breed, birthday, gender, profile photo, brief bio.), can sort their pets by age or name, and search their pets
 - [x] 3. Single user can have as many "pawfiles" as they wish if they own more than one pet
 - [x] 4. User can add posts for each pet - it can be a memory post with a title, description, date, and a photo URL corresponding to the memory, OR a medical related post where they can include a title, description, symptoms, labs, vet, location, date, and a link to a file. Once posted, only the info filled out will show (empty fields will not be displayed).
 - [x] 5. Posts will be organized on the Pawfile chronologically by the date the user inputted
@@ -42,7 +42,6 @@ example, need to buy more litter, or go get groomed next week, etc.
 - [ ] 15. Settings tab will lead to a settings page where user can update their name (not username), password, email(?), profile picture, etc. 
 - [ ] 16. Use an API for maps so when user types in address for vet, it loads and comes up and they can click it. It'll link to Google Maps 
 - [ ] 17. When a user adds a vaccination, prescription, or doctor to their medical post, it will be added to a history tab for that category so they can easily view a list of vaccinations, prescriptions, and doctors for a given pet
-- [ ] 18. User can search their pets on the home page
 
 ## Foreseeable Issues: 
 1. Storing images/files in MongoDB (I think I'd have to use something called GridFS) 
