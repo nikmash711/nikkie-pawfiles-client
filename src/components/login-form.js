@@ -26,7 +26,7 @@ export class LoginForm extends React.Component {
                 onSubmit={this.props.handleSubmit(values =>
                     this.onSubmit(values)
                 )}>
-                <h2>Pawfiles Login</h2>
+                <h2>Login</h2>
 
                 {error}
                 <Field
@@ -50,7 +50,10 @@ export class LoginForm extends React.Component {
                 <button disabled={this.props.pristine || this.props.submitting}>
                     Log in
                 </button>
-                <Link to="/register">Register</Link>
+                <h5>
+                    Don't have an account? <Link to="/register">Register Here!</Link>
+                </h5>
+                
             </form>
         );
     }

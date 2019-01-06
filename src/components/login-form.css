@@ -10,21 +10,35 @@
   font-size:16px;
 }
 
-.login-form a{
-  outline: 0;
-  background-color: transparent;
-  border: 2px solid black;
-  color: black;
-  font-size: 20px;
-  cursor: pointer;
-  margin: 10px;
-  padding: 5px;
+.login-form h5{
   font-family: 'Gloria Hallelujah';
   font-size:14px;
-  font-weight: 700;
+  padding:10px;
+}
+
+.login-form a{
+  cursor: pointer;
+  text-shadow: 0px 1px black;
 }
 
 .login-form a:hover, .login-form a:focus{
-  background-color: black;
-  color: white;
+  text-decoration: underline;
+}
+
+.login-form .form-error{
+  position: static;
+  width:fit-content;
+  margin:auto;
+  background-color:transparent;
+  font-weight: bold;
+}
+
+@media(min-width:500px){
+  .form .form-input{
+    width: 420px;
+  }
+
+  .blurb{
+    width:450px;
+  }
 }

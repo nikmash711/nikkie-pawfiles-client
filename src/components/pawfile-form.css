@@ -74,11 +74,11 @@
 }
 
 .form-error{
-  position: absolute;
+  /* position: absolute; */
   background-color: white;
   color: red;
   font-size:10px;
-  top: 90%;
+  /* top: 90%; */
   padding: 2px;
 }
 
@@ -122,8 +122,4 @@ button.close{
   .form .form-input{
     width: 350px;
   }
-
-  /* .form input, .form textarea, .form select{
-    flex: 2;
-  } */
 }

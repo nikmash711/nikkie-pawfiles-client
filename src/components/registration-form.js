@@ -4,6 +4,8 @@ import {registerUser} from '../actions/user-crud';
 import {login} from '../actions/auth';
 import Input from './input';
 import {required, nonEmpty, matches, length, isTrimmed} from './validators';
+import './registration-form.css'
+
 const passwordLength = length({min: 10, max: 72});
 const matchesPassword = matches('password');
 
@@ -19,7 +21,7 @@ export class RegistrationForm extends React.Component {
     render() {
         return (
             <form
-                className="login-form form blurb center-me"
+                className="login-form register form blurb center-me"
                 onSubmit={this.props.handleSubmit(values =>
                     this.onSubmit(values)
                 )}>
