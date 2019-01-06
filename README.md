@@ -37,11 +37,10 @@ example, need to buy more litter, or go get groomed next week, etc.
 - [ ] 10. Parts of the design (and puns) will change based on whether it's a cat vs dog, male vs female. Design will hopefully look like an actual timeline
 - [ ] 11. "See more" at bottom of timeline to load more posts so db doesn't load all of them at once
 - [ ] 12. Make it an app for flex week!
-- [ ] 13. Ability to change password when logged in
+- [ ] 13. When a user adds a vaccination, prescription, or doctor to their medical post, it will be added to a history tab for that category so they can easily view a list of vaccinations, prescriptions, and doctors for a given pet
 - [ ] 14. Ability to reset password (this would involve storing user's emails, a security issue. Or they would have to report a problem, and then I'd need some way of verifying their identity). https://nodemailer.com/about/, https://www.mailgun.com/blog/how-to-send-transactional-email-in-a-nodejs-app-using-the-mailgun-api, https://www.w3schools.com/nodejs/nodejs_email.asp
 - [ ] 15. Settings tab will lead to a settings page where user can update their name (not username), password, email(?), profile picture, etc. 
 - [ ] 16. Use an API for maps so when user types in address for vet, it loads and comes up and they can click it. It'll link to Google Maps 
-- [ ] 17. When a user adds a vaccination, prescription, or doctor to their medical post, it will be added to a history tab for that category so they can easily view a list of vaccinations, prescriptions, and doctors for a given pet
 
 ## Foreseeable Issues: 
 1. Storing images/files in MongoDB (I think I'd have to use something called GridFS) 
