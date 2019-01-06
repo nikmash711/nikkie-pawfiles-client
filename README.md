@@ -20,7 +20,7 @@ forget, this is the place to document it all :)
 - [x] 6. User can search for specific posts on the Pawfile, and filter it by category
 - [x] 7. There will be a sidebar on the Pawfile with a brief bio about the pet as well as a list of reminders for that pet: for
 example, need to buy more litter, or go get groomed next week, etc.
-- [ ] 8. The URL of the image the user links will show an actual image once posted, and the user can click on that image to see an enlarged version of it (images should be standard size) 
+- [x] 8. The URL of the image the user links will show an actual image once posted, and the user can click on that image to see an enlarged version of it (images should be standard size) 
 - [x] 9. Navbar with Home/My Pets, About, Settings, Logout.
 - [x] 10. User can edit and delete their posts and info about their pets (and pictures). 
 
