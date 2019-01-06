@@ -42,6 +42,7 @@ example, need to buy more litter, or go get groomed next week, etc.
 - [ ] 15. Settings tab will lead to a settings page where user can update their name (not username), password, email(?), profile picture, etc. 
 - [ ] 16. Use an API for maps so when user types in address for vet, it loads and comes up and they can click it. It'll link to Google Maps 
 - [ ] 17. When a user adds a vaccination, prescription, or doctor to their medical post, it will be added to a history tab for that category so they can easily view a list of vaccinations, prescriptions, and doctors for a given pet
+- [ ] 18. User can search their pets on the home page
 
 ## Foreseeable Issues: 
 1. Storing images/files in MongoDB (I think I'd have to use something called GridFS) 
