@@ -5,9 +5,14 @@ import AddNewPawfileButton from './add-new-pawfile-button';
 import PawfileForm from '../pawfile-form';
 import SortBySelect from './sort-by-select';
 import Header from './header';
+import {changeSearchTerm} from '../../actions/index';
 import './my-pawfiles.css'
 
 export class MyPawfiles extends React.Component{
+  componentWillUnmount(){
+    this.props.dispatch(changeSearchTerm(""));
+  }
+
   render(){
     let className = this.props.pawfiles.length===0 ? "no-pets" : ""; //if there are no pets listed, make main stretch to 100% of viewport - still looks awk if there's 1 pet that's short, FIX
 
@@ -17,6 +22,10 @@ export class MyPawfiles extends React.Component{
         <div className="center-me">
           <Header/>
           {this.props.pawfiles.length>1 && <SortBySelect/>} 
+          {this.props.pawfiles.length>1 && <div className="search-input">
+            <input onChange={e=>this.props.dispatch(changeSearchTerm(e.target.value))} className="search" type="search" placeholder='Search Pets'/>
+          </div>
+          }
           {/* only allow user to sort if there's more than one pet */}
           <PawfilesList/>
           <AddNewPawfileButton/>

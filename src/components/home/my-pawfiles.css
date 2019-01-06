@@ -13,6 +13,10 @@ main{
   margin:auto;
 }
 
+.home .search-input{
+  display:inline;
+}
+
 .no-pets{
   height:100vh;
 }

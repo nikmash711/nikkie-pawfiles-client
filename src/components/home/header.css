@@ -1,6 +1,8 @@
 
 .sticky{
-  display:inline-block;
+  display:block;
+  width:300px;
+  text-align: center;
   padding:20px;
   margin:25px auto;
   font-size:15px;
@@ -16,12 +18,16 @@
   font-family:"Reenie Beanie",arial,sans-serif;
   color: #000;
   text-shadow: black 1px 1px 0px;
-  text-align: left;
+  text-align: center;
   font-size:45px;
 }
 
 @media(min-width:480px){
   .sticky h1{
     font-size: 70px;
+  }
+
+  .sticky{
+    width:400px;
   }
 }

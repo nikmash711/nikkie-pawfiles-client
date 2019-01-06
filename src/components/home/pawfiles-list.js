@@ -1,16 +1,22 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import PawfileBlurb from '../pawfile-blurb';
-import {sortByOldest, sortByYoungest, sortAtoZ, sortZtoA} from '../helper-functions';
+import {sortByOldest, sortByYoungest, sortAtoZ, sortZtoA, filterPetsBySearch} from '../helper-functions';
 import './pawfiles-list.css';
 
 export class PawfilesList extends React.Component{
   render(){
+
     console.log('in pawwfiles list, props are', this.props.pawfiles);
-    const pawfiles_list = this.props.pawfiles.map((pawfile,index)=>(
+    let pawfiles_list = this.props.pawfiles.map((pawfile,index)=>(
       <PawfileBlurb {...pawfile} key={index}/>
       //Question: Is it okay that I'm passing state here from parent to child? Wasn't sure how else to do it 
     ));
+
+    if(this.props.currentSearchTerm){
+      console.log('about to search', pawfiles_list);
+      pawfiles_list = filterPetsBySearch(this.props.currentSearchTerm, pawfiles_list);
+    }
 
     //Sorting pets
     switch(this.props.sortMethod){
@@ -40,7 +46,10 @@ export class PawfilesList extends React.Component{
  
 const mapStateToProps = state => ({
   pawfiles: state.pawfile.pawfiles,
-  sortMethod: state.pawfile.sortingPetsMethod
+  sortMethod: state.pawfile.sortingPetsMethod,
+  currentSearchTerm: state.pawfile.currentSearchTerm,
 });
 
 export default connect(mapStateToProps)(PawfilesList);
+
+//only show search bar if more than 2 pets like sort. make sure serach term unmounts.

@@ -67,7 +67,8 @@ export function arrayToString(arr){
   return arr.join(', ');
 }
 
-export function filterBySearch(searchTerm, posts){
+export function filterBySearch(term, posts){
+  let searchTerm = term.toLowerCase();
   console.log('the posts in theh helper are', posts);
   return posts.filter(post=>
     post.props.title.toLowerCase().includes(searchTerm) || post.props.date.toLowerCase().includes(searchTerm) || 
@@ -78,6 +79,10 @@ export function filterBySearch(searchTerm, posts){
     (post.props.prescriptions && post.props.prescriptions.find(prescription=>prescription.toLowerCase().includes(searchTerm))) || 
     (post.props.vaccinations && post.props.vaccinations.find(vaccination=>vaccination.toLowerCase().includes(searchTerm)))
     )
+}
+
+export function filterPetsBySearch(searchTerm, pawfiles){
+  return pawfiles.filter(pawfile=>pawfile.props.name.toLowerCase().includes(searchTerm.toLowerCase()));
 }
 
 export function sortNewestToOldest(posts){
