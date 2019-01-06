@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {deletePost} from '../../actions/post-crud';
 import {showMemoryForm} from '../../actions/index';
 import {formatDate} from '../helper-functions';
+import {Link} from 'react-router-dom';
 import './memory-post.css'
 
 export function MemoryPost(props){
@@ -13,7 +14,11 @@ export function MemoryPost(props){
         <span className="post-date">{formatDate(props.date).toDateString()}</span>
         {props.description && <p className="post-description">{props.description}</p>}
       </div>
-      {props.memory_img && <img className="post-img" src={props.memory_img} alt={props.title}/>}
+      {props.memory_img && 
+      <a className="post-img-a" href={`${props.memory_img}`} target="_blank">
+         <img className="post-img" src={props.memory_img} alt={props.title}/>
+      </a>
+     }
 
       <div className="option-icons">
         <button onClick={()=>props.dispatch(showMemoryForm(true, props.postId))}><i className="fas fa-edit"></i></button>
