@@ -19,7 +19,7 @@ export class PawfilePage extends React.Component{
     console.log('mounting pawfilepage');
     this.props.dispatch(changeCurrentPetId(this.props.match.params.pawfileId));
     this.props.dispatch(fetchPawfiles());
-    this.props.dispatch(changeSuccessMessage(false));
+    this.props.dispatch(changeSuccessMessage(null));
     
   }
 

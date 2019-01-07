@@ -17,8 +17,6 @@ export class SettingsPage extends React.Component{
 
   componentWillUnmount(){
     console.log('settings unmounting')
-    // this.props.dispatch(refreshProfileAuthToken());
-    // this.props.dispatch(changeSuccessMessage(false));
   }
 
   render(){
@@ -27,11 +25,6 @@ export class SettingsPage extends React.Component{
       <div className="settings">
         <Navbar/>
         <main className="settings-main">
-          {this.props.successMessage && 
-          <div className="updated-message">
-            Your account has been updated.
-          </div>
-          }
           <BasicAccountInfoForm/>
           <ChangePasswordForm/>
         </main>

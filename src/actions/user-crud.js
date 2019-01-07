@@ -6,9 +6,10 @@ import {normalizeResponseErrors} from './utils';
 import {refreshProfileAuthToken} from './auth'
 
 export const UPDATED_USER_SUCCESS = "UPDATED_USER_SUCCESS";
-export const updatedUserSuccess = (updatedUser) => ({
+export const updatedUserSuccess = (updatedUser, message) => ({
     type: UPDATED_USER_SUCCESS,
-    updatedUser
+    updatedUser,
+    message
 })
 
 export const CRUD_ERROR = "CRUD_ERROR";
@@ -52,7 +53,7 @@ export const updatedUser = user => (dispatch, getState) => {
         .then(res => normalizeResponseErrors(res))
         .then(res => res.json())
         .then(updatedUser => {
-            dispatch(updatedUserSuccess(updatedUser));
+            dispatch(updatedUserSuccess(updatedUser, 'Your account has been successfully updated'));
         })
         .then(()=>{
             dispatch(refreshProfileAuthToken())
@@ -83,7 +84,7 @@ export const updatePassword = user => (dispatch, getState) => {
         .then(res => normalizeResponseErrors(res))
         .then(res => res.json())
         .then(updatedUser => {
-            dispatch(updatedUserSuccess(updatedUser));
+            dispatch(updatedUserSuccess(updatedUser, 'Your password has been successfully updated'));
         })
         .catch(err => {
             const {reason, message, location} = err;

@@ -34,9 +34,9 @@ export const authError = error => ({
 });
 
 export const CHANGE_SUCCESS_MESSAGE = 'CHANGE_SUCCESS_MESSAGE';
-export const changeSuccessMessage = (bool) =>({
+export const changeSuccessMessage = (message) =>({
     type: CHANGE_SUCCESS_MESSAGE,
-    bool
+    message
 }) 
 
 // Stores the auth token in state and localStorage, and decodes and stores

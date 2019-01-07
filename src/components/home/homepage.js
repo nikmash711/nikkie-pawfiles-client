@@ -14,7 +14,7 @@ export class HomePage extends React.Component{
     document.title = this.props.firstName ? `${this.props.firstName}'s Pets` : 'All Pets';
     this.props.dispatch(fetchPawfiles());
     this.props.dispatch(changeError(false));
-    this.props.dispatch(changeSuccessMessage(false));
+    this.props.dispatch(changeSuccessMessage(null));
 
   }
 

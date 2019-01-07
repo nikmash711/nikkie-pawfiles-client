@@ -13,7 +13,7 @@ const initialState = {
   currentUser: null,
   loading: false,
   error: null,
-  successMessage: false
+  successMessage: null
 };
 
 export default function reducer(state = initialState, action) {
@@ -50,13 +50,13 @@ export default function reducer(state = initialState, action) {
     console.log('in auth reducer, setting currentUser to', action.updatedUser)
     return Object.assign({}, state, {
         currentUser: action.updatedUser,
-        successMessage: true
+        successMessage: action.message
     });
   }
 
   else if(action.type===CHANGE_SUCCESS_MESSAGE){
     return Object.assign({}, state, {
-        successMessage: false
+        successMessage: action.message
     });
   }
   return state;
