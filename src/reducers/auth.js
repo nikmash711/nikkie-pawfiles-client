@@ -56,6 +56,7 @@ export default function reducer(state = initialState, action) {
   }
 
   else if(action.type===CHANGE_SUCCESS_MESSAGE){
+      console.log('changing success message')
     return Object.assign({}, state, {
         successMessage: action.message
     });

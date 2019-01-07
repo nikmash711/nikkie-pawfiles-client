@@ -21,6 +21,17 @@ export class SettingsPage extends React.Component{
 
   componentDidUpdate(){
     window.scrollTo(0, 0); //make it jump to top
+    if(this.props.successMessage){
+    
+      //set a timer that changes the message back to null after seven seconds of displaying it
+    setTimeout(
+        function() {
+          this.props.dispatch(changeSuccessMessage(null));
+        }
+        .bind(this),
+        7000
+    );
+    }
   }
 
   render(){
