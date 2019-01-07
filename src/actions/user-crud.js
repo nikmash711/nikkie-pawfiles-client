@@ -30,10 +30,37 @@ export const registerUser = user => dispatch => {
     });
 };
 
-
 export const updatedUser = user => (dispatch, getState) => {
     const authToken = getState().auth.authToken;
-    return fetch(`${API_BASE_URL}/users`, {
+    return fetch(`${API_BASE_URL}/users/account`, {
+        method: 'PUT',
+        headers: {
+            'content-type': 'application/json',
+            Authorization: `Bearer ${authToken}`
+        },
+        body: JSON.stringify(user)
+    })
+        .then(res => normalizeResponseErrors(res))
+        .then(res => res.json())
+        .then(updatedUser => {
+            dispatch(updatedUserSuccess(updatedUser));
+        })
+        .catch(err => {
+            const {reason, message, location} = err;
+            if (reason === 'ValidationError') {
+                // Convert ValidationErrors into SubmissionErrors for Redux Form
+                return Promise.reject(
+                    new SubmissionError({
+                        [location]: message
+                    })
+                );
+            }
+        });
+};
+
+export const updatePassword = user => (dispatch, getState) => {
+    const authToken = getState().auth.authToken;
+    return fetch(`${API_BASE_URL}/users/password`, {
         method: 'PUT',
         headers: {
             'content-type': 'application/json',

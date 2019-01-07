@@ -5,22 +5,16 @@ import {reduxForm, Field, Fieldset, SubmissionError, focus} from 'redux-form';
 import {updatedUser} from '../../actions/user-crud';
 import {required, nonEmpty, matches, length, isTrimmed} from '../validators';
 
-import './settings-form.css'
-
-const passwordLength = length({min: 10, max: 72});
-const matchesPassword = matches('newPassword');
-
-export class SettingsForm extends React.Component{
+export class BasicAccountInfoForm extends React.Component{
   onSubmit(values) {
-    const {username, oldPassword, newPassword, firstName, lastName} = values;
-    const user = {username, oldPassword, newPassword, firstName, lastName};
+    const {username, firstName, lastName} = values;
+    const user = {username, firstName, lastName};
     return this.props.dispatch(updatedUser(user));
 }
 
   render(){
   
     return(
-      <main className="settings-main">
         <form
           className=""
           onSubmit={this.props.handleSubmit(values =>
@@ -51,39 +45,13 @@ export class SettingsForm extends React.Component{
               className="required"
               validate={[required, nonEmpty, isTrimmed]}
           />
-
-          <Field
-              component={Input}
-              type="password"
-              name="oldPassword"
-              label="Old Password:"
-              className="required"
-              validate={[required, passwordLength, isTrimmed]}
-          />
-
-          <Field
-              component={Input}
-              type="password"
-              name="newPassword"
-              label="New Password:"
-              className="required"
-              validate={[required, passwordLength, isTrimmed]}
-          />
-          <Field
-              component={Input}
-              type="password"
-              label="Confirm Password:"
-              name="confirmPassword"
-              className="required"
-              validate={[required, nonEmpty, matchesPassword]}
-          />
+          
           <button
               type="submit"
               disabled={this.props.pristine || this.props.submitting}>
-              Register
+              Update Account
           </button>
         </form>
-      </main>
     );
   }
 }
@@ -95,11 +63,10 @@ function mapStateToProps(state) {
       firstName: state.auth.currentUser.firstName,
       lastName: state.auth.currentUser.lastName,
       username: state.auth.currentUser.username,
-      
     }
   }
 }
 
 export default connect(mapStateToProps)(reduxForm({
-  form:'SettingsForm',
-})(SettingsForm));
+  form:'BasicAccountInfoForm',
+})(BasicAccountInfoForm));
