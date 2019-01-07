@@ -13,7 +13,7 @@ const store = createStore(
     auth: authReducer,
     pawfile: pawfileReducer,
   }),
-  applyMiddleware(thunk)
+  applyMiddleware(thunk),
 );
 
 // Hydrate the authToken from localStorage if it exist

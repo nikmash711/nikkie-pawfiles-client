@@ -21,7 +21,8 @@ export default function reducer(state = initialState, action) {
       return Object.assign({}, state, {
           authToken: action.authToken
       });
-  } else if (action.type === CLEAR_AUTH) {
+  } 
+  else if (action.type === CLEAR_AUTH) {
       return Object.assign({}, state, {
           authToken: null,
           currentUser: null

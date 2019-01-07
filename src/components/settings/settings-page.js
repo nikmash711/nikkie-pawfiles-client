@@ -19,12 +19,21 @@ export class SettingsPage extends React.Component{
     console.log('settings unmounting')
   }
 
+  componentDidUpdate(){
+    window.scrollTo(0, 0); //make it jump to top
+  }
+
   render(){
-  
+    
     return(
       <div className="settings">
         <Navbar/>
         <main className="settings-main">
+          {this.props.successMessage && 
+          <div className="updated-message">
+            {this.props.successMessage}
+          </div>
+          }
           <BasicAccountInfoForm/>
           <ChangePasswordForm/>
         </main>

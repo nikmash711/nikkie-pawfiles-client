@@ -93,7 +93,7 @@ export const updatePassword = user => (dispatch, getState) => {
                 return Promise.reject(
                     new SubmissionError({
                         [location]: message
-                    })
+                    }) //tells redux form that our submission didnt work
                 );
             }
         });

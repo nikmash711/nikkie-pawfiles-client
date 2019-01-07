@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import Input from '../input';
-import {reduxForm, Field, Fieldset, SubmissionError, focus} from 'redux-form';
+import {reduxForm, Field, Fieldset, SubmissionError, focus, reset} from 'redux-form';
 import {updatePassword} from '../../actions/user-crud';
 import {required, nonEmpty, matches, length, isTrimmed} from '../validators';
 
@@ -61,7 +61,9 @@ export class ChangePasswordForm extends React.Component{
   }
 }
 
+const afterSubmit = (result, dispatch) => dispatch(reset('ChangePasswordForm'));
 
 export default connect()(reduxForm({
   form:'ChangePasswordForm',
+  onSubmitSuccess: afterSubmit,
 })(ChangePasswordForm));

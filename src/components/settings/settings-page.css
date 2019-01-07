@@ -49,12 +49,12 @@
   margin-top:20px;
   background-color:rgb(119, 199, 169);
   color: black;
-  width: 300px;
+  width: 270px;
 }
 
 
 @media(min-width: 350px){
-  .settings-form{
+  .settings-form, .updated-message{
     width: 300px;
     padding:20px;
   }
@@ -62,13 +62,13 @@
 
 @media(min-width: 500px){
 
-  .settings-form{
+  .settings-form, .updated-message{
     width: 450px;
   }
 }
 
 @media(min-width: 900px){
-  .settings-form{
+  .settings-form, .updated-message{
     width:450px;
   }
 }
