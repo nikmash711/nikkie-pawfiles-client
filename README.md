@@ -13,7 +13,7 @@ forget, this is the place to document it all :)
 
 ## User Stories/MVP: 
 - [x] 1. User can create an account for themselves with a first name, last name, username, and password
-- [x] 2. User will be directed to a home page where they can see all their pets, can add a new pet pawfile by filling out a form (name, species, breed, birthday, gender, profile photo, brief bio.), and can sort their pets by age or name. 
+- [x] 2. User will be directed to a home page where they can see all their pets, can add a new pet pawfile by filling out a form (name, species, breed, birthday, gender, profile photo, brief bio.), can sort their pets by age or name, and search their pets
 - [x] 3. Single user can have as many "pawfiles" as they wish if they own more than one pet
 - [x] 4. User can add posts for each pet - it can be a memory post with a title, description, date, and a photo URL corresponding to the memory, OR a medical related post where they can include a title, description, symptoms, labs, vet, location, date, and a link to a file. Once posted, only the info filled out will show (empty fields will not be displayed).
 - [x] 5. Posts will be organized on the Pawfile chronologically by the date the user inputted
@@ -25,7 +25,7 @@ example, need to buy more litter, or go get groomed next week, etc.
 - [x] 10. User can edit and delete their posts and info about their pets (and pictures). 
 
 ## Extension Features: 
-- [ ] 1. User can change their password
+- [ ] 1. User can change their password, first name, and last name, but not username
 - [ ] 2. Users can see other user's Pawfiles (read-only) via a link
 - [x] 3. Users can edit/delete their posts, reminders, update their pet's profile photo, etc.
 - [x] 4. Users will only be logged out after a certain amount of time, not every time they refresh or leave the browser
@@ -37,12 +37,10 @@ example, need to buy more litter, or go get groomed next week, etc.
 - [ ] 10. Parts of the design (and puns) will change based on whether it's a cat vs dog, male vs female. Design will hopefully look like an actual timeline
 - [ ] 11. "See more" at bottom of timeline to load more posts so db doesn't load all of them at once
 - [ ] 12. Make it an app for flex week!
-- [ ] 13. Ability to change password when logged in
+- [ ] 13. When a user adds a vaccination, prescription, or doctor to their medical post, it will be added to a history tab for that category so they can easily view a list of vaccinations, prescriptions, and doctors for a given pet
 - [ ] 14. Ability to reset password (this would involve storing user's emails, a security issue. Or they would have to report a problem, and then I'd need some way of verifying their identity). https://nodemailer.com/about/, https://www.mailgun.com/blog/how-to-send-transactional-email-in-a-nodejs-app-using-the-mailgun-api, https://www.w3schools.com/nodejs/nodejs_email.asp
 - [ ] 15. Settings tab will lead to a settings page where user can update their name (not username), password, email(?), profile picture, etc. 
 - [ ] 16. Use an API for maps so when user types in address for vet, it loads and comes up and they can click it. It'll link to Google Maps 
-- [ ] 17. When a user adds a vaccination, prescription, or doctor to their medical post, it will be added to a history tab for that category so they can easily view a list of vaccinations, prescriptions, and doctors for a given pet
-- [ ] 18. User can search their pets on the home page
 
 ## Foreseeable Issues: 
 1. Storing images/files in MongoDB (I think I'd have to use something called GridFS) 
