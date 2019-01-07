@@ -10,6 +10,7 @@ import MemoryForm from './memory-form'
 import {Redirect} from 'react-router-dom'
 import {showMedicalForm, showMemoryForm, changeSearchTerm, changeCategoryFilter, changeCurrentPetId} from '../../actions/index';
 import { fetchPawfiles } from '../../actions/pawfile-crud';
+import {changeSuccessMessage} from '../../actions/auth'
 import requiresLogin from '../requires-login';
 
 
@@ -17,7 +18,9 @@ export class PawfilePage extends React.Component{
   componentDidMount(){
     console.log('mounting pawfilepage');
     this.props.dispatch(changeCurrentPetId(this.props.match.params.pawfileId));
-    this.props.dispatch(fetchPawfiles())
+    this.props.dispatch(fetchPawfiles());
+    this.props.dispatch(changeSuccessMessage(false));
+    
   }
 
   componentWillUnmount(){

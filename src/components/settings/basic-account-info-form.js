@@ -4,11 +4,13 @@ import Input from '../input';
 import {reduxForm, Field, Fieldset, SubmissionError, focus} from 'redux-form';
 import {updatedUser} from '../../actions/user-crud';
 import {required, nonEmpty, matches, length, isTrimmed} from '../validators';
+import {formatName} from '../helper-functions'
 
 export class BasicAccountInfoForm extends React.Component{
   onSubmit(values) {
     const {username, firstName, lastName} = values;
     const user = {username, firstName, lastName};
+    user.firstName = formatName(user.firstName);
     return this.props.dispatch(updatedUser(user));
 }
 
@@ -26,7 +28,7 @@ export class BasicAccountInfoForm extends React.Component{
               type="text" 
               name="firstName" 
               label="First Name:"
-              maxLength="10"
+              maxLength="12"
               className="required"
               validate={[required, nonEmpty, isTrimmed]}
           />

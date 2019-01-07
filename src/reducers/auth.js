@@ -3,7 +3,8 @@ import {
   CLEAR_AUTH,
   AUTH_REQUEST,
   AUTH_SUCCESS,
-  AUTH_ERROR
+  AUTH_ERROR,
+  CHANGE_SUCCESS_MESSAGE
 } from '../actions/auth';
 import {UPDATED_USER_SUCCESS} from '../actions/user-crud'
 
@@ -11,7 +12,8 @@ const initialState = {
   authToken: null, // authToken !== null does not mean it has been validated
   currentUser: null,
   loading: false,
-  error: null
+  error: null,
+  successMessage: false
 };
 
 export default function reducer(state = initialState, action) {
@@ -48,6 +50,13 @@ export default function reducer(state = initialState, action) {
     console.log('in auth reducer, setting currentUser to', action.updatedUser)
     return Object.assign({}, state, {
         currentUser: action.updatedUser,
+        successMessage: true
+    });
+  }
+
+  else if(action.type===CHANGE_SUCCESS_MESSAGE){
+    return Object.assign({}, state, {
+        successMessage: false
     });
   }
   return state;

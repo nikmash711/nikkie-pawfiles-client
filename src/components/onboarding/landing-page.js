@@ -11,6 +11,7 @@ import './landing-page.css'
 export function LandingPage(props) {
     // If we are logged in redirect straight to the user's homepage
     if (props.loggedIn) {
+        console.log('logged in');
         return <Redirect to="/home" />;
     }
 

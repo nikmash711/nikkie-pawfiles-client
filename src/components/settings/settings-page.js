@@ -5,6 +5,7 @@ import Footer from '../footer'
 import BasicAccountInfoForm from './basic-account-info-form'
 import ChangePasswordForm from './change-password-form'
 import requiresLogin from '../requires-login';
+import {changeSuccessMessage, refreshProfileAuthToken} from '../../actions/auth';
 import './settings-page.css'
 
 
@@ -14,15 +15,23 @@ export class SettingsPage extends React.Component{
     document.title = 'Settings';
   }
 
+  componentWillUnmount(){
+    console.log('settings unmounting')
+    // this.props.dispatch(refreshProfileAuthToken());
+    // this.props.dispatch(changeSuccessMessage(false));
+  }
+
   render(){
   
     return(
       <div className="settings">
         <Navbar/>
         <main className="settings-main">
-        <header className="sticky"> 
-          <h1 className="section"> Settings</h1>
-        </header>
+          {this.props.successMessage && 
+          <div className="updated-message">
+            Your account has been updated.
+          </div>
+          }
           <BasicAccountInfoForm/>
           <ChangePasswordForm/>
         </main>
@@ -32,9 +41,8 @@ export class SettingsPage extends React.Component{
   }
 }
 
-// const mapStateToProps = state => ({
-//   currentUser: state.auth.currentUser,
-//   firstName: state.auth.currentUser.firstName,
-// });
+const mapStateToProps = state => ({
+  successMessage: state.auth.successMessage
+});
 
-export default requiresLogin()(connect()(SettingsPage));
+export default requiresLogin()(connect(mapStateToProps)(SettingsPage));
