@@ -25,7 +25,7 @@ example, need to buy more litter, or go get groomed next week, etc.
 - [x] 10. User can edit and delete their posts and info about their pets (and pictures). 
 
 ## Extension Features: 
-- [ ] 1. User can change their password, first name, and last name, but not username
+- [x] 1. User can change their password, first name, last name, username under a Settings tab when they're logged in
 - [ ] 2. Users can see other user's Pawfiles (read-only) via a link
 - [x] 3. Users can edit/delete their posts, reminders, update their pet's profile photo, etc.
 - [x] 4. Users will only be logged out after a certain amount of time, not every time they refresh or leave the browser
