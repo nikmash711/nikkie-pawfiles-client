@@ -1,7 +1,7 @@
 
 .sticky{
   display:block;
-  width:300px;
+  width:270px;
   text-align: center;
   padding:20px;
   margin:25px auto;
@@ -22,12 +22,24 @@
   font-size:45px;
 }
 
-@media(min-width:480px){
+@media(min-width: 350px){
+  .sticky{
+    width: 300px;
+  }
+}
+
+@media(min-width: 500px){
+  .sticky{
+    width: 400px;
+  }
+
   .sticky h1{
     font-size: 70px;
   }
+}
 
+@media(min-width: 900px){
   .sticky{
-    width:400px;
+    width:450px;
   }
 }

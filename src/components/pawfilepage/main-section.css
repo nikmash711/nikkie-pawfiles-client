@@ -149,7 +149,6 @@ button.new-medical{
     order:3;
   }
 
-
 }
 
 @media(min-width: 1235px){
@@ -175,7 +174,4 @@ button.new-medical{
     order:2;
   }
 
-  /* .new-memory, .new-medical, .filter-category, .filter-date, .search{
-    font-size: 30px;
-  } */
 }

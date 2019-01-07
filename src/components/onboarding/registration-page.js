@@ -12,12 +12,12 @@ export function RegistrationPage(props) {
     if (props.loggedIn) {
         return <Redirect to="/home" />;
     }
+
     return (
         <div className="registration-page">
             <Navbar/>
-            <main className="landing-page">
+            <main>
                 <RegistrationForm />
-                {/* <Link to="/">Login</Link> */}
             </main>
             <Footer/>
         </div>

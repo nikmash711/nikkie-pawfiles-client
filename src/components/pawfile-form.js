@@ -6,7 +6,6 @@ import {showPawfileForm} from '../actions/index';
 import {submitPawfile} from '../actions/pawfile-crud';
 import {required, nonEmpty, unSelected} from './validators';
 import {todaysDate, formatName} from './helper-functions';
-import './pawfile-form.css';
 
 export class PawfileForm extends React.Component{
 

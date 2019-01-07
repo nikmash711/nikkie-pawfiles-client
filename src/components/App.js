@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {BrowserRouter as Router, Route, withRouter} from 'react-router-dom'
 import HomePage from './home/homepage';
+import AboutPage from './about-page'
 import PawfilePage from './pawfilepage/pawfilepage';
 import SettingsPage from './settings/settings-page';
 import {Redirect, Switch} from 'react-router-dom';
@@ -45,6 +46,7 @@ export class App extends React.Component {
         <Switch>
           <Route exact path="/" component={LandingPage}></Route>
           <Route exact path="/home" component={HomePage}></Route>
+          <Route exact path="/about" component={AboutPage}></Route>
           <Route exact path="/settings" component={SettingsPage}></Route>
           <Route exact path="/register" component={RegistrationPage} />
           <Route exact path="/:pawfileId" component={PawfilePage}></Route>

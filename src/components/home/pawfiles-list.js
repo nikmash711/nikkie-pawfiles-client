@@ -14,7 +14,6 @@ export class PawfilesList extends React.Component{
     ));
 
     if(this.props.currentSearchTerm){
-      console.log('about to search', pawfiles_list);
       pawfiles_list = filterPetsBySearch(this.props.currentSearchTerm, pawfiles_list);
     }
 

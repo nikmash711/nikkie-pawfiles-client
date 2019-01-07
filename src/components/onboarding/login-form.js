@@ -4,7 +4,7 @@ import Input from '../input';
 import {login} from '../../actions/auth';
 import {required, nonEmpty} from '../validators';
 import {Link} from 'react-router-dom';
-import './login-form.css'
+import './onboarding-form.css'
 
 export class LoginForm extends React.Component {
     onSubmit(values) {
@@ -22,7 +22,7 @@ export class LoginForm extends React.Component {
         }
         return (
             <form
-                className="login-form form blurb center-me"
+                className="onboarding-form login form blurb center-me"
                 onSubmit={this.props.handleSubmit(values =>
                     this.onSubmit(values)
                 )}>

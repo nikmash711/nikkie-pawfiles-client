@@ -20,7 +20,6 @@ export class PawfilePage extends React.Component{
     this.props.dispatch(changeCurrentPetId(this.props.match.params.pawfileId));
     this.props.dispatch(fetchPawfiles());
     this.props.dispatch(changeSuccessMessage(null));
-    
   }
 
   componentWillUnmount(){

@@ -1,11 +1,10 @@
 import React from 'react';
 import Navbar from '../navbar';
 import Footer from '../footer';
+import BriefAbout from '../brief-about'
 import {connect} from 'react-redux';
 import {Link, Redirect} from 'react-router-dom';
-
 import LoginForm from './login-form';
-
 import './landing-page.css'
 
 export function LandingPage(props) {
@@ -18,9 +17,10 @@ export function LandingPage(props) {
     return (
         <div className="landing-page">
             <Navbar/>
-        <main className="landing-page">
-            <LoginForm />
-        </main>
+            <main>
+                <BriefAbout/>
+                <LoginForm />
+            </main>
             <Footer/>
         </div>
     );

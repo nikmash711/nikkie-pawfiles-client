@@ -1,0 +1,11 @@
+.brief-about{
+  background-color:white;
+  color: black;
+  width: 500px;
+  padding: 20px;
+}
+
+.brief-about h1{
+  font-family: "Reenie Beanie",arial,sans-serif;
+  font-size:70px;
+}

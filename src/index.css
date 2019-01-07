@@ -13,3 +13,219 @@ html,body{
   font-family:Arial, Helvetica, sans-serif;
 }
 
+.center-me{
+  margin:auto;
+}
+
+/*****BLURB*****/
+.blurb{
+  width: 270px;
+  display:inline-block;
+  padding:20px;
+  margin:25px;
+  font-size:15px;
+  color: black;
+  position: relative;
+  -webkit-box-shadow: 10px 10px 20px rgba(0,0,0,.5);
+  -moz-box-shadow: 10px 10px 20px rgba(0,0,0,.5);
+  box-shadow: 10px 10px 20px #000;
+  transition:.5s;
+  vertical-align: top;
+}
+
+.blurb:hover, .blurb:focus{
+  -webkit-box-shadow: 20px 20px 20px rgba(0,0,0,.5);
+  -moz-box-shadow: 20px 20px 20px rgba(0,0,0,.5);
+  box-shadow: 20px 20px 20px #000;
+}
+
+.blurb p {
+  font-family:"Gloria Hallelujah",arial,sans-serif;
+  color: #000;
+  text-shadow: black 1px 1px 0px;
+  text-align: left;
+  font-size:23px;
+  line-height: 1.5;
+}
+
+/* the tape */
+.blurb::before {
+  content: ' ';
+  display: block;
+  position: absolute;
+  /* left: 140px; */
+  left:40%;
+  top: -15px;
+  width: 75px;
+  height: 25px;
+  z-index: 2;
+  background-color: rgba(243,245,228,0.5);
+  border: 2px solid rgba(255,255,255,0.5);
+  -webkit-box-shadow: 0 0 5px #888;
+  -moz-box-shadow: 0 0 5px #888;
+  box-shadow: 2px 2px 2px #000;
+}
+
+.blurb h2{
+  margin: 10px auto;
+  font-size:60px;
+  font-family:"Reenie Beanie",arial,sans-serif;
+  color: #000;
+  text-shadow: black 1px 1px 0px;
+  transition: .5s;
+  width: fit-content;
+}
+
+.female{
+  background-color: lightpink;
+}
+
+.male{
+  background-color:lightblue;
+}
+
+@media(min-width: 350px){
+  .blurb{
+    width: 300px;
+  }
+}
+
+@media(min-width: 500px){
+
+  .blurb{
+    width: 400px;
+  }
+}
+
+@media(min-width: 900px){
+  .blurb{
+    width:450px;
+  }
+}
+
+/*FORMS*/
+.form-modal{
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+.form{
+  display: block;
+  color: black;
+  padding: 0;
+  background-color: #fffd9b;
+  margin: 130px auto; /* 15% from the top and centered */
+  border: 1px solid #888;
+  -webkit-transform: none;
+  -moz-transform: none;
+  -o-transform: none;
+}
+
+.form h2{
+  clear: both;
+}
+
+.form input, .form textarea, .form select{
+  border: transparent;
+  border-bottom: 2px solid black;
+  background-color: transparent;
+  padding: 5px;
+  vertical-align: top;
+  flex: 2;
+  clear:both;
+  align-self: center;
+}
+
+.form select{
+  border:2px solid black;
+}
+
+.form select:focus{
+  border: 3px solid black;
+  outline: 0;
+}
+
+.form input:focus{
+  outline: 0;
+}
+
+.form textarea:focus{
+  outline: 0;
+}
+
+.form textarea{
+  min-height: 50px;
+  max-height:88px;
+  border: 2px solid black;
+}
+
+.form label{
+  text-align: left;
+  margin: 5px;
+  flex: 1;
+  font-family: 'Gloria Hallelujah';
+  font-weight: bold;
+}
+
+.required::after{
+  content: '*';
+  color: red;
+}
+
+.form-error{
+  position: absolute;
+  background-color: white;
+  color: red;
+  font-size:10px;
+  top: 90%;
+  padding: 2px;
+}
+
+.form .form-input{
+  margin: 15px auto;
+  display: flex;
+  padding: 0px 20px;
+  position: relative;
+}
+
+.form button{
+  outline: 0;
+  background-color: transparent;
+  border: 2px solid black;
+  color: black;
+  font-size: 20px;
+  cursor: pointer;
+  margin: 10px;
+  padding: 5px;
+  font-family: 'Gloria Hallelujah';
+  font-size:14px;
+  font-weight: 700;
+}
+
+button.close{
+  float: right;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.form button:hover, .form button:focus{
+  background-color: black;
+  color: white;
+}
+
+.buttons{
+  margin:auto;
+  width: fit-content;
+}
+
+@media(min-width:500px){
+  .form .form-input{
+    width: 350px;
+  }
+}

@@ -1,4 +1,4 @@
-main{
+.home main{
   background: url("https://www.middletonhallretirementvillage.co.uk/wp-content/uploads/2018/01/pinboard-background-compressed.jpg") no-repeat fixed;
   background-size: cover; 
   color: white;
@@ -7,10 +7,6 @@ main{
   flex-flow: column wrap;
   padding-top: 60px;
   padding-bottom: 20px;
-}
-
-.center-me{
-  margin:auto;
 }
 
 .home .search-input{
@@ -22,7 +18,7 @@ main{
 }
 
 @media (min-width: 900px){
-  main{
+  .home main{
     flex-flow: row wrap;
   }
 }

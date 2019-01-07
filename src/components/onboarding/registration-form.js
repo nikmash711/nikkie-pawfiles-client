@@ -5,6 +5,7 @@ import {login} from '../../actions/auth';
 import Input from '../input';
 import {formatName} from '../helper-functions'
 import {required, nonEmpty, matches, length, isTrimmed} from '../validators';
+import './onboarding-form.css'
 import './registration-form.css'
 
 const passwordLength = length({min: 6, max: 72});
@@ -23,7 +24,7 @@ export class RegistrationForm extends React.Component {
     render() {
         return (
             <form
-                className="login-form register form blurb center-me"
+                className="onboarding-form register form blurb center-me"
                 onSubmit={this.props.handleSubmit(values =>
                     this.onSubmit(values)
                 )}>

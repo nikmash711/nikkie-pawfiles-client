@@ -9,9 +9,6 @@
   width:250px;
   display: block;
   margin: 25px auto;
-  -webkit-transform: none;
-  -moz-transform: none;
-  -o-transform: none;
 }
 
 .sidebar .top{
@@ -21,12 +18,6 @@
 .sidebar .blurb .top h2{
   margin:auto;
   font-size: 53px;
-}
-
-.sidebar .blurb::before{
-  -webkit-transform: none;
-  -moz-transform: none;
-  -o-transform: none;
 }
 
 .sidebar .blurb p{
