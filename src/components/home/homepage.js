@@ -7,7 +7,6 @@ import {changeSortingPetsMethod} from '../../actions/index';
 import {fetchPawfiles, changeError, } from '../../actions/pawfile-crud';
 import requiresLogin from '../requires-login';
 
-
 export class HomePage extends React.Component{
   componentDidMount(){
     console.log('homepage mounting with props', this.props);

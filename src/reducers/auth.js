@@ -5,6 +5,7 @@ import {
   AUTH_SUCCESS,
   AUTH_ERROR
 } from '../actions/auth';
+import {UPDATED_USER_SUCCESS} from '../actions/user-crud'
 
 const initialState = {
   authToken: null, // authToken !== null does not mean it has been validated
@@ -38,6 +39,12 @@ export default function reducer(state = initialState, action) {
           loading: false,
           error: action.error
       });
+  } 
+  else if (action.type=== UPDATED_USER_SUCCESS){
+    console.log('in auth reducer, setting currentUser to', action.updatedUser)
+    return Object.assign({}, state, {
+        currentUser: action.updatedUser,
+    });
   }
   return state;
 }

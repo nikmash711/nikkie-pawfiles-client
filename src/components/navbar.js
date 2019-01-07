@@ -28,7 +28,7 @@ export class Navbar extends React.Component{
          <div className = "right">
          {this.props.loggedIn && <Link className={className} to ="/home">Home</Link>}
          {this.props.loggedIn && <Link className={className} to ="/about">About</Link>}
-        { this.props.loggedIn && <Link className={className} to ="#">Settings</Link>}
+        { this.props.loggedIn && <Link className={className} to ="/settings">Settings</Link>}
          {this.props.loggedIn && <button id="logout" className={className} onClick={() => this.logOut()}>Log out</button>}
 
          {!this.props.loggedIn && <Link className={className} to ="/">Log In</Link>}
