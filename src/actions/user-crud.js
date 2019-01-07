@@ -1,8 +1,9 @@
 
 import {SubmissionError} from 'redux-form';
 
-import {API_BASE_URL} from '../config';
+import {API_BASE_URL} from '../config'; 
 import {normalizeResponseErrors} from './utils';
+import {refreshProfileAuthToken} from './auth'
 
 export const UPDATED_USER_SUCCESS = "UPDATED_USER_SUCCESS";
 export const updatedUserSuccess = (updatedUser) => ({
@@ -26,7 +27,15 @@ export const registerUser = user => dispatch => {
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
     .catch(err => {
-        dispatch(crudError());
+        const {reason, message, location} = err;
+        if (reason === 'ValidationError') {
+            // Convert ValidationErrors into SubmissionErrors for Redux Form
+            return Promise.reject(
+                new SubmissionError({
+                    [location]: message
+                })
+            );
+        }
     });
 };
 
@@ -44,6 +53,9 @@ export const updatedUser = user => (dispatch, getState) => {
         .then(res => res.json())
         .then(updatedUser => {
             dispatch(updatedUserSuccess(updatedUser));
+        })
+        .then(()=>{
+            dispatch(refreshProfileAuthToken())
         })
         .catch(err => {
             const {reason, message, location} = err;

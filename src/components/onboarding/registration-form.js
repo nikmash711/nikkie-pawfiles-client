@@ -1,12 +1,12 @@
 import React from 'react';
 import {Field, reduxForm, focus} from 'redux-form';
-import {registerUser} from '../actions/user-crud';
-import {login} from '../actions/auth';
-import Input from './input';
-import {required, nonEmpty, matches, length, isTrimmed} from './validators';
+import {registerUser} from '../../actions/user-crud';
+import {login} from '../../actions/auth';
+import Input from '../input';
+import {required, nonEmpty, matches, length, isTrimmed} from '../validators';
 import './registration-form.css'
 
-const passwordLength = length({min: 10, max: 72});
+const passwordLength = length({min: 6, max: 72});
 const matchesPassword = matches('password');
 
 export class RegistrationForm extends React.Component {

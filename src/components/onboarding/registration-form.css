@@ -1,0 +1,7 @@
+.register.form{
+  background-color: #e4d3ff
+}
+
+.register.form .form-error{
+  position: absolute;
+}

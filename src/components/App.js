@@ -5,8 +5,8 @@ import HomePage from './home/homepage';
 import PawfilePage from './pawfilepage/pawfilepage';
 import SettingsPage from './settings/settings-page';
 import {Redirect, Switch} from 'react-router-dom';
-import LandingPage from './landing-page';
-import RegistrationPage from './registration-page';
+import LandingPage from './onboarding/landing-page';
+import RegistrationPage from './onboarding/registration-page';
 import {refreshAuthToken} from '../actions/auth';
 
 export class App extends React.Component {

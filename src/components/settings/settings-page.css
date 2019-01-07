@@ -1,0 +1,14 @@
+.settings-form{
+  color: black;
+  background-color: white;
+  width: 500px;
+  margin: 20px auto;
+}
+
+.settings-main{
+  display:block;
+  padding-top: 60px;
+  padding-bottom: 20px;  
+  height:100vh;
+}
+

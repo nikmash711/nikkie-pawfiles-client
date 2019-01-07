@@ -5,8 +5,6 @@ import {reduxForm, Field, Fieldset, SubmissionError, focus} from 'redux-form';
 import {updatePassword} from '../../actions/user-crud';
 import {required, nonEmpty, matches, length, isTrimmed} from '../validators';
 
-import './settings-form.css'
-
 //QUESTION: what is this
 const passwordLength = length({min: 6, max: 72});
 const matchesPassword = matches('newPassword');
@@ -22,6 +20,7 @@ export class ChangePasswordForm extends React.Component{
   
     return(
         <form
+          className="settings-form"
           onSubmit={this.props.handleSubmit(values =>
               this.onSubmit(values)
           )}>
@@ -55,7 +54,7 @@ export class ChangePasswordForm extends React.Component{
           <button
               type="submit"
               disabled={this.props.pristine || this.props.submitting}>
-              Update Account
+              Update Password
           </button>
         </form>
     );

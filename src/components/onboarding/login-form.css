@@ -33,6 +33,10 @@
   font-weight: bold;
 }
 
+.login-form label .form-error{
+  position: absolute;
+}
+
 @media(min-width:500px){
   .form .form-input{
     width: 420px;

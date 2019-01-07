@@ -2,8 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link, Redirect} from 'react-router-dom';
 import RegistrationForm from './registration-form';
-import Navbar from './navbar';
-import Footer from './footer';
+import Navbar from '../navbar';
+import Footer from '../footer';
 import './registration-page.css'
 
 export function RegistrationPage(props) {

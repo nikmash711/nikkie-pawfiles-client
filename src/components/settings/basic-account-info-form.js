@@ -16,7 +16,7 @@ export class BasicAccountInfoForm extends React.Component{
   
     return(
         <form
-          className=""
+          className="settings-form"
           onSubmit={this.props.handleSubmit(values =>
               this.onSubmit(values)
           )}>
@@ -45,10 +45,10 @@ export class BasicAccountInfoForm extends React.Component{
               className="required"
               validate={[required, nonEmpty, isTrimmed]}
           />
-          
+
           <button
               type="submit"
-              disabled={this.props.pristine || this.props.submitting}>
+          >
               Update Account
           </button>
         </form>
