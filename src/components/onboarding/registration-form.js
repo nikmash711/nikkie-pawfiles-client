@@ -32,6 +32,7 @@ export class RegistrationForm extends React.Component {
                     name="firstName" 
                     label="First Name:"
                     className="required"
+                    maxLength="10"
                     validate={[required, nonEmpty, isTrimmed]}
                 />
                 <Field 

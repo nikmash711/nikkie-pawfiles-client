@@ -14,21 +14,13 @@
   -o-transform: none;
 }
 
-.sidebar .blurb h2{
-  font-size: 53px;
-}
-
 .sidebar .top{
   margin-bottom: 10px;
 }
 
-.sidebar .blurb .top{
-  display: flex;
-  align-items: center;
-}
-
 .sidebar .blurb .top h2{
-  margin-left: 10px;
+  margin:auto;
+  font-size: 53px;
 }
 
 .sidebar .blurb::before{
@@ -56,7 +48,7 @@
 .sidebar .prof-pic{
   width:100px;
   height:100px;
-  margin: 0;
+  margin: auto;
 }
 
 .sidebar .blurb .edit-span{

@@ -16,16 +16,17 @@ export class BasicAccountInfoForm extends React.Component{
   
     return(
         <form
-          className="settings-form"
+          className="settings-form form"
           onSubmit={this.props.handleSubmit(values =>
               this.onSubmit(values)
           )}>
-          <h2>Account Information</h2>
+          <h2>Account</h2>
           <Field 
               component={Input} 
               type="text" 
               name="firstName" 
               label="First Name:"
+              maxLength="10"
               className="required"
               validate={[required, nonEmpty, isTrimmed]}
           />

@@ -5,7 +5,7 @@ import Input from './input';
 import {showPawfileForm} from '../actions/index';
 import {submitPawfile} from '../actions/pawfile-crud';
 import {required, nonEmpty, unSelected} from './validators';
-import {todaysDate} from './helper-functions';
+import {todaysDate, formatName} from './helper-functions';
 import './pawfile-form.css';
 
 export class PawfileForm extends React.Component{
@@ -15,6 +15,7 @@ export class PawfileForm extends React.Component{
   }
 
   onSubmit(values){
+    values.name = formatName(values.name);
     this.props.dispatch(submitPawfile(values, this.props.currentPawfileFormId));
     this.props.dispatch(showPawfileForm(false, undefined));
   }
@@ -35,7 +36,7 @@ export class PawfileForm extends React.Component{
               type="text" 
               name="name" 
               id="name"
-              maxLength = '10'
+              maxLength = '12'
               validate={[required, nonEmpty]}
               /> 
 
@@ -82,7 +83,7 @@ export class PawfileForm extends React.Component{
 
             <Field
               component={Input} 
-              maxLength = '10'
+              maxLength = '25'
               label = "Breed:"
               name="breed" 
               id="breed"
@@ -91,7 +92,7 @@ export class PawfileForm extends React.Component{
 
             <Field
               component={Input} 
-              maxLength = '10'
+              maxLength = '12'
               label = "Weight:"
               name="weight" 
               id="weight"

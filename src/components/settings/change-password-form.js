@@ -20,7 +20,7 @@ export class ChangePasswordForm extends React.Component{
   
     return(
         <form
-          className="settings-form"
+          className="settings-form form"
           onSubmit={this.props.handleSubmit(values =>
               this.onSubmit(values)
           )}>

@@ -43,7 +43,7 @@ export default function reducer(state = initialState, action) {
           error: action.error
       });
   } 
-  //this only works when it updates. after refreshing, goes back to old info. doesnt maintain the current user info 
+
   else if (action.type=== UPDATED_USER_SUCCESS){
     console.log('in auth reducer, setting currentUser to', action.updatedUser)
     return Object.assign({}, state, {

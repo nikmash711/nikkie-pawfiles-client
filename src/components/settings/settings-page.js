@@ -21,7 +21,7 @@ export class SettingsPage extends React.Component{
         <Navbar/>
         <main className="settings-main">
         <header className="sticky"> 
-          <h1 className="section"> {this.props.firstName}'s Settings</h1>
+          <h1 className="section"> Settings</h1>
         </header>
           <BasicAccountInfoForm/>
           <ChangePasswordForm/>
@@ -32,9 +32,9 @@ export class SettingsPage extends React.Component{
   }
 }
 
-const mapStateToProps = state => ({
-  currentUser: state.auth.currentUser,
-  firstName: state.auth.currentUser.firstName,
-});
+// const mapStateToProps = state => ({
+//   currentUser: state.auth.currentUser,
+//   firstName: state.auth.currentUser.firstName,
+// });
 
-export default requiresLogin()(connect(mapStateToProps)(SettingsPage));
+export default requiresLogin()(connect()(SettingsPage));

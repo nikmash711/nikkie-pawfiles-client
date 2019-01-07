@@ -1,14 +1,67 @@
-.settings-form{
-  color: black;
-  background-color: white;
-  width: 500px;
-  margin: 20px auto;
+.settings-form.sticky{
+  width:500px;
 }
 
 .settings-main{
   display:block;
   padding-top: 60px;
   padding-bottom: 20px;  
-  height:100vh;
+}
+
+.settings-form h2 {
+  margin: 10px auto;
+  font-size: 60px;
+  font-family: "Reenie Beanie",arial,sans-serif;
+  color: #000;
+  text-shadow: black 1px 1px 0px;
+  -webkit-transition: .5s;
+  transition: .5s;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.settings-form{
+  width: 270px;
+  display:block;
+  padding:0;
+  margin:25px auto;
+  font-size:15px;
+  color: black;
+  position: relative;
+  -webkit-box-shadow: 10px 10px 20px rgba(0,0,0,.5);
+  -moz-box-shadow: 10px 10px 20px rgba(0,0,0,.5);
+  box-shadow: 10px 10px 20px #000;
+  transition:.5s;
+  vertical-align: top;
+  background-color: white;
+
+}
+
+.settings-form:hover, .settings-form:focus{
+  -webkit-box-shadow: 20px 20px 20px rgba(0,0,0,.5);
+  -moz-box-shadow: 20px 20px 20px rgba(0,0,0,.5);
+  box-shadow: 20px 20px 20px #000;
+}
+
+
+@media(min-width: 350px){
+  .settings-form{
+    width: 300px;
+    padding:20px;
+  }
+}
+
+@media(min-width: 500px){
+
+  .settings-form{
+    width: 450px;
+  }
+}
+
+@media(min-width: 900px){
+  .settings-form{
+    width:450px;
+  }
 }
 
