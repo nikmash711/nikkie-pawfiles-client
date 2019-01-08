@@ -14,20 +14,17 @@
   display:inline;
 }
 
-/* .home .options select, .home .options input, .home .options button{
-} */
-
-@media (min-width: 900px){
-  .home main{
-    flex-flow: row wrap;
-  }
-}
-
 @media(min-width: 700px){
   .home .options{
     display: flex;
     justify-content: space-between;
     flex-direction: row;
   } 
+}
+
+@media (min-width: 900px){
+  .home main{
+    flex-flow: row wrap;
+  }
 }
 

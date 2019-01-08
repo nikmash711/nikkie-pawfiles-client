@@ -14,65 +14,38 @@
   margin:10px 10px;
 }
 
-.new-memory, .new-medical, .filter-category, .filter-date, .search{
-  padding:10px;
-  height:45px;
-  transition: .5s;
-  margin:10px 10px;
-  /* width:150px; */
-  -webkit-box-shadow: 10px 10px 20px rgba(0,0,0,.5);
-  -moz-box-shadow: 10px 10px 20px rgba(0,0,0,.5);
-  box-shadow: 10px 10px 20px #000;
-  border: transparent;
-  font-family:"Kalam";
-  font-size: 20px;
-  /* text-shadow: 1px 1px black; */
-}
-
-.add-buttons{
-  order:1;
-}
-
-.filters{
-  order:2;
-}
-
-.search-input{
-  order:3;
+.pawfile-page .tape{
+  display:inline;
+  margin-right:5px;
+  margin-left: 5px;
 }
 
 button.new-memory{
-  background-color:lightgreen;
+  border:2px solid lightgreen;
   color:black;
+}
+
+button.new-memory:hover, button.new-memory:focus{
+  text-shadow: 1px 1px lightgreen;
 }
 
 button.new-medical{
-  background-color: coral;
+  border: 2px solid coral;
   color:black;
+}
+
+button.new-medical:hover, button.new-medical:focus{
+  text-shadow: 1px 1px coral;
 }
 
 .filters select{
-  background-color:#e4d3ff;
+  border:2px solid#c5b3e2;
   color:black;
 }
 
-.search{
-  background-color:white;
-  color: black;
-  text-align: center;
-  width:auto;
-  font-style:italic;
-}
+.filters select:hover, .filters select:focus{
+  text-shadow: 1px 1px #c5b3e2;
 
-
-@media(min-width: 633px){
-  .add-buttons, .filters{
-    display:inline;
-  }
-
-  .new-memory, .new-medical, .filter-category, .filter-date, .search{
-    width:auto;
-  }
 }
 
 .posts{
@@ -114,20 +87,8 @@ button.new-medical{
     margin-left: 350px; /*to adjust for sidebar*/
   }
 
-  .add-buttons, .filters{
+  .search-input, .filters{
     display:inline;
-  }
-  
-  .add-buttons{
-    order:1;
-  }
-  
-  .filters{
-    order:2;
-  }
-  
-  .search-input{
-    order:3;
   }
 
 }
@@ -142,17 +103,4 @@ button.new-medical{
   .add-buttons, .filters{
     display:inline-block;
   }
-
-  .add-buttons{
-    order:1;
-  }
-
-  .filters{
-    order:3;
-  }
-
-  .search-input{
-    order:2;
-  }
-
 }

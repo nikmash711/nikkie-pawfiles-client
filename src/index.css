@@ -273,7 +273,6 @@ button.close{
 .tape{
   font-family: 'Gloria Hallelujah';
   text-align:center;
-  display:inline;
   margin:20px auto;
   padding:10px;
   line-height: .8;
@@ -306,7 +305,7 @@ button.close{
   right: 0;
   -webkit-clip-path: polygon(0% 0%, 5%  100%, 10% 0%, 15%  100%, 20% 0%, 25% 100%, 30% 0%, 35%  100%, 40% 0%, 45%  100%, 50% 0%, 55%  100%, 60% 0%, 65%  100%, 70% 0%, 75%  100%, 80% 0%, 85%  100%, 90% 0%, 95%  100%, 100% 0%);
 }
-
-select{
+ 
+select.tape{
   padding-top:0
 } /*weird on mobile*/

@@ -40,20 +40,24 @@ export function MainSection(props){
     return(
       <main>
         <nav className="options">
-            <div className="add-buttons">
-              <button onClick={()=>props.dispatch(showMemoryForm(true, undefined))} className="new-memory">New Memory</button>
-              <button onClick={()=>props.dispatch(showMedicalForm(true, undefined))} className="new-medical">New Medical</button>
-            </div>
+
             <div className="filters">
-              <select onChange={e=>props.dispatch(changeCategoryFilter(e.target.value))} className="filter-category" name="filter" id="filter">
+              <select onChange={e=>props.dispatch(changeCategoryFilter(e.target.value))} className="tape" name="filter" id="filter">
                 <option value="">Show All Categories</option>
                 <option value="memory">Memories</option>
                 <option value="medical">Medical</option>
               </select>
             </div>
+
             <div className="search-input">
-              <input onChange={e=>props.dispatch(changeSearchTerm(e.target.value))} className="search" type="search" placeholder='Search Posts'/>
+              <input onChange={e=>props.dispatch(changeSearchTerm(e.target.value))} className="tape" type="search" placeholder='Search Posts'/>
             </div>
+
+            <div className="add-buttons">
+              <button onClick={()=>props.dispatch(showMemoryForm(true, undefined))} className="new-memory tape">New Memory</button>
+              <button onClick={()=>props.dispatch(showMedicalForm(true, undefined))} className="new-medical tape">New Medical</button>
+            </div>
+
           </nav>
           <ul className="posts">
               {posts}
