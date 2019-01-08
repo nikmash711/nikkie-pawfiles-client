@@ -82,7 +82,7 @@ button.new-medical:hover, button.new-medical:focus{
 
 @media (min-width: 900px){
   .pawfile-page main{
-    height: 100vh;
+    min-height:900px;
     padding-top: 60px;
     margin-left: 350px; /*to adjust for sidebar*/
   }

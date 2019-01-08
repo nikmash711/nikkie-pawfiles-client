@@ -4,7 +4,7 @@ import {changeSortingPetsMethod} from '../../actions/index';
 
 export function SortBySelect(props){
   return(
-    <select className="tape" onChange={e=>props.dispatch(changeSortingPetsMethod(e.target.value))}>
+    <select className="tape sort" onChange={e=>props.dispatch(changeSortingPetsMethod(e.target.value))}>
       <option value="">Sort By:</option>
       <option value="oldest">Oldest</option>
       <option value="youngest">Youngest</option>

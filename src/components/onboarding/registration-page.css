@@ -4,5 +4,20 @@
   color: white;
   text-align: center;
   padding-top: 60px;
-  padding-bottom: 20px;
+  display: flex;
+  min-height:100vh;
+  flex-direction: column;
+}
+
+.registration-page main .form {
+  height: fit-content;
+}
+.registration-page main .form label{
+  flex:2;
+}
+
+@media(min-width:950px){
+  .registration-page main{
+    flex-direction: row;
+  }
 }

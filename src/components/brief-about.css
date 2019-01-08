@@ -1,11 +1,38 @@
 .brief-about{
   background-color:white;
   color: black;
-  width: 500px;
+  width: 270px;
   padding: 20px;
+  margin: auto;
 }
 
 .brief-about h1{
   font-family: "Reenie Beanie",arial,sans-serif;
   font-size:70px;
+}
+
+
+@media(min-width: 350px){
+  .brief-about{
+    width: 300px;
+  }
+}
+
+@media(min-width: 500px){
+
+  .brief-about{
+    width: 400px;
+  }
+}
+
+@media(min-width: 900px){
+  .brief-about{
+    width:550px;
+  }
+}
+
+@media(min-width:950px){
+  .brief-about{
+    margin:0;
+  }
 }

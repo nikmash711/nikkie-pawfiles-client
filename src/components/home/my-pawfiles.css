@@ -28,3 +28,11 @@
   }
 }
 
+.home .sort, .home .add-new-pawfile{
+  border:2px solid #fffd9b;
+  color:black;
+}
+
+.home .sort:focus, .home .add-new-pawfile:focus, .home .sort:hover, .home .add-new-pawfile:hover{
+  text-shadow: 1px 1px #fffd9b;
+}

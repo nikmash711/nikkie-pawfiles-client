@@ -10,7 +10,7 @@ export class AddNewPawfileButton extends React.Component{
   }
   render(){
     return(
-      <button onClick={()=>this.handleClick()} className="tape">Add New Pawfile</button>
+      <button onClick={()=>this.handleClick()} className="tape add-new-pawfile">Add New Pawfile</button>
     );
   }
 }

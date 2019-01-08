@@ -33,8 +33,7 @@
   box-shadow: 10px 10px 20px #000;
   transition:.5s;
   vertical-align: top;
-  background-color: white;
-
+  background-color: #fffd9b;
 }
 
 .settings-form:hover, .settings-form:focus{
@@ -43,12 +42,33 @@
   box-shadow: 20px 20px 20px #000;
 }
 
+.settings-form::before {
+  content: ' ';
+  display: block;
+  position: absolute;
+  /* left: 140px; */
+  left:40%;
+  top: -15px;
+  width: 75px;
+  height: 25px;
+  z-index: 2;
+  background-color: rgba(243,245,228,0.5);
+  border: 2px solid rgba(255,255,255,0.5);
+  -webkit-box-shadow: 0 0 5px #888;
+  -moz-box-shadow: 0 0 5px #888;
+  box-shadow: 2px 2px 2px #000;
+}
+
 .updated-message{
   margin:auto;
   margin-top:20px;
   background-color:rgb(119, 199, 169);
   color: black;
   width: 270px;
+}
+
+.settings-form label{
+  flex:2;
 }
 
 

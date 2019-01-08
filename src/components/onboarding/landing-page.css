@@ -4,5 +4,17 @@
   color: white;
   text-align: center;
   padding-top: 60px;
-  padding-bottom: 20px;
+  display: flex;
+  min-height:100vh;
+  flex-direction: column;
+}
+
+.landing-page .form {
+  height: fit-content;
+}
+
+@media(min-width:950px){
+  .landing-page main{
+    flex-direction: row;
+  }
 }

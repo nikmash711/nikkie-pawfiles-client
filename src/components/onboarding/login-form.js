@@ -22,7 +22,7 @@ export class LoginForm extends React.Component {
         }
         return (
             <form
-                className="onboarding-form login form blurb center-me"
+                className="onboarding-form login form blurb"
                 onSubmit={this.props.handleSubmit(values =>
                     this.onSubmit(values)
                 )}>

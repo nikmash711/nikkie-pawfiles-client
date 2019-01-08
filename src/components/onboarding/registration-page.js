@@ -4,6 +4,7 @@ import {Link, Redirect} from 'react-router-dom';
 import RegistrationForm from './registration-form';
 import Navbar from '../navbar';
 import Footer from '../footer';
+import BriefAbout from '../brief-about'
 import './registration-page.css'
 
 export function RegistrationPage(props) {
@@ -14,9 +15,10 @@ export function RegistrationPage(props) {
     }
 
     return (
-        <div className="registration-page">
+        <div  className="registration-page">
             <Navbar/>
             <main>
+                <BriefAbout/>
                 <RegistrationForm />
             </main>
             <Footer/>
