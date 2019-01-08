@@ -5,6 +5,7 @@
   padding: 20px;
   margin: auto;
   display: flex;
+  margin-top:20px;
 }
 
 .brief-about h1{
@@ -16,8 +17,9 @@
   font-size: 20px;
   line-height: 1.5;
   font-family: "Gloria Hallelujah",arial,sans-serif;
+  padding:20px;
+  text-shadow: black .5px .5px 0px;
 }
-
 
 @media(min-width: 350px){
   .brief-about{

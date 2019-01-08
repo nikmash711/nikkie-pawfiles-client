@@ -9,14 +9,20 @@
   flex-direction: column;
 }
 
-.registration-page main .form {
+.registration-page .form {
   height: fit-content;
+  margin-top:20px;
+  margin-bottom:20px;
 }
-.registration-page main .form label{
+.registration-page .form label{
   flex:2;
 }
 
 @media(min-width:950px){
+  .registration-page .form{
+    margin: 130px auto;
+  }
+
   .registration-page main{
     flex-direction: row;
   }
