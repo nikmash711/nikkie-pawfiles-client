@@ -136,6 +136,7 @@ html,body{
 
 .form h2{
   clear: both;
+  padding-top:20px;
 }
 
 .form input, .form textarea, .form select{
@@ -260,17 +261,18 @@ button.close{
 
 .options button:hover, .options select:hover, .options input:hover, .options button:focus, .options select:focus, .options input:focus{
   -webkit-box-shadow: 20px 20px 20px rgba(0,0,0,.5);
-  -moz-box-shadow: 20px 20px 20px rgba(0,0,0,.5);
+  -moz-box-shadow: 20px 20px 20px rgba(2, 2, 2, 0.5);
   box-shadow: 20px 20px 20px #000;
   text-shadow: 1px 1px white;
   cursor:pointer;
   outline: none;
-  border: 3px solid #fffd9b;
+  border: 3px solid black;
 }
 
 /*TAPE WITH WORDS*/
 .tape{
   font-family: 'Gloria Hallelujah';
+  text-align:center;
   display:inline;
   margin:20px auto;
   padding:10px;
@@ -304,3 +306,7 @@ button.close{
   right: 0;
   -webkit-clip-path: polygon(0% 0%, 5%  100%, 10% 0%, 15%  100%, 20% 0%, 25% 100%, 30% 0%, 35%  100%, 40% 0%, 45%  100%, 50% 0%, 55%  100%, 60% 0%, 65%  100%, 70% 0%, 75%  100%, 80% 0%, 85%  100%, 90% 0%, 95%  100%, 100% 0%);
 }
+
+select{
+  padding-top:0
+} /*weird on mobile*/
