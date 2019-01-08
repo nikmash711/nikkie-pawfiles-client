@@ -17,12 +17,6 @@ html,body{
   margin:auto;
 }
 
-@media(min-width:600px){
-  .center-me{
-    min-width:600px;
-  }
-}
-
 /*****BLURB*****/
 .blurb{
   width: 270px;

@@ -36,3 +36,9 @@
 .home .sort:focus, .home .add-new-pawfile:focus, .home .sort:hover, .home .add-new-pawfile:hover{
   text-shadow: 1px 1px #fffd9b;
 }
+
+@media(min-width:600px){
+  .home .center-me{
+    min-width:600px;
+  }
+}
