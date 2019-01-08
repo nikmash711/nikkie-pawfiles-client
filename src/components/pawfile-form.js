@@ -8,6 +8,12 @@ import {required, nonEmpty, unSelected} from './validators';
 import {todaysDate, formatName} from './helper-functions';
 
 export class PawfileForm extends React.Component{
+  constructor(props){
+    super(props);
+
+    this.first = React.createRef();
+  }
+
 
   componentWillUnmount(){
     this.props.dispatch(showPawfileForm(false, undefined));
@@ -30,11 +36,13 @@ export class PawfileForm extends React.Component{
 
             <Field
               component={Input}
+              autoFocus
               className="required"
               label="Name:" 
               type="text" 
               name="name" 
               id="name"
+              ref = {(input)=>this.first=input}
               maxLength = '12'
               validate={[required, nonEmpty]}
               /> 

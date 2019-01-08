@@ -7,19 +7,27 @@
   flex-flow: column wrap;
   padding-top: 60px;
   padding-bottom: 20px;
+  min-height:900px; /* so if theres no pets it doesnt show white */
 }
 
 .home .search-input{
   display:inline;
 }
 
-.no-pets{
-  height:100vh;
-}
+/* .home .options select, .home .options input, .home .options button{
+} */
 
 @media (min-width: 900px){
   .home main{
     flex-flow: row wrap;
   }
+}
+
+@media(min-width: 700px){
+  .home .options{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+  } 
 }
 

@@ -3,26 +3,26 @@ a{
   color: black;
 }
 
-.home .blurb{
+.home article.blurb{
   -webkit-transform: rotate(-2deg);
   -moz-transform: rotate(-1deg);
   -o-transform: rotate(-1deg);
   flex: 1;
 }
 
-.home .blurb:nth-child(even) {
+.home article.blurb:nth-child(even) {
   -webkit-transform: rotate(2deg);
   -moz-transform: rotate(1deg);
   -o-transform: rotate(1deg);
 }
 
-.home .blurb::before {
+.home article.blurb::before {
   -webkit-transform: rotate(-4deg);
   -moz-transform: rotate(-4deg);
   -o-transform: rotate(-4deg);
 }
 
-.home .blurb:nth-child(even)::before {
+.home article.blurb:nth-child(even)::before {
   -webkit-transform: rotate(1deg);
   -moz-transform: rotate(1deg);
   -o-transform: rotate(1deg);

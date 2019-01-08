@@ -10,7 +10,7 @@
   overflow: scroll;
 }
 
-nav.options{
+.pawfile-page nav.options{
   margin:10px 10px;
 }
 
@@ -41,15 +41,6 @@ nav.options{
   order:3;
 }
 
-.options button:hover, .options select:hover, .options input:hover, .options button:focus, .options select:focus, .options input:focus{
-  -webkit-box-shadow: 20px 20px 20px rgba(0,0,0,.5);
-  -moz-box-shadow: 20px 20px 20px rgba(0,0,0,.5);
-  box-shadow: 20px 20px 20px #000;
-  text-shadow: 1px 1px white;
-  cursor:pointer;
-  outline: none;
-}
-
 button.new-memory{
   background-color:lightgreen;
   color:black;
@@ -73,16 +64,6 @@ button.new-medical{
   font-style:italic;
 }
 
-::placeholder{ 
-  color: black;
-  font-style:italic;
-  text-shadow: none;
-  opacity: 1; /* Firefox */
-}
-
-:-ms-input-placeholder,::-ms-input-placeholder {
-  font-style:italic;
-}
 
 @media(min-width: 633px){
   .add-buttons, .filters{

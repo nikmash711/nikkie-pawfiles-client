@@ -2,8 +2,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {changeSortingPetsMethod} from '../../actions/index';
 
-import './sort-by-select.css'
-
 export function SortBySelect(props){
   return(
     <select className="tape" onChange={e=>props.dispatch(changeSortingPetsMethod(e.target.value))}>

@@ -83,7 +83,3 @@ function mapStateToProps(state) {
   }
 
 export default requiresLogin()(connect(mapStateToProps)(PawfilePage));
-
-//still problematic bc unless homepage fetched the data, we have to refetch it on pawfile page. cant depend on homepage. made its own
-
-//have default values 

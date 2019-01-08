@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {showPawfileForm, changeCurrentPetId} from '../../actions/index';
-import './add-new-pawfile-button.css'
 
 export class AddNewPawfileButton extends React.Component{
   handleClick(){

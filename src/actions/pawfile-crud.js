@@ -48,6 +48,13 @@ export const fetchPawfiles = () => (dispatch, getState) => {
         });
 };
 
+//how can i implement something like this for mine 
+// export function search(name) {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => resolve(_search(name)), 500);
+//     });
+// }
+
 /* POST & PUT ACTIONS */
 export const SUBMIT_PAWFILE_REQUEST = "SUBMIT_PAWFILE_REQUEST";
 export const submitPawfileRequest = () => ({
