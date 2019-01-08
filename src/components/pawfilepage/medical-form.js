@@ -30,7 +30,6 @@ export class MedicalForm extends React.Component{
     return(
       <div className='form-modal med'>
           <form className="form" onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
-          <button type="button" className = "close" onClick={()=>this.props.dispatch(showMedicalForm(false, undefined))}>X</button>
 
           <h2 className="post-heading">{this.props.initialValues.title ? this.props.initialValues.title : "New Medical Post"}</h2>
           
@@ -125,6 +124,9 @@ export class MedicalForm extends React.Component{
               <button type="submit">Save</button>
               <button onClick={()=>this.props.dispatch(showMedicalForm(false, undefined))} type="button">Cancel</button>
             </div>
+
+            <button type="button" className = "close" onClick={()=>this.props.dispatch(showMedicalForm(false, undefined))}>X</button>
+
           </form>
         </div>
     );

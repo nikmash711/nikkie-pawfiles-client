@@ -30,8 +30,6 @@ export class PawfileForm extends React.Component{
       <div className='form-modal'>
           <form className="form blurb" onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
 
-            <button aria-label="close pawfile blurb" type="button" className = "close" onClick={()=>this.props.dispatch(showPawfileForm(false, undefined))}>X</button>
-
             <h2>{this.props.initialValues.name ? this.props.initialValues.name : "New Pawfile"}</h2>
 
             <Field
@@ -129,6 +127,8 @@ export class PawfileForm extends React.Component{
               <button type="submit">Save Pawfile</button>
               <button onClick={()=>this.props.dispatch(showPawfileForm(false, undefined))} type="button">Cancel</button>
             </div>
+
+            <button aria-label="close pawfile blurb" type="button" className = "close" onClick={()=>this.props.dispatch(showPawfileForm(false, undefined))}>X</button>
             
           </form>
         </div>

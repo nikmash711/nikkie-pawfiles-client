@@ -218,7 +218,9 @@ html,body{
 }
 
 button.close{
-  float: right;
+  position: absolute;
+  top: 0;
+  left: 85%;
   font-family: 'Courier New', Courier, monospace;
 }
 
@@ -247,6 +249,10 @@ button.close{
 @media(min-width:500px){
   .form .form-input{
     width: 350px;
+  }
+
+  button.close{
+    left: 88%;
   }
 }
 

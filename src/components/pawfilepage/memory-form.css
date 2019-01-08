@@ -5,6 +5,7 @@
   margin: 130px auto;
   border: 3px solid lightgreen;
   width: 75%;
+  position: relative;
 }
 
 .post-heading{
