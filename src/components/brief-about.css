@@ -13,12 +13,36 @@
   font-size:70px;
 }
 
-.brief-about p{
+.brief-about h3{
+  font-family: "Reenie Beanie",arial,sans-serif;
+  font-size:40px;
+  text-decoration: underline;
+}
+
+.brief-about p, .brief-about li{
   font-size: 20px;
   line-height: 1.5;
   font-family: "Gloria Hallelujah",arial,sans-serif;
   padding:20px;
   text-shadow: black .5px .5px 0px;
+}
+
+.brief-about ul{
+  list-style: none;
+}
+
+.brief-about li{
+  padding:5px;
+  text-align: left;
+  padding-left:20px;
+}
+
+.brief-about li:before {    
+  font-family: "Font Awesome 5 Free"; 
+  font-size:15px;
+  font-weight: 900; 
+  content: "\f1b0";
+  margin-right: 10px;
 }
 
 @media(min-width: 350px){
@@ -36,12 +60,16 @@
 
 @media(min-width: 900px){
   .brief-about{
-    width:550px;
+    width:450px;
   }
 }
 
 @media(min-width:950px){
   .brief-about{
     margin:0;
+  }
+
+  .brief-about{
+    width:600px;
   }
 }
