@@ -4,7 +4,8 @@ import {shallow} from 'enzyme';
 import {HomePage} from './homepage';
 
 describe('<HomePage/>', () => {
+
     it('Renders without crashing', () => {
-        shallow(<HomePage />);
+        shallow(<HomePage dispatch={()=>{}} />);
     });
 });
