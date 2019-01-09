@@ -362,3 +362,28 @@ button.close{
 select.tape{
   padding-top:0
 } /*weird on mobile*/
+
+/*Different text shadow letters*/
+.red{
+  text-shadow: coral 1px 1px 0px;
+}
+
+.green{
+  text-shadow: lightgreen 1px 1px 0px;
+}
+
+.blue{
+  text-shadow: lightblue 1px 1px 0px;
+}
+
+.pink{
+  text-shadow: lightpink 1px 1px 0px;
+}
+
+.purple{
+  text-shadow: #c5b3e2 1px 1px 0px 
+}
+
+.yellow{
+  text-shadow: #fffd9b 1px 1px 0px;
+}

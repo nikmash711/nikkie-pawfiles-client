@@ -23,7 +23,16 @@ export class Navbar extends React.Component{
   
     return( 
       <nav className="main-navbar">
-        <Link className="logo" to="/home">PAWFILES</Link>
+        <Link className="logo" to="/home">
+          <span className="red">P</span> 
+          <span className="blue">A</span> 
+          <span className="pink">W</span> 
+          <span className="green">F</span> 
+          <span className="yellow">I</span> 
+          <span className="purple">L</span> 
+          <span className="red">E</span> 
+          <span className="blue">S</span> 
+        </Link>
         <button onClick={()=>this.props.dispatch(toggleNavbar())} className="icon right"><i className="fa fa-bars"></i></button>
          <div className = "right">
          {this.props.loggedIn && <Link className={className} to ="/home">HOME</Link>}
