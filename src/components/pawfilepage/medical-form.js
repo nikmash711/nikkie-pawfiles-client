@@ -83,7 +83,10 @@ export class MedicalForm extends React.Component{
               id="symptoms"
               aria-describedby="instructions"
             /> 
-            
+
+            <div id="instructions">
+                Please type the prescriptions (if any) as a comma-seperated list.
+            </div>
 
             <Field
               component={Input}
@@ -94,10 +97,11 @@ export class MedicalForm extends React.Component{
               id="prescriptions"
               aria-describedby="instructions"
             /> 
+            
             <div id="instructions">
-                Please type the prescriptions (if any) as a comma-seperated list.
+                Please type the vaccinations (if any) as a comma-seperated list.
             </div>
-
+            
             <Field
               component={Input}
               label="Vaccinations:" 
@@ -107,9 +111,6 @@ export class MedicalForm extends React.Component{
               id="vaccinations"
               aria-describedby="instructions"
             /> 
-            <div id="instructions">
-                Please type the vaccinations (if any) as a comma-seperated list.
-            </div>
 
             <Field
               component={Input}

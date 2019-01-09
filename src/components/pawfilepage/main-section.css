@@ -71,7 +71,8 @@ button.new-medical:hover, button.new-medical:focus{
 }
 
 .post-title{
-  font-size:20px;
+  font-size:23px;
+  padding-top:10px;
   text-align: left;
   font-family: "Kalam",arial,sans-serif;
 }
@@ -86,7 +87,7 @@ button.new-medical:hover, button.new-medical:focus{
   flex:1;
   padding-bottom:10px;
   align-self: center;
-  padding-top:25px;
+  padding-top:20px;
 }
 
 .post-img{
@@ -112,6 +113,18 @@ button.new-medical:hover, button.new-medical:focus{
   top: -20px;
 }
 
+@media (min-width: 700px){
+  .option-icons {
+      left: 86%;
+  }
+}
+
+@media(min-width:790px){
+  .form-modal.med button.close, .form-modal.mem button.close{
+    left: 93%;
+  }
+}
+
 @media (min-width: 900px){
   .pawfile-page main{
     min-height:900px;
@@ -122,6 +135,14 @@ button.new-medical:hover, button.new-medical:focus{
   .search-input, .filters{
     display:inline;
   }
+
+  .option-icons {
+    left: 84%;
+}
+
+.form-modal.med button.close, .form-modal.mem button.close{
+  left: 94%;
+}
 }
 
 @media(min-width: 1235px){

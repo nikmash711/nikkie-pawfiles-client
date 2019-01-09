@@ -13,7 +13,7 @@ export function MainSection(props){
 
   let posts;
 
-  console.log('the posts are', props.individualPawfile.posts);
+  console.log('the posts are', props.individualPawfile.posts); //look normal, but then dont after next step
 
   //if this pet has some pre-existing posts: 
   if(props.individualPawfile.posts){

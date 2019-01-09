@@ -246,6 +246,13 @@ button.close{
   font-style:italic;
 }
 
+#instructions{
+  text-align: center;
+  font-style:italic;
+  font-family: Montserrat;
+  font-size:12px;
+}
+
 @media(min-width:500px){
   .form .form-input{
     width: 350px;

@@ -8,10 +8,6 @@ import {formatDate} from '../helper-functions';
 import './medical-post.css'
 
 export class MedicalPost extends React.Component{
-  shouldComponentUpdate(nextProps, nextState){
-    //if nextProps or nextState has relevant changes, then return true, Else false.
-    return false;
-  }
 
   render(){
     console.log('in medpost, propa are', this.props);
