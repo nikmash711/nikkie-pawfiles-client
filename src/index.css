@@ -104,6 +104,11 @@ html,body{
 }
 
 /*FORMS*/
+input, select, textarea{
+  font-family: Montserrat;
+  font-weight:700;
+}
+
 .form-modal{
   position: fixed;
   z-index: 100;
@@ -135,7 +140,7 @@ html,body{
 
 .form input, .form textarea, .form select{
   border: transparent;
-  border-bottom: 2px solid black;
+  border-bottom: 1px solid black;
   background-color: transparent;
   padding: 5px;
   vertical-align: top;
@@ -257,10 +262,10 @@ button.close{
   -webkit-box-shadow: 20px 20px 20px rgba(0,0,0,.5);
   -moz-box-shadow: 20px 20px 20px rgba(2, 2, 2, 0.5);
   box-shadow: 20px 20px 20px #000;
-  text-shadow: 1px 1px white;
+  text-shadow: .5px .5px white;
   cursor:pointer;
   outline: none;
-  border: 3px solid black;
+  border: 2px solid black;
 }
 
 /*TAPE WITH WORDS*/
@@ -271,7 +276,7 @@ button.close{
   padding:10px;
   line-height: .8;
   font-size:20px;
-  text-shadow: black 1px 1px 0px;
+  text-shadow: black .5px .5px 0px;
   content: ' ';
   display: block;
   height: 50px;
@@ -293,7 +298,7 @@ button.close{
 }
 
 .tape::before, .tape::after{
-  content: ""; height: 2px;
+  /* content: ""; height: 2px; */
   position: absolute;
   left: 0;
   right: 0;

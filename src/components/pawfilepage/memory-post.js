@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import {deletePost} from '../../actions/post-crud';
 import {showMemoryForm} from '../../actions/index';
 import {formatDate} from '../helper-functions';
-import {Link} from 'react-router-dom';
 import './memory-post.css'
 
 export function MemoryPost(props){

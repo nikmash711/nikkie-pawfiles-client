@@ -23,16 +23,16 @@ export class Navbar extends React.Component{
   
     return( 
       <nav className="main-navbar">
-        <Link className="logo" to="/home">Pawfiles</Link>
+        <Link className="logo" to="/home">PAWFILES</Link>
         <button onClick={()=>this.props.dispatch(toggleNavbar())} className="icon right"><i className="fa fa-bars"></i></button>
          <div className = "right">
-         {this.props.loggedIn && <Link className={className} to ="/home">Home</Link>}
+         {this.props.loggedIn && <Link className={className} to ="/home">HOME</Link>}
         {/* <Link className={className} to ="/about">About</Link> */}
-        { this.props.loggedIn && <Link className={className} to ="/settings">Settings</Link>}
-         {this.props.loggedIn && <button id="logout" className={className} onClick={() => this.logOut()}>Log out</button>}
+        { this.props.loggedIn && <Link className={className} to ="/settings">SETTINGS</Link>}
+         {this.props.loggedIn && <button id="logout" className={className} onClick={() => this.logOut()}>LOGOUT</button>}
 
-         {!this.props.loggedIn && <Link className={className} to ="/">Log In</Link>}
-         {!this.props.loggedIn && <Link className={className} to ="/register">Register</Link>}
+         {!this.props.loggedIn && <Link className={className} to ="/">LOGIN</Link>}
+         {!this.props.loggedIn && <Link className={className} to ="/register">REGISTER</Link>}
        </div>
       </nav>
     );

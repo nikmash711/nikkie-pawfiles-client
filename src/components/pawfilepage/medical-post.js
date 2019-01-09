@@ -17,8 +17,11 @@ export class MedicalPost extends React.Component{
     console.log('in medpost, propa are', this.props);
     return(
       <li key={this.props.index} className={`${this.props.type.toLowerCase()} post`}>
-        <strong><h3 className="post-title">{this.props.title}</h3></strong>
+        <div className="all-post-info">
+        <h3 className="post-title">{this.props.title}</h3>
         <span className="post-date">{formatDate(this.props.date).toDateString()}</span>
+      </div>
+
         {this.props.symptoms.length>0 && <ul className="post-list">
           <strong>Symptoms:</strong>
           {this.props.symptoms.map((symptom, index)=>(

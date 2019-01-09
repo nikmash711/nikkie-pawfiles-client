@@ -8,40 +8,14 @@
   flex-direction: column;
 }
 
-.post-description{
-  padding-bottom: 10px;
-}
-
-.all-post-info{
+.memory .all-post-info{
   flex:3;
   padding-right: 20px;
-}
-
-.post-img-a{
-  flex:1;
-  padding-bottom:10px;
-  align-self: center;
-  padding-top:25px;
-}
-
-.post-img{
-  width:100%;
-}
-
-.post .option-icons{
-  text-align:right;
-  top: 4px;
 }
 
 @media(min-width:600px){
   .memory.post{
     display: flex;
     flex-direction: row;
-  }
-}
-
-@media (min-width: 1120px){
-  .post .option-icons{
-    left: 88%;
   }
 }

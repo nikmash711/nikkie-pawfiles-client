@@ -1,13 +1,13 @@
-.medical{
+.post.medical{
   border: 3px solid coral;
   position: relative;
 }
 
-.post-list{
+.medical .post-list{
   list-style-type: disc;
 }
 
-.post-list li{
+.medical .post-list li{
   margin-left:20px; 
 }
 
