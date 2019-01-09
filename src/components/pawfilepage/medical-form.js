@@ -7,7 +7,6 @@ import {submitPost} from '../../actions/post-crud';
 import {required, nonEmpty} from '../validators';
 import {stringToArrayList, arrayToString} from '../helper-functions';
 import {todaysDate} from '../helper-functions';
-import '../pawfile-form.css';
 import './medical-form.css'
 
 export class MedicalForm extends React.Component{

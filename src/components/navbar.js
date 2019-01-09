@@ -18,8 +18,6 @@ export class Navbar extends React.Component{
 
   render(){
     let className = this.props.toggleNavbar ? "show link" : "dontshow link";
-
-
   
     return( 
       <nav className="main-navbar">

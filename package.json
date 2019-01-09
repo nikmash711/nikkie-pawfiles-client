@@ -8,7 +8,7 @@
     "react-dom": "^16.7.0",
     "react-redux": "^6.0.0",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.2",
+    "react-scripts": "^2.1.3",
     "redux": "^4.0.1",
     "redux-form": "^8.0.4",
     "redux-forms": "^1.0.0-3",
@@ -28,5 +28,10 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
+    "react-test-renderer": "^16.7.0"
+  }
 }

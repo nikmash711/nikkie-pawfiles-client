@@ -6,7 +6,6 @@ import {showMemoryForm} from '../../actions/index';
 import {submitPost} from '../../actions/post-crud';
 import {required, nonEmpty} from '../validators';
 import {todaysDate} from '../helper-functions';
-import '../pawfile-form.css';
 import './memory-form.css';
 
 export class MemoryForm extends React.Component{

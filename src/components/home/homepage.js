@@ -15,11 +15,10 @@ export class HomePage extends React.Component{
     this.props.dispatch(fetchPawfiles());
     this.props.dispatch(changeError(false));
     this.props.dispatch(changeSuccessMessage(null));
-
   }
 
   componentWillUnmount(){
-    console.log('homepage UNmounting');
+    console.log('homepage Unmounting');
     this.props.dispatch(changeSortingPetsMethod(""));
   }
 

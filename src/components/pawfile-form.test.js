@@ -1,10 +1,10 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 
-import {App} from './app';
+import {PawfileForm} from './pawfile-form';
 
-describe('<App/>', () => {
+describe('<PawfileForm/>', () => {
     it('Renders without crashing', () => {
-        shallow(<App />);
+        shallow(<PawfileForm />);
     });
 });

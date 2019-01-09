@@ -51,4 +51,4 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps)(PawfilesList);
 
-//only show search bar if more than 2 pets like sort. make sure serach term unmounts.
+//only show search bar if more than 2 pets like sort. make sure search term unmounts.

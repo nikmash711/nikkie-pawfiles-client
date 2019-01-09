@@ -1,8 +1,7 @@
 import React from 'react';
-import {connect} from 'react-redux';
 import './brief-about.css'
 
-export class AboutPage extends React.Component{
+export default class AboutPage extends React.Component{
 
   render(){
 
@@ -29,9 +28,3 @@ export class AboutPage extends React.Component{
     );
   }
 }
-
-const mapStateToProps = state => ({
-
-});
-
-export default connect(mapStateToProps)(AboutPage);

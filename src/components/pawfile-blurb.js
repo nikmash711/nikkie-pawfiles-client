@@ -58,3 +58,4 @@ export class PawfileBlurb extends React.Component{
 }
 
 export default connect()(PawfileBlurb);
+//needs to be connected so it can have access to dispatch

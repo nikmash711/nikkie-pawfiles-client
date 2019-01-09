@@ -40,7 +40,6 @@ export class App extends React.Component {
       clearInterval(this.refreshInterval);
   }
   render() {
-    console.log('in app js');
     return (
       <Router>
         <Switch>
