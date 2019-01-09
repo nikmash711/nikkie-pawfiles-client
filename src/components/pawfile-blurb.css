@@ -6,7 +6,7 @@ a{
 .home article.blurb{
   -webkit-transform: rotate(-2deg);
   -moz-transform: rotate(-1deg);
-  -o-transform: rotate(-1deg);
+  -o-transform: rotate(-1deg); 
   flex: 1;
 }
 
@@ -39,29 +39,6 @@ a{
   display:block;
 }
 
-.option-icons{
-  position: absolute;
-  top: 12px;
-  left: 65%;
-  width: 80px;
-}
-
-.option-icons button, .option-icons button:focus{
-  background-color: transparent;
-  border: none;
-  outline:0;
-  font-size:15px;
-}
-
-.option-icons i{
-  margin: 5px;
-}
-
-.option-icons i:hover, .option-icons i:focus, .option-icons button:hover, .option-icons button:focus{
-  text-shadow: white 2px 2px 2px;
-  cursor: pointer;
-}
-
 .view-pawfile{
   display: inline-block;
   background-color: transparent;
@@ -80,22 +57,14 @@ a{
   color: white;
 }
 
-.edit-span{
-  position: absolute;
+.home .edit-span{
   left: 14px;
-  top: -26px;
-  opacity:0;
-  background-color:white;
-  padding:3px;
+  top: -20px;
 }
 
-.delete-span{
-  position: absolute;
+.home .delete-span{
   left: 32px;
-  top: -26px;
-  opacity:0;
-  background-color:white;
-  padding: 3px;
+  top: -20px;
 }
 
 .edit-button:hover + .edit-span, .edit-button:focus + .edit-span, .delete-button:hover + .delete-span, .delete-button:focus + .delete-span{

@@ -52,9 +52,11 @@ export class MedicalPost extends React.Component{
             </p>
           }
           <div className="option-icons">
-            <button onClick={()=>this.props.dispatch(showMedicalForm(true, this.props.postId))}><i className="fas fa-edit"></i></button>
-            <button onClick={()=>this.props.dispatch(deletePost(this.props.currentPetId, this.props.postId))}><i className="fas fa-trash-alt"></i></button>
-  
+            <button className="edit-button" aria-label = "edit" onClick={()=>this.props.dispatch(showMedicalForm(true, this.props.postId))}><i className="fas fa-edit"></i></button>
+            <span className = "edit-span">Edit</span>
+            
+            <button className="delete-button" aria-label = "delete" onClick={()=>this.props.dispatch(deletePost(this.props.currentPetId, this.props.postId))}><i className="fas fa-trash-alt"></i></button>
+            <span className = "delete-span js-delete-span">Delete</span>
           </div>
          
   

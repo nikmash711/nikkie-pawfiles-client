@@ -43,13 +43,13 @@
 }
 
 .sidebar .blurb .edit-span{
-  left: 28px;
-  top: -26px;
+  left: 0px;
+  top: -20px;
 }
 
 .sidebar .blurb .delete-span{
-  left: 46px;
-  top: -26px;
+  left: 22px;
+  top: -20px;
 }
 
 @media(min-width: 450px){
@@ -78,6 +78,14 @@
 
   .sidebar .blurb{
     min-width: 300px;
+  }
+
+  .sidebar .blurb .edit-span{
+    left: 28px;
+  }
+  
+  .sidebar .blurb .delete-span{
+    left: 50px;
   }
 }
 

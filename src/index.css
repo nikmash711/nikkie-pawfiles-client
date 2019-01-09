@@ -268,6 +268,53 @@ button.close{
   border: 2px solid black;
 }
 
+/*Delete and edit icons*/
+.option-icons{
+  position: absolute;
+  top: 12px;
+  left: 65%;
+  width: 80px;
+}
+
+.option-icons button, .option-icons button:focus{
+  background-color: transparent;
+  border: none;
+  outline:0;
+  font-size:15px;
+}
+
+.option-icons i{
+  margin: 5px;
+}
+
+.option-icons i:hover, .option-icons i:focus, .option-icons button:hover, .option-icons button:focus{
+  text-shadow: white 2px 2px 2px;
+  cursor: pointer;
+}
+
+.option-icons{
+  font-family: Montserrat;
+  font-weight: 700;
+}
+
+.option-icons span{
+  background-color: black;
+  color:white;
+}
+
+.edit-span, .delete-span{
+  position: absolute;
+  opacity:0;
+  background-color:white;
+  padding:3px;
+  font-size:10px;
+}
+
+.edit-button:hover + .edit-span, .edit-button:focus + .edit-span, .delete-button:hover + .delete-span, .delete-button:focus + .delete-span{
+  opacity:1;
+}
+
+
 /*TAPE WITH WORDS*/
 .tape{
   font-family: 'Gloria Hallelujah';

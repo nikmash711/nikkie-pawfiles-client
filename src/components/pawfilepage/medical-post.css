@@ -3,14 +3,24 @@
   position: relative;
 }
 
-.medical .post-list{
-  list-style-type: disc;
-}
-
-.medical .post-list li{
-  margin-left:20px; 
+.medical .option-icons i:hover, .medical .option-icons i:focus, .medical  .option-icons button:hover, .medical  .option-icons button:focus{
+  text-shadow: coral 2px 2px 2px;
+  cursor: pointer;
 }
 
 .medical p, .medical ul{
   padding: 10px 0;
+}
+
+.medical ul{
+  list-style: none;
+}
+
+.medical li:before {    
+  font-family: "Font Awesome 5 Free"; 
+  font-size:10px;
+  font-weight: 900; 
+  content: "\f1b0";
+  margin-right: 5px;
+  margin-left:10px; 
 }

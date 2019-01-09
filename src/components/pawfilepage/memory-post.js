@@ -20,8 +20,11 @@ export function MemoryPost(props){
      }
 
       <div className="option-icons">
-        <button onClick={()=>props.dispatch(showMemoryForm(true, props.postId))}><i className="fas fa-edit"></i></button>
-        <button onClick={()=>props.dispatch(deletePost(props.currentPetId, props.postId))}><i className="fas fa-trash-alt"></i></button>
+        <button className="edit-button" aria-label = "edit" onClick={()=>props.dispatch(showMemoryForm(true, props.postId))}><i className="fas fa-edit"></i></button>
+        <span className = "edit-span">Edit</span>
+
+        <button className="delete-button" aria-label = "delete" onClick={()=>props.dispatch(deletePost(props.currentPetId, props.postId))}><i className="fas fa-trash-alt"></i></button>
+        <span className = "delete-span js-delete-span">Delete</span>
 
       </div>
    

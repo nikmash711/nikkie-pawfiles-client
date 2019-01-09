@@ -13,6 +13,11 @@
   padding-right: 20px;
 }
 
+.memory .option-icons i:hover, .memory .option-icons i:focus, .memory  .option-icons button:hover, .memory  .option-icons button:focus{
+  text-shadow: lightgreen 2px 2px 2px;
+  cursor: pointer;
+}
+
 @media(min-width:600px){
   .memory.post{
     display: flex;

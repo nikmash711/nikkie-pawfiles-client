@@ -102,6 +102,16 @@ button.new-medical:hover, button.new-medical:focus{
   padding-bottom: 10px;
 }
 
+.post .edit-span{
+  left: 25px;
+  top: -20px;
+}
+
+.post .delete-span{
+  left: 50px;
+  top: -20px;
+}
+
 @media (min-width: 900px){
   .pawfile-page main{
     min-height:900px;
