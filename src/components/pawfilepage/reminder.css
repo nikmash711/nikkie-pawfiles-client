@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-between;
   padding: 10px 10px;
+  position: relative;
 }
 
 .reminder-note{
@@ -44,6 +45,33 @@
   width: 50px;
 }
 
-.reminder .option-icons button{
-    font-size:12px;
+.reminder .option-icons i {
+  margin: 2px;
+  font-size:12px;
+}
+
+.sidebar .blurb .reminder .delete-span{
+  left: 0;
+  top: -10px;
+}
+
+.sidebar .blurb .reminder .edit-span{
+  left: 20px;
+  top: -10px;
+}
+
+@media(min-width:450px){
+  .sidebar .reminder .option-icons i {
+    margin: 5px;
+  }
+
+  .sidebar .blurb .reminder .delete-span{
+    left: 5px;
+    top: -10px;
+  }
+
+  .sidebar .blurb .reminder .edit-span{
+    left: 30px;
+    top: -10px;
+  }
 }

@@ -13,8 +13,13 @@ export class Reminder extends React.Component{
     return(
       <li data-id={`${this.props.reminderId}`} className="reminder">
         <div className="option-icons">
-          <button onClick={()=> this.props.dispatch(deleteReminder(this.props.currentPetId, this.props.reminderId))}><i className="fas fa-trash-alt"></i></button>
-          <button onClick={()=> this.props.dispatch(showReminderForm(true, this.props.reminderId))}><i className="fas fa-edit"></i></button>
+          <button className="delete-button" aria-label = "delete" onClick={()=> this.props.dispatch(deleteReminder(this.props.currentPetId, this.props.reminderId))}><i className="fas fa-trash-alt"></i></button>
+          <span className = "delete-span js-delete-span">Delete</span>
+
+
+          <button className="edit-button" aria-label = "edit" onClick={()=> this.props.dispatch(showReminderForm(true, this.props.reminderId))}><i className="fas fa-edit"></i></button>
+          <span className = "edit-span">Edit</span>
+
         </div>
 
         <span className="reminder-note">
