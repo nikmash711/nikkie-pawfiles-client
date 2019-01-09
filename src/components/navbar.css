@@ -37,7 +37,7 @@
   background-color: transparent;
   border: none;
   font-family: Montserrat;
-  font-size: 15px;
+  font-size: 18px;
 }
 
 .link:hover:before, .link:focus:before{
@@ -51,6 +51,21 @@
   text-align:left;
   display: inline-block;
   font-weight: 700;
+}
+
+.logo:after, .logo:after, .logo:before, .logo:before{
+  font-family: "Font Awesome 5 Free"; 
+  font-weight: 900; 
+  content: "\f1b0";
+  margin-left: 5px;
+  margin-right:3px;
+  opacity:0;
+  transition: .5s;
+}
+
+.logo:hover:after, .logo:focus:after, .logo:hover:before, .logo:focus:before{
+  opacity:1;
+  transition: .5s;
 }
 
 .link:hover, .link:focus {
@@ -72,6 +87,10 @@
   position: absolute;
   left: 90px;
   top: 17px;
+}
+
+.logo span{
+  padding-left: 2px;
 }
 
 .icon{
