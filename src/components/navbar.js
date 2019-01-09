@@ -34,7 +34,7 @@ export class Navbar extends React.Component{
         <button onClick={()=>this.props.dispatch(toggleNavbar())} className="icon right"><i className="fa fa-bars"></i></button>
          <div className = "right">
          {this.props.loggedIn && <Link className={className} to ="/home">HOME</Link>}
-        {/* <Link className={className} to ="/about">About</Link> */}
+        <Link className={className} to ="/about">About</Link>
         { this.props.loggedIn && <Link className={className} to ="/settings">SETTINGS</Link>}
          {this.props.loggedIn && <button id="logout" className={className} onClick={() => this.logOut()}>LOGOUT</button>}
 
