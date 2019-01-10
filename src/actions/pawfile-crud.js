@@ -1,4 +1,5 @@
 import {API_BASE_URL} from '../config';
+import {crudError} from './index'
 import {normalizeResponseErrors} from './utils';
 
 /* GENERAL */
@@ -7,11 +8,6 @@ export const CHANGE_ERROR = "CHANGE_ERROR";
 export const changeError = bool => ({
     type: CHANGE_ERROR,
     bool
-})
-
-export const CRUD_ERROR = "CRUD_ERROR";
-export const crudError = () => ({
-  type: CRUD_ERROR,
 })
 
 /* GET ACTIONS */
@@ -44,7 +40,7 @@ export const fetchPawfiles = () => (dispatch, getState) => {
             dispatch(fetchPawfilesSuccess(pawfiles));
         })
         .catch(err => {
-            dispatch(crudError());
+            dispatch(crudError("An error has occured. Please try again soon!"));
         });
 };
 
@@ -89,7 +85,7 @@ export const submitPawfile = (values, currentPetId) => (dispatch, getState) =>{
     .then(pawfile => {
         dispatch(submitPawfileSuccess(pawfile, currentPetId));
     }).catch(err => {
-        dispatch(crudError());
+        dispatch(crudError("An error has occured. Please try again soon!"));
     });
 }
 
@@ -124,6 +120,6 @@ export const deletePawfile = (currentPetId) => (dispatch, getState) =>{
       dispatch(deletePawfileSuccess(currentPetId));
   })
   .catch(err => {
-      dispatch(crudError());
-  });
+    dispatch(crudError("An error has occured. Please try again soon!"));
+});
 }

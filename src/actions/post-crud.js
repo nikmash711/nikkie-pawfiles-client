@@ -1,4 +1,5 @@
 import {API_BASE_URL} from '../config';
+import {crudError} from './index'
 import {normalizeResponseErrors} from './utils';
 
 /* POST & PUT ACTIONS */
@@ -13,11 +14,6 @@ export const submitPostSuccess = (post, currentPetId, postId) => ({
     post,
     currentPetId,
     postId
-})
-
-export const CRUD_ERROR = "CRUD_ERROR";
-export const crudError = () => ({
-  type: CRUD_ERROR,
 })
 
 export const submitPost = (values, currentPetId, postId) => (dispatch, getState) =>{
@@ -42,7 +38,7 @@ export const submitPost = (values, currentPetId, postId) => (dispatch, getState)
         console.log('in actions, got back post:', post);
         dispatch(submitPostSuccess(post, currentPetId, postId));
     }).catch(err => {
-        dispatch(crudError(err));
+        dispatch(crudError("An error has occured. Please try again soon!"));
     });
 }
 
@@ -76,6 +72,6 @@ export const deletePost = (currentPetId, postId) => (dispatch, getState) =>{
         dispatch(deletePostSuccess(currentPetId, postId));
     })
     .catch(err => {
-        dispatch(crudError(err));
+        dispatch(crudError("An error has occured. Please try again soon!"));
     });
   }

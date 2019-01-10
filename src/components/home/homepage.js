@@ -38,8 +38,18 @@ export class HomePage extends React.Component{
       )
     }
 
+    let error;
+    if (this.props.error) {
+        error = (
+            <div className="page-error" aria-live="polite">
+                {this.props.error}
+            </div>
+        );
+    }
+
     return(
       <div className="home">
+        {error}
         <Navbar/>
         <MyPawfiles/>
         <Footer/>
@@ -50,7 +60,8 @@ export class HomePage extends React.Component{
 
 const mapStateToProps = state => ({
   firstName: state.auth.currentUser.firstName,
-  pawfilesPending: state.pawfile.pawfilesPending
+  pawfilesPending: state.pawfile.pawfilesPending,
+  error: state.pawfile.error,
 });
 
 export default requiresLogin()(connect(mapStateToProps)(HomePage));

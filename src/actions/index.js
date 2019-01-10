@@ -57,6 +57,12 @@ export const changeCategoryFilter = (categoryFilter) =>({
     categoryFilter
 })
 
+export const CRUD_ERROR = "CRUD_ERROR";
+export const crudError = (error) => ({
+  type: CRUD_ERROR,
+  error
+})
+
 
 
 

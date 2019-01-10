@@ -1,5 +1,7 @@
 import {API_BASE_URL} from '../config';
 import {normalizeResponseErrors} from './utils';
+import {crudError} from './index'
+
 
 /* POST & PUT ACTIONS */
 export const SUBMIT_REMINDER_REQUEST = "SUBMIT_REMINDER_REQUEST";
@@ -13,11 +15,6 @@ export const submitReminderSuccess = (reminder, currentPetId, reminderId) => ({
     reminder,
     currentPetId,
     reminderId
-})
-
-export const CRUD_ERROR = "CRUD_ERROR";
-export const crudError = () => ({
-  type: CRUD_ERROR,
 })
 
 export const submitReminder = (values, currentPetId, reminderId) => (dispatch, getState) =>{
@@ -41,7 +38,7 @@ export const submitReminder = (values, currentPetId, reminderId) => (dispatch, g
         console.log('in actions, got back pawfile:', reminder);
         dispatch(submitReminderSuccess(reminder, currentPetId, reminderId));
     }).catch(err => {
-        dispatch(crudError(err));
+        dispatch(crudError("An error has occured. Please try again soon!"));
     });
 }
 
@@ -76,6 +73,6 @@ export const deleteReminder = (currentPetId, reminderId) => (dispatch, getState)
         dispatch(deleteReminderSuccess(currentPetId, reminderId));
     })
     .catch(err => {
-        dispatch(crudError(err));
+        dispatch(crudError("An error has occured. Please try again soon!"));
     });
   }

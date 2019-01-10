@@ -1,6 +1,6 @@
 
 import {SubmissionError} from 'redux-form';
-
+import {crudError} from './index'
 import {API_BASE_URL} from '../config'; 
 import {normalizeResponseErrors} from './utils';
 import {refreshProfileAuthToken} from './auth'
@@ -10,11 +10,6 @@ export const updatedUserSuccess = (updatedUser, message) => ({
     type: UPDATED_USER_SUCCESS,
     updatedUser,
     message
-})
-
-export const CRUD_ERROR = "CRUD_ERROR";
-export const crudError = () => ({
-  type: CRUD_ERROR,
 })
 
 export const registerUser = user => dispatch => {

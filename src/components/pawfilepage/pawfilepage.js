@@ -47,9 +47,19 @@ export class PawfilePage extends React.Component{
       )
     }
 
-    if(this.props.error){
-      console.log('in pawfile page the error is', this.props.error);
-      return <Redirect to="/home" /> 
+    // if(this.props.error){
+    //   console.log('in pawfile page the error is', this.props.error);
+    //   return <Redirect to="/home" /> 
+    // }
+
+    let error;
+    if (this.props.error) {
+        error = (
+            <div className="page-error" aria-live="polite">
+                {this.props.error}
+            </div>
+        );
+        console.log('ERROR IS', this.props.error);
     }
 
     // if user is trying to access a pet that no longer exists or never did, or just deleted the pawfile from within the pawfile itself, then redirect them
@@ -59,6 +69,7 @@ export class PawfilePage extends React.Component{
 
     return(
       <div className="pawfile-page">
+        {error}
         <Navbar/>
         <Sidebar id={this.props.match.params.pawfileId}/>
         <MainSection id={this.props.match.params.pawfileId}/>
