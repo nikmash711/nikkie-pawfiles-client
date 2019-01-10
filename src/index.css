@@ -31,6 +31,7 @@ html,body{
   box-shadow: 10px 10px 20px #000;
   transition:.5s;
   vertical-align: top;
+  background-color: white;
 }
 
 .blurb:hover, .blurb:focus{
