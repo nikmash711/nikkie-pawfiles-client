@@ -13,6 +13,7 @@ export class LoginForm extends React.Component {
 
     render() {
         let error;
+        console.log('in login form, this.props.error is', this.props.error);
         if (this.props.error) {
             error = (
                 <div className="form-error" aria-live="polite">
@@ -61,5 +62,5 @@ export class LoginForm extends React.Component {
 
 export default reduxForm({
     form: 'login',
-    onSubmitFail: (errors, dispatch) => dispatch(focus('login', 'username'))
+    onSubmitFail: (error, dispatch) => dispatch(focus('login', 'username'))
 })(LoginForm);

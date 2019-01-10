@@ -10,8 +10,6 @@ export default class Input extends React.Component {
 
     render() {
         const Element = this.props.element || 'input';
-
-        console.log('in input.js', this.props);
     
         //make an array of all aria- properties, and then build the object with the different parts of the array
         const allyProps = {['aria-describedby']: this.props['aria-describedby']}
