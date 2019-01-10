@@ -107,7 +107,7 @@ export const refreshAuthToken = () => (dispatch, getState) => {
             dispatch(clearAuth());
             clearAuthToken(authToken);
         });
-};
+}; 
 
 export const refreshProfileAuthToken = () => (dispatch, getState) => {
     console.log('refreshing profile')
