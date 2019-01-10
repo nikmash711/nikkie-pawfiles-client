@@ -27,17 +27,7 @@ export class HomePage extends React.Component{
   }
 
   render(){
-  
-    if(this.props.pawfilesPending){
-      console.log('pending');
-      return(
-        <div className="home">
-          <Navbar/>
-          <Footer/>
-      </div>
-      )
-    }
-
+ 
     return(
       <div className="home">
         <Navbar/>
@@ -50,7 +40,6 @@ export class HomePage extends React.Component{
 
 const mapStateToProps = state => ({
   firstName: state.auth.currentUser.firstName,
-  pawfilesPending: state.pawfile.pawfilesPending,
 });
 
 export default requiresLogin()(connect(mapStateToProps)(HomePage));

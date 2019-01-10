@@ -1,0 +1,75 @@
+/* #paw-animation 
+these are the animated footsteps utilizing the fadeinout
+{
+  width: 100px;
+  height: 100px;
+  background: red;
+  position: relative;
+  -webkit-animation: mymove 5s infinite; 
+  animation: mymove 5s infinite;
+} */
+
+.loading-div{
+  width: fit-content;
+  margin:auto;
+  padding-top: 20%;
+}
+
+.loading-div h2{
+    margin: 20px auto;
+    padding:10px;
+    font-size:80px;
+    font-family:"Reenie Beanie",arial,sans-serif;
+    background-color: black;
+    color: white;
+    text-shadow: black 1px 1px 0px;
+    transition: .5s;
+    width: fit-content;
+}
+
+#first-paw-animation {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  -webkit-animation: mymove 2s infinite; /* Safari 4.0 - 8.0 */
+  animation: mymove 2s infinite;
+  opacity:1;
+}
+
+#second-paw-animation {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  -webkit-animation: mymovetwo 2s infinite; /* Safari 4.0 - 8.0 */
+  animation: mymovetwo 2s infinite;
+  opacity:0;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes mymove {
+  0% {left: 0; opacity: 1;}
+  50% {opacity: 0;}
+  100% {opacity:1;}
+}
+
+@keyframes mymove {
+  0% {left: 0; opacity: 1;}
+  50% {opacity: 0;}
+  100% {opacity:1;}
+}
+
+@-webkit-keyframes mymovetwo {
+  0% {left: 0; opacity: 0;}
+  50% {opacity: 1;}
+  100% {opacity:0;}
+}
+
+@keyframes mymovetwo {
+  0% {left: 0; opacity: 0;}
+  50% {opacity: 1;}
+  100% {opacity:0;}
+}
+
+main.loading-animation{
+  height:100vh;
+}

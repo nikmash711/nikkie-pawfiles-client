@@ -5,6 +5,7 @@ import AddNewPawfileButton from './add-new-pawfile-button';
 import PawfileForm from '../pawfile-form';
 import SortBySelect from './sort-by-select';
 import Header from './header';
+import LoadingAnimation from '../loading-animation'
 import {changeSearchTerm} from '../../actions/index';
 import './my-pawfiles.css'
 
@@ -14,6 +15,15 @@ export class MyPawfiles extends React.Component{
   }
 
   render(){
+     
+    if(this.props.pawfilesPending){
+      console.log('pending');
+      return(
+        <LoadingAnimation/>
+      )
+    }
+
+
     let error;
     if (this.props.error) {
         error = (
@@ -23,7 +33,7 @@ export class MyPawfiles extends React.Component{
         );
         window.scrollTo(0, 0);
     }
-    
+
     console.log('mypawfiles.js props are', this.props.pawfiles);
     return(
       <main>
@@ -48,6 +58,7 @@ const mapStateToProps = state => ({
   pawfiles: state.pawfile.pawfiles,
   showPawfileForm: state.pawfile.showPawfileForm,
   error: state.pawfile.error,
+  pawfilesPending: state.pawfile.pawfilesPending,
 });
 
 export default connect(mapStateToProps)(MyPawfiles);

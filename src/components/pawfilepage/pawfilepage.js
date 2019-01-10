@@ -7,7 +7,6 @@ import MainSection from './main-section';
 import PawfileForm from '../pawfile-form';
 import MedicalForm from './medical-form'
 import MemoryForm from './memory-form'
-import {Redirect} from 'react-router-dom'
 import {showMedicalForm, showMemoryForm, changeSearchTerm, changeCategoryFilter, changeCurrentPetId} from '../../actions/index';
 import { fetchPawfiles } from '../../actions/pawfile-crud';
 import {changeSuccessMessage} from '../../actions/auth'
@@ -37,19 +36,17 @@ export class PawfilePage extends React.Component{
 
   render(){    
     console.log('pawfile page props are', this.props)
-    if(this.props.pawfilesPending){
-      console.log('PENDING pawfilepage!!!!!!');
-      return(
-        <div className="pawfile-page">
-          <Navbar/>
-          <Footer/>
-        </div>
-      )
-    }
 
     // if user is trying to access a pet that no longer exists or never did, or just deleted the pawfile from within the pawfile itself, then redirect them
     if(!this.validId(this.props.match.params.pawfileId)){
-      return <Redirect to="/home" /> 
+      return(
+        <div className="pawfile-page">
+          <Navbar/>
+          <Sidebar/>
+          <MainSection/>
+          <Footer/>
+        </div>
+      );
     }
 
     return(

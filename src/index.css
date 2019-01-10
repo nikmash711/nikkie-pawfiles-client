@@ -13,6 +13,12 @@ html,body{
   font-family:Arial, Helvetica, sans-serif;
 }
 
+body{
+  background: url("https://www.middletonhallretirementvillage.co.uk/wp-content/uploads/2018/01/pinboard-background-compressed.jpg") no-repeat fixed;
+  background-size: cover; 
+
+}
+
 .center-me{
   margin:auto;
 }

@@ -1,6 +1,6 @@
 .pawfile-page main{
-  background: url("https://www.middletonhallretirementvillage.co.uk/wp-content/uploads/2018/01/pinboard-background-compressed.jpg") no-repeat fixed;
-  background-size: cover; 
+  /* background: url("https://www.middletonhallretirementvillage.co.uk/wp-content/uploads/2018/01/pinboard-background-compressed.jpg") no-repeat fixed;
+  background-size: cover;  */
   color: white;
   text-align: center;
   padding-top: 20px;
@@ -160,5 +160,12 @@ button.new-medical:hover, button.new-medical:focus{
 @media (min-width: 1120px){
   .post .option-icons{
     left: 88%;
+  }
+}
+
+/*for really large screens with large height*/
+@media(min-height:940px){
+  .pawfile-page main{
+    height:100vh;
   }
 }

@@ -76,7 +76,7 @@ export class MemoryForm extends React.Component{
             </Field>
             
             <div className="buttons">
-              <button type="submit">Save</button>
+              <button disabled={this.props.pristine || this.props.submitting} type="submit">Save</button>
               <button onClick={()=>this.props.dispatch(showMemoryForm(false, undefined))} type="button">Cancel</button>
             </div>
 

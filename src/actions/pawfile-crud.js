@@ -38,6 +38,8 @@ export const fetchPawfiles = () => (dispatch, getState) => {
         .then(res => normalizeResponseErrors(res))
         .then(res => res.json())
         .then(pawfiles => {
+            // setTimeout(() => resolve(_search(name)), 500);
+
             dispatch(fetchPawfilesSuccess(pawfiles));
         })
         .catch(err => {
