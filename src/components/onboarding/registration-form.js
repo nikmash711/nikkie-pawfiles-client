@@ -22,6 +22,16 @@ export class RegistrationForm extends React.Component {
     }
 
     render() {
+        let error;
+        console.log('props.error', this.props.error)
+        if (this.props.error) {
+            error = (
+                <div className="form-error" aria-live="polite">
+                    {this.props.error}
+                </div>
+            );
+        }
+
         return (
             <form
                 className="onboarding-form register form blurb"
@@ -29,6 +39,9 @@ export class RegistrationForm extends React.Component {
                     this.onSubmit(values)
                 )}>
                 <h2>Register</h2>
+
+                {error}
+
                 <Field 
                     component={Input} 
                     type="text" 
@@ -84,7 +97,7 @@ export class RegistrationForm extends React.Component {
 export default reduxForm({
     form: 'registration',
     onSubmitFail: (error, dispatch) => {
-        console.log('onsubmit fail, Object.keys(error)',Object.keys(error));
-        dispatch(focus('registration', 'username'));
+        console.log('obj.keys', Object.keys(error)[0])
+        dispatch(focus('registration', Object.keys(error)[0]));
     }
 })(RegistrationForm);

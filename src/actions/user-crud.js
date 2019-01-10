@@ -28,13 +28,8 @@ export const registerUser = user => dispatch => {
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
     .catch(err => {
-        console.log('IN REGISTER USER, ERR IS', err);
-        const {reason, message, location} = err;
-        if (reason === 'ValidationError') {
-            console.log('ITS A VALIDATION ERROR')
-            console.log('submission error:', new SubmissionError({
-                [location]: message
-            }) );
+        const {reason, message, location, status} = err;
+        if (reason === 'ValidationError' || status === 401) {
             // Convert ValidationErrors into SubmissionErrors for Redux Form
             return Promise.reject(
                 new SubmissionError({
@@ -42,11 +37,13 @@ export const registerUser = user => dispatch => {
                 })
             );
         }
-        return Promise.reject(
-            new SubmissionError({
-                _error: err.message
-            })
-        );
+        else{
+            return Promise.reject(
+                new SubmissionError({
+                    _error: 'Unable to register, please try again',
+                })
+            );
+        }
     });
 };
 
@@ -70,8 +67,8 @@ export const updatedUser = user => (dispatch, getState) => {
         })
         .catch(err => {
 
-            const {reason, message, location} = err;
-            if (reason === 'ValidationError') {
+            const {reason, message, location, status} = err;
+            if (reason === 'ValidationError' || status === 401) {
                 // Convert ValidationErrors into SubmissionErrors for Redux Form
                 return Promise.reject(
                     new SubmissionError({
@@ -79,11 +76,13 @@ export const updatedUser = user => (dispatch, getState) => {
                     })
                 );
             }
-            return Promise.reject(
-                new SubmissionError({
-                    _error: err.message
-                })
-            );
+            else{
+                return Promise.reject(
+                    new SubmissionError({
+                        _error: 'Unable to update, please try again',
+                    })
+                );
+            }
         });
 };
 
@@ -103,13 +102,20 @@ export const updatePassword = user => (dispatch, getState) => {
             dispatch(updatedUserSuccess(updatedUser, 'Your password has been successfully updated'));
         })
         .catch(err => {
-            const {reason, message, location} = err;
-            if (reason === 'ValidationError') {
+            const {reason, message, location, status} = err;
+            if (reason === 'ValidationError' || status === 401) {
                 // Convert ValidationErrors into SubmissionErrors for Redux Form
                 return Promise.reject(
                     new SubmissionError({
                         [location]: message
-                    }) //tells redux form that our submission didnt work
+                    })
+                );
+            }
+            else{
+                return Promise.reject(
+                    new SubmissionError({
+                        _error: 'Unable to update password, please try again',
+                    })
                 );
             }
         });

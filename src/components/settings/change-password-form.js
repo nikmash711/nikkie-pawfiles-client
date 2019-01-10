@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import Input from '../input';
-import {reduxForm, Field, Fieldset, SubmissionError, focus, reset} from 'redux-form';
+import {reduxForm, Field, Fieldset, focus, reset} from 'redux-form';
 import {updatePassword} from '../../actions/user-crud';
 import {required, nonEmpty, matches, length, isTrimmed} from '../validators';
 
@@ -17,7 +17,15 @@ export class ChangePasswordForm extends React.Component{
 }
 
   render(){
-  
+    let error;
+    if (this.props.error) {
+        error = (
+            <div className="form-error" aria-live="polite">
+                {this.props.error}
+            </div>
+        );
+    }
+
     return(
         <form
           className="settings-form form"
@@ -25,7 +33,7 @@ export class ChangePasswordForm extends React.Component{
               this.onSubmit(values)
           )}>
           <h2>Password</h2>
-
+            {error}
           <Field
               component={Input}
               type="password"
@@ -66,4 +74,7 @@ const afterSubmit = (result, dispatch) => dispatch(reset('ChangePasswordForm'));
 export default connect()(reduxForm({
   form:'ChangePasswordForm',
   onSubmitSuccess: afterSubmit,
+  onSubmitFail: (error, dispatch) => {
+    dispatch(focus('BasicAccountInfoForm', Object.keys(error)[0]));
+  }
 })(ChangePasswordForm));

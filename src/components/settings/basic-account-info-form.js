@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import Input from '../input';
-import {reduxForm, Field, Fieldset, SubmissionError, focus} from 'redux-form';
+import {reduxForm, Field, Fieldset, focus} from 'redux-form';
 import {updatedUser} from '../../actions/user-crud';
 import {required, nonEmpty, matches, length, isTrimmed} from '../validators';
 import {formatName} from '../helper-functions'
@@ -15,6 +15,14 @@ export class BasicAccountInfoForm extends React.Component{
 }
 
   render(){
+    let error;
+    if (this.props.error) {
+        error = (
+            <div className="form-error" aria-live="polite">
+                {this.props.error}
+            </div>
+        );
+    }
   
     return(
         <form
@@ -23,6 +31,7 @@ export class BasicAccountInfoForm extends React.Component{
               this.onSubmit(values)
           )}>
           <h2>Account</h2>
+          {error}
           <Field 
               component={Input} 
               type="text" 
@@ -72,4 +81,7 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps)(reduxForm({
   form:'BasicAccountInfoForm',
+  onSubmitFail: (error, dispatch) => {
+    dispatch(focus('BasicAccountInfoForm', Object.keys(error)[0]));
+}
 })(BasicAccountInfoForm));
