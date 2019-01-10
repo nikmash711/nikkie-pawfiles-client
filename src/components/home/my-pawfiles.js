@@ -14,11 +14,21 @@ export class MyPawfiles extends React.Component{
   }
 
   render(){
-
+    let error;
+    if (this.props.error) {
+        error = (
+            <div className="error-message" aria-live="polite">
+                {this.props.error}
+            </div>
+        );
+        window.scrollTo(0, 0);
+    }
+    
     console.log('mypawfiles.js props are', this.props.pawfiles);
     return(
       <main>
         <div className="center-me">
+        {error}
           <Header/>
           <nav className="options">
             {this.props.pawfiles.length>1 && <SortBySelect/>}
@@ -37,6 +47,7 @@ export class MyPawfiles extends React.Component{
 const mapStateToProps = state => ({
   pawfiles: state.pawfile.pawfiles,
   showPawfileForm: state.pawfile.showPawfileForm,
+  error: state.pawfile.error,
 });
 
 export default connect(mapStateToProps)(MyPawfiles);

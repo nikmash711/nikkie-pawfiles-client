@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {reduxForm, Field, Fieldset, SubmissionError, focus} from 'redux-form';
+import {reduxForm, Field, Fieldset, focus} from 'redux-form';
 import Input from '../input';
 import {showMedicalForm} from '../../actions/index';
 import {submitPost} from '../../actions/post-crud';
@@ -21,17 +21,27 @@ export class MedicalForm extends React.Component{
     values.prescriptions = stringToArrayList(values.prescriptions);
     values.symptoms = stringToArrayList(values.symptoms);
 
-    this.props.dispatch(submitPost(values, this.props.currentPetId, this.props.currentPostId));
-    this.props.dispatch(showMedicalForm(false, undefined));
+    return this.props.dispatch(submitPost(values, this.props.currentPetId, this.props.currentPostId));
   }
 
   render(){
+    let error;
+    if (this.props.error) {
+        error = (
+            <div className="form-error" aria-live="polite">
+                {this.props.error}
+            </div>
+        );
+    }
+
     return(
       <div className='form-modal med'>
           <form className="form" onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
 
           <h2 className="post-heading">{this.props.initialValues.title ? this.props.initialValues.title : "New Medical Post"}</h2>
           
+          {error}
+
             <Field
               component={Input}
               className="required"
@@ -159,4 +169,10 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps)(reduxForm({
   form:'MedicalForm',
+  onSubmitFail: (error, dispatch) => {
+    dispatch(focus('MedicalForm', Object.keys(error)[0]));
+  },
+  onSubmitSuccess: (result, dispatch) => {
+    dispatch(showMedicalForm(false, undefined));
+  }
 })(MedicalForm));

@@ -1,6 +1,7 @@
 import {API_BASE_URL} from '../config';
 import {crudError} from './index'
 import {normalizeResponseErrors} from './utils';
+import {SubmissionError} from 'redux-form';
 
 /* POST & PUT ACTIONS */
 export const SUBMIT_POST_REQUEST = "SUBMIT_POST_REQUEST";
@@ -23,7 +24,7 @@ export const submitPost = (values, currentPetId, postId) => (dispatch, getState)
     dispatch(submitPostRequest());
     const authToken = getState().auth.authToken;
 
-    fetch(path, { 
+    return fetch(path, { 
         method: method,
         headers: {
             'Accept': 'application/json',
@@ -38,7 +39,23 @@ export const submitPost = (values, currentPetId, postId) => (dispatch, getState)
         console.log('in actions, got back post:', post);
         dispatch(submitPostSuccess(post, currentPetId, postId));
     }).catch(err => {
-        dispatch(crudError("An error has occured. Please try again soon!"));
+        dispatch(crudError("An error has occured. Please try refreshing!"));
+        const {message, location, status} = err;
+        if (status === 400) {
+            // Convert errors into SubmissionErrors for Redux Form
+            return Promise.reject(
+                new SubmissionError({
+                    [location]: message
+                })
+            );
+        }
+        else{
+            return Promise.reject(
+                new SubmissionError({
+                    _error: 'Unable to create post, please try again',
+                })
+            );
+        }
     });
 }
 
@@ -72,6 +89,6 @@ export const deletePost = (currentPetId, postId) => (dispatch, getState) =>{
         dispatch(deletePostSuccess(currentPetId, postId));
     })
     .catch(err => {
-        dispatch(crudError("An error has occured. Please try again soon!"));
+        dispatch(crudError("An error has occured. Please try refreshing!"));
     });
   }

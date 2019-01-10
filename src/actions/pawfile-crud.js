@@ -1,4 +1,5 @@
 import {API_BASE_URL} from '../config';
+import {SubmissionError} from 'redux-form';
 import {crudError} from './index'
 import {normalizeResponseErrors} from './utils';
 
@@ -40,7 +41,7 @@ export const fetchPawfiles = () => (dispatch, getState) => {
             dispatch(fetchPawfilesSuccess(pawfiles));
         })
         .catch(err => {
-            dispatch(crudError("An error has occured. Please try again soon!"));
+            dispatch(crudError("An error has occured. Please try refreshing!"));
         });
 };
 
@@ -71,7 +72,9 @@ export const submitPawfile = (values, currentPetId) => (dispatch, getState) =>{
 
     dispatch(submitPawfileRequest());
     const authToken = getState().auth.authToken;
-    fetch(path, { 
+
+    //whenever there's a promise return it
+    return fetch(path, { 
         method: method,
         headers: {
             'Accept': 'application/json',
@@ -85,7 +88,23 @@ export const submitPawfile = (values, currentPetId) => (dispatch, getState) =>{
     .then(pawfile => {
         dispatch(submitPawfileSuccess(pawfile, currentPetId));
     }).catch(err => {
-        dispatch(crudError("An error has occured. Please try again soon!"));
+        dispatch(crudError("An error has occured. Please try refreshing!"));
+        const {message, location, status} = err;
+        if (status === 400) {
+            // Convert errors into SubmissionErrors for Redux Form
+            return Promise.reject(
+                new SubmissionError({
+                    [location]: message
+                })
+            );
+        }
+        else{
+            return Promise.reject(
+                new SubmissionError({
+                    _error: 'Unable to create pawfile, please try again',
+                })
+            );
+        }
     });
 }
 
@@ -120,6 +139,6 @@ export const deletePawfile = (currentPetId) => (dispatch, getState) =>{
       dispatch(deletePawfileSuccess(currentPetId));
   })
   .catch(err => {
-    dispatch(crudError("An error has occured. Please try again soon!"));
+    dispatch(crudError("An error has occured. Please try refreshing!"));
 });
 }

@@ -114,8 +114,8 @@ button.new-medical:hover, button.new-medical:focus{
 }
 
 @media (min-width: 700px){
-  .option-icons {
-      left: 86%;
+  .pawfile-page .option-icons {
+      left: 82%;
   }
 }
 
@@ -136,8 +136,8 @@ button.new-medical:hover, button.new-medical:focus{
     display:inline;
   }
 
-  .option-icons {
-    left: 84%;
+  .pawfile-page  .option-icons {
+    left: 72%;
 }
 
 .form-modal.med button.close, .form-modal.mem button.close{

@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {reduxForm, Field, Fieldset, SubmissionError, focus} from 'redux-form';
+import {reduxForm, Field, Fieldset, focus} from 'redux-form';
 import Input from './input';
 import {showPawfileForm} from '../actions/index';
 import {submitPawfile} from '../actions/pawfile-crud';
@@ -20,16 +20,27 @@ export class PawfileForm extends React.Component{
 
   onSubmit(values){
     values.name = formatName(values.name);
-    this.props.dispatch(submitPawfile(values, this.props.currentPawfileFormId));
-    this.props.dispatch(showPawfileForm(false, undefined));
+    return this.props.dispatch(submitPawfile(values, this.props.currentPawfileFormId));
+    //this is what tells redux form that the submit succeeded or failed
   }
 
   render(){
+    let error;
+    if (this.props.error) {
+        error = (
+            <div className="form-error" aria-live="polite">
+                {this.props.error}
+            </div>
+        );
+    }
+    
     return(
       <div className='form-modal'>
           <form className="form blurb" onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
 
             <h2>{this.props.initialValues.name ? this.props.initialValues.name : "New Pawfile"}</h2>
+
+            {error}
 
             <Field
               component={Input}
@@ -124,7 +135,7 @@ export class PawfileForm extends React.Component{
             />
 
             <div className="buttons">
-              <button type="submit">Save Pawfile</button>
+              <button type="submit" disabled={this.props.pristine || this.props.submitting}>Save Pawfile</button>
               <button onClick={()=>this.props.dispatch(showPawfileForm(false, undefined))} type="button">Cancel</button>
             </div>
 
@@ -161,4 +172,11 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps)(reduxForm({
   form:'PawfileForm',
+  onSubmitFail: (error, dispatch) => {
+    console.log('failed, error in form is', error);
+    dispatch(focus('PawfileForm', Object.keys(error)[0]));
+  },
+  onSubmitSuccess: (result, dispatch) => {
+    dispatch(showPawfileForm(false, undefined));
+  }
 })(PawfileForm));

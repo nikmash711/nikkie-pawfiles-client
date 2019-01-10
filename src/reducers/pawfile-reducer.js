@@ -110,6 +110,7 @@ export const pawfileReducer = (state = initialState, action)=> {
   else if (action.type===CRUD_ERROR){
     return Object.assign({}, state, {
       pawfilesPending: false,
+      loadPending: false,
       error: action.error,
     })
   }

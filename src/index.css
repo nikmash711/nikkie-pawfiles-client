@@ -198,6 +198,7 @@ input, select, textarea{
   top: 90%;
   padding: 2px;
   font-family: Arial;
+  text-align: center;
 }
 
 .form label .form-error{
@@ -395,4 +396,21 @@ select.tape{
 
 .yellow{
   text-shadow: #fffd9b 1px 1px 0px;
+}
+
+/* ERROR HANDLING */
+.error-message{
+  margin:auto;
+  margin-top:20px;
+  background-color:red;
+  color: black;
+  width: 270px;
+  font-weight: 700;
+  padding: 20px;
+}
+
+@media(min-width:450px){
+  .error-message{
+    width:400px;
+  }
 }

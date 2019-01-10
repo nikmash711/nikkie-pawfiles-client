@@ -5,7 +5,7 @@ import Footer from '../footer'
 import BasicAccountInfoForm from './basic-account-info-form'
 import ChangePasswordForm from './change-password-form'
 import requiresLogin from '../requires-login';
-import {changeSuccessMessage, refreshProfileAuthToken} from '../../actions/auth';
+import {changeSuccessMessage} from '../../actions/auth';
 import './settings-page.css'
 
 
@@ -35,16 +35,17 @@ export class SettingsPage extends React.Component{
   }
 
   render(){
-    
+
     return(
       <div className="settings">
         <Navbar/>
         <main className="settings-main">
           {this.props.successMessage && 
-          <div className="updated-message">
+          <div className="updated-message" aria-live="polite">
             {this.props.successMessage}
           </div>
           }
+
           <BasicAccountInfoForm/>
           <ChangePasswordForm/>
         </main>
@@ -55,7 +56,7 @@ export class SettingsPage extends React.Component{
 }
 
 const mapStateToProps = state => ({
-  successMessage: state.auth.successMessage
+  successMessage: state.auth.successMessage,
 });
 
 export default requiresLogin()(connect(mapStateToProps)(SettingsPage));

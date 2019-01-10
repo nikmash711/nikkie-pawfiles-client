@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {reduxForm, Field, Fieldset, SubmissionError, focus} from 'redux-form';
+import {reduxForm, Field, Fieldset, focus} from 'redux-form';
 import Input from '../input';
 import {showMemoryForm} from '../../actions/index';
 import {submitPost} from '../../actions/post-crud';
@@ -15,16 +15,26 @@ export class MemoryForm extends React.Component{
 
   onSubmit(values){
     values.type="memory";
-    this.props.dispatch(submitPost(values, this.props.currentPetId, this.props.currentPostId));
-    this.props.dispatch(showMemoryForm(false, undefined));
+    return this.props.dispatch(submitPost(values, this.props.currentPetId, this.props.currentPostId));
   }
 
   render(){
+    let error;
+    if (this.props.error) {
+        error = (
+            <div className="form-error" aria-live="polite">
+                {this.props.error}
+            </div>
+        );
+    }
+
     return(
       <div className='form-modal mem'>
           <form className="form" onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
 
           <h2 className="post-heading">{this.props.initialValues.title ? this.props.initialValues.title : "New Memory"}</h2>
+
+          {error}
 
             <Field
               component={Input}
@@ -100,4 +110,11 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps)(reduxForm({
   form:'MemoryForm',
+  onSubmitFail: (error, dispatch) => {
+    console.log('failed, error in form is', error);
+    dispatch(focus('MemoryForm', Object.keys(error)[0]));
+  },
+  onSubmitSuccess: (result, dispatch) => {
+    dispatch(showMemoryForm(false, undefined));
+  }
 })(MemoryForm));

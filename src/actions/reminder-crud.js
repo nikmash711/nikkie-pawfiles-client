@@ -38,7 +38,7 @@ export const submitReminder = (values, currentPetId, reminderId) => (dispatch, g
         console.log('in actions, got back pawfile:', reminder);
         dispatch(submitReminderSuccess(reminder, currentPetId, reminderId));
     }).catch(err => {
-        dispatch(crudError("An error has occured. Please try again soon!"));
+        dispatch(crudError("An error has occured. Please try refreshing!"));
     });
 }
 
@@ -73,6 +73,6 @@ export const deleteReminder = (currentPetId, reminderId) => (dispatch, getState)
         dispatch(deleteReminderSuccess(currentPetId, reminderId));
     })
     .catch(err => {
-        dispatch(crudError("An error has occured. Please try again soon!"));
+        dispatch(crudError("An error has occured. Please try refreshing!"));
     });
   }

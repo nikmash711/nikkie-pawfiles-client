@@ -37,7 +37,8 @@ export default function reducer(state = initialState, action) {
       console.log('in auth success')
       return Object.assign({}, state, {
           loading: false,
-          currentUser: action.currentUser
+          currentUser: action.currentUser,
+          error: null
       });
   } 
   else if (action.type === AUTH_ERROR) {
@@ -51,14 +52,16 @@ export default function reducer(state = initialState, action) {
     console.log('in auth reducer, setting currentUser to', action.updatedUser)
     return Object.assign({}, state, {
         currentUser: action.updatedUser,
-        successMessage: action.message
+        successMessage: action.message,
+        error: null
     });
   }
 
   else if(action.type===CHANGE_SUCCESS_MESSAGE){
       console.log('changing success message')
     return Object.assign({}, state, {
-        successMessage: action.message
+        successMessage: action.message,
+        error: null
     });
   }
   return state;
