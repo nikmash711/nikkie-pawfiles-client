@@ -28,6 +28,7 @@ export const registerUser = user => dispatch => {
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
     .catch(err => {
+        console.log('IN REGISTER USER, ERR IS', err);
         const {reason, message, location} = err;
         if (reason === 'ValidationError') {
             // Convert ValidationErrors into SubmissionErrors for Redux Form
@@ -59,6 +60,7 @@ export const updatedUser = user => (dispatch, getState) => {
             dispatch(refreshProfileAuthToken())
         })
         .catch(err => {
+
             const {reason, message, location} = err;
             if (reason === 'ValidationError') {
                 // Convert ValidationErrors into SubmissionErrors for Redux Form
