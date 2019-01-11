@@ -5,31 +5,44 @@ import {showMemoryForm} from '../../actions/index';
 import {formatDate} from '../helper-functions';
 import './memory-post.css'
 
-export function MemoryPost(props){
-  return(
-    <li key={props.index} className={`${props.type.toLowerCase()} post`}>
-      <div className="all-post-info">
-        <h3 className="post-title">{props.title}</h3>
-        <span className="post-date">{formatDate(props.date).toDateString()}</span>
-        {props.description && <p className="post-description">{props.description}</p>}
-      </div>
-      {props.memory_img && 
-      <a className="post-img-a" href={`${props.memory_img}`} target="_blank">
-         <img className="post-img" src={props.memory_img} alt={props.title}/>
-      </a>
-     }
+export class MemoryPost extends React.Component{
+  constructor(props) {
+    super(props);
+    // Handles the image being shown only after it's loaded: 
+    this.state = { visibility: "hidden" };
+  }
 
-      <div className="option-icons">
-        <button className="edit-button" aria-label = "edit" onClick={()=>props.dispatch(showMemoryForm(true, props.postId))}><i className="fas fa-edit"></i></button>
-        <span className = "edit-span">Edit</span>
+  handleImageLoaded() {
+    console.log('here');
+    this.setState({ visibility: "visible"});
+  }
 
-        <button className="delete-button" aria-label = "delete" onClick={()=>props.dispatch(deletePost(props.currentPetId, props.postId))}><i className="fas fa-trash-alt"></i></button>
-        <span className = "delete-span js-delete-span">Delete</span>
-
-      </div>
-   
-    </li>
-  );
+  render(){
+    return(
+      <li key={this.props.index} className={`${this.props.type.toLowerCase()} post`}>
+        <div className="all-post-info">
+          <h3 className="post-title">{this.props.title}</h3>
+          <span className="post-date">{formatDate(this.props.date).toDateString()}</span>
+          {this.props.description && <p className="post-description">{this.props.description}</p>}
+        </div>
+        {this.props.memory_img && 
+        <a className="post-img-a" href={`${this.props.memory_img}`} target="_blank">
+           <img style={{visibility: this.state.visibility}} onLoad={()=>this.handleImageLoaded()}  className="post-img" src={this.props.memory_img} alt={this.props.title}/>
+        </a>
+       }
+  
+        <div className="option-icons">
+          <button className="edit-button" aria-label = "edit" onClick={()=>this.props.dispatch(showMemoryForm(true, this.props.postId))}><i className="fas fa-edit"></i></button>
+          <span className = "edit-span">Edit</span>
+  
+          <button className="delete-button" aria-label = "delete" onClick={()=>this.props.dispatch(deletePost(this.props.currentPetId, this.props.postId))}><i className="fas fa-trash-alt"></i></button>
+          <span className = "delete-span js-delete-span">Delete</span>
+  
+        </div>
+     
+      </li>
+    );
+  }
 }
 
 function mapStateToProps(state) {

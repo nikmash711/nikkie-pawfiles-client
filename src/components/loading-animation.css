@@ -10,7 +10,7 @@ these are the animated footsteps utilizing the fadeinout
 } */
 
 .loading-div{
-  width: fit-content;
+  width: min-content;
   margin:auto;
   padding-top: 20%;
 }
@@ -19,30 +19,40 @@ these are the animated footsteps utilizing the fadeinout
     margin: 20px auto;
     padding:10px;
     font-size:80px;
-    font-family:"Reenie Beanie",arial,sans-serif;
-    background-color: black;
-    color: white;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    color: black;
     text-shadow: black 1px 1px 0px;
     transition: .5s;
     width: fit-content;
 }
 
-#first-paw-animation {
+#first-paw-animation, #second-paw-animation{
   width: 200px;
   height: 200px;
+  padding:20px;
   position: relative;
+  display: inline-block;
+  margin:auto;
+}
+
+#first-paw-animation {
+  -ms-animation: mymove 2s infinite;
   -webkit-animation: mymove 2s infinite; /* Safari 4.0 - 8.0 */
   animation: mymove 2s infinite;
   opacity:1;
+  -ms-transform: rotate(20deg); /* IE 9 */
+  -webkit-transform: rotate(20deg); /* Safari 3-8 */
+  transform: rotate(20deg);
 }
 
 #second-paw-animation {
-  width: 200px;
-  height: 200px;
-  position: relative;
+  -ms-animation: mymovetwo 2s infinite;
   -webkit-animation: mymovetwo 2s infinite; /* Safari 4.0 - 8.0 */
   animation: mymovetwo 2s infinite;
   opacity:0;
+  -ms-transform: rotate(-20deg); /* IE 9 */
+  -webkit-transform: rotate(-20deg); /* Safari 3-8 */
+  transform: rotate(-20deg);
 }
 
 /* Safari 4.0 - 8.0 */
@@ -72,4 +82,10 @@ these are the animated footsteps utilizing the fadeinout
 
 main.loading-animation{
   height:100vh;
+}
+
+@media(min-width: 400px){
+  .loading-div{
+    width:fit-content;
+  }
 }
