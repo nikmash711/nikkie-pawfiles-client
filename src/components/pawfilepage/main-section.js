@@ -30,9 +30,7 @@ export class MainSection extends React.Component{
     }
   
     let posts;
-  
-    console.log('the posts are', this.props.individualPawfile.posts); //look normal, but then dont after next step
-  
+    
     //if this pet has some pre-existing posts: 
     if(this.props.individualPawfile.posts){
        posts = this.props.individualPawfile.posts.map((post,index)=>(
@@ -41,7 +39,6 @@ export class MainSection extends React.Component{
         :
           <MedicalPost key={index} postId={post.id} {...post}/>
       ))
-      console.log('the posts are2', posts); //why does it look weird 
   
       //automatically sort posts newest to oldest
       sortNewestToOldest(posts);
