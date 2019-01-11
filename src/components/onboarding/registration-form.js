@@ -1,9 +1,11 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import {Field, reduxForm, focus} from 'redux-form';
 import {registerUser} from '../../actions/user-crud';
 import {login} from '../../actions/auth';
 import Input from '../input';
 import {formatName} from '../helper-functions'
+import {loadingAnimationToggle} from '../../actions/index'
 import {required, nonEmpty, matches, length, isTrimmed} from '../validators';
 import LoadingAnimation from '../loading-animation'
 import './onboarding-form.css'
@@ -14,14 +16,7 @@ const matchesPassword = matches('password');
 
 export class RegistrationForm extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = { 
-          loading: false,
-        };
-      }
-
-      componentDidMount(){
+    componentDidMount(){
         document.title = "Register"
     }
 
@@ -30,14 +25,14 @@ export class RegistrationForm extends React.Component {
         const user = {username, password, firstName, lastName};
         user.firstName = formatName(user.firstName);
         //start showing an animation 
-        this.setState({loading:true});
+        this.props.dispatch(loadingAnimationToggle(true))
         return this.props
             .dispatch(registerUser(user))
             .then(() => this.props.dispatch(login(username, password)));
     }
 
     componentWillUnmount(){
-        this.setState({loading:false});
+        this.props.dispatch(loadingAnimationToggle(false))
     }
 
     render() {
@@ -108,16 +103,22 @@ export class RegistrationForm extends React.Component {
                     disabled={this.props.pristine || this.props.submitting}>
                     Register
                 </button>
-                {this.state.loading && <LoadingAnimation/>}
+                {this.props.loadingAnimation && <LoadingAnimation/>}
             </form>
         );
     }
 }
 
-export default reduxForm({
+function mapStateToProps(state) {
+    return {
+        loadingAnimation: state.pawfile.loadingAnimation
+    }
+}
+
+export default connect(mapStateToProps)(reduxForm({
     form: 'registration',
     onSubmitFail: (error, dispatch) => {
         console.log('obj.keys', Object.keys(error)[0])
         dispatch(focus('registration', Object.keys(error)[0]));
     }
-})(RegistrationForm);
+})(RegistrationForm));

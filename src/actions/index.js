@@ -63,6 +63,12 @@ export const crudError = (error) => ({
   error
 })
 
+export const LOADING_ANIMATION_TOGGLE = "LOADING_ANIMATION_TOGGLE";
+export const loadingAnimationToggle = (bool) => ({
+  type: LOADING_ANIMATION_TOGGLE,
+  bool
+})
+
 
 
 

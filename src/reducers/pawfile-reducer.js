@@ -1,4 +1,4 @@
-import {SHOW_PAWFILE_FORM, CHANGE_SORTING_PETS_METHOD, TOGGLE_NAVBAR, SHOW_MEDICAL_FORM, SHOW_MEMORY_FORM, SHOW_REMINDER_FORM, CHANGE_SEARCH_TERM, CHANGE_CATEGORY_FILTER, CHANGE_CURRENT_PET_ID, CRUD_ERROR} from '../actions/index';
+import {SHOW_PAWFILE_FORM, CHANGE_SORTING_PETS_METHOD, TOGGLE_NAVBAR, SHOW_MEDICAL_FORM, SHOW_MEMORY_FORM, SHOW_REMINDER_FORM, CHANGE_SEARCH_TERM, CHANGE_CATEGORY_FILTER, CHANGE_CURRENT_PET_ID, CRUD_ERROR, LOADING_ANIMATION_TOGGLE} from '../actions/index';
 
 import {FETCH_PAWFILES_SUCCESS, FETCH_PAWFILES_REQUEST, SUBMIT_PAWFILE_REQUEST, SUBMIT_PAWFILE_SUCCESS, DELETE_PAWFILE_REQUEST, DELETE_PAWFILE_SUCCESS} from '../actions/pawfile-crud'
 
@@ -18,6 +18,7 @@ const initialState = {
   categoryFilter: "",
   toggleNavbar:false,
 
+  loadingAnimation: false,
   currentPawfileFormId: undefined,
   currentPetId: undefined,
   currentPostId: undefined,
@@ -31,6 +32,12 @@ const initialState = {
 export const pawfileReducer = (state = initialState, action)=> {
 
   /* GENERAL STUFF */
+
+  if(action.type===LOADING_ANIMATION_TOGGLE){
+    return Object.assign({}, state, {
+      loadingAnimation: action.bool
+    })  
+  }
 
   //Either when user clicks "add new pawfile", or clicks to edit a current pawfile.
   if(action.type=== SHOW_PAWFILE_FORM){

@@ -1,20 +1,15 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import {Field, reduxForm, focus} from 'redux-form';
 import Input from '../input';
 import {login} from '../../actions/auth';
+import {loadingAnimationToggle} from '../../actions/index'
 import {required, nonEmpty} from '../validators';
 import {Link} from 'react-router-dom';
 import LoadingAnimation from '../loading-animation'
 import './onboarding-form.css'
 
 export class LoginForm extends React.Component {
-
-    constructor(props) {
-        super(props);
-        this.state = { 
-          loading: false,
-        };
-      }
     
     componentDidMount(){
         document.title = "Login"
@@ -22,12 +17,12 @@ export class LoginForm extends React.Component {
 
     onSubmit(values) {
         //start showing an animation 
-        this.setState({loading:true});
+        this.props.dispatch(loadingAnimationToggle(true))
         return this.props.dispatch(login(values.username, values.password));
     }
 
     componentWillUnmount(){
-        this.setState({loading:false});
+        this.props.dispatch(loadingAnimationToggle(false))
     }
 
     render() {
@@ -69,7 +64,9 @@ export class LoginForm extends React.Component {
                 <button disabled={this.props.pristine || this.props.submitting}>
                     Log in
                 </button>
-                {this.state.loading && <LoadingAnimation/>}
+
+                {this.props.loadingAnimation && <LoadingAnimation/>}
+
                 <h5>
                     Don't have an account? <Link to="/register">Register Here!</Link>
                 </h5>
@@ -79,10 +76,18 @@ export class LoginForm extends React.Component {
     }
 }
 
-export default reduxForm({
+function mapStateToProps(state) {
+    return {
+        loadingAnimation: state.pawfile.loadingAnimation
+    }
+}
+  
+
+export default connect(mapStateToProps)(reduxForm({
     form: 'login',
     onSubmitFail: (error, dispatch) => {
+        dispatch(loadingAnimationToggle(false))
         //jump to username input if there's a problem logging in:
         dispatch(focus('login', 'username'));
     }
-})(LoginForm);
+})(LoginForm));
