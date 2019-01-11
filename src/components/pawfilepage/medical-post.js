@@ -42,7 +42,7 @@ export class MedicalPost extends React.Component{
           {
             this.props.doctor && <p><strong>Doctor: </strong> 
             {
-              (this.props.office && <Link to={this.props.office}> {this.props.doctor}</Link>) ||   this.props.doctor
+              (this.props.office && <a className="office" href={this.props.office} target="_blank" rel="noopener noreferrer"> {this.props.doctor} <i className="fas fa-external-link-alt"></i> </a>) || this.props.doctor
             } 
             </p>
           }

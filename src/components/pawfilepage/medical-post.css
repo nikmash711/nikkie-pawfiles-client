@@ -24,3 +24,11 @@
   margin-right: 5px;
   margin-left:10px; 
 }
+
+.office i{
+  font-size:12px;
+}
+
+.office:hover, .office:focus{
+  text-decoration: underline;
+}
