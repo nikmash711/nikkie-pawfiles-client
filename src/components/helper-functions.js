@@ -126,18 +126,37 @@ export function arrayToString(arr){
   return arr.join(', ');
 }
 
-export function filterBySearch(term, posts){
-  let searchTerm = term.toLowerCase();
+function contains(str, arr){
+  let bool = false;
+  for(let i =0; i<arr.length; i++){
+    if(str.toLowerCase().includes((arr[i]).toLowerCase())){
+      bool= true;
+    }
+    else{
+      return false;
+    }
+  }
+  return bool;
+}
+
+export function filterBySearch(terms, posts){
+  let searchTerms = terms.toLowerCase();
+  searchTerms = searchTerms.split(" ");
+
   return posts.filter(post=>
     {
       let date = formatLongDate(post.props.date).toLowerCase();
-      return post.props.title.toLowerCase().includes(searchTerm) || date.includes(searchTerm) || 
-      (post.props.description && post.props.description.toLowerCase().includes(searchTerm)) || 
-      (post.props.notes && post.props.notes.toLowerCase().includes(searchTerm)) || 
-      (post.props.doctor && post.props.doctor.toLowerCase().includes(searchTerm)) || 
-      (post.props.symptoms && post.props.symptoms.find(symptom=>symptom.toLowerCase().includes(searchTerm))) || 
-      (post.props.prescriptions && post.props.prescriptions.find(prescription=>prescription.toLowerCase().includes(searchTerm))) || 
-      (post.props.vaccinations && post.props.vaccinations.find(vaccination=>vaccination.toLowerCase().includes(searchTerm)))
+
+      return(      
+        contains(post.props.title, searchTerms)
+        || contains(date, searchTerms) 
+        || (post.props.description && contains(post.props.description, searchTerms)) 
+        || (post.props.notes && contains(post.props.notes, searchTerms)) 
+        || (post.props.doctor && contains(post.props.doctor, searchTerms)) 
+        || (post.props.symptoms && post.props.symptoms.find(symptom=>contains(symptom, searchTerms))) 
+        || (post.props.prescriptions && post.props.prescriptions.find(prescription=>contains(prescription, searchTerms))) 
+        || (post.props.vaccinations && post.props.vaccinations.find(vaccination=>contains(vaccination, searchTerms)))
+      );
     }
   )
 }
