@@ -43,6 +43,68 @@ export function formatDate(dateString){
   return new Date(dateArr[0], dateArr[1]-1, dateArr[2]);
 }
 
+function unabbreviated(str){
+  switch(str) {
+    case "Mon":
+      return "Monday"
+    case "Tue":
+      return "Tuesday"
+    case "Wed":
+      return "Wednesday"
+    case "Thu":
+      return "Thursday"
+    case "Fri":
+      return "Friday"
+    case "Sat":
+      return "Saturday"
+    case "Sun":
+      return "Sunday";
+    
+    case "Jan":
+      return "January"
+    case "Feb":
+      return "February"
+    case "Mar":
+      return "March"
+    case "Apr":
+      return "April"
+    case "May":
+      return "May"
+    case "Jun":
+      return "June"
+    case "Jul":
+      return "July";
+    case "Aug":
+      return "August"
+    case "Sep":
+      return "September"
+    case "Oct":
+      return "October"
+    case "Nov":
+      return "November";
+    case "Dec":
+      return "December";
+    default:
+      return str;
+  }
+}
+
+export function formatLongDate(dateString){
+  let dateArr = dateString.split('-');
+  let newDate = new Date(dateArr[0], dateArr[1]-1, dateArr[2]).toDateString();
+  //newdate is Wed Jan 02 2019
+  dateArr = newDate.split(' ');
+  let nameDay = dateArr[0];
+  let month = dateArr[1];
+  let day = dateArr[2];
+  let year = dateArr[3];
+
+  nameDay=unabbreviated(nameDay);
+  month = unabbreviated(month);
+
+  return `${nameDay}, ${month} ${day}, ${year}`
+}
+
 export function changeMilitaryFormat(military_time){
     let hours24 = parseInt(military_time.substring(0,2));
     let hours = ((hours24 + 11) % 12) + 1;
@@ -67,14 +129,17 @@ export function arrayToString(arr){
 export function filterBySearch(term, posts){
   let searchTerm = term.toLowerCase();
   return posts.filter(post=>
-    post.props.title.toLowerCase().includes(searchTerm) || post.props.date.toLowerCase().includes(searchTerm) || 
-    (post.props.description && post.props.description.toLowerCase().includes(searchTerm)) || 
-    (post.props.notes && post.props.notes.toLowerCase().includes(searchTerm)) || 
-    (post.props.doctor && post.props.doctor.toLowerCase().includes(searchTerm)) || 
-    (post.props.symptoms && post.props.symptoms.find(symptom=>symptom.toLowerCase().includes(searchTerm))) || 
-    (post.props.prescriptions && post.props.prescriptions.find(prescription=>prescription.toLowerCase().includes(searchTerm))) || 
-    (post.props.vaccinations && post.props.vaccinations.find(vaccination=>vaccination.toLowerCase().includes(searchTerm)))
-    )
+    {
+      let date = formatLongDate(post.props.date).toLowerCase();
+      return post.props.title.toLowerCase().includes(searchTerm) || date.includes(searchTerm) || 
+      (post.props.description && post.props.description.toLowerCase().includes(searchTerm)) || 
+      (post.props.notes && post.props.notes.toLowerCase().includes(searchTerm)) || 
+      (post.props.doctor && post.props.doctor.toLowerCase().includes(searchTerm)) || 
+      (post.props.symptoms && post.props.symptoms.find(symptom=>symptom.toLowerCase().includes(searchTerm))) || 
+      (post.props.prescriptions && post.props.prescriptions.find(prescription=>prescription.toLowerCase().includes(searchTerm))) || 
+      (post.props.vaccinations && post.props.vaccinations.find(vaccination=>vaccination.toLowerCase().includes(searchTerm)))
+    }
+  )
 }
 
 export function filterPetsBySearch(searchTerm, pawfiles){

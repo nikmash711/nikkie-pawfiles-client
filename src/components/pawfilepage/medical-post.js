@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {deletePost} from '../../actions/post-crud';
 import {showMedicalForm} from '../../actions/index';
-import {formatDate} from '../helper-functions';
+import {formatLongDate} from '../helper-functions';
 
 import './medical-post.css'
 
@@ -14,7 +14,7 @@ export class MedicalPost extends React.Component{
       <li key={this.props.index} className={`${this.props.type.toLowerCase()} post`}>
         <div className="all-post-info">
         <h3 className="post-title">{this.props.title}</h3>
-        <span className="post-date">{formatDate(this.props.date).toDateString()}</span>
+        <span className="post-date">{formatLongDate(this.props.date)}</span>
       </div>
 
         {this.props.symptoms.length>0 && <ul className="post-list">

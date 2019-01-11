@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {deletePost} from '../../actions/post-crud';
 import {showMemoryForm} from '../../actions/index';
-import {formatDate} from '../helper-functions';
+import {formatLongDate} from '../helper-functions';
 import './memory-post.css'
 
 export class MemoryPost extends React.Component{
@@ -21,7 +21,7 @@ export class MemoryPost extends React.Component{
       <li key={this.props.index} className={`${this.props.type.toLowerCase()} post`}>
         <div className="all-post-info">
           <h3 className="post-title">{this.props.title}</h3>
-          <span className="post-date">{formatDate(this.props.date).toDateString()}</span>
+          <span className="post-date">{formatLongDate(this.props.date)}</span>
           {this.props.description && <p className="post-description">{this.props.description}</p>}
         </div>
         {this.props.memory_img && 
