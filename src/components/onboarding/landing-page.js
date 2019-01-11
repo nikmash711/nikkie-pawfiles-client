@@ -3,7 +3,7 @@ import Navbar from '../navbar';
 import Footer from '../footer';
 import BriefAbout from '../brief-about'
 import {connect} from 'react-redux';
-import {Link, Redirect} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import LoginForm from './login-form';
 import './landing-page.css'
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {reduxForm, Field, Fieldset, focus} from 'redux-form';
+import {reduxForm, Field, focus} from 'redux-form';
 import Input from './input';
 import {showPawfileForm} from '../actions/index';
 import {submitPawfile} from '../actions/pawfile-crud';

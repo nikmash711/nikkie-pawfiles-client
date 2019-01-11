@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {reduxForm, Field, Fieldset, focus} from 'redux-form';
+import {reduxForm, Field, focus} from 'redux-form';
 import Input from '../input';
 import {showMemoryForm} from '../../actions/index';
 import {submitPost} from '../../actions/post-crud';

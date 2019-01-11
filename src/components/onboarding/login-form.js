@@ -15,6 +15,10 @@ export class LoginForm extends React.Component {
           loading: false,
         };
       }
+    
+    componentDidMount(){
+        document.title = "Login"
+    }
 
     onSubmit(values) {
         //start showing an animation 

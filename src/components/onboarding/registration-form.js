@@ -21,6 +21,10 @@ export class RegistrationForm extends React.Component {
         };
       }
 
+      componentDidMount(){
+        document.title = "Register"
+    }
+
     onSubmit(values) {
         const {username, password, firstName, lastName} = values;
         const user = {username, password, firstName, lastName};
