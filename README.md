@@ -31,6 +31,7 @@ Full-stack app with React for the frontend, Redux for state management, Node/Exp
 [Server Repo](https://github.com/thinkful-ei26/nikkie-pawfiles-server)
 
 ##### Codebase:
+``` bash
 ├── README.md
 ├── package-lock.json
 ├── package.json
@@ -51,6 +52,7 @@ Full-stack app with React for the frontend, Redux for state management, Node/Exp
 │   ├── setupTests.js
 │   └── store.js
 └── static.json
+```
 
 ## Future Updates
 :point_right: Users can upload photos and files directly from their device rather than needing to provide a URL to an image
