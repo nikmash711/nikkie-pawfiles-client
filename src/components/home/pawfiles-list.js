@@ -35,7 +35,7 @@ export class PawfilesList extends React.Component{
     }
   
     return(
-      <section className="section">
+      <section aria-live="polite" className="section">
         {pawfiles_list}
       </section>
     );
