@@ -121,8 +121,6 @@ export const deletePawfile = (currentPetId) => (dispatch, getState) =>{
   })
   .then(res => normalizeResponseErrors(res))
   .then(() => {
-      console.log("HERE");
-      console.log('successful deleting');
       dispatch(deletePawfileSuccess(currentPetId));
   })
   .catch(err => {

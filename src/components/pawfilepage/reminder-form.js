@@ -25,7 +25,6 @@ export class ReminderForm extends React.Component{
   }
   
   render(){
-    console.log('individual reminder is', this.props.individualReminder);
     return(
       <div className="reminder-form-modal">
         <form className="new-reminder-form" onSubmit={ (e)=> this.onSubmit(e)}>
@@ -59,8 +58,6 @@ function mapStateToProps(state) {
   let currentReminderId = state.pawfile.currentReminderId;
   let currentPetId = state.pawfile.currentPetId;
   let individualPawfile = state.pawfile.pawfiles.find(pawfile=>pawfile.id==currentPetId);
-
-  console.log('in reminder-form mapstate, the currentPetId is', currentPetId)
 
   return {
     currentReminderId: state.pawfile.currentReminderId,

@@ -35,7 +35,6 @@ export function todaysDate (){
   let month = dateArr[0].length===1 ? "0" + dateArr[0] : dateArr[0] ;
   let day = dateArr[1].length===1 ? "0" + dateArr[1] : dateArr[1] ;
   let finalDate = year + "-" + month + "-" + day;
-  console.log('DATE', finalDate);
   return finalDate;
 }
 
@@ -54,9 +53,7 @@ export function changeMilitaryFormat(military_time){
 }
 
 export function stringToArrayList(str){
-  console.log('str is', str);
   if(str.trim()===""){
-    console.log('here');
     return [];
   }
   const arr = str.split(',');
@@ -69,7 +66,6 @@ export function arrayToString(arr){
 
 export function filterBySearch(term, posts){
   let searchTerm = term.toLowerCase();
-  console.log('the posts in theh helper are', posts);
   return posts.filter(post=>
     post.props.title.toLowerCase().includes(searchTerm) || post.props.date.toLowerCase().includes(searchTerm) || 
     (post.props.description && post.props.description.toLowerCase().includes(searchTerm)) || 

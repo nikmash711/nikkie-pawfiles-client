@@ -10,7 +10,6 @@ import './medical-post.css'
 export class MedicalPost extends React.Component{
 
   render(){
-    console.log('in medpost, propa are', this.props);
     return(
       <li key={this.props.index} className={`${this.props.type.toLowerCase()} post`}>
         <div className="all-post-info">

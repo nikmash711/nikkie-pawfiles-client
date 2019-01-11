@@ -43,7 +43,6 @@ export const changeSuccessMessage = (message) =>({
 // the user data stored in the token
 const storeAuthInfo = (authToken, dispatch) => {
     const decodedToken = jwtDecode(authToken);
-    console.log('decoded token is', decodedToken)
     dispatch(setAuthToken(authToken));
     dispatch(authSuccess(decodedToken.user));
     saveAuthToken(authToken);
@@ -68,7 +67,6 @@ export const login = (username, password) => dispatch => {
             .then(res => res.json())
             .then(({authToken}) => storeAuthInfo(authToken, dispatch))
             .catch(err => {
-                console.log('logging in err', err)
                 const {status} = err;
                 const message =
                     status === 401
@@ -86,7 +84,6 @@ export const login = (username, password) => dispatch => {
 };
 
 export const refreshAuthToken = () => (dispatch, getState) => {
-    console.log('refreshing')
     dispatch(authRequest());
     const authToken = getState().auth.authToken;
     return fetch(`${API_BASE_URL}/refresh`, {
@@ -110,7 +107,6 @@ export const refreshAuthToken = () => (dispatch, getState) => {
 }; 
 
 export const refreshProfileAuthToken = () => (dispatch, getState) => {
-    console.log('refreshing profile')
     dispatch(authRequest());
     const authToken = getState().auth.authToken;
     return fetch(`${API_BASE_URL}/refresh-profile`, {

@@ -9,7 +9,6 @@ import './reminder.css'
 export class Reminder extends React.Component{
 
   render(){
-    console.log('in reminders petid is', this.props.currentPetId, 'and reminderid is', this.props.reminderId);
     return(
       <li data-id={`${this.props.reminderId}`} className="reminder">
         <div className="option-icons">

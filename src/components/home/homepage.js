@@ -10,14 +10,12 @@ import requiresLogin from '../requires-login';
 
 export class HomePage extends React.Component{
   componentDidMount(){
-    console.log('homepage mounting with props', this.props);
     document.title = this.props.firstName ? `${this.props.firstName}'s Pets` : 'All Pets';
     this.props.dispatch(fetchPawfiles());
     this.props.dispatch(changeSuccessMessage(null));
   }
 
   componentWillUnmount(){
-    console.log('homepage Unmounting');
     this.props.dispatch(changeSortingPetsMethod(""));
   }
 

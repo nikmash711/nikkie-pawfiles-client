@@ -16,7 +16,6 @@ export class MainSection extends React.Component{
 
     //if the id was wrong and there is no such pawfile: 
     if(!this.props.individualPawfile.name){
-      console.log('HERE');
      return (<NotFound/>);
     }
 

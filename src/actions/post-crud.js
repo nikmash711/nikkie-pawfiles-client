@@ -36,7 +36,6 @@ export const submitPost = (values, currentPetId, postId) => (dispatch, getState)
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
     .then(post => {
-        console.log('in actions, got back post:', post);
         dispatch(submitPostSuccess(post, currentPetId, postId));
     }).catch(err => {
         dispatch(crudError("An error has occured. Please try refreshing!"));
@@ -85,7 +84,6 @@ export const deletePost = (currentPetId, postId) => (dispatch, getState) =>{
     })
     .then(res => normalizeResponseErrors(res))
     .then(() => {
-        console.log('successful deleting');
         dispatch(deletePostSuccess(currentPetId, postId));
     })
     .catch(err => {

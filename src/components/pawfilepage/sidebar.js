@@ -2,7 +2,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 import PawfileBlurb from '../pawfile-blurb';
 import ReminderBlurb from './reminder-blurb';
-import NotFound from '../not-found'
 import './sidebar.css'
 
 export class Sidebar extends React.Component{
@@ -26,8 +25,6 @@ export class Sidebar extends React.Component{
         <p></p>
       );
     }
-
-    console.log('rendering sidebar with props', this.props)
     
     return(
         <aside className="sidebar left"> 

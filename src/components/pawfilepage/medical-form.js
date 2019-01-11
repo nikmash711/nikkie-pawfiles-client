@@ -15,7 +15,6 @@ export class MedicalForm extends React.Component{
   }
 
   onSubmit(values){
-    console.log('values are', values);
     values.type="medical";
     values.vaccinations = stringToArrayList(values.vaccinations);
     values.prescriptions = stringToArrayList(values.prescriptions);

@@ -35,7 +35,6 @@ export const submitReminder = (values, currentPetId, reminderId) => (dispatch, g
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
     .then(reminder => {
-        console.log('in actions, got back pawfile:', reminder);
         dispatch(submitReminderSuccess(reminder, currentPetId, reminderId));
     }).catch(err => {
         dispatch(crudError("An error has occured. Please try refreshing!"));
@@ -56,7 +55,6 @@ export const deleteReminderRequest = () => ({
 })
 
 export const deleteReminder = (currentPetId, reminderId) => (dispatch, getState) =>{
-    console.log('in delete reminder action, deleting reminder with id', reminderId, 'in pet with id', currentPetId);
     dispatch(deleteReminderRequest());
     const authToken = getState().auth.authToken;
     fetch(`${API_BASE_URL}/reminders/${currentPetId}/${reminderId}`, { 
@@ -69,7 +67,6 @@ export const deleteReminder = (currentPetId, reminderId) => (dispatch, getState)
     })
     .then(res => normalizeResponseErrors(res))
     .then(() => {
-        console.log('successful deleting');
         dispatch(deleteReminderSuccess(currentPetId, reminderId));
     })
     .catch(err => {

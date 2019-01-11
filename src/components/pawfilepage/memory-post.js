@@ -13,7 +13,6 @@ export class MemoryPost extends React.Component{
   }
 
   handleImageLoaded() {
-    console.log('here');
     this.setState({ visibility: "visible"});
   }
 

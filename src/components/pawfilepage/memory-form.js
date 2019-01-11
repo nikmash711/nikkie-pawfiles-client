@@ -111,7 +111,6 @@ function mapStateToProps(state) {
 export default connect(mapStateToProps)(reduxForm({
   form:'MemoryForm',
   onSubmitFail: (error, dispatch) => {
-    console.log('failed, error in form is', error);
     dispatch(focus('MemoryForm', Object.keys(error)[0]));
   },
   onSubmitSuccess: (result, dispatch) => {

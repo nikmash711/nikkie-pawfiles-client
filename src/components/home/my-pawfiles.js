@@ -17,7 +17,6 @@ export class MyPawfiles extends React.Component{
   render(){
      
     if(this.props.pawfilesPending){
-      console.log('pending');
       return(
         <LoadingAnimation/>
       )
@@ -34,7 +33,6 @@ export class MyPawfiles extends React.Component{
         window.scrollTo(0, 0);
     }
 
-    console.log('mypawfiles.js props are', this.props.pawfiles);
     return(
       <main>
         <div className="center-me">

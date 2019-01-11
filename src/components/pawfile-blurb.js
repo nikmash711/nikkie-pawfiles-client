@@ -18,7 +18,6 @@ export class PawfileBlurb extends React.Component{
   }
 
   handleImageLoaded() {
-    console.log('here');
     this.setState({ 
       image: "block",
       placeholder: "none"
@@ -27,7 +26,6 @@ export class PawfileBlurb extends React.Component{
 
 
   render(){
-    console.log('in pawfile blurb, props are', this.props);
     return(
       <article className= {`${this.props.gender.toLowerCase()} blurb`}>
         <div className="top">

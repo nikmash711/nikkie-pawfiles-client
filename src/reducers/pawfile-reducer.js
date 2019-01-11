@@ -34,7 +34,6 @@ export const pawfileReducer = (state = initialState, action)=> {
 
   //Either when user clicks "add new pawfile", or clicks to edit a current pawfile.
   if(action.type=== SHOW_PAWFILE_FORM){
-    console.log('IN SHOW reducer, currentPawfileFormId is', action.currentPawfileFormId)
     return Object.assign({}, state, {
       showPawfileForm: action.bool,
       currentPawfileFormId: action.currentPawfileFormId
@@ -59,14 +58,12 @@ export const pawfileReducer = (state = initialState, action)=> {
         toggleNavbar: action.bool,
       })
     }
-    console.log('the bool is', action.bool)
     return Object.assign({}, state, {
       toggleNavbar: !state.toggleNavbar,
     })
   }
 
   else if(action.type===SHOW_REMINDER_FORM){
-    console.log('in show reminder form reducer');
     return Object.assign({}, state, {
       showReminderForm: action.bool,
       currentReminderId: action.currentReminderId,
@@ -117,7 +114,6 @@ export const pawfileReducer = (state = initialState, action)=> {
   }
 
   else if (action.type === FETCH_PAWFILES_SUCCESS) {
-    console.log('successfully fetching all pawfiles', action.pawfiles);
     return Object.assign({}, state, {
       pawfiles: action.pawfiles,
       pawfilesPending: false,
@@ -135,7 +131,6 @@ export const pawfileReducer = (state = initialState, action)=> {
   else if(action.type===SUBMIT_PAWFILE_SUCCESS){
     //if its editing an existing pawfile: 
     if(action.currentPetId){
-      console.log('updating in reducer with pawfile', action.pawfile);
       const updatedPawfile = action.pawfile;
 
       const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id==action.currentPetId ? updatedPawfile : item))
@@ -149,7 +144,6 @@ export const pawfileReducer = (state = initialState, action)=> {
     }
 
     //if its a new obj
-    console.log('POST in reducer with pawfile', action.pawfile);
     return Object.assign({}, state, {
       pawfiles: [
         ...state.pawfiles,
@@ -168,7 +162,6 @@ export const pawfileReducer = (state = initialState, action)=> {
   }
 
   else if(action.type===DELETE_PAWFILE_SUCCESS){
-    console.log('in deleting success reducer')
     const newArrayOfPawfiles = state.pawfiles.filter((pawfile)=> (pawfile.id!==action.currentPetId));
 
     return Object.assign({}, state, {
@@ -192,7 +185,6 @@ export const pawfileReducer = (state = initialState, action)=> {
 
     //if I'm editing a reminder: 
     if(action.reminderId){
-      console.log('EDITING');
       let reminderToUpdate = action.reminder;
       pawfileToUpdate.reminders = pawfileToUpdate.reminders.map((reminder)=> (reminder.id==action.reminderId ? reminderToUpdate : reminder))
     }
@@ -203,7 +195,6 @@ export const pawfileReducer = (state = initialState, action)=> {
 
     const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id==action.currentPetId ? pawfileToUpdate : item))
 
-    console.log('in reminder reducer, new array of apwfiles is', newArrayOfPawfiles);
     return Object.assign({}, state, {
         loadPending: false, 
         pawfiles: newArrayOfPawfiles,
@@ -249,7 +240,6 @@ export const pawfileReducer = (state = initialState, action)=> {
 
     //if I'm editing a post: 
     if(action.postId){
-      console.log('EDITING');
       let postToUpdate = action.post;
       pawfileToUpdate.posts = pawfileToUpdate.posts.map((post)=> (post.id==action.postId ? postToUpdate : post))
     }
@@ -260,7 +250,6 @@ export const pawfileReducer = (state = initialState, action)=> {
 
     const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id==action.currentPetId ? pawfileToUpdate : item))
 
-    console.log('in reminder reducer, new array of apwfiles is', newArrayOfPawfiles);
     return Object.assign({}, state, {
         loadPending: false,
         pawfiles: newArrayOfPawfiles,
@@ -278,15 +267,11 @@ export const pawfileReducer = (state = initialState, action)=> {
   else if(action.type=== DELETE_POST_SUCCESS){
     let pawfileToUpdate = {...state.pawfiles.find(pawfile=> pawfile.id==action.currentPetId)};
 
-    console.log('in deleting post reducer, pawfile to update is', pawfileToUpdate, 'post to update is', action.postId);
-
     const updatedPosts = pawfileToUpdate.posts.filter((post)=> (post.id!==action.postId));
 
     pawfileToUpdate.posts=updatedPosts;
 
     const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id==action.currentPetId ? pawfileToUpdate : item))
-
-    console.log('in deleting post reducer, new array is', newArrayOfPawfiles);
 
     return Object.assign({}, state, {
       pawfiles: newArrayOfPawfiles,

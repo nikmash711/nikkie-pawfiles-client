@@ -7,7 +7,6 @@ import './pawfiles-list.css';
 export class PawfilesList extends React.Component{
   render(){
 
-    console.log('in pawwfiles list, props are', this.props.pawfiles);
     let pawfiles_list = this.props.pawfiles.map((pawfile,index)=>(
       <PawfileBlurb {...pawfile} key={index}/>
       //Question: Is it okay that I'm passing state here from parent to child? Wasn't sure how else to do it 

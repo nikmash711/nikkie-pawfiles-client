@@ -11,12 +11,7 @@ import './settings-page.css'
 
 export class SettingsPage extends React.Component{
   componentDidMount(){
-    console.log('settings mounting with props', this.props);
     document.title = 'Settings';
-  }
-
-  componentWillUnmount(){
-    console.log('settings unmounting')
   }
 
   componentDidUpdate(){

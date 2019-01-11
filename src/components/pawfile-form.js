@@ -148,11 +148,8 @@ export class PawfileForm extends React.Component{
 }
 
 function mapStateToProps(state) {
-  console.log('state is', state);
   let currentPawfileFormId = state.pawfile.currentPawfileFormId;
-  console.log('currentPawfileFormId is', currentPawfileFormId);
   let individualPawfile = state.pawfile.pawfiles.find(pawfile=>pawfile.id==currentPawfileFormId);
-  console.log('individual pawfile is', individualPawfile);
 
   return {
     // to get the initial values if the user is editing the form: 
@@ -173,7 +170,6 @@ function mapStateToProps(state) {
 export default connect(mapStateToProps)(reduxForm({
   form:'PawfileForm',
   onSubmitFail: (error, dispatch) => {
-    console.log('failed, error in form is', error);
     dispatch(focus('PawfileForm', Object.keys(error)[0]));
   },
   onSubmitSuccess: (result, dispatch) => {

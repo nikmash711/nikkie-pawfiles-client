@@ -15,7 +15,6 @@ import requiresLogin from '../requires-login';
 
 export class PawfilePage extends React.Component{
   componentDidMount(){
-    console.log('mounting pawfilepage');
     window.scrollTo(0, 0); //make it jump to top
     this.props.dispatch(changeCurrentPetId(this.props.match.params.pawfileId));
     this.props.dispatch(fetchPawfiles());
@@ -31,16 +30,12 @@ export class PawfilePage extends React.Component{
   }
 
   validId(paramsId){
-    console.log('in validId, return', this.props.pawfiles.find(pawfile=> pawfile.id==paramsId))
     return this.props.pawfiles.find(pawfile=> pawfile.id==paramsId)
   }
 
   render(){    
-    console.log('pawfile page props are', this.props)
-
     // if user is trying to access a pet that no longer exists or never did, or just deleted the pawfile from within the pawfile itself, then redirect them
     if(!this.validId(this.props.match.params.pawfileId)){
-      console.log('returningTHIS')
       return(
         <div className="pawfile-page">
           <Navbar/>
@@ -51,7 +46,6 @@ export class PawfilePage extends React.Component{
       );
     }
 
-    console.log('returningTHAT');
     return(
       <div className="pawfile-page">
         <Navbar/>
