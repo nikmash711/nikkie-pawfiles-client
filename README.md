@@ -30,11 +30,16 @@ Full-stack app with React for the frontend, Redux for state management, Node/Exp
 
 [Server Repo](https://github.com/thinkful-ei26/nikkie-pawfiles-server)
 
+##### Codebase:
 - public
 - src
+  - actions
   - components
-- reducers
-- actions
+    - home
+    - onboarding
+    - pawfilepage
+    - settings
+  - reducers
 
 ## Future Updates
 :point_right: Users can upload photos and files directly from their device rather than needing to provide a URL to an image
