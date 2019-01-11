@@ -16,6 +16,7 @@ import requiresLogin from '../requires-login';
 export class PawfilePage extends React.Component{
   componentDidMount(){
     console.log('mounting pawfilepage');
+    window.scrollTo(0, 0); //make it jump to top
     this.props.dispatch(changeCurrentPetId(this.props.match.params.pawfileId));
     this.props.dispatch(fetchPawfiles());
     this.props.dispatch(changeSuccessMessage(null));

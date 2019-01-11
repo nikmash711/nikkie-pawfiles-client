@@ -11,12 +11,18 @@ export class PawfileBlurb extends React.Component{
   constructor(props) {
     super(props);
     // Handles the image being shown only after it's loaded: 
-    this.state = { visibility: "hidden" };
+    this.state = { 
+      image: "none",
+      placeholder: "block"
+    };
   }
 
   handleImageLoaded() {
     console.log('here');
-    this.setState({ visibility: "visible"});
+    this.setState({ 
+      image: "block",
+      placeholder: "none"
+  });
   }
 
 
@@ -25,7 +31,9 @@ export class PawfileBlurb extends React.Component{
     return(
       <article className= {`${this.props.gender.toLowerCase()} blurb`}>
         <div className="top">
-            <img style={{visibility: this.state.visibility}} onLoad={()=>this.handleImageLoaded()} src= {this.props.img} alt={this.props.name} className="prof-pic"/>
+            <div className="prof-pic" style={{display: this.state.placeholder}}></div>
+
+            <img style={{display: this.state.image}} onLoad={()=>this.handleImageLoaded()} src= {this.props.img} alt={this.props.name} className="prof-pic"/>
             <Link to={`/${this.props.id}`} className="">
               <h2>{this.props.name}</h2>
             </Link>
