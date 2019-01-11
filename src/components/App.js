@@ -39,6 +39,7 @@ export class App extends React.Component {
 
       clearInterval(this.refreshInterval);
   }
+  
   render() {
     return (
       <Router>

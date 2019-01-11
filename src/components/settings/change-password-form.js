@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import Input from '../input';
-import {reduxForm, Field, Fieldset, focus, reset} from 'redux-form';
+import {reduxForm, Field, focus, reset} from 'redux-form';
 import {updatePassword} from '../../actions/user-crud';
 import {required, nonEmpty, matches, length, isTrimmed} from '../validators';
 

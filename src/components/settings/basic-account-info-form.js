@@ -1,9 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import Input from '../input';
-import {reduxForm, Field, Fieldset, focus} from 'redux-form';
+import {reduxForm, Field, focus} from 'redux-form';
 import {updatedUser} from '../../actions/user-crud';
-import {required, nonEmpty, matches, length, isTrimmed} from '../validators';
+import {required, nonEmpty, isTrimmed} from '../validators';
 import {formatName} from '../helper-functions'
 
 export class BasicAccountInfoForm extends React.Component{

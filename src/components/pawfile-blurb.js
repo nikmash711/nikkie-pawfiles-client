@@ -21,7 +21,7 @@ export class PawfileBlurb extends React.Component{
     this.setState({ 
       image: "block",
       placeholder: "none"
-  });
+    });
   }
 
 
