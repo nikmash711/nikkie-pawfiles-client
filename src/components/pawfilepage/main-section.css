@@ -10,6 +10,10 @@
   overflow: scroll;
 }
 
+.pawfile-page .loading-div{
+  padding-top:60px;
+}
+
 .pawfile-page nav.options{
   margin:10px 10px;
 }
