@@ -6,8 +6,8 @@ Wouldn't it be nice to keep a timeline of your pet's life? From your pet's docto
 
 ## Features: 
 :white_check_mark: Users can create an account for themselves with their first and last name, a username, and password
-<img src="https://drive.google.com/uc?export=view&id=1VDqMikkH2TIo6T85rhvAGw-WoEPQyWWf" alt="homepage" width="300px" />
-<img src="https://drive.google.com/uc?export=view&id=1BFI7bm8jbBtEjPOkyOR7vn2UR1drR98V" alt="homepage" width="300px" />
+<img src="https://drive.google.com/uc?export=view&id=1VDqMikkH2TIo6T85rhvAGw-WoEPQyWWf" alt="homepage" width="400px" />
+<img src="https://drive.google.com/uc?export=view&id=1BFI7bm8jbBtEjPOkyOR7vn2UR1drR98V" alt="homepage" width="400px" />
 
 :white_check_mark: Users will be directed to a home page where they can see all of their pets, can add a new pet pawfile by filling out a brief form, can sort their pets by age or name, and search their pets. Users can have as many pawfiles as they do pets!
 
@@ -15,9 +15,9 @@ Wouldn't it be nice to keep a timeline of your pet's life? From your pet's docto
 
 :white_check_mark: Users can add posts for each pet - it can be a memory post with a photo corresponding to the memory, or a medical post to document symptoms, vet diagnosis, medications, and vaccinations
 
-:white_check_mark: Posts are organized on the Pawfile chronologically by the date the user inputted, but users can search for a specific post and filter categorically
-
 <img src="https://drive.google.com/uc?export=view&id=1_63xErbm1oZHqFnE4mRHffjKXxdFwmTZ" alt="homepage" width="400px" />
+
+:white_check_mark: Posts are organized on the Pawfile chronologically by the date the user inputted, but users can search for a specific post and filter categorically
 
 :white_check_mark: Users can create reminders for each pet, with an optional time or date
 
