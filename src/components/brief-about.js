@@ -10,7 +10,7 @@ export default class AboutPage extends React.Component{
         <div className="center-me">
           <h1>Welcome To Pawfiles</h1>
           <p>
-          Wouldn't it be nice to keep a timeline of your pet's life? From your pet's doctor, vaccination schedule, and medical history to remembering something hilarious they did the other day, it can be easy to forget important things about your furry best friend. Well fur-tunately Pawfiles is here to help you keep track of your pet's most important moments! Whether it's a medical record or a cute memory you just don't want to forget, this is the purr-fect place to document it all!
+          Wouldn't it be nice to keep a timeline of your pet's life? From a list of their vets, vaccination schedule, and medical history, to remembering something hilarious or cute they did the other day, it can be easy to forget important things about your pet. Fur-tunately Pawfiles is here to help you keep track of your pet's most memorable moments! Whether it's a medical record or a cute memory you just don't want to forget, this is the purr-fect place to document it all!
           </p>
           <h3>What You Can Do:</h3>
           <ul>
