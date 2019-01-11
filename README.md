@@ -15,7 +15,7 @@ Wouldn't it be nice to keep a timeline of your pet's life? From your pet's docto
 
 :white_check_mark: Users can add posts for each pet - it can be a memory post with a photo corresponding to the memory, or a medical post to document symptoms, vet diagnosis, medications, and vaccinations
 
-<img src="https://drive.google.com/uc?export=view&id=1_63xErbm1oZHqFnE4mRHffjKXxdFwmTZ" alt="homepage" width="400px" />
+<img src="https://drive.google.com/uc?export=view&id=1vIca4Q-ds8yC1khECwNbc9AJYBmupGbg" alt="homepage" width="400px" />
 
 :white_check_mark: Posts are organized on the Pawfile chronologically by the date the user inputted, but users can search for a specific post and filter categorically
 
