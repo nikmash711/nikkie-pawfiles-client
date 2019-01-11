@@ -41,13 +41,53 @@ Full-stack app with React for the frontend, Redux for state management, Node/Exp
 │   └── paw.png
 ├── src
 │   ├── actions
+│   │   ├── auth.js
+│   │   ├── index.js
+│   │   ├── pawfile-crud.js
+│   │   ├── post-crud.js
+│   │   ├── reminder-crud.js
+│   │   ├── user-crud.js
+│   │   └── utils.js
 │   ├── components
+│   │   ├── App.js
+│   │   ├── about-page.css
+│   │   ├── about-page.js
+│   │   ├── app.test.js
+│   │   ├── brief-about.css
+│   │   ├── brief-about.js
+│   │   ├── brief-about.test.js
+│   │   ├── footer.css
+│   │   ├── footer.js
+│   │   ├── footer.test.js
+│   │   ├── helper-functions.js
+│   │   ├── home
+│   │   ├── input.js
+│   │   ├── loading-animation.css
+│   │   ├── loading-animation.js
+│   │   ├── navbar.css
+│   │   ├── navbar.js
+│   │   ├── navbar.test.js
+│   │   ├── not-found.css
+│   │   ├── not-found.js
+│   │   ├── onboarding
+│   │   ├── pawfile-blurb.css
+│   │   ├── pawfile-blurb.js
+│   │   ├── pawfile-blurb.test.js
+│   │   ├── pawfile-form.js
+│   │   ├── pawfile-form.test.js
+│   │   ├── pawfilepage
+│   │   ├── requires-login.js
+│   │   ├── settings
+│   │   └── validators.js
 │   ├── config.js
 │   ├── img
+│   │   └── pinboard.jpg
 │   ├── index.css
 │   ├── index.js
 │   ├── local-storage.js
 │   ├── reducers
+│   │   ├── auth.js
+│   │   └── pawfile-reducer.js
 │   ├── serviceWorker.js
 │   ├── setupTests.js
 │   └── store.js

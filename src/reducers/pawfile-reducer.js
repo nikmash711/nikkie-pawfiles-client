@@ -140,7 +140,11 @@ export const pawfileReducer = (state = initialState, action)=> {
     if(action.currentPetId){
       const updatedPawfile = action.pawfile;
 
-      const newArrayOfPawfiles = state.pawfiles.map((item)=> (item.id==action.currentPetId ? updatedPawfile : item))
+
+      const newArrayOfPawfiles = state.pawfiles.map((item)=> {
+        console.log('item.id', typeof item.id, 'action currentpetid', typeof action.currentPetId);
+        return (item.id==action.currentPetId ? updatedPawfile : item);
+      })
   
       return Object.assign({}, state, {
           pawfiles: newArrayOfPawfiles,
