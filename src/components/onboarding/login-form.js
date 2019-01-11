@@ -4,11 +4,26 @@ import Input from '../input';
 import {login} from '../../actions/auth';
 import {required, nonEmpty} from '../validators';
 import {Link} from 'react-router-dom';
+import LoadingAnimation from '../loading-animation'
 import './onboarding-form.css'
 
 export class LoginForm extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = { 
+          loading: false,
+        };
+      }
+
     onSubmit(values) {
+        //start showing an animation 
+        this.setState({loading:true});
         return this.props.dispatch(login(values.username, values.password));
+    }
+
+    componentWillUnmount(){
+        this.setState({loading:false});
     }
 
     render() {
@@ -28,7 +43,6 @@ export class LoginForm extends React.Component {
                     this.onSubmit(values)
                 )}>
                 <h2>Login</h2>
-
                 {error}
                 <Field
                     component={Input}
@@ -51,6 +65,7 @@ export class LoginForm extends React.Component {
                 <button disabled={this.props.pristine || this.props.submitting}>
                     Log in
                 </button>
+                {this.state.loading && <LoadingAnimation/>}
                 <h5>
                     Don't have an account? <Link to="/register">Register Here!</Link>
                 </h5>

@@ -5,6 +5,7 @@ import {login} from '../../actions/auth';
 import Input from '../input';
 import {formatName} from '../helper-functions'
 import {required, nonEmpty, matches, length, isTrimmed} from '../validators';
+import LoadingAnimation from '../loading-animation'
 import './onboarding-form.css'
 import './registration-form.css'
 
@@ -12,13 +13,27 @@ const passwordLength = length({min: 6, max: 72});
 const matchesPassword = matches('password');
 
 export class RegistrationForm extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = { 
+          loading: false,
+        };
+      }
+
     onSubmit(values) {
         const {username, password, firstName, lastName} = values;
         const user = {username, password, firstName, lastName};
         user.firstName = formatName(user.firstName);
+        //start showing an animation 
+        this.setState({loading:true});
         return this.props
             .dispatch(registerUser(user))
             .then(() => this.props.dispatch(login(username, password)));
+    }
+
+    componentWillUnmount(){
+        this.setState({loading:false});
     }
 
     render() {
@@ -89,6 +104,7 @@ export class RegistrationForm extends React.Component {
                     disabled={this.props.pristine || this.props.submitting}>
                     Register
                 </button>
+                {this.state.loading && <LoadingAnimation/>}
             </form>
         );
     }

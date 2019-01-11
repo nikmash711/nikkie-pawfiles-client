@@ -1,4 +1,4 @@
-.landing-page main{
+.landing-page-main{
   /* background: url("https://www.middletonhallretirementvillage.co.uk/wp-content/uploads/2018/01/pinboard-background-compressed.jpg") no-repeat fixed; */
   background-size: cover; 
   color: white;
@@ -16,17 +16,11 @@
 }
 
 @media(min-width:950px){
-  .landing-page main{
+  .landing-page-main{
     flex-direction: row;
   }
 
   .landing-page .form{
     margin: 130px auto;
-  }
-}
-
-@media(min-height:940px){
-  .landing-page main{
-    height:100vh;
   }
 }

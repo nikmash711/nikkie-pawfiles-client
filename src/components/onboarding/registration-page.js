@@ -17,7 +17,7 @@ export function RegistrationPage(props) {
     return (
         <div  className="registration-page">
             <Navbar/>
-            <main>
+            <main className= "registration-page-main">
                 <BriefAbout/>
                 <RegistrationForm />
             </main>

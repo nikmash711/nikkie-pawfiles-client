@@ -17,7 +17,7 @@ export function LandingPage(props) {
     return (
         <div className="landing-page">
             <Navbar/>
-            <main>
+            <main className="landing-page-main">
                 <BriefAbout/>
                 <LoginForm />
             </main>

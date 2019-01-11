@@ -34,3 +34,15 @@
   position: absolute;
 } 
 /* these are errors for specific fields */
+
+.onboarding-form #first-paw-animation, .onboarding-form #second-paw-animation{
+  width:60px;
+  height:30px;
+  padding-top:5px;
+  padding-bottom:5px;
+}
+
+.onboarding-form main.loading-animation{
+  height:auto;
+  padding-top:0;
+}

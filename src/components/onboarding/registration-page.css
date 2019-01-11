@@ -1,4 +1,4 @@
-.registration-page main{
+.registration-page-main{
   background: url("https://www.middletonhallretirementvillage.co.uk/wp-content/uploads/2018/01/pinboard-background-compressed.jpg") no-repeat fixed;
   background-size: cover; 
   color: white;
@@ -23,13 +23,7 @@
     margin: 130px auto;
   }
 
-  .registration-page main{
+  .registration-page-main{
     flex-direction: row;
-  }
-}
-
-@media(min-height:940px){
-  .registration-page main{
-    height:100vh;
   }
 }
