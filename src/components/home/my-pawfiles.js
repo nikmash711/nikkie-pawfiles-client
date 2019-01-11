@@ -40,7 +40,7 @@ export class MyPawfiles extends React.Component{
           <Header/>
           <nav className="options">
             {this.props.pawfiles.length>1 && <SortBySelect/>}
-            {this.props.pawfiles.length>1 && <input onChange={e=>this.props.dispatch(changeSearchTerm(e.target.value))} className="tape" type="search" placeholder='Search Pets'/>}
+            {this.props.pawfiles.length>1 && <input onChange={e=>this.props.dispatch(changeSearchTerm(e.target.value))} className="tape" placeholder='Search Pets'/>}
             <AddNewPawfileButton/>
           </nav>
           {/* only allow user to sort if there's more than one pet */}

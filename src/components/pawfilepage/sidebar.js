@@ -28,8 +28,10 @@ export class Sidebar extends React.Component{
     
     return(
         <aside className="sidebar left"> 
-          <PawfileBlurb {...this.props.individualPawfile}/>
-          <ReminderBlurb {...this.props.individualPawfile} />
+          <div className="center-me">
+            <PawfileBlurb {...this.props.individualPawfile}/>
+            <ReminderBlurb {...this.props.individualPawfile} />
+          </div>
         </aside>      
       );
   }

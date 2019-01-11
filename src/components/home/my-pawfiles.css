@@ -46,3 +46,10 @@
     min-width:600px;
   }
 }
+
+@media(min-height:940px){
+  .home main{
+    height:100vh;
+    overflow: auto;
+  }
+}

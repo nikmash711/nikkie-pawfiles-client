@@ -3,6 +3,7 @@
   padding-bottom: 20px;
   background-color: black;
   border-right: 1px solid white;
+  display: flex;
 }
 
 .sidebar .blurb{

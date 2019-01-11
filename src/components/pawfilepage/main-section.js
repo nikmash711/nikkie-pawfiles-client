@@ -69,7 +69,7 @@ export class MainSection extends React.Component{
               </div>
   
               <div className="search-input">
-                <input onChange={e=>this.props.dispatch(changeSearchTerm(e.target.value))} className="tape" type="search" placeholder='Search Posts'/>
+                <input onChange={e=>this.props.dispatch(changeSearchTerm(e.target.value))} className="tape" placeholder='Search Posts'/>
               </div>
   
               <div className="add-buttons">

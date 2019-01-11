@@ -256,6 +256,7 @@ button.close{
   text-shadow: none;
   text-align: center;
   opacity: 1; /* Firefox */
+  line-height: normal;
 }
 
 :-ms-input-placeholder,::-ms-input-placeholder {
