@@ -1,7 +1,7 @@
 
 # [Pawfiles](https://pawfiles.herokuapp.com/)
 
-## Summary of App:
+## Description
 Wouldn't it be nice to keep a timeline of your pet's life? From your pet's doctor, vaccination schedule, and medical history to remembering something hilarious they did the other day, it can be easy to forget important things about your furry best friend. Well fur-tunately Pawfiles is here to help you keep track of your pet's most important moments! Whether it's a medical record or a cute memory you just don't want to forget, this is the purr-fect place to document it all!
 
 ## Features: 
@@ -20,7 +20,7 @@ Wouldn't it be nice to keep a timeline of your pet's life? From your pet's docto
 - [x] 13. Users will only be logged out after a certain amount of time, not every time they refresh or leave the browser
 
 ## Tech Stack: 
-React for the frontend, Node/Express for the backend, Mongo for the database
+Full-stack app with React for the frontend, Node/Express for the backend, and Mongo for the database
 
 ### Home page: 
 ![image](https://drive.google.com/uc?export=view&id=1G6W9OH4WxP-sSxTApCLP4OE8E8b-vOwA)
