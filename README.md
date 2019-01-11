@@ -25,11 +25,16 @@ Wouldn't it be nice to keep a timeline of your pet's life? From your pet's docto
 
 :white_check_mark: Users can update their password, first name, last name, or username after they're logged in
 
-## Tech Stack: 
+## Specifics: 
 Full-stack app with React for the frontend, Redux for state management, Node/Express for the backend, MongoDB for the database, JWTs for authentication, Mocha/Chai for server-side testing, Enzyme for React component testing.
 
 [Server Repo](https://github.com/thinkful-ei26/nikkie-pawfiles-server)
 
+- public
+- src
+  - components
+- reducers
+- actions
 
 ## Future Updates
 :point_right: Users can upload photos and files directly from their device rather than needing to provide a URL to an image
