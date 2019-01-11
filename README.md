@@ -22,4 +22,4 @@ Wouldn't it be nice to keep a timeline of your pet's life? From your pet's docto
 ## Tech Stack: 
 React for the frontend, Node/Express for the backend, Mongo for the database
 
-![HomePage](https://ibb.co/28FvksB)
+![HomePage](http://oi63.tinypic.com/4i0gec.jpg)
