@@ -27,3 +27,9 @@ Wouldn't it be nice to keep a timeline of your pet's life? From your pet's docto
 
 ## Tech Stack: 
 Full-stack app with React for the frontend, Redux for state management, Node/Express for the backend, and MongoDB for the database
+
+## Future Updates
+:point_right: Users can upload photos and files directly from their device rather than needing to provide a URL to an image
+:point_right: Users will provide emails at login and can consequently reset passwords if they're unable to login 
+:point_right: Users will have a more convenient way of accessing their pet's full vaccination, prescription, and doctor history depending on the posts they've created
+:point_right: Users can filter their posts by date 
