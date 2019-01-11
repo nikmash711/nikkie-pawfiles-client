@@ -4,7 +4,7 @@ import Navbar from '../navbar';
 import Footer from '../footer'
 import MyPawfiles from './my-pawfiles';
 import {changeSortingPetsMethod} from '../../actions/index';
-import {fetchPawfiles, changeError, } from '../../actions/pawfile-crud';
+import {fetchPawfiles} from '../../actions/pawfile-crud';
 import {changeSuccessMessage} from '../../actions/auth'
 import requiresLogin from '../requires-login';
 
@@ -13,7 +13,6 @@ export class HomePage extends React.Component{
     console.log('homepage mounting with props', this.props);
     document.title = this.props.firstName ? `${this.props.firstName}'s Pets` : 'All Pets';
     this.props.dispatch(fetchPawfiles());
-    this.props.dispatch(changeError(false));
     this.props.dispatch(changeSuccessMessage(null));
   }
 

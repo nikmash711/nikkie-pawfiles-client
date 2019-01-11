@@ -3,14 +3,6 @@ import {SubmissionError} from 'redux-form';
 import {crudError} from './index'
 import {normalizeResponseErrors} from './utils';
 
-/* GENERAL */
-
-export const CHANGE_ERROR = "CHANGE_ERROR";
-export const changeError = bool => ({
-    type: CHANGE_ERROR,
-    bool
-})
-
 /* GET ACTIONS */
 
 export const FETCH_PAWFILES_SUCCESS = 'FETCH_PAWFILES_SUCCESS';
@@ -38,7 +30,7 @@ export const fetchPawfiles = () => (dispatch, getState) => {
         .then(res => normalizeResponseErrors(res))
         .then(res => res.json())
         .then(pawfiles => {
-            setTimeout(() =>(dispatch(fetchPawfilesSuccess(pawfiles))), 2000);
+            setTimeout(() =>(dispatch(fetchPawfilesSuccess(pawfiles))), 1500);
             // dispatch(fetchPawfilesSuccess(pawfiles));
         })
         .catch(err => {
@@ -46,12 +38,6 @@ export const fetchPawfiles = () => (dispatch, getState) => {
         });
 };
 
-//how can i implement something like this for mine 
-// export function search(name) {
-//     return new Promise((resolve, reject) => {
-//         setTimeout(() => resolve(_search(name)), 500);
-//     });
-// }
 
 /* POST & PUT ACTIONS */
 export const SUBMIT_PAWFILE_REQUEST = "SUBMIT_PAWFILE_REQUEST";

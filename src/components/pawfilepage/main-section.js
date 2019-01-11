@@ -5,12 +5,19 @@ import MedicalPost from './medical-post'
 import {showMedicalForm, showMemoryForm, changeSearchTerm, changeCategoryFilter} from '../../actions/index';
 import LoadingAnimation from '../loading-animation'
 import {filterBySearch, sortNewestToOldest, filterByCategory} from '../helper-functions';
+import NotFound from '../not-found';
 import './main-section.css'
 
 export class MainSection extends React.Component{
   render(){
     if(this.props.pawfilesPending){
       return (<LoadingAnimation/>)
+    }
+
+    //if the id was wrong and there is no such pawfile: 
+    if(!this.props.individualPawfile.name){
+      console.log('HERE');
+     return (<NotFound/>);
     }
 
     let error;
@@ -82,7 +89,9 @@ export class MainSection extends React.Component{
 }
 
 //make a default props mock object with empty or null values for everything needed. then dont use pawfilepending
-//MainSection.defaultProps= {}
+MainSection.defaultProps= {
+  individualPawfile: {}
+}
 
 const mapStateToProps = (state,props) => ({
   individualPawfile: state.pawfile.pawfiles.find(pawfile=>pawfile.id==props.id),

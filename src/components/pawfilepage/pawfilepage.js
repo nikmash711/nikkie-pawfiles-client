@@ -40,6 +40,7 @@ export class PawfilePage extends React.Component{
 
     // if user is trying to access a pet that no longer exists or never did, or just deleted the pawfile from within the pawfile itself, then redirect them
     if(!this.validId(this.props.match.params.pawfileId)){
+      console.log('returningTHIS')
       return(
         <div className="pawfile-page">
           <Navbar/>
@@ -50,6 +51,7 @@ export class PawfilePage extends React.Component{
       );
     }
 
+    console.log('returningTHAT');
     return(
       <div className="pawfile-page">
         <Navbar/>

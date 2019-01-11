@@ -1,7 +1,7 @@
 import React from 'react';
 import './loading-animation.css'
 
-export default class Navbar extends React.Component{
+export default class LoadingAnimation extends React.Component{
   render(){
     return( 
       <main className ="loading-animation">
