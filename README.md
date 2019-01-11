@@ -22,4 +22,8 @@ Wouldn't it be nice to keep a timeline of your pet's life? From your pet's docto
 ## Tech Stack: 
 React for the frontend, Node/Express for the backend, Mongo for the database
 
+### Home page: 
+![image](https://drive.google.com/uc?export=view&id=1G6W9OH4WxP-sSxTApCLP4OE8E8b-vOwA)
+
+### Individual Pawfile:
 ![image](https://drive.google.com/uc?export=view&id=1_63xErbm1oZHqFnE4mRHffjKXxdFwmTZ)
