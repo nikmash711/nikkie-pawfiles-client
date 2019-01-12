@@ -110,3 +110,7 @@ Full-stack app with:
 ## Links
 [Server Repo](https://github.com/thinkful-ei26/nikkie-pawfiles-server)
 [Deployed App On Heroku](https://pawfiles.herokuapp.com/)
+
+Demo Account Username: demo123
+
+Demo Account Password: demo123
