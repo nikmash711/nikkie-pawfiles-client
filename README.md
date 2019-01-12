@@ -107,6 +107,6 @@ Full-stack app with:
 │   └── store.js
 └── static.json
 ```
-
+## Links
 [Server Repo](https://github.com/thinkful-ei26/nikkie-pawfiles-server)
-
+[Deployed App On Heroku](https://pawfiles.herokuapp.com/)
