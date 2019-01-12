@@ -142,7 +142,6 @@ export const pawfileReducer = (state = initialState, action)=> {
 
 
       const newArrayOfPawfiles = state.pawfiles.map((item)=> {
-        console.log('item.id', typeof item.id, 'action currentpetid', typeof action.currentPetId);
         return (item.id==action.currentPetId ? updatedPawfile : item);
       })
   
