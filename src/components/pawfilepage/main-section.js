@@ -1,11 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import { Redirect } from 'react-router-dom'
 import MemoryPost from './memory-post'
 import MedicalPost from './medical-post'
 import {showMedicalForm, showMemoryForm, changeSearchTerm, changeCategoryFilter} from '../../actions/index';
 import LoadingAnimation from '../loading-animation'
 import {filterBySearch, sortNewestToOldest, filterByCategory} from '../helper-functions';
-import NotFound from '../not-found';
 import './main-section.css'
 
 export class MainSection extends React.Component{
@@ -16,7 +16,7 @@ export class MainSection extends React.Component{
 
     //if the id was wrong and there is no such pawfile: 
     if(!this.props.individualPawfile.name){
-     return (<NotFound/>);
+     return <Redirect to="/home"/>;
     }
 
     let error;
