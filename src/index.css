@@ -115,6 +115,14 @@ input, select, textarea{
   font-weight:700;
 }
 
+/* input{
+  font-size:16px;
+}
+
+form input{
+  width: 80%;
+} */
+
 .form-modal{
   position: fixed;
   z-index: 100;
