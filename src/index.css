@@ -113,15 +113,8 @@ body{
 input, select, textarea{
   font-family: Montserrat;
   font-weight:700;
+  font-size:11px;
 }
-
-/* input{
-  font-size:16px;
-}
-
-form input{
-  width: 80%;
-} */
 
 .form-modal{
   position: fixed;

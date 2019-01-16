@@ -37,7 +37,6 @@ export class RegistrationForm extends React.Component {
 
     render() {
         let error;
-        console.log('props.error', this.props.error)
         if (this.props.error) {
             error = (
                 <div className="form-error" aria-live="polite">
