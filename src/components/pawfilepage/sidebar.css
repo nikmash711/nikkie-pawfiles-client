@@ -16,6 +16,10 @@
   margin-bottom: 10px;
 }
 
+.sidebar .upload-photo{
+  left: 57px;
+}
+
 .sidebar .blurb .top h2{
   margin:auto;
   font-size: 53px;
@@ -36,12 +40,6 @@
 
 .reminders{
   background-color: #fffd9b;
-}
-
-.sidebar .prof-pic{
-  width:100px;
-  height:100px;
-  margin: auto;
 }
 
 .sidebar .blurb .edit-span{

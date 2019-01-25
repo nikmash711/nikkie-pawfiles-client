@@ -13,6 +13,15 @@ export const unSelected = value => {
 export const isTrimmed = value =>
     value.trim() === value ? undefined : 'Cannot start or end with whitespace';
 
+export const sizeLimit = value => {
+    return value.length===0 ? undefined : value[0].size > 5000000 ? 'Image exceeds 5MB limit. Please try again.' : undefined;
+}
+
+export const imageNotEmpty = value =>{
+    console.log('in validate', value);
+    return value.length===0 ? 'Please upload an image or click cancel' : undefined; 
+}
+
 export const length = length => value => {
     if (length.min && value.length < length.min) {
         return `Must be at least ${length.min} characters long`;

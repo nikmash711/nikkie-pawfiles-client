@@ -53,6 +53,22 @@ export const submitPawfileSuccess = (pawfile, currentPetId) => ({
 })
 
 export const submitPawfile = (values, currentPetId) => (dispatch, getState) =>{
+    let formData = new FormData();
+    
+    //it'll do this when we're first making a pawfile and submitting the form, or editing the form 
+    Object.keys(values).forEach(item=> {
+        //this makes sure not to override an img if it already exists and isn't being changed when rest of pawfile is being updated:
+        if(item==="img" && values[item].public_id){
+            formData.append('public_id', values[item].public_id)
+            formData.append('url', values[item].url)
+        }
+        else{
+            formData.append(item, (values[item]))
+        }
+    });
+    for (let pair of formData.entries()) {
+        console.log('DATA', pair[0]+ ', ' + pair[1]); 
+    }
     //could be editing a pawfile or submitting it, it's the same form
     const method = currentPetId ? "PUT" : "POST";
     const path = currentPetId ? `${API_BASE_URL}/pawfiles/${currentPetId}` : `${API_BASE_URL}/pawfiles`; 
@@ -64,15 +80,16 @@ export const submitPawfile = (values, currentPetId) => (dispatch, getState) =>{
     return fetch(path, { 
         method: method,
         headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
+            // 'Accept': 'application/json',
+            // 'Content-Type': 'application/json',
             Authorization: `Bearer ${authToken}`
         },
-        body: JSON.stringify(values)
+        body: formData
     })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
     .then(pawfile => {
+        console.log('pawfile getting back', pawfile)
         dispatch(submitPawfileSuccess(pawfile, currentPetId));
     }).catch(err => {
         dispatch(crudError("An error has occured. Please try refreshing!"));

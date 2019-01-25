@@ -4,7 +4,7 @@ import {reduxForm, Field, focus} from 'redux-form';
 import Input from './input';
 import {showPawfileForm} from '../actions/index';
 import {submitPawfile} from '../actions/pawfile-crud';
-import {required, nonEmpty, unSelected} from './validators';
+import {required, nonEmpty, unSelected, sizeLimit, imageNotEmpty} from './validators';
 import {todaysDate, formatName} from './helper-functions';
 
 export class PawfileForm extends React.Component{
@@ -20,6 +20,11 @@ export class PawfileForm extends React.Component{
 
   onSubmit(values){
     values.name = formatName(values.name);
+    //only submit the image info if this is a new pafile
+    if(!this.props.currentPawfileFormId){
+      values.img = values.img[0];
+    }
+    console.log('values being sent', values);
     return this.props.dispatch(submitPawfile(values, this.props.currentPawfileFormId));
     //this is what tells redux form that the submit succeeded or failed
   }
@@ -55,15 +60,16 @@ export class PawfileForm extends React.Component{
               validate={[required, nonEmpty]}
               /> 
 
-            <Field
+            {/* if they're editing, the option to change image shouldn't be allowed on this form. will let them change profile photo separetely*/}   
+            {!this.props.currentPawfileFormId && <Field
               component={Input}
               className="required"
-              label="Image URL:" 
-              type="url" 
+              label="Image:" 
               name="img" 
               id="img"
-              validate={[required, nonEmpty]}
-            />
+              type= "file"
+              validate={[required, sizeLimit, imageNotEmpty]}
+            />}
             
             <Field
               component={Input} 
@@ -154,6 +160,7 @@ function mapStateToProps(state) {
   return {
     // to get the initial values if the user is editing the form: 
     currentPawfileFormId: state.pawfile.currentPawfileFormId,
+    individualPawfile: state.pawfile.pawfiles.find(pawfile=>pawfile.id==currentPawfileFormId),
     initialValues: {
       name: currentPawfileFormId ? individualPawfile.name : "",
       img: currentPawfileFormId ? individualPawfile.img : "",

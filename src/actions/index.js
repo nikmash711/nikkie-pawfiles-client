@@ -5,6 +5,13 @@ export const showPawfileForm = (bool, currentPawfileFormId) => ({
     currentPawfileFormId
 });
 
+export const SHOW_UPDATE_PHOTO_FORM = 'SHOW_UPDATE_PHOTO_FORM';
+export const showUpdatePhotoForm = (bool, currentPawfileFormId) => ({
+    type: SHOW_UPDATE_PHOTO_FORM,
+    bool,
+    currentPawfileFormId
+});
+
 export const CHANGE_SORTING_PETS_METHOD = 'CHANGE_SORTING_PETS_METHOD';
 export const changeSortingPetsMethod = (sortMethod) => ({
     type: CHANGE_SORTING_PETS_METHOD,

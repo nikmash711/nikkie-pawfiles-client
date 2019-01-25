@@ -3,6 +3,10 @@ a{
   color: black;
 }
 
+.blurb .text-shadow:hover, .blurb .text-shadow:focus {
+  text-shadow: 1px 1px white;
+}
+
 .home article.blurb{
   -webkit-transform: rotate(-2deg);
   -moz-transform: rotate(-1deg);
@@ -38,7 +42,9 @@ a{
   background-color: black;
   display:block;
 }
-
+.top{
+  height:170px;
+}
 .view-pawfile{
   display: inline-block;
   background-color: transparent;

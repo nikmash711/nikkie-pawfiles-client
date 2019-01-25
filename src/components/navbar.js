@@ -1,9 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
+// import {Link} from 'react-router-dom';
 import {toggleNavbar} from '../actions/index';
 import {clearAuth} from '../actions/auth';
 import {clearAuthToken} from '../local-storage';
+import { HashLink as Link } from 'react-router-hash-link';
 import './navbar.css'
 
 export class Navbar extends React.Component{
@@ -38,8 +39,10 @@ export class Navbar extends React.Component{
         { this.props.loggedIn && <Link className={className} to ="/settings">SETTINGS</Link>}
          {this.props.loggedIn && <button id="logout" className={className} onClick={() => this.logOut()}>LOGOUT</button>}
 
-         {!this.props.loggedIn && <Link className={className} to ="/">LOGIN</Link>}
-         {!this.props.loggedIn && <Link className={className} to ="/register">REGISTER</Link>}
+         {!this.props.loggedIn && <Link className={className} to ="/#login">LOGIN</Link>}
+         {!this.props.loggedIn && <Link className={className} to ="/register/#register">REGISTER</Link>}
+         {/* <Link to="/some/path#with-hash-fragment">Link to Hash Fragment</Link> */}
+
        </div>
       </nav>
     );

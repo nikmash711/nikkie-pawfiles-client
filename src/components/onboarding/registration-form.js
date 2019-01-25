@@ -48,6 +48,7 @@ export class RegistrationForm extends React.Component {
         return (
             <form
                 className="onboarding-form register form blurb"
+                id="register"
                 onSubmit={this.props.handleSubmit(values =>
                     this.onSubmit(values)
                 )}>
