@@ -1,12 +1,12 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import Navbar from '../navbar';
-import Footer from '../footer'
+import Navbar from '../common/navbar';
+import Footer from '../common/footer'
 import MyPawfiles from './my-pawfiles';
 import {changeSortingPetsMethod} from '../../actions/index';
 import {fetchPawfiles} from '../../actions/pawfile-crud';
 import {changeSuccessMessage} from '../../actions/auth'
-import requiresLogin from '../requires-login';
+import requiresLogin from '../common/requires-login';
 
 export class HomePage extends React.Component{
   componentDidMount(){

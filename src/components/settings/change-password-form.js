@@ -1,9 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import Input from '../input';
+import Input from '../common/input';
 import {reduxForm, Field, focus, reset} from 'redux-form';
 import {updatePassword} from '../../actions/user-crud';
-import {required, nonEmpty, matches, length, isTrimmed} from '../validators';
+import {required, nonEmpty, matches, length, isTrimmed} from '../common/validators';
 
 //QUESTION: what is this
 const passwordLength = length({min: 6, max: 72});

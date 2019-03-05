@@ -5,7 +5,7 @@
   text-align: center;
   display:flex;
   flex-flow: column wrap;
-  padding-top: 60px;
+  padding-top: 90px;
   padding-bottom: 20px;
   min-height:900px; /* so if theres no pets it doesnt show white */
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {formatDate, changeMilitaryFormat} from '../helper-functions';
+import {formatDate, changeMilitaryFormat} from '../common/helper-functions';
 import {showReminderForm} from '../../actions/index';
 import {deleteReminder} from '../../actions/reminder-crud';
 

@@ -1,8 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import {showPawfileForm, showUpdatePhotoForm} from '../actions/index';
-import {deletePawfile} from '../actions/pawfile-crud';
+import {showPawfileForm, showUpdatePhotoForm} from '../../actions/index';
+import {submitPawfile} from '../../actions/pawfile-crud';
+import {deletePawfile} from '../../actions/pawfile-crud';
 import {formatDate, calculateAge} from './helper-functions';
 import './pawfile-blurb.css';
 
@@ -24,6 +25,15 @@ export class PawfileBlurb extends React.Component{
     });
   }
 
+  onSubmit(e){
+    e.preventDefault();
+    if(this.img && this.img.files.length!==0){
+      let values={};
+      values.img = this.img.files[0];
+      return this.props.dispatch(submitPawfile(values, this.props.id));    
+    }
+  }
+
   render(){
     return(
       <article className= {`${this.props.gender.toLowerCase()} blurb`}>
@@ -32,10 +42,28 @@ export class PawfileBlurb extends React.Component{
           <div className="prof-pic" style={{display: this.state.placeholder}}></div>
 
           {this.props.img && <img style={{display: this.state.image}} onLoad={()=>this.handleImageLoaded()} src= {this.props.img.url} alt={this.props.name} className="prof-pic"/>}
-
-        {/* CANT FIGURE OUT How to do it without including submit button. maybe I can just make it look nicer so when they upload a file it'll say save or cancel over photo? */}
         
-        <button onClick={()=>this.props.dispatch(showUpdatePhotoForm(true, this.props.id))} className="upload-photo">Update Profile Picture</button>
+        {/* <button 
+          onClick={()=>this.props.dispatch(showUpdatePhotoForm(true, this.props.id))} 
+          className="update-photo">Update Profile Picture
+        </button> */}
+
+        <button 
+          type="button"
+          className="update-photo"
+          onClick={()=>this.img.click()}
+        >
+          <i className="fas fa-camera"></i> Update Pawfile Picture 
+        </button>
+        <input 
+            type="file"
+            accept="image/*"
+            className="image-input"
+            name="img"
+            id="img"
+            onChange={(e)=>this.onSubmit(e)}
+            ref={input => this.img = input} 
+        />
       </div>
         <Link to={`/${this.props.id}`}>
           <h2 className="text-shadow">{this.props.name}</h2>

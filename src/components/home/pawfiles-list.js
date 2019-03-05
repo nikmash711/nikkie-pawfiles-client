@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import PawfileBlurb from '../pawfile-blurb';
-import {sortByOldest, sortByYoungest, sortAtoZ, sortZtoA, filterPetsBySearch} from '../helper-functions';
+import PawfileBlurb from '../common/pawfile-blurb';
+import {sortByOldest, sortByYoungest, sortAtoZ, sortZtoA, filterPetsBySearch} from '../common/helper-functions';
 import './pawfiles-list.css';
 
 export class PawfilesList extends React.Component{

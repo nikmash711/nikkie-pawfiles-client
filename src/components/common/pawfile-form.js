@@ -1,9 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {SubmissionError} from 'redux-form';
 import {reduxForm, Field, focus} from 'redux-form';
 import Input from './input';
-import {showPawfileForm} from '../actions/index';
-import {submitPawfile} from '../actions/pawfile-crud';
+import {showPawfileForm} from '../../actions/index';
+import {submitPawfile} from '../../actions/pawfile-crud';
 import {required, nonEmpty, unSelected, sizeLimit, imageNotEmpty} from './validators';
 import {todaysDate, formatName} from './helper-functions';
 
@@ -12,22 +13,43 @@ export class PawfileForm extends React.Component{
     super(props);
 
     this.first = React.createRef();
+    this.state = {
+      uploadedFile: false,
+      border: '1px solid black',
+    }
   }
 
   componentWillUnmount(){
     this.props.dispatch(showPawfileForm(false, undefined));
   }
 
-  onSubmit(values){
-    values.name = formatName(values.name);
-    //only submit the image info if this is a new pafile
-    if(!this.props.currentPawfileFormId){
-      values.img = values.img[0];
+  checkIfFile(){
+    if(this.img.files.length!==0){
+        this.setState({uploadedFile: true});
     }
+    else{
+        this.setState({uploadedFile: false});
+    }
+  }
+
+onSubmit(values) {
+    if(this.img && this.img.files.length!==0){
+        values.img = this.img.files[0];
+    }
+    else{
+      this.setState({border: '1px solid red',})
+      this.img.focus();
+      return Promise.reject(
+        new SubmissionError({
+            _error: 'Please upload a profile picture'
+        })
+    );
+    }
+    values.name = formatName(values.name);
     console.log('values being sent', values);
     return this.props.dispatch(submitPawfile(values, this.props.currentPawfileFormId));
     //this is what tells redux form that the submit succeeded or failed
-  }
+}
 
   render(){
     let error;
@@ -59,17 +81,6 @@ export class PawfileForm extends React.Component{
               maxLength = '12'
               validate={[required, nonEmpty]}
               /> 
-
-            {/* if they're editing, the option to change image shouldn't be allowed on this form. will let them change profile photo separetely*/}   
-            {!this.props.currentPawfileFormId && <Field
-              component={Input}
-              className="required"
-              label="Image:" 
-              name="img" 
-              id="img"
-              type= "file"
-              validate={[required, sizeLimit, imageNotEmpty]}
-            />}
             
             <Field
               component={Input} 
@@ -140,6 +151,27 @@ export class PawfileForm extends React.Component{
               className="test"
             />
 
+            {/* if they're editing, the option to change image shouldn't be allowed on this form. will let them change profile photo separetely*/}   
+            {!this.props.currentPawfileFormId && 
+              <React.Fragment>
+                <button 
+                  style={{border: this.state.border}}
+                  type="button"
+                  className="upload-photo required"
+                  onClick={()=>this.img.click()}
+                >
+                   <i className="fas fa-camera"></i> Upload Profile Picture {this.state.uploadedFile && <i className="fas fa-file"></i>}
+                </button>
+                <input 
+                  type="file"
+                  accept="image/*"
+                  className="image-input"
+                  id="img"
+                  onChange={()=>this.checkIfFile(this.img)}
+                  ref={input => this.img = input} 
+                />
+              </React.Fragment>
+            }
             <div className="buttons">
               <button type="submit" disabled={this.props.pristine || this.props.submitting}>Save Pawfile</button>
               <button onClick={()=>this.props.dispatch(showPawfileForm(false, undefined))} type="button">Cancel</button>

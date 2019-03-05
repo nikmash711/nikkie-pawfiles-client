@@ -1,9 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {toggleNavbar} from '../actions/index';
-import {clearAuth} from '../actions/auth';
-import {clearAuthToken} from '../local-storage';
-// import {Link} from 'react-router-dom';
+import {toggleNavbar} from '../../actions/index';
+import {clearAuth} from '../../actions/auth';
+import {clearAuthToken} from '../../local-storage';
 import { HashLink as Link } from 'react-router-hash-link';
 import './navbar.css'
 
@@ -39,11 +38,13 @@ export class Navbar extends React.Component{
          <div className = "right">
          {this.props.loggedIn && 
           <Link 
+            onClick={()=>this.props.dispatch(toggleNavbar(false))}
             className={className} 
             to ="/home">HOME
           </Link>}
           { this.props.loggedIn && 
           <Link 
+            onClick={()=>this.props.dispatch(toggleNavbar(false))}
             className={className} 
             to ="/settings">SETTINGS
           </Link>}
@@ -61,6 +62,7 @@ export class Navbar extends React.Component{
           </Link>}
          {!this.props.loggedIn && 
           <Link 
+            onClick={()=>this.props.dispatch(toggleNavbar(false))}
             className={className} 
             to ="/register/#register">REGISTER
           </Link>}

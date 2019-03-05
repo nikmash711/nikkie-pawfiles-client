@@ -1,14 +1,14 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {BrowserRouter as Router, Route, withRouter} from 'react-router-dom'
-import HomePage from './home/homepage';
+import HomePage from '../home/homepage';
 import AboutPage from './about-page'
-import PawfilePage from './pawfilepage/pawfilepage';
-import SettingsPage from './settings/settings-page';
+import PawfilePage from '../pawfilepage/pawfilepage';
+import SettingsPage from '../settings/settings-page';
 import {Redirect, Switch} from 'react-router-dom';
-import LandingPage from './onboarding/landing-page';
-import RegistrationPage from './onboarding/registration-page';
-import {refreshAuthToken} from '../actions/auth';
+import LandingPage from '../onboarding/landing-page';
+import RegistrationPage from '../onboarding/registration-page';
+import {refreshAuthToken} from '../../actions/auth';
 
 export class App extends React.Component {
   componentDidUpdate(prevProps) {

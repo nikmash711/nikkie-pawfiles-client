@@ -3,11 +3,11 @@ import {connect} from 'react-redux';
 import {Field, reduxForm, focus} from 'redux-form';
 import {registerUser} from '../../actions/user-crud';
 import {login} from '../../actions/auth';
-import Input from '../input';
-import {formatName} from '../helper-functions'
+import Input from '../common/input';
+import {formatName} from '../common/helper-functions'
 import {loadingAnimationToggle} from '../../actions/index'
-import {required, nonEmpty, matches, length, isTrimmed} from '../validators';
-import LoadingAnimation from '../loading-animation'
+import {required, nonEmpty, matches, length, isTrimmed} from '../common/validators';
+import LoadingAnimation from '../common/loading-animation'
 import './onboarding-form.css'
 import './registration-form.css'
 

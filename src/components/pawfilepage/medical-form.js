@@ -1,12 +1,12 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {reduxForm, Field, focus} from 'redux-form';
-import Input from '../input';
+import Input from '../common/input';
 import {showMedicalForm} from '../../actions/index';
 import {submitPost} from '../../actions/post-crud';
-import {required, nonEmpty} from '../validators';
-import {stringToArrayList, arrayToString} from '../helper-functions';
-import {todaysDate} from '../helper-functions';
+import {required, nonEmpty} from '../common/validators';
+import {stringToArrayList, arrayToString} from '../common/helper-functions';
+import {todaysDate} from '../common/helper-functions';
 import './medical-form.css'
 
 export class MedicalForm extends React.Component{

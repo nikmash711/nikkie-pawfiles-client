@@ -1,11 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {reduxForm, Field, focus} from 'redux-form';
-import Input from '../input';
+import Input from '../common/input';
 import {showMemoryForm} from '../../actions/index';
 import {submitPost} from '../../actions/post-crud';
-import {required, nonEmpty} from '../validators';
-import {todaysDate} from '../helper-functions';
+import {required, nonEmpty} from '../common/validators';
+import {todaysDate} from '../common/helper-functions';
 import './memory-form.css';
 
 export class MemoryForm extends React.Component{

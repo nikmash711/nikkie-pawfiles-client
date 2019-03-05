@@ -1,17 +1,17 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import Navbar from '../navbar';
-import Footer from '../footer'
+import Navbar from '../common/navbar';
+import Footer from '../common/footer'
 import Sidebar from './sidebar';
 import MainSection from './main-section';
-import PawfileForm from '../pawfile-form';
-import UpdatePhotoForm from '../update-photo-form'
+import PawfileForm from '../common/pawfile-form';
+import UpdatePhotoForm from '../common/update-photo-form'
 import MedicalForm from './medical-form'
 import MemoryForm from './memory-form'
 import {showMedicalForm, showMemoryForm, changeSearchTerm, changeCategoryFilter, changeCurrentPetId} from '../../actions/index';
 import { fetchPawfiles } from '../../actions/pawfile-crud';
 import {changeSuccessMessage} from '../../actions/auth'
-import requiresLogin from '../requires-login';
+import requiresLogin from '../common/requires-login';
 
 
 export class PawfilePage extends React.Component{

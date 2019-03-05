@@ -71,6 +71,7 @@ export const submitPawfile = (values, currentPetId) => (dispatch, getState) =>{
     }
     //could be editing a pawfile or submitting it, it's the same form
     const method = currentPetId ? "PUT" : "POST";
+    console.log(method);
     const path = currentPetId ? `${API_BASE_URL}/pawfiles/${currentPetId}` : `${API_BASE_URL}/pawfiles`; 
 
     dispatch(submitPawfileRequest());

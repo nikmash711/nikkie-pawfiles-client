@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {deletePost} from '../../actions/post-crud';
 import {showMemoryForm} from '../../actions/index';
-import {formatLongDate} from '../helper-functions';
+import {formatLongDate} from '../common/helper-functions';
 import './memory-post.css'
 
 export class MemoryPost extends React.Component{

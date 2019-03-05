@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {deletePost} from '../../actions/post-crud';
 import {showMedicalForm} from '../../actions/index';
-import {formatLongDate} from '../helper-functions';
+import {formatLongDate} from '../common/helper-functions';
 
 import './medical-post.css'
 

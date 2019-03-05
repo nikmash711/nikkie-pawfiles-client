@@ -4,8 +4,8 @@ import { Redirect } from 'react-router-dom'
 import MemoryPost from './memory-post'
 import MedicalPost from './medical-post'
 import {showMedicalForm, showMemoryForm, changeSearchTerm, changeCategoryFilter} from '../../actions/index';
-import LoadingAnimation from '../loading-animation'
-import {filterBySearch, sortNewestToOldest, filterByCategory} from '../helper-functions';
+import LoadingAnimation from '../common/loading-animation'
+import {filterBySearch, sortNewestToOldest, filterByCategory} from '../common/helper-functions';
 import './main-section.css'
 
 export class MainSection extends React.Component{

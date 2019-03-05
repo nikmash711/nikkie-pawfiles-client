@@ -1,12 +1,12 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Field, reduxForm, focus} from 'redux-form';
-import Input from '../input';
+import Input from '../common/input';
 import {login} from '../../actions/auth';
 import {loadingAnimationToggle} from '../../actions/index'
-import {required, nonEmpty} from '../validators';
+import {required, nonEmpty} from '../common/validators';
 import {Link} from 'react-router-dom';
-import LoadingAnimation from '../loading-animation'
+import LoadingAnimation from '../common/loading-animation'
 import './onboarding-form.css'
 
 export class LoginForm extends React.Component {

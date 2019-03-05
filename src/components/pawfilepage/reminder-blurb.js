@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import Reminder from './reminder';
 import {showReminderForm} from '../../actions/index';
 import ReminderForm from './reminder-form'
-import {sortOldestToNewest} from '../helper-functions';
+import {sortOldestToNewest} from '../common/helper-functions';
 import './reminder-blurb.css';
 
 export class ReminderBlurb extends React.Component{

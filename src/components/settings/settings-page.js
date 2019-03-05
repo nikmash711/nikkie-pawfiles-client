@@ -1,10 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import Navbar from '../navbar';
-import Footer from '../footer'
+import Navbar from '../common/navbar';
+import Footer from '../common/footer'
 import BasicAccountInfoForm from './basic-account-info-form'
 import ChangePasswordForm from './change-password-form'
-import requiresLogin from '../requires-login';
+import requiresLogin from '../common/requires-login';
 import {changeSuccessMessage} from '../../actions/auth';
 import './settings-page.css'
 

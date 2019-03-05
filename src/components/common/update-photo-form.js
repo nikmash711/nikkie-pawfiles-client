@@ -2,8 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {reduxForm, Field, focus} from 'redux-form';
 import Input from './input';
-import {showUpdatePhotoForm} from '../actions/index';
-import {submitPawfile} from '../actions/pawfile-crud';
+import {showUpdatePhotoForm} from '../../actions/index';
+import {submitPawfile} from '../../actions/pawfile-crud';
 import {required, sizeLimit, imageNotEmpty} from './validators';
 import './update-photo-form.css'
 // HAVE BETTER PHOTO VALIDATION: implement size in validators, implement the accept attribute even in redux form. fix the action in pawfile-crud

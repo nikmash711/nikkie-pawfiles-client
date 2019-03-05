@@ -1,10 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import PawfilesList from './pawfiles-list';
-import PawfileForm from '../pawfile-form';
-import UpdatePhotoForm from '../update-photo-form'
+import PawfileForm from '../common/pawfile-form';
+import UpdatePhotoForm from '../common/update-photo-form'
 import Header from './header';
-import LoadingAnimation from '../loading-animation'
+import LoadingAnimation from '../common/loading-animation'
 import {changeSearchTerm, showPawfileForm, changeSortingPetsMethod} from '../../actions/index';
 import './my-pawfiles.css'
 
