@@ -1,7 +1,7 @@
 .brief-about{
   background-color:rgba(255, 255, 255, .7);
   color: black;
-  width: 270px;
+  width: 100%;
   padding: 20px;
   margin: auto;
   display: flex;
@@ -9,6 +9,7 @@
 }
 
 .brief-about h1{
+  padding-top: 25px;
   font-family: "Reenie Beanie",arial,sans-serif;
   font-size:70px;
 }
@@ -45,31 +46,12 @@
   margin-right: 10px;
 }
 
-@media(min-width: 350px){
-  .brief-about{
-    width: 300px;
-  }
-}
-
-@media(min-width: 500px){
-
-  .brief-about{
-    width: 400px;
-  }
-}
-
-@media(min-width: 900px){
-  .brief-about{
-    width:450px;
-  }
-}
-
-@media(min-width:950px){
+@media(min-width:1000px){
   .brief-about{
     margin:0;
   }
 
   .brief-about{
-    width:600px;
+    width:750px;
   }
 }

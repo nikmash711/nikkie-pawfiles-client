@@ -55,7 +55,15 @@ export class RegistrationForm extends React.Component {
                 <h2>Register</h2>
 
                 {error}
-
+                
+                <Field
+                    component={Input}
+                    type="text"
+                    name="username"
+                    label = "Username:"
+                    className="required"
+                    validate={[required, nonEmpty, isTrimmed]}
+                />
                 <Field 
                     component={Input} 
                     type="text" 
@@ -73,15 +81,6 @@ export class RegistrationForm extends React.Component {
                     className="required"
                     validate={[required, nonEmpty, isTrimmed]}
                 />
-                <Field
-                    component={Input}
-                    type="text"
-                    name="username"
-                    label = "Username:"
-                    className="required"
-                    validate={[required, nonEmpty, isTrimmed]}
-                />
-
                 <Field
                     component={Input}
                     type="password"

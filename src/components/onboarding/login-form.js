@@ -12,7 +12,7 @@ import './onboarding-form.css'
 export class LoginForm extends React.Component {
     
     componentDidMount(){
-        document.title = "Login"
+        document.title = "Login";
     }
 
     onSubmit(values) {

@@ -44,7 +44,7 @@
 }
 
 .new-reminder-form label{
-  font-family: "Kalam";
+  font-family: "Gloria Hallelujah";
   font-size:12px;
 }
 
@@ -64,7 +64,7 @@
   color:white;
   border: 1px solid black;
   margin:10px;
-  font-family: "Kalam";
+  font-family: "Gloria Hallelujah";
   padding: 1px 5px;
   font-size:13px;
 }
@@ -87,7 +87,7 @@
 
 .date-time-legend{
   text-align: center;
-  font-family: 'Kalam'
+  font-family: 'Gloria Hallelujah'
 }
 
 .new-reminder-form .note-label{

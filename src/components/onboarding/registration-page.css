@@ -18,7 +18,7 @@
   flex:2;
 }
 
-@media(min-width:950px){
+@media(min-width:1000px){
   .registration-page .form{
     margin: 130px auto;
   }

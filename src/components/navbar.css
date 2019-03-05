@@ -6,8 +6,8 @@
   border-bottom: 2px solid white;
 }
 
-.main-navbar a, .main-navbar #logout{
-  padding:20px;
+.main-navbar .link, .main-navbar #logout{
+  padding:25px;
 }
 
 #logout{
@@ -18,9 +18,9 @@
   float:right;
   background-color: transparent;
   border: none;
-  font-size: 20px;
-  margin-top: 20px;
+  margin-top: 29px;
   margin-right: 20px;
+  font-size: 25px;
 }
 
 .icon.right:hover, .icon.right:focus{
@@ -36,8 +36,8 @@
   cursor:pointer;
   background-color: transparent;
   border: none;
-  font-family: Montserrat;
-  font-size: 18px;
+  font-family: Gloria Hallelujah;
+  font-size: 17px;
 }
 
 .link:hover:before, .link:focus:before{
@@ -51,6 +51,7 @@
   text-align:left;
   display: inline-block;
   font-weight: 700;
+  font-size:24px;
 }
 
 .logo:after, .logo:after, .logo:before, .logo:before{
@@ -105,6 +106,7 @@
 
   .show.link, .dontshow.link{
     display: inline-block;
+    height: inherit;
   }
 
   #logout{
@@ -113,6 +115,7 @@
 
   .right{
     float:right;
+    height: 88px;
   }
 
   .icon{

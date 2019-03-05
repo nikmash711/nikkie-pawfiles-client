@@ -4,6 +4,7 @@
   padding:0;
   transition: .5s;
   outline:0;
+  letter-spacing: 1px;
 }
 
 html,body{
@@ -111,9 +112,9 @@ body{
 
 /*FORMS*/
 input, select, textarea{
-  font-family: Montserrat;
-  font-weight:700;
-  font-size:11px;
+  font-family: Gloria Hallelujah;
+  font-weight:400;
+  font-size:18px;
 }
 
 .form-modal{
@@ -167,7 +168,7 @@ input, select, textarea{
 
 .form input:focus{
   outline: 0;
-  border: 3px solid black;
+  border-bottom: 3px solid black;
 }
 
 .form textarea:focus{
@@ -227,9 +228,9 @@ input, select, textarea{
   font-size: 20px;
   cursor: pointer;
   margin: 10px;
-  padding: 5px;
+  padding: 8px;
   font-family: 'Gloria Hallelujah';
-  font-size:14px;
+  font-size:18px;
   font-weight: 700;
 }
 
@@ -266,7 +267,7 @@ button.close{
 #instructions{
   text-align: center;
   font-style:italic;
-  font-family: Montserrat;
+  font-family: Gloria Hallelujah;
   font-size:12px;
 }
 
@@ -356,7 +357,7 @@ input[type="file" i] {
 }
 
 .option-icons{
-  font-family: Montserrat;
+  font-family: Gloria Hallelujah;
   font-weight: 700;
 }
 
