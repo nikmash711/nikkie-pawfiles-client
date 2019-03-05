@@ -26,7 +26,7 @@ export class MemoryPost extends React.Component{
         </div>
         {this.props.memory_img && 
         <a className="post-img-a" href={`${this.props.memory_img}`} target="_blank" rel="noopener noreferrer">
-           <img style={{visibility: this.state.visibility}} onLoad={()=>this.handleImageLoaded()}  className="post-img" src={this.props.memory_img} alt={this.props.title}/>
+           <img style={{visibility: this.state.visibility}} onLoad={()=>this.handleImageLoaded()}  className="post-img" src={this.props.memory_img.url} alt={this.props.title}/>
         </a>
        }
   

@@ -60,7 +60,7 @@ export class BasicAccountInfoForm extends React.Component{
 
           <button
               type="submit"
-              disabled={this.props.pristine || this.props.submitting}>
+          >
               Update Account
           </button>
         </form>

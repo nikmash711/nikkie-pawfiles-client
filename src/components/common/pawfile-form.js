@@ -5,7 +5,7 @@ import {reduxForm, Field, focus} from 'redux-form';
 import Input from './input';
 import {showPawfileForm} from '../../actions/index';
 import {submitPawfile} from '../../actions/pawfile-crud';
-import {required, nonEmpty, unSelected, sizeLimit, imageNotEmpty} from './validators';
+import {required, nonEmpty, unSelected} from './validators';
 import {todaysDate, formatName} from './helper-functions';
 
 export class PawfileForm extends React.Component{
@@ -48,7 +48,6 @@ onSubmit(values) {
     values.name = formatName(values.name);
     console.log('values being sent', values);
     return this.props.dispatch(submitPawfile(values, this.props.currentPawfileFormId));
-    //this is what tells redux form that the submit succeeded or failed
 }
 
   render(){
@@ -151,7 +150,6 @@ onSubmit(values) {
               className="test"
             />
 
-            {/* if they're editing, the option to change image shouldn't be allowed on this form. will let them change profile photo separetely*/}   
             {!this.props.currentPawfileFormId && 
               <React.Fragment>
                 <button 
@@ -160,7 +158,7 @@ onSubmit(values) {
                   className="upload-photo required"
                   onClick={()=>this.img.click()}
                 >
-                   <i className="fas fa-camera"></i> Upload Profile Picture {this.state.uploadedFile && <i className="fas fa-file"></i>}
+                   <i className="fas fa-camera"></i> Upload Pawfile Picture {this.state.uploadedFile && <i className="fas fa-file"></i>}
                 </button>
                 <input 
                   type="file"
@@ -173,8 +171,15 @@ onSubmit(values) {
               </React.Fragment>
             }
             <div className="buttons">
-              <button type="submit" disabled={this.props.pristine || this.props.submitting}>Save Pawfile</button>
-              <button onClick={()=>this.props.dispatch(showPawfileForm(false, undefined))} type="button">Cancel</button>
+              <button 
+                type="submit" 
+              >
+                Save Pawfile
+              </button>
+              <button 
+                onClick={()=>this.props.dispatch(showPawfileForm(false, undefined))} 
+                type="button">Cancel
+              </button>
             </div>
 
             <button aria-label="close pawfile blurb" type="button" className = "close" onClick={()=>this.props.dispatch(showPawfileForm(false, undefined))}>X</button>

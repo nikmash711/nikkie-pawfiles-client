@@ -130,7 +130,10 @@ export class MedicalForm extends React.Component{
             /> 
             
             <div className="buttons">
-              <button disabled={this.props.pristine || this.props.submitting} type="submit">Save</button>
+              <button  
+                type="submit">
+                Save
+              </button>
               <button onClick={()=>this.props.dispatch(showMedicalForm(false, undefined))} type="button">Cancel</button>
             </div>
 

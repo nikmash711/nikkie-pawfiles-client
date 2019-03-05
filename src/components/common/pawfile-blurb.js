@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import {showPawfileForm, showUpdatePhotoForm} from '../../actions/index';
+import {showPawfileForm} from '../../actions/index';
 import {submitPawfile} from '../../actions/pawfile-crud';
 import {deletePawfile} from '../../actions/pawfile-crud';
 import {formatDate, calculateAge} from './helper-functions';
@@ -43,11 +43,6 @@ export class PawfileBlurb extends React.Component{
 
           {this.props.img && <img style={{display: this.state.image}} onLoad={()=>this.handleImageLoaded()} src= {this.props.img.url} alt={this.props.name} className="prof-pic"/>}
         
-        {/* <button 
-          onClick={()=>this.props.dispatch(showUpdatePhotoForm(true, this.props.id))} 
-          className="update-photo">Update Profile Picture
-        </button> */}
-
         <button 
           type="button"
           className="update-photo"
@@ -70,9 +65,26 @@ export class PawfileBlurb extends React.Component{
         </Link>
     
         <div className="option-icons">
-          <button type="button" className="edit-button" aria-label = "edit" onClick={()=>this.props.dispatch(showPawfileForm(true,this.props.id))}><i className="fas fa-edit"></i></button>
+          <button 
+            type="button" 
+            className="edit-button" 
+            aria-label = "edit" 
+            onClick={()=>this.props.dispatch(showPawfileForm(true,this.props.id))}>
+            <i className="fas fa-edit"></i>
+          </button>
           <span className = "edit-span">Edit</span>
-          <button type="button" className="delete-button" aria-label = "delete" onClick={()=>this.props.dispatch(deletePawfile(this.props.id))}><i className="fas fa-trash-alt"></i></button>
+          <button 
+            type="button" 
+            className="delete-button" 
+            aria-label = "delete" 
+            onClick={()=>{
+              let confirmDelete = window.confirm('Are you sure you want to delete this pawfile?');
+              if(confirmDelete){
+                this.props.dispatch(deletePawfile(this.props.id))}}
+              }
+              >
+            <i className="fas fa-trash-alt"></i>
+          </button>
           <span className = "delete-span js-delete-span">Delete</span>
         </div>
     

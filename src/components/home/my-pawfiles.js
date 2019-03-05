@@ -2,7 +2,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 import PawfilesList from './pawfiles-list';
 import PawfileForm from '../common/pawfile-form';
-import UpdatePhotoForm from '../common/update-photo-form'
 import Header from './header';
 import LoadingAnimation from '../common/loading-animation'
 import {changeSearchTerm, showPawfileForm, changeSortingPetsMethod} from '../../actions/index';
@@ -55,7 +54,6 @@ export class MyPawfiles extends React.Component{
           {/* only allow user to sort if there's more than one pet */}
           <PawfilesList/>
           {(this.props.showPawfileForm && <PawfileForm/>)}
-          {(this.props.showUpdatePhotoForm && <UpdatePhotoForm/>)}
         </div>
       </main>
     );
@@ -67,7 +65,6 @@ const mapStateToProps = state => ({
   showPawfileForm: state.pawfile.showPawfileForm,
   error: state.pawfile.error,
   pawfilesPending: state.pawfile.pawfilesPending,
-  showUpdatePhotoForm: state.pawfile.showUpdatePhotoForm
 });
 
 export default connect(mapStateToProps)(MyPawfiles);

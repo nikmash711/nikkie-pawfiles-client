@@ -18,7 +18,19 @@ export const submitPostSuccess = (post, currentPetId, postId) => ({
 })
 
 export const submitPost = (values, currentPetId, postId) => (dispatch, getState) =>{
-    //could be editing a post or submitting a new one, it's the same form
+    let formData = new FormData();
+    
+    Object.keys(values).forEach(item=> {
+        if(item==="img" && values[item].public_id){
+            formData.append('public_id', values[item].public_id)
+            formData.append('url', values[item].url)
+        }
+        else{
+            formData.append(item, (values[item]))
+        }    });
+    // for (let pair of formData.entries()) {
+    //     console.log('DATA', pair[0]+ ', ' + pair[1]); 
+    // }
     const method = postId ? "PUT" : "POST";
     const path = postId ? `${API_BASE_URL}/posts/${currentPetId}/${postId}` : `${API_BASE_URL}/posts/${currentPetId}`; 
     dispatch(submitPostRequest());
@@ -27,11 +39,9 @@ export const submitPost = (values, currentPetId, postId) => (dispatch, getState)
     return fetch(path, { 
         method: method,
         headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
             Authorization: `Bearer ${authToken}`
         },
-        body: JSON.stringify(values)
+        body: formData,
     })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())

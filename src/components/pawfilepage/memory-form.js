@@ -9,12 +9,33 @@ import {todaysDate} from '../common/helper-functions';
 import './memory-form.css';
 
 export class MemoryForm extends React.Component{
+  constructor(props){
+    super(props)
+      this.state = {
+        uploadedFile: false,
+      }
+  }
+
   componentWillUnmount(){
     this.props.dispatch(showMemoryForm(false, undefined));
   }
 
+  checkIfFile(){
+    if(this.img.files.length!==0){
+        this.setState({uploadedFile: true});
+    }
+    else{
+        this.setState({uploadedFile: false});
+    }
+  }
+
+
   onSubmit(values){
     values.type="memory";
+    if(this.img && this.img.files.length!==0){
+      values.img = this.img.files[0];
+    }
+    console.log('the values are', values);
     return this.props.dispatch(submitPost(values, this.props.currentPetId, this.props.currentPostId));
   }
 
@@ -66,18 +87,32 @@ export class MemoryForm extends React.Component{
               id="description"
             /> 
 
-            <Field
-              component={Input}
-              label="Image URL:" 
-              type="url" 
-              name="memory_img" 
-              id="memory_img"
-              >
-            </Field>
-            
+            {!this.props.currentPostId && 
+                <React.Fragment>
+                <button 
+                  type="button"
+                  className="upload-photo"
+                  onClick={()=>this.img.click()}
+                >
+                   <i className="fas fa-camera"></i> Upload Photo {this.state.uploadedFile && <i className="fas fa-file"></i>}
+                </button>
+                <input 
+                  type="file"
+                  accept="image/*"
+                  className="image-input"
+                  id="img"
+                  onChange={()=>this.checkIfFile(this.img)}
+                  ref={input => this.img = input} 
+                />
+              </React.Fragment>
+            }
             <div className="buttons">
-              <button disabled={this.props.pristine || this.props.submitting} type="submit">Save</button>
-              <button onClick={()=>this.props.dispatch(showMemoryForm(false, undefined))} type="button">Cancel</button>
+              <button 
+                type="submit">Save</button>
+              <button 
+                onClick={()=>this.props.dispatch(showMemoryForm(false, undefined))} 
+                type="button">Cancel
+              </button>
             </div>
 
             <button type="button" className = "close" onClick={()=>this.props.dispatch(showMemoryForm(false, undefined))}>X</button>

@@ -61,7 +61,7 @@ export class ChangePasswordForm extends React.Component{
           />
           <button
               type="submit"
-              disabled={this.props.pristine || this.props.submitting}>
+            >
               Update Password
           </button>
         </form>

@@ -11,7 +11,6 @@ import {SUBMIT_POST_REQUEST, SUBMIT_POST_SUCCESS, DELETE_POST_REQUEST, DELETE_PO
 const initialState = {
   sortingPetsMethod: "",
   showPawfileForm: false,
-  showUpdatePhotoForm: false,
   showMedicalForm: false,
   showMemoryForm: false,
   showReminderForm: false,
@@ -44,14 +43,6 @@ export const pawfileReducer = (state = initialState, action)=> {
   if(action.type=== SHOW_PAWFILE_FORM){
     return Object.assign({}, state, {
       showPawfileForm: action.bool,
-      currentPawfileFormId: action.currentPawfileFormId
-    })
-  }
-
-  else if(action.type=== SHOW_UPDATE_PHOTO_FORM){
-    console.log('HERE')
-    return Object.assign({}, state, {
-      showUpdatePhotoForm: action.bool,
       currentPawfileFormId: action.currentPawfileFormId
     })
   }

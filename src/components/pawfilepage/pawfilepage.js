@@ -5,7 +5,6 @@ import Footer from '../common/footer'
 import Sidebar from './sidebar';
 import MainSection from './main-section';
 import PawfileForm from '../common/pawfile-form';
-import UpdatePhotoForm from '../common/update-photo-form'
 import MedicalForm from './medical-form'
 import MemoryForm from './memory-form'
 import {showMedicalForm, showMemoryForm, changeSearchTerm, changeCategoryFilter, changeCurrentPetId} from '../../actions/index';
@@ -53,7 +52,6 @@ export class PawfilePage extends React.Component{
         <Sidebar id={this.props.match.params.pawfileId}/>
         <MainSection id={this.props.match.params.pawfileId}/>
         {this.props.showPawfileForm && <PawfileForm/>} 
-        {this.props.showUpdatePhotoForm && <UpdatePhotoForm/>} 
         {this.props.showMedicalForm && <MedicalForm/>} 
         {this.props.showMemoryForm && <MemoryForm/>}
         <Footer/>
@@ -67,7 +65,6 @@ function mapStateToProps(state) {
     pawfilesPending: state.pawfile.pawfilesPending,
     pawfiles: state.pawfile.pawfiles,
     showPawfileForm: state.pawfile.showPawfileForm,
-    showUpdatePhotoForm: state.pawfile.showUpdatePhotoForm,
     showMedicalForm: state.pawfile.showMedicalForm,
     showMemoryForm: state.pawfile.showMemoryForm,
     error: state.pawfile.error,
