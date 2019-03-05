@@ -67,7 +67,7 @@ export const submitPawfile = (values, currentPetId) => (dispatch, getState) =>{
         }
     });
     for (let pair of formData.entries()) {
-        // console.log('DATA', pair[0]+ ', ' + pair[1]); 
+        console.log('DATA', pair[0]+ ', ' + pair[1]); 
     }
     //could be editing a pawfile or submitting it, it's the same form
     const method = currentPetId ? "PUT" : "POST";
