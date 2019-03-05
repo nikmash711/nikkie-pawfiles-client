@@ -118,6 +118,7 @@ function mapStateToProps(state) {
 export default connect(mapStateToProps)(reduxForm({
     form: 'registration',
     onSubmitFail: (error, dispatch) => {
+        console.log("ERROR", error)
         dispatch(loadingAnimationToggle(false))
         dispatch(focus('registration', Object.keys(error)[0]));
     }
