@@ -15,7 +15,7 @@ html,body{
 }
 
 body{
-  background: url("img/pinboard.jpg") no-repeat fixed;
+  background: url("./assets/pinboard.jpg") no-repeat fixed;
   background-size: cover; 
 }
 
