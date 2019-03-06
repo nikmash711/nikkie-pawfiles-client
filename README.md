@@ -14,7 +14,7 @@ Wouldn't it be nice to keep a timeline of your pet's life? From a list of their 
 
 :white_check_mark: Users can add posts for each pet - it can be a memory post with a photo corresponding to the memory, or a medical post to document symptoms, vet diagnosis, medications, and vaccinations
 
-<img src="https://drive.google.com/uc?export=view&id=1vIca4Q-ds8yC1khECwNbc9AJYBmupGbg" alt="homepage" width="400px" />
+<img src="https://drive.google.com/uc?export=view&id=1vIca4Q-ds8yC1khECwNbc9AJYBmupGbg" alt="homepage" width="900px" />
 
 :white_check_mark: Posts are organized on the Pawfile chronologically by the date the user inputted, but users can search for a specific post and filter categorically
 
@@ -31,7 +31,7 @@ Wouldn't it be nice to keep a timeline of your pet's life? From a list of their 
 - Javascript
 - Socket.io 
 - HTML5
-- Sass
+- CSS
 - Enzyme
 
 **Back-end**
@@ -40,7 +40,6 @@ Wouldn't it be nice to keep a timeline of your pet's life? From a list of their 
 - MongoDB hosted on mLab
 - JWT 
 - Passport 
-- Socket.io 
 - Mocha/Chai
 
 **Workflow**
@@ -55,7 +54,10 @@ Wouldn't it be nice to keep a timeline of your pet's life? From a list of their 
 
 ## Links
 [Server Repo](https://github.com/nikmash711/pawfiles-server)
-[Deployed App On Heroku](https://pawfiles.herokuapp.com/)
+
+[Deployed Client On Heroku](https://pawfiles.herokuapp.com/)
+
+[Deployed Server On Heroku](https://pawfiles-server.herokuapp.com/)
 
 ## Demo Info:
 Username: demo123
