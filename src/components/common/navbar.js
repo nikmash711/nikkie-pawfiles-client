@@ -20,7 +20,7 @@ export class Navbar extends React.Component{
     let className = this.props.toggleNavbar ? "show link" : "dontshow link";
   
     return( 
-      <nav className="main-navbar">
+      <nav className="navbar">
         <Link className="logo" to="/home">
           <span className="red">P</span> 
           <span className="blue">A</span> 

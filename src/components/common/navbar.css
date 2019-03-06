@@ -1,4 +1,4 @@
-.main-navbar{
+.navbar{
   background-color: black;
   position: fixed;
   width:100%;
@@ -6,7 +6,7 @@
   border-bottom: 2px solid white;
 }
 
-.main-navbar .link, .main-navbar #logout{
+.navbar .link, .navbar #logout{
   padding:25px;
 }
 
@@ -100,7 +100,7 @@
 }
 
 @media (min-width: 900px){
-  .main-navbar .link{
+  .navbar .link{
     display: inline-block;
   }
 
