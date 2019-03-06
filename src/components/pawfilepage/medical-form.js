@@ -13,7 +13,7 @@ import './medical-form.css'
 export class MedicalForm extends React.Component{
   constructor(props) {
     super(props);
-    this.state = { address: '', finalOffice: '' };
+    this.state = { address: this.props.initialValues.office, finalOffice: '' };
   }
 
   handleChange = address => {
@@ -34,16 +34,18 @@ export class MedicalForm extends React.Component{
   }
 
   onSubmit(values){
+    console.log('THE VALUES ARE', values);
     values.type="medical";
     values.office = this.state.finalOffice;
     values.vaccinations = stringToArrayList(values.vaccinations);
     values.prescriptions = stringToArrayList(values.prescriptions);
     values.symptoms = stringToArrayList(values.symptoms);
-
+    console.log('THE VALUES ARE', values);
     return this.props.dispatch(submitPost(values, this.props.currentPetId, this.props.currentPostId));
   }
 
   render(){
+    console.log('ADDRESS IS ', this.props.initialValues.office);
     let error;
     if (this.props.error) {
         error = (
@@ -133,7 +135,7 @@ export class MedicalForm extends React.Component{
               id="notes"
             /> 
 
-<Field
+            <Field
               component={Input} 
               label = "Doctor:"
               name="doctor" 
@@ -147,6 +149,7 @@ export class MedicalForm extends React.Component{
                   value={this.state.address}
                   onChange={this.handleChange}
                   onSelect={this.handleSelect}
+                  // defaultValue={this.props.initialValues.office}
                 >
                 {({ getInputProps, suggestions, getSuggestionItemProps }) => (
                       <React.Fragment>
@@ -208,7 +211,7 @@ function mapStateToProps(state) {
       date: individualPost ? individualPost.date : todaysDate(),
       doctor: individualPost ? individualPost.doctor : "",
       office: individualPost ? individualPost.office : "",
-      symptoms:individualPost ? arrayToString(individualPost.symptoms) : "",
+      symptoms: individualPost ? arrayToString(individualPost.symptoms) : "",
       prescriptions:individualPost ? arrayToString(individualPost.prescriptions) : "",
       vaccinations:individualPost ? arrayToString(individualPost.vaccinations) : "",
       notes: individualPost ? individualPost.notes : "",

@@ -20,23 +20,50 @@ export const submitPostSuccess = (post, currentPetId, postId) => ({
 export const submitPost = (values, currentPetId, postId) => (dispatch, getState) =>{
     let formData = new FormData();
     
-    Object.keys(values).forEach(item=> {
-        if(values[item].length>0){
-            formData.append(item, (values[item]))
-        }
-    });
+    if(values.type==="memory"){
+        Object.keys(values).forEach(item=> {
+            //if editing post, skip the img
+            if(item==="memory_img" && postId){
+                return;
+            }
+            //if creating post
+            else if(values[item].length>0 || item==="memory_img"){
+                console.log(item, (values[item]))
+                formData.append(item, (values[item]))
+            }
+        });
+    }
+    
+
+    // for (let pair of formData.entries()) {
+    //     console.log('DATA', pair[0]+ ', ' + pair[1]); 
+    // }
 
     const method = postId ? "PUT" : "POST";
     const path = postId ? `${API_BASE_URL}/posts/${currentPetId}/${postId}` : `${API_BASE_URL}/posts/${currentPetId}`; 
+
     dispatch(submitPostRequest());
     const authToken = getState().auth.authToken;
 
+    let headers; 
+
+    if(values.type==="memory"){
+        headers = {
+            Authorization: `Bearer ${authToken}`,
+        }
+    }
+    else{
+        headers = {
+            Authorization: `Bearer ${authToken}`,
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        }
+    }
+
     return fetch(path, { 
         method: method,
-        headers: {
-            Authorization: `Bearer ${authToken}`
-        },
-        body: formData,
+        headers: headers,
+        body: values.type==="medical" ? JSON.stringify(values) : formData,
     })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())

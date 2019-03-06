@@ -33,7 +33,7 @@ export class MemoryForm extends React.Component{
   onSubmit(values){
     values.type="memory";
     if(this.img && this.img.files.length!==0){
-      values.img = this.img.files[0];
+      values.memory_img = this.img.files[0];
     }
     console.log('the values are', values);
     return this.props.dispatch(submitPost(values, this.props.currentPetId, this.props.currentPostId));

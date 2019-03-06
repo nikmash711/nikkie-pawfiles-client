@@ -119,7 +119,9 @@ export function stringToArrayList(str){
     return [];
   }
   const arr = str.split(',');
-  return arr.map(item=>item.trim());
+  let result = arr.map(item=>item.trim());
+  console.log('THE RESULT IS,', result);
+  return result;
 }
 
 export function arrayToString(arr){

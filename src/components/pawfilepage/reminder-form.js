@@ -36,11 +36,16 @@ export class ReminderForm extends React.Component{
 
           <fieldset className="date-time-options">
             <legend align="center" className="date-time-legend">Date/Time</legend>
-            <label htmlFor="date">Date:</label>
-            <input className="reminder-date" ref={input => this.dateInput = input} type="date" id="date" defaultValue={this.props.individualReminder ? this.props.individualReminder.date : todaysDate()} min={ todaysDate()} />
-
-            <label htmlFor="time">Time:</label>
+            <div>
+              <label htmlFor="date">Date:</label>
+              <input className="reminder-date" ref={input => this.dateInput = input} type="date" id="date" defaultValue={this.props.individualReminder ? this.props.individualReminder.date : todaysDate()} min={ todaysDate()} />
+            </div>
+           
+          <div>
+          <label htmlFor="time">Time:</label>
             <input className="reminder-time" ref={input => this.timeInput = input} type="time" id="time" defaultValue={this.props.individualReminder ? this.props.individualReminder.time : ""} />
+          </div>
+           
           </fieldset>
          
           <div className="buttons">

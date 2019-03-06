@@ -26,13 +26,15 @@
 }
 
 .new-reminder-form .new-reminder-note{
-  margin-left:5px;
-  margin-bottom:10px;
-  width: 200px;
+  margin:10px auto;
+  width: 90%;
+  display: block;
+  border-bottom: 2px solid black;
 }
 
-.new-reminder-form .reminder-date{
-  width:120px;
+.new-reminder-form .reminder-date, .new-reminder-form .reminder-time{
+  width:200px;
+  text-align: center;
 }
 
 .new-reminder-form .new-reminder-note:focus{
@@ -92,10 +94,16 @@
 
 .new-reminder-form .note-label{
   font-size: 15px;
-  margin-left: 10px;
+  display: block;
+  /* margin: auto; */
+  text-align: center;
 }
 
 .reminder-fieldset{
   border:none;
   padding-top:5px;
+}
+
+input.reminder-date, input.reminder-time{
+  font-size: 16px;
 }
