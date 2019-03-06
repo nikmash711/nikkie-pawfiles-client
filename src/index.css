@@ -176,7 +176,7 @@ input, select, textarea{
   border: 1px solid black;
 }
 
-.form label{
+.form-input label{
   text-align: left;
   margin: 5px;
   flex: 1;
@@ -198,6 +198,10 @@ input, select, textarea{
   top: 90%;
   padding: 2px;
   font-family: sans-serif;
+  text-align: center;
+}
+
+.form-input .form-error{
   text-align: left;
 }
 

@@ -33,10 +33,12 @@ export class PawfileForm extends React.Component{
   }
 
 onSubmit(values) {
+    //new pawfile, has an image 
     if(this.img && this.img.files.length!==0){
         values.img = this.img.files[0];
     }
-    else if(!this.img && !this.props.currentPawfileFormId) {
+    //new pawfile, no image, throw an error 
+    else if(!this.props.currentPawfileFormId && this.img.files.length===0) {
       this.setState({border: '1px solid red',})
       this.img.focus();
       return Promise.reject(
@@ -45,12 +47,10 @@ onSubmit(values) {
         })
     );
     }
-    //normal editing
-    else{
-      values.name = formatName(values.name);
-      console.log('values being sent', values);
-      return this.props.dispatch(submitPawfile(values, this.props.currentPawfileFormId));
-    }
+    //normal submitting/editing
+    values.name = formatName(values.name);
+    console.log('values being sent', values);
+    return this.props.dispatch(submitPawfile(values, this.props.currentPawfileFormId));
 }
 
   render(){
