@@ -35,7 +35,6 @@ export class MemoryForm extends React.Component{
     if(this.img && this.img.files.length!==0){
       values.memory_img = this.img.files[0];
     }
-    console.log('the values are', values);
     return this.props.dispatch(submitPost(values, this.props.currentPetId, this.props.currentPostId));
   }
 
@@ -127,8 +126,8 @@ function mapStateToProps(state) {
   //see if there's a postId (editing), or no id means new post. Is this efficient?
   let currentPostId = state.pawfile.currentPostId;
   let currentPetId = state.pawfile.currentPetId;
-  let individualPawfile = state.pawfile.pawfiles.find(pawfile=>pawfile.id==currentPetId);
-  let individualPost = individualPawfile.posts.find(post=>post.id==currentPostId);
+  let individualPawfile = state.pawfile.pawfiles.find(pawfile=>pawfile.id===currentPetId);
+  let individualPost = individualPawfile.posts.find(post=>post.id===currentPostId);
 
   return {
     currentPostId: state.pawfile.currentPostId,

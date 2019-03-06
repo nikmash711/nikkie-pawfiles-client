@@ -49,7 +49,6 @@ onSubmit(values) {
     }
     //normal submitting/editing
     values.name = formatName(values.name);
-    console.log('values being sent', values);
     return this.props.dispatch(submitPawfile(values, this.props.currentPawfileFormId));
 }
 
@@ -195,12 +194,12 @@ onSubmit(values) {
 
 function mapStateToProps(state) {
   let currentPawfileFormId = state.pawfile.currentPawfileFormId;
-  let individualPawfile = state.pawfile.pawfiles.find(pawfile=>pawfile.id==currentPawfileFormId);
+  let individualPawfile = state.pawfile.pawfiles.find(pawfile=>pawfile.id===currentPawfileFormId);
 
   return {
     // to get the initial values if the user is editing the form: 
     currentPawfileFormId: state.pawfile.currentPawfileFormId,
-    individualPawfile: state.pawfile.pawfiles.find(pawfile=>pawfile.id==currentPawfileFormId),
+    individualPawfile: state.pawfile.pawfiles.find(pawfile=>pawfile.id===currentPawfileFormId),
     initialValues: {
       name: currentPawfileFormId ? individualPawfile.name : "",
       img: currentPawfileFormId ? individualPawfile.img : "",

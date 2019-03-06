@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {BrowserRouter as Router, Route, withRouter} from 'react-router-dom'
+import {BrowserRouter as Router, Route} from 'react-router-dom'
 import HomePage from '../home/homepage';
 import AboutPage from './about-page'
 import PawfilePage from '../pawfilepage/pawfilepage';

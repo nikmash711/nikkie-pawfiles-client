@@ -41,6 +41,18 @@
   text-shadow: 1px 1px #fffd9b;
 }
 
+.search{
+  text-align: center;
+}
+
+.search::placeholder{
+  padding: 5px 0px;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 23px;
+  text-align: left;
+}
+
 @media(min-width:600px){
   .home .center-me{
     min-width:600px;

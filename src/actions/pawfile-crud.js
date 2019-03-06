@@ -66,12 +66,9 @@ export const submitPawfile = (values, currentPetId) => (dispatch, getState) =>{
             formData.append(item, (values[item]))
         }
     });
-    for (let pair of formData.entries()) {
-        console.log('DATA', pair[0]+ ', ' + pair[1]); 
-    }
+
     //could be editing a pawfile or submitting it, it's the same form
     const method = currentPetId ? "PUT" : "POST";
-    console.log(method);
     const path = currentPetId ? `${API_BASE_URL}/pawfiles/${currentPetId}` : `${API_BASE_URL}/pawfiles`; 
 
     dispatch(submitPawfileRequest());
@@ -90,7 +87,6 @@ export const submitPawfile = (values, currentPetId) => (dispatch, getState) =>{
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
     .then(pawfile => {
-        console.log('pawfile getting back', pawfile)
         dispatch(submitPawfileSuccess(pawfile, currentPetId));
     }).catch(err => {
         dispatch(crudError("An error has occured. Please try refreshing!"));

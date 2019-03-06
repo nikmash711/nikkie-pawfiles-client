@@ -66,7 +66,7 @@ export class MainSection extends React.Component{
               </div>
   
               <div className="search-input">
-                <input onChange={e=>this.props.dispatch(changeSearchTerm(e.target.value))} className="tape" placeholder='Search Posts'/>
+                <input onChange={e=>this.props.dispatch(changeSearchTerm(e.target.value))} className="tape search" placeholder='&#xF002;'/>
               </div>
   
               <div className="add-buttons">
@@ -90,7 +90,7 @@ MainSection.defaultProps= {
 }
 
 const mapStateToProps = (state,props) => ({
-  individualPawfile: state.pawfile.pawfiles.find(pawfile=>pawfile.id==props.id),
+  individualPawfile: state.pawfile.pawfiles.find(pawfile=>pawfile.id===props.id),
   currentSearchTerm: state.pawfile.currentSearchTerm,
   categoryFilter: state.pawfile.categoryFilter,
   pawfilesPending: state.pawfile.pawfilesPending,

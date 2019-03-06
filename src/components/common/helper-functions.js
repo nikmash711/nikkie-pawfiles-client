@@ -120,7 +120,6 @@ export function stringToArrayList(str){
   }
   const arr = str.split(',');
   let result = arr.map(item=>item.trim());
-  console.log('THE RESULT IS,', result);
   return result;
 }
 

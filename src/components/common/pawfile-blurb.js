@@ -60,7 +60,7 @@ export class PawfileBlurb extends React.Component{
             ref={input => this.img = input} 
         />
       </div>
-        <Link to={`/${this.props.id}`}>
+        <Link className="name" to={`/${this.props.id}`}>
           <h2 className="text-shadow">{this.props.name}</h2>
         </Link>
     

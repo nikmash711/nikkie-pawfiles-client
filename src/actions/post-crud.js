@@ -28,16 +28,10 @@ export const submitPost = (values, currentPetId, postId) => (dispatch, getState)
             }
             //if creating post
             else if(values[item].length>0 || item==="memory_img"){
-                console.log(item, (values[item]))
                 formData.append(item, (values[item]))
             }
         });
     }
-    
-
-    // for (let pair of formData.entries()) {
-    //     console.log('DATA', pair[0]+ ', ' + pair[1]); 
-    // }
 
     const method = postId ? "PUT" : "POST";
     const path = postId ? `${API_BASE_URL}/posts/${currentPetId}/${postId}` : `${API_BASE_URL}/posts/${currentPetId}`; 

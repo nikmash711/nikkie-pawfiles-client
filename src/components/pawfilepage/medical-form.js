@@ -7,7 +7,7 @@ import {submitPost} from '../../actions/post-crud';
 import {required, nonEmpty} from '../common/validators';
 import {stringToArrayList, arrayToString} from '../common/helper-functions';
 import {todaysDate} from '../common/helper-functions';
-import PlacesAutocomplete, {geocodeByAddress, getLatLng} from 'react-places-autocomplete';
+import PlacesAutocomplete, {geocodeByAddress} from 'react-places-autocomplete';
 import './medical-form.css'
 
 export class MedicalForm extends React.Component{
@@ -34,18 +34,15 @@ export class MedicalForm extends React.Component{
   }
 
   onSubmit(values){
-    console.log('THE VALUES ARE', values);
     values.type="medical";
     values.office = this.state.finalOffice;
     values.vaccinations = stringToArrayList(values.vaccinations);
     values.prescriptions = stringToArrayList(values.prescriptions);
     values.symptoms = stringToArrayList(values.symptoms);
-    console.log('THE VALUES ARE', values);
     return this.props.dispatch(submitPost(values, this.props.currentPetId, this.props.currentPostId));
   }
 
   render(){
-    console.log('ADDRESS IS ', this.props.initialValues.office);
     let error;
     if (this.props.error) {
         error = (
@@ -199,8 +196,8 @@ function mapStateToProps(state) {
   //see if there's a postId (editing), or no id means new post. Is this efficient?
   let currentPostId = state.pawfile.currentPostId;
   let currentPetId = state.pawfile.currentPetId;
-  let individualPawfile = state.pawfile.pawfiles.find(pawfile=>pawfile.id==currentPetId);
-  let individualPost = individualPawfile.posts.find(post=>post.id==currentPostId);
+  let individualPawfile = state.pawfile.pawfiles.find(pawfile=>pawfile.id===currentPetId);
+  let individualPost = individualPawfile.posts.find(post=>post.id===currentPostId);
 
   return {
     currentPostId: state.pawfile.currentPostId,

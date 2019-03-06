@@ -18,7 +18,6 @@ export const sizeLimit = value => {
 }
 
 export const imageNotEmpty = value =>{
-    console.log('in validate', value);
     return value.length===0 ? 'Please upload an image or click cancel' : undefined; 
 }
 

@@ -3,7 +3,7 @@ a{
   color: black;
 }
 
-.blurb .text-shadow:hover, .blurb .text-shadow:focus {
+.blurb .name:hover .text-shadow, .blurb .name:focus .text-shadow {
   text-shadow: 1px 1px white;
 }
 

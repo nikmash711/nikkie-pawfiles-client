@@ -48,7 +48,11 @@ export class MyPawfiles extends React.Component{
                 <option value="Z-A">Z-A</option>
               </select>
             }
-            {this.props.pawfiles.length>1 && <input onChange={e=>this.props.dispatch(changeSearchTerm(e.target.value))} className="tape" placeholder='Search Pets'/>}
+            {this.props.pawfiles.length>1 &&
+              <input 
+                onChange={e=>this.props.dispatch(changeSearchTerm(e.target.value))} className="tape search" 
+                placeholder='&#xF002;'/>
+            }
             <button onClick={()=> this.props.dispatch(showPawfileForm(true, undefined))} className="tape add-new-pawfile">Add New Pawfile</button>
           </nav>
           {/* only allow user to sort if there's more than one pet */}

@@ -21,7 +21,6 @@ export default class Input extends React.Component {
         const allyProps = {['aria-describedby']: this.props['aria-describedby']};
 
         const max = {max: this.props.max};
-        const accept = {accept: 'image/png, image/jpeg, image/jpg'}
         const maxLength = {maxLength: this.props.maxLength};
 
         let error;

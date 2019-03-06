@@ -30,7 +30,7 @@ export class PawfilePage extends React.Component{
   }
 
   validId(paramsId){
-    return this.props.pawfiles.find(pawfile=> pawfile.id==paramsId)
+    return this.props.pawfiles.find(pawfile=> pawfile.id===paramsId)
   }
 
   render(){    

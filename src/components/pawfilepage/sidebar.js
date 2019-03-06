@@ -43,7 +43,7 @@ Sidebar.defaultProps= {
 
 const mapStateToProps = (state, props) => ({
   //find the pawfile with an id equal to the one passed down in props
-  individualPawfile: state.pawfile.pawfiles.find(pawfile=>pawfile.id==props.id),
+  individualPawfile: state.pawfile.pawfiles.find(pawfile=>pawfile.id===props.id),
   pawfilesPending: state.pawfile.pawfilesPending,
 });
 

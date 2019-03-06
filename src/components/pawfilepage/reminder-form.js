@@ -62,12 +62,12 @@ export class ReminderForm extends React.Component{
 function mapStateToProps(state) {
   let currentReminderId = state.pawfile.currentReminderId;
   let currentPetId = state.pawfile.currentPetId;
-  let individualPawfile = state.pawfile.pawfiles.find(pawfile=>pawfile.id==currentPetId);
+  let individualPawfile = state.pawfile.pawfiles.find(pawfile=>pawfile.id===currentPetId);
 
   return {
     currentReminderId: state.pawfile.currentReminderId,
     currentPetId: state.pawfile.currentPetId,
-    individualReminder: individualPawfile.reminders.find(reminder=>reminder.id==currentReminderId)
+    individualReminder: individualPawfile.reminders.find(reminder=>reminder.id===currentReminderId)
   }
 }
 
