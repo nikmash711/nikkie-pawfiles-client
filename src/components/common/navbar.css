@@ -1,17 +1,17 @@
-nav.navbar{
-  background-color: black;
-  position: fixed;
-  width:100%;
-  z-index: 1000;
-  border-bottom: 2px solid white;
-}
-
 .navbar .link, .navbar #logout{
   padding:25px;
 }
 
 #logout{
   width:100%;
+}
+
+.navbar{
+  background-color: black;
+  position: fixed;
+  width:100%;
+  z-index: 1000;
+  border-bottom: 2px solid white;
 }
 
 .icon.right{
