@@ -4,6 +4,42 @@
   background-color: white;
   margin: 130px auto;
   border: 3px solid coral;
-  width: 75%;
+  width: 100%;
   position: relative;
+}
+
+.office-input{
+  width: 100%;
+}
+
+.office-input .label{
+  display: block;
+  text-align: center;
+}
+
+.office-input input{
+  width: 90%;
+  margin: auto;
+  display: block;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.office-input .suggestion-item{
+  width: 90%;
+  margin: auto;
+  padding: 10px;
+  background: rgb(237, 199, 199);
+  cursor: pointer;
+}
+
+.office-input .suggestion-item:hover, .office-input .suggestion-item:focus{
+  background: lightcoral;
+  cursor: pointer;
+}
+
+@media(min-width: 550px){
+  .med .form{
+    width: 80%;
+  }
 }

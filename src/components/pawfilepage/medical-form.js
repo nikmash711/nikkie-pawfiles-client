@@ -7,15 +7,35 @@ import {submitPost} from '../../actions/post-crud';
 import {required, nonEmpty} from '../common/validators';
 import {stringToArrayList, arrayToString} from '../common/helper-functions';
 import {todaysDate} from '../common/helper-functions';
+import PlacesAutocomplete, {geocodeByAddress, getLatLng} from 'react-places-autocomplete';
 import './medical-form.css'
 
 export class MedicalForm extends React.Component{
+  constructor(props) {
+    super(props);
+    this.state = { address: '', finalOffice: '' };
+  }
+
+  handleChange = address => {
+    this.setState({ address });
+  };
+
+  handleSelect = address => {
+    this.setState({ address });
+    geocodeByAddress(address)
+      .then(results => this.setState({finalOffice:results[0].formatted_address}))
+      .catch(error => {
+        //add error handling
+      });
+  };
+  
   componentWillUnmount(){
     this.props.dispatch(showMedicalForm(false));
   }
 
   onSubmit(values){
     values.type="medical";
+    values.office = this.state.finalOffice;
     values.vaccinations = stringToArrayList(values.vaccinations);
     values.prescriptions = stringToArrayList(values.prescriptions);
     values.symptoms = stringToArrayList(values.symptoms);
@@ -60,22 +80,6 @@ export class MedicalForm extends React.Component{
               type = "date"
               max= {todaysDate()}
               validate={[required, nonEmpty]}
-            />
-
-            <Field
-              component={Input} 
-              label = "Doctor:"
-              name="doctor" 
-              id="doctor"
-              type = "text"
-            />
-
-            <Field
-              component={Input} 
-              label = "Dr's Office:"
-              name="office" 
-              id="office"
-              type = "url"
             />
 
             <div id="instructions">
@@ -128,7 +132,50 @@ export class MedicalForm extends React.Component{
               name="notes" 
               id="notes"
             /> 
-            
+
+<Field
+              component={Input} 
+              label = "Doctor:"
+              name="doctor" 
+              id="doctor"
+              type = "text"
+            />
+
+            <div className='office-input'>
+                <label htmlFor="office" >Office:</label>
+                <PlacesAutocomplete
+                  value={this.state.address}
+                  onChange={this.handleChange}
+                  onSelect={this.handleSelect}
+                >
+                {({ getInputProps, suggestions, getSuggestionItemProps }) => (
+                      <React.Fragment>
+                        <input
+                          {...getInputProps({
+                            placeholder: 'Search For Vet Address',
+                            className: 'location-search-input',
+                            name: 'office'
+                          })}
+                        />
+                        <div className="autocomplete-dropdown-container">
+                          {suggestions.map(suggestion => {
+                            const className = 'suggestion-item';
+                            return (
+                              <div
+                                {...getSuggestionItemProps(suggestion, {
+                                  className,
+                                })}
+                              >
+                                <span>{suggestion.description}</span>
+                              </div>
+                            );
+                          })}
+                        </div>
+                  </React.Fragment>
+                )}
+              </PlacesAutocomplete>
+            </div>
+
             <div className="buttons">
               <button  
                 type="submit">

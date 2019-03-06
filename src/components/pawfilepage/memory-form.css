@@ -4,7 +4,7 @@
   background-color: white;
   margin: 130px auto;
   border: 3px solid lightgreen;
-  width: 75%;
+  width: 100%;
   position: relative;
 }
 
@@ -12,4 +12,15 @@
   font-size: 20px;
   text-align: center;
   font-family: "Gloria Hallelujah",arial,sans-serif;
+}
+
+.mem .form .upload-photo{
+  margin: 10px auto;
+  display: block;
+}
+
+@media(min-width: 550px){
+  .mem .form{
+    width: 80%;
+  }
 }

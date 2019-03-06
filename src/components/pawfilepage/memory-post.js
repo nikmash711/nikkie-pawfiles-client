@@ -25,7 +25,7 @@ export class MemoryPost extends React.Component{
           {this.props.description && <p className="post-description">{this.props.description}</p>}
         </div>
         {this.props.memory_img && 
-        <a className="post-img-a" href={`${this.props.memory_img}`} target="_blank" rel="noopener noreferrer">
+        <a className="post-img-a" href={`${this.props.memory_img.url}`} target="_blank" rel="noopener noreferrer">
            <img style={{visibility: this.state.visibility}} onLoad={()=>this.handleImageLoaded()}  className="post-img" src={this.props.memory_img.url} alt={this.props.title}/>
         </a>
        }
@@ -34,7 +34,17 @@ export class MemoryPost extends React.Component{
           <button className="edit-button" aria-label = "edit" onClick={()=>this.props.dispatch(showMemoryForm(true, this.props.postId))}><i className="fas fa-edit"></i></button>
           <span className = "edit-span">Edit</span>
   
-          <button className="delete-button" aria-label = "delete" onClick={()=>this.props.dispatch(deletePost(this.props.currentPetId, this.props.postId))}><i className="fas fa-trash-alt"></i></button>
+          <button 
+            className="delete-button" 
+            aria-label = "delete" 
+            onClick={()=>{
+              let confirmDelete = window.confirm('Are you sure you want to delete this pawfile?');
+              if(confirmDelete){
+                this.props.dispatch(deletePost(this.props.currentPetId, this.props.postId))
+              }
+              }}>
+            <i className="fas fa-trash-alt"></i>
+          </button>
           <span className = "delete-span js-delete-span">Delete</span>
   
         </div>

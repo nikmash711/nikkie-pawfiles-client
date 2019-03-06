@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
 import {deletePost} from '../../actions/post-crud';
 import {showMedicalForm} from '../../actions/index';
 import {formatLongDate} from '../common/helper-functions';
@@ -40,21 +39,35 @@ export class MedicalPost extends React.Component{
   
         {this.props.notes && <p> <strong>Notes:</strong> {this.props.notes}</p> }
           {
-            this.props.doctor && <p><strong>Doctor: </strong> 
+            this.props.doctor && this.props.office && <p><strong>Doctor: </strong> 
             {
-              (this.props.office && <a className="office" href={this.props.office} target="_blank" rel="noopener noreferrer"> {this.props.doctor} <i className="fas fa-external-link-alt"></i> </a>) || this.props.doctor
+              (this.props.office && <a className="office" href={`http://maps.google.com/?q=${this.props.office}`} target="_blank" rel="noopener noreferrer"> {this.props.doctor} <i className="fas fa-external-link-alt"></i> </a>) || this.props.doctor
             } 
             </p>
           }
+          {
+            !this.props.doctor && this.props.office && <p><strong>Doctor's Office: </strong> 
+              <a className="office" href={`http://maps.google.com/?q=${this.props.office}`} target="_blank" rel="noopener noreferrer"> {this.props.office} <i className="fas fa-external-link-alt"></i> </a>
+            </p>
+          }
+
           <div className="option-icons">
             <button className="edit-button" aria-label = "edit" onClick={()=>this.props.dispatch(showMedicalForm(true, this.props.postId))}><i className="fas fa-edit"></i></button>
             <span className = "edit-span">Edit</span>
             
-            <button className="delete-button" aria-label = "delete" onClick={()=>this.props.dispatch(deletePost(this.props.currentPetId, this.props.postId))}><i className="fas fa-trash-alt"></i></button>
+            <button 
+              className="delete-button" 
+              aria-label = "delete" 
+              onClick={()=>{
+              let confirmDelete = window.confirm('Are you sure you want to delete this pawfile?');
+              if(confirmDelete){
+                this.props.dispatch(deletePost(this.props.currentPetId, this.props.postId))
+              }
+              }}>
+              <i className="fas fa-trash-alt"></i>
+            </button>
             <span className = "delete-span js-delete-span">Delete</span>
           </div>
-         
-  
   
       </li>
     );

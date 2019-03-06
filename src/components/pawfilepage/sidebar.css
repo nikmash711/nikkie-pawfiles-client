@@ -7,7 +7,7 @@
 }
 
 .sidebar .blurb{
-  width:250px;
+  width:100%;
   display: block;
   margin: 25px auto;
 }
@@ -50,6 +50,10 @@
 .sidebar .blurb .delete-span{
   left: 22px;
   top: -20px;
+}
+
+.sidebar .center-me{
+  margin: 10px auto;
 }
 
 @media(min-width: 450px){

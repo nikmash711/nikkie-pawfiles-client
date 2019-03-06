@@ -198,12 +198,7 @@ input, select, textarea{
   top: 90%;
   padding: 2px;
   font-family: sans-serif;
-  text-align: center;
-}
-
-.form label .form-error{
-  position: absolute;
-
+  text-align: left;
 }
 
 .form .form-input{
@@ -230,7 +225,7 @@ input, select, textarea{
 button.close{
   position: absolute;
   top: 0;
-  left: 85%;
+  left: 79%;
   font-family: 'Courier New', Courier, monospace;
 }
 
