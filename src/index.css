@@ -262,22 +262,7 @@ button.close{
   font-family: Gloria Hallelujah;
   font-size:12px;
 }
-/* 
-input[type="file" i] {
-  align-items: center;
-  text-align: center;
-  width:100px;
-}
 
-.inputfile {
-	width: 0.1px;
-	height: 0.1px;
-	opacity: 0;
-	overflow: hidden;
-	position: absolute;
-	z-index: -1;
-}
-*/
 .update-photo {
   font-size: 12px;
   font-family: 'Gloria Hallelujah';
@@ -469,3 +454,7 @@ select.tape{
 .upload-photo:focus{
   outline: 0;
 }
+
+strong{
+  text-shadow: 1px 1px black;
+};
