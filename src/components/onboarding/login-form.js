@@ -71,6 +71,22 @@ export class LoginForm extends React.Component {
                 <h5>
                     Don't have an account? <Link to="/register">Register Here!</Link>
                 </h5>
+                <h5>
+                    Want to see a live demo? 
+                    <Link
+                        className="demo-button"
+                        type="button"
+                        to="/"
+                        onClick={()=>{
+                            let values={
+                                username: 'demo123',
+                                password: 'demo123'
+                            };
+                            this.onSubmit(values);
+                        }}
+                    > Click here!
+                    </Link>
+                </h5>
                 
             </form>
         );
