@@ -72,8 +72,7 @@ export class LoginForm extends React.Component {
                     Don't have an account? <Link to="/register">Register Here!</Link>
                 </h5>
                 <h5>
-                    Want to see a live demo? 
-                    <Link
+                    Want to see a live demo? <Link
                         className="demo-button"
                         type="button"
                         to="/"
@@ -84,7 +83,7 @@ export class LoginForm extends React.Component {
                             };
                             this.onSubmit(values);
                         }}
-                    > Click here!
+                    >Click here!
                     </Link>
                 </h5>
                 
